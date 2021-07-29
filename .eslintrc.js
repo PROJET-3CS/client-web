@@ -19,30 +19,30 @@ module.exports = {
   ecmaVersion: 12,
   sourceType: 'module',
  },
- plugins: ['react', '@typescript-eslint'],
+ plugins: ['react', '@typescript-eslint' , 'prettier'],
  ignorePatterns: ['App.tsx'],
  rules: {
   'react/jsx-filename-extension': [1, { extensions: ['.tsx', '.ts'] }],
   'prettier/prettier': 'error',
-  'no-unused-vars': 'warn',
-  indent: ['error', 2],
-  'linebreak-style': ['error', 'unix'],
-  quotes: ['error', 'single'],
-  semi: ['error', 'never'],
-  'no-console': 1, // Warning to reduce console logs used throughout app
-  'react/prop-types': 0, // Not using prop-types because we have TypeScript
-  'newline-before-return': 1,
-  'no-useless-return': 1,
-  'prefer-const': 1,
-  'no-useless-return': 1,
-  'no-unused-vars': 0,
-  'default-case': 1, // require `default` cases in `switch` statements
-  'default-case-last': 1, // enforce default clauses in switch statements to be last
-  eqeqeq: 1, // require the use of `===` and `!==`
-  'no-empty-function': 1,
-  'no-multi-spaces': 1,
-  'no-useless-return': 1,
-  'require-await': 1,
+    'no-unused-vars': 'warn',
+    indent: ['error', 2],
+    'linebreak-style': ['error', 'windows'],
+    quotes: ['error', 'single'],
+    semi: ['error', 'never'],
+    'no-console': 1, // Warning to reduce console logs used throughout app
+    'react/prop-types': 0, // Not using prop-types because we have TypeScript
+    'newline-before-return': 1,
+    'no-useless-return': 1,
+    'prefer-const': 1,
+    'no-useless-return': 1,
+    'no-unused-vars': 0,
+    'default-case': 1, // require `default` cases in `switch` statements
+    'default-case-last': 1, // enforce default clauses in switch statements to be last
+    eqeqeq: 1, // require the use of `===` and `!==`
+    'no-empty-function': 1,
+    'no-multi-spaces': 1,
+    'no-useless-return': 1,
+    'require-await': 1,
   camelcase: 'error',
   'max-lines': ['error', 200],
   'max-nested-callbacks': ['error', 3],

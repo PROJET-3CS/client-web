@@ -1,5 +1,4 @@
 // This file is for conf store
-
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit'
 import createSagaMiddleware from 'redux-saga'
 import { useDispatch } from 'react-redux'
