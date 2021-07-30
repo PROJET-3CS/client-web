@@ -17,6 +17,7 @@
     "eslint-config-airbnb": "^18.2.1",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^3.4.0",
+    "node-sass": "^6.0.1",
     "prettier": "^2.2.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -33,7 +34,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "eslint": "eslint src/**/*.{ts,tsx} --fix",
-    "format": "prettier --write \"./**/*.{js,jsx,ts,tsx,css,scss,md}\""
+    "format": "prettier --write \"./**/*.{js,jsx,ts,tsx,css,scss,md}\"",
+    "watch:sass": "node-sass src/styles/main.scss public/css/style.css -w"
   },
   "eslintConfig": {
     "extends": [
