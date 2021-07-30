@@ -4,12 +4,19 @@ module.exports = {
   es2021: true,
   node: true,
  },
+ "settings": {
+  "import/no-unresolved": 0, // Turn off "Unable to resolve path to module ..." error
+  "import/extensions": 0 // Turn off "Missing file extension for ..." error
+},
  extends: [
   'airbnb',
   'prettier',
   'eslint:recommended',
   'plugin:react/recommended',
   'plugin:@typescript-eslint/recommended',
+  "plugin:import/errors",
+  "plugin:import/warnings",
+  "plugin:import/typescript",
  ],
  parser: '@typescript-eslint/parser',
  parserOptions: {
@@ -22,10 +29,22 @@ module.exports = {
  plugins: ['react', '@typescript-eslint' , 'prettier'],
  ignorePatterns: ['App.tsx'],
  rules: {
-  'react/jsx-filename-extension': [1, { extensions: ['.tsx', '.ts'] }],
-  'prettier/prettier': 'error',
+  'react/jsx-filename-extension': [2, { 'extensions': ['.js', '.jsx', '.ts', '.tsx'] }],
+  "import/extensions": [
+    "error",
+    "ignorePackages",
+    {
+      "js": "never",
+      "jsx": "never",
+      "ts": "never",
+      "tsx": "never"
+    }
+ ],
+  "prettier/prettier": ["error",{
+    "endOfLine": "auto"}
+     ],
+     "react/react-in-jsx-scope": "off", 
     'no-unused-vars': 'warn',
-    indent: ['error', 2],
     'linebreak-style': ['error', 'windows'],
     quotes: ['error', 'single'],
     semi: ['error', 'never'],
