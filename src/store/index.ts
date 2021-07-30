@@ -10,14 +10,14 @@ const sagaMiddleware = createSagaMiddleware()
 const test = 'test'
 
 const store = configureStore({
-  reducer: rootReducer,
-  middleware: [sagaMiddleware, ...getDefaultMiddleware({ thunk: false })],
-  devTools: process.env.NODE_ENV !== 'production',
+ reducer: rootReducer,
+ middleware: [sagaMiddleware, ...getDefaultMiddleware({ thunk: false })],
+ devTools: process.env.NODE_ENV !== 'production',
 })
 
 export type AppDispatch = typeof store.dispatch
 export const useAppDispatch = () => {
-  return useDispatch()
+ return useDispatch()
 }
 
 export default store
