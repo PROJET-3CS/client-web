@@ -17,6 +17,7 @@ const syncSlice = createSlice({
    state.pendingSync = true
   },
 
+  // eslint-disable-next-line
   sync: (state, { payload }: PayloadAction<SyncPayload>) => {
    state.syncing = true
   },

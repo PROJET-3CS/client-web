@@ -4,9 +4,16 @@ module.exports = {
   es2021: true,
   node: true,
  },
+ settings: {
+  'import/resolver': {
+   node: {
+    extensions: ['.js', '.jsx', '.ts', '.tsx'],
+   },
+  },
+ },
  extends: [
   'airbnb',
-  'prettier',
+  'eslint-config-prettier',
   'eslint:recommended',
   'plugin:react/recommended',
   'plugin:@typescript-eslint/recommended',
@@ -19,13 +26,26 @@ module.exports = {
   ecmaVersion: 12,
   sourceType: 'module',
  },
- plugins: ['react', '@typescript-eslint'],
+ plugins: ['react', '@typescript-eslint', 'eslint-plugin-prettier'],
  ignorePatterns: ['App.tsx'],
  rules: {
+  'import/extensions': [
+   'error',
+   'ignorePackages',
+   {
+    js: 'never',
+    jsx: 'never',
+    ts: 'never',
+    tsx: 'never',
+   },
+  ],
   'react/jsx-filename-extension': [1, { extensions: ['.tsx', '.ts'] }],
-  'prettier/prettier': 'error',
+  'react/jsx-uses-react': 'off',
+  'react/react-in-jsx-scope': 'off',
+  'import/no-extraneous-dependencies': 0,
+  'no-param-reassign': ['error', { props: false }],
   'no-unused-vars': 'warn',
-  indent: ['error', 2],
+  indent: ['error', 1],
   'linebreak-style': ['error', 'unix'],
   quotes: ['error', 'single'],
   semi: ['error', 'never'],
@@ -49,6 +69,8 @@ module.exports = {
   'arrow-body-style': ['error', 'always'], // require braces around arrow function bodies
   'no-duplicate-imports': 'error', // disallow duplicate module imports
   'no-var': 'error',
+  'no-use-before-define': 'off',
+  '@typescript-eslint/no-use-before-define': ['error'],
   'prefer-destructuring': [
    'error',
    {
