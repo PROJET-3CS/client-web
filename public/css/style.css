@@ -13,7 +13,7 @@ html {
       font-size: 50%; } }
 
 body {
-  font-family: "Montserrat", sans-serif;
+  font-family: "Montserrat" !important;
   color: #4f4f4f;
   font-weight: 300;
   line-height: 1.6; }
@@ -29,3 +29,92 @@ body {
   @media only screen and (max-width: 56.25em) {
     .container {
       grid-template-rows: 6rem calc(100vh - 6rem); } }
+
+.auth__side_1 {
+  padding: 3rem 5rem 5rem !important;
+  height: 100vh;
+  text-align: left; }
+
+.auth__side_2 {
+  padding: 5rem !important;
+  background-color: #F9F6FC;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+.auth__header {
+  font-weight: 600;
+  font-style: italic;
+  font-size: 3.6rem;
+  text-transform: uppercase;
+  margin-bottom: 6rem; }
+
+.auth__form-heading {
+  margin-bottom: 3rem; }
+  .auth__form-heading--title {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1rem; }
+  .auth__form-heading--text {
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: #B0A5A5; }
+
+.auth__form-group--label {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #4f4f4f;
+  margin-bottom: 1rem; }
+
+.auth__form-group--input {
+  font-family: inherit;
+  font-size: 1.5rem !important;
+  font-weight: 500 !important;
+  color: inherit;
+  padding: 0.7rem 2rem !important;
+  border-radius: 0.5rem !important;
+  width: 100%;
+  height: 5rem;
+  margin-bottom: 2rem; }
+
+.auth__form-group--repass {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.5rem;
+  margin-bottom: 3rem; }
+
+.auth__form-group--action {
+  display: flex;
+  justify-content: center;
+  font-size: 1.5rem;
+  margin-bottom: 3rem; }
+  .auth__form-group--action-btn {
+    width: 100%;
+    padding: 1rem 7rem;
+    background-color: #5b63f6 !important;
+    font-size: 1.5rem;
+    color: white;
+    border: none !important;
+    border-radius: 0.5rem;
+    cursor: pointer; }
+
+.auth__form-footer--text {
+  font-size: 1.5rem;
+  font-weight: 500;
+  text-align: center;
+  margin-bottom: 1rem; }
+
+.auth__form-footer .auth__form-group--action-btn {
+  background-color: #dd4b39 !important; }
+
+.auth__heading-title {
+  font-size: 5rem;
+  font-weight: 700;
+  color: #5b63f6; }
+
+.auth__heading-subtitle {
+  font-size: 1.5rem;
+  font-weight: 400; }
+
+.auth__heading-illustration {
+  width: 65rem; }

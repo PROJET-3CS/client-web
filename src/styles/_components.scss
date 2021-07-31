@@ -1,0 +1,101 @@
+////////////////////////////////////////
+// AUTH
+.auth {
+ &__header {
+  font-weight: 600;
+  font-style: italic;
+  font-size: 3.6rem;
+  text-transform: uppercase;
+  margin-bottom: 6rem;
+ }
+
+ &__form {
+  &-heading {
+   margin-bottom: 3rem;
+
+   &--title {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+   }
+   &--text {
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: $color-grey-dark-4;
+   }
+  }
+  &-group {
+   &--label {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: $color-grey-dark-2;
+    margin-bottom: 1rem;
+   }
+
+   &--input {
+    font-family: inherit;
+    font-size: 1.5rem !important;
+    font-weight: 500 !important;
+    color: inherit;
+    padding: 0.7rem 2rem !important;
+    border-radius: 0.5rem !important;
+    width: 100%;
+    height: 5rem;
+    margin-bottom: 2rem;
+   }
+
+   &--repass {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.5rem;
+    margin-bottom: 3rem;
+   }
+
+   &--action {
+    display: flex;
+    justify-content: center;
+    font-size: 1.5rem;
+    margin-bottom: 3rem;
+
+    &-btn {
+     width: 100%;
+     padding: 1rem 7rem;
+     background-color: $color-primary !important;
+     font-size: 1.5rem;
+     color: white;
+     border: none !important;
+     border-radius: 0.5rem;
+     cursor: pointer;
+    }
+   }
+  }
+
+  &-footer {
+   &--text {
+    font-size: 1.5rem;
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 1rem;
+   }
+
+   .auth__form-group--action-btn {
+    background-color: $color-tertiary !important;
+   }
+  }
+ }
+
+ &__heading {
+  &-title {
+   font-size: 5rem;
+   font-weight: 700;
+   color: $color-primary;
+  }
+  &-subtitle {
+   font-size: 1.5rem;
+   font-weight: 400;
+  }
+  &-illustration {
+   width: 65rem;
+  }
+ }
+}

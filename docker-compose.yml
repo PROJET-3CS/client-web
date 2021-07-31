@@ -1,0 +1,8 @@
+version: '3'
+services:
+  web:
+    build: .
+    image: curify
+    container_name: curify
+    volumes:
+      - .:/app
