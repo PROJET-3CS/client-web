@@ -4,7 +4,7 @@ import Signin from '../views/auth/Signin'
 import Dashboard from '../views/Dashboard'
 import Home from '../views/Home'
 
-const RouteRoute: FC = () => {
+const RootRoute: FC = () => {
  return (
   <Router>
    <Switch>
@@ -16,4 +16,4 @@ const RouteRoute: FC = () => {
  )
 }
 
-export default RouteRoute
+export default RootRoute
