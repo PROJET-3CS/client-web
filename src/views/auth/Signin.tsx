@@ -1,11 +1,11 @@
-import React from 'react'
+import React, { FC } from 'react'
 
-const Signin = () => {
-    return (
-        <div>
-            
-        </div>
-    )
+const Signin: FC = () => {
+ return (
+  <div>
+   <h2>Login</h2>
+  </div>
+ )
 }
 
 export default Signin
