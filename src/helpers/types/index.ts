@@ -1,9 +1,18 @@
+
+import React from 'react'
+
 //==============================================================================
 // Items
 //==============================================================================
 export interface User {
  [anyProp: string]: any
 }
+
+export interface authData {
+ email: string
+ password: string
+}
+
 //==============================================================================
 // State
 //==============================================================================
@@ -20,7 +29,8 @@ export interface AuthState {
  loading: boolean
  currentUser: User
  isAuthenticated: boolean
- error?: string
+ error: boolean,
+ msg: string,
 }
 
 export interface RootState {
@@ -39,3 +49,10 @@ export interface SyncPayload {
 export interface RootState {
  syncState: SyncState
 }
+
+//==============================================================================
+// Events
+//==============================================================================
+
+export type ReactChangeEvent = React.ChangeEvent<HTMLInputElement>
+export type ReactSubmitEvent = React.FormEvent<HTMLFormElement> | React.FocusEvent<HTMLInputElement>

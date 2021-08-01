@@ -1,13 +1,71 @@
-import React, { FC } from 'react'
-import { Col, Form, FormGroup, Input, Label, Row } from 'reactstrap'
+import React, { FC, useState } from 'react'
+import { Col, Form, FormFeedback, FormGroup, Input, Label, Row } from 'reactstrap'
+import { useDispatch, useSelector } from 'react-redux'
+
+import { getAuth } from '../../store/selectors'
+import { authData, ReactChangeEvent, ReactSubmitEvent } from '../../helpers/types'
+import { loginError, loginSuccess } from '../../store/slices/auth'
 
 const Signin: FC = () => {
+ // ===========================================================================
+ // Selectors
+ // ===========================================================================
+
+ const { error } = useSelector(getAuth)
+
+ // ===========================================================================
+ // Dispatch
+ // ==========================================================================
+
+ const dispatch = useDispatch()
+
+ const _loginSuccess = (payload: authData) => {
+  dispatch(loginSuccess(payload))
+ }
+
+ const _loginError = (payload: string) => {
+  dispatch(loginError(payload))
+ }
+
+ // ===========================================================================
+ // State
+ // ===========================================================================
+
+ const [user, setUser] = useState({
+  email: '',
+  password: '',
+ })
+
+ // ===========================================================================
+ // Handlers
+ // ===========================================================================
+
+ const handleChange = (event: ReactChangeEvent) => {
+  setUser({ ...user, [event.target.name]: event.target.value })
+ }
+
+ const handleSubmit = (event: ReactSubmitEvent): void => {
+  event.preventDefault()
+
+  const payload = { email: user.email.trim(), password: user.password }
+
+  if (payload.email && payload.password) {
+   _loginSuccess(user)
+  } else {
+   _loginError('Empty email or password !')
+  }
+ }
+
+ // ===========================================================================
+ // Hooks
+ // ===========================================================================
+
  return (
   <div>
    <Row>
     <Col md="5" className="auth__side_1">
      <h2 className="auth__header">Clinity</h2>
-     <Form className="auth__form">
+     <Form className="auth__form" onSubmit={handleSubmit}>
       <div className="auth__form-heading">
        <h2 className="auth__form-heading--title">Log In.</h2>
        <p className="auth__form-heading--text">
@@ -23,7 +81,10 @@ const Signin: FC = () => {
         type="email"
         name="email"
         placeholder="name@example.com"
+        onChange={handleChange}
+        invalid={error}
        />
+       <FormFeedback>Please enter a valid email !</FormFeedback>
       </FormGroup>
       <FormGroup className="auth__form-group">
        <Label className="auth__form-group--label" for="password">
@@ -34,7 +95,10 @@ const Signin: FC = () => {
         type="password"
         name="password"
         placeholder="atleast 8 characters"
+        onChange={handleChange}
+        invalid={error}
        />
+       <FormFeedback>Please enter a valid password !</FormFeedback>
       </FormGroup>
       <FormGroup className="auth__form-group--repass" inline>
        <Label check>
@@ -43,7 +107,7 @@ const Signin: FC = () => {
        <a href="/">Forget Password?</a>
       </FormGroup>
       <FormGroup className="auth__form-group--action" inline>
-       <button type="button" color="primary" className="auth__form-group--action-btn" id="active">
+       <button type="submit" color="primary" className="auth__form-group--action-btn" id="active">
         Log In
        </button>
       </FormGroup>

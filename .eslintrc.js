@@ -44,6 +44,7 @@ module.exports = {
   'react/react-in-jsx-scope': 'off',
   'import/no-extraneous-dependencies': 0,
   'no-param-reassign': ['error', { props: false }],
+  'no-underscore-dangle': 0,
   'no-unused-vars': 'warn',
   indent: ['error', 1],
   'linebreak-style': ['error', 'unix'],

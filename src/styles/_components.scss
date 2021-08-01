@@ -25,6 +25,7 @@
    }
   }
   &-group {
+    margin-bottom: 2rem;
    &--label {
     font-size: 1.5rem;
     font-weight: 600;
@@ -41,7 +42,6 @@
     border-radius: 0.5rem !important;
     width: 100%;
     height: 5rem;
-    margin-bottom: 2rem;
    }
 
    &--repass {

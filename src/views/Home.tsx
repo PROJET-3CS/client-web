@@ -11,7 +11,8 @@ const Home: FC = () => {
    <div className="nav">
     <Link to="/login" className="App-link">
      <code>/Login</code>
-    </Link>{'  '}
+    </Link>
+    {'  '}
     <Link to="dashboard" className="App-link">
      <code>/Dashboard</code>
     </Link>
