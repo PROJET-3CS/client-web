@@ -45,6 +45,8 @@ module.exports = {
   'import/no-extraneous-dependencies': 0,
   'no-param-reassign': ['error', { props: false }],
   'no-underscore-dangle': 0,
+  "@typescript-eslint/ban-ts-ignore": 'off',
+  "@typescript-eslint/ban-ts-comment": "off",
   'no-unused-vars': 'warn',
   indent: ['error', 1],
   'linebreak-style': ['error', 'unix'],

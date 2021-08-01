@@ -1,6 +1,8 @@
 import React, { FC, useState } from 'react'
 import { Col, Form, FormFeedback, FormGroup, Input, Label, Row } from 'reactstrap'
 import { useDispatch, useSelector } from 'react-redux'
+import AwesomeButton from '../../components/AwesomeButton/AwesomeButton'
+import AwesomeButtonSecondary from '../../components/AwesomeButton/AwesomeButtonSecondary'
 
 import { getAuth } from '../../store/selectors'
 import { authData, ReactChangeEvent, ReactSubmitEvent } from '../../helpers/types'
@@ -107,16 +109,12 @@ const Signin: FC = () => {
        <a href="/">Forget Password?</a>
       </FormGroup>
       <FormGroup className="auth__form-group--action" inline>
-       <button type="submit" color="primary" className="auth__form-group--action-btn" id="active">
-        Log In
-       </button>
+       <AwesomeButton>Log In</AwesomeButton>
       </FormGroup>
      </Form>
      <div className="auth__form-footer">
       <p className="auth__form-footer--text">Or login using</p>
-      <button type="button" color="primary" className="auth__form-group--action-btn" id="active">
-       Google
-      </button>
+      <AwesomeButtonSecondary>Google</AwesomeButtonSecondary>
      </div>
     </Col>
     <Col md="7" className="auth__side_2">
