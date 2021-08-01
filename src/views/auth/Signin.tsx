@@ -5,7 +5,7 @@ const Signin: FC = () => {
  return (
   <div>
    <Row>
-    <Col md="4" className="auth__side_1">
+    <Col md="5" className="auth__side_1">
      <h2 className="auth__header">Clinity</h2>
      <Form className="auth__form">
       <div className="auth__form-heading">
@@ -55,7 +55,7 @@ const Signin: FC = () => {
       </button>
      </div>
     </Col>
-    <Col md="8" className="auth__side_2">
+    <Col md="7" className="auth__side_2">
      <div className="auth__heading">
       <h2 className="auth__heading-title">Welcome Back</h2>
       <p className="auth__heading-subtitle">

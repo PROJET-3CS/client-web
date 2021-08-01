@@ -1,7 +1,9 @@
 //==============================================================================
 // Items
 //==============================================================================
-
+export interface User {
+ [anyProp: string]: any
+}
 //==============================================================================
 // State
 //==============================================================================
@@ -12,6 +14,18 @@ export interface SyncState {
  lastSynced: string
  error: string
  pendingSync: boolean
+}
+
+export interface AuthState {
+ loading: boolean
+ currentUser: User
+ isAuthenticated: boolean
+ error?: string
+}
+
+export interface RootState {
+ authState: AuthState
+ syncState: SyncState
 }
 
 //==============================================================================
