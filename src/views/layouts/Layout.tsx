@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import { Link } from 'react-router-dom'
 
-const Layout: FC = ({children}) => {
+const Layout: FC = ({ children }) => {
  return (
   <div className="content">
    <nav className="sidebar">
@@ -54,9 +54,7 @@ const Layout: FC = ({children}) => {
      </Link>
     </div>
    </nav>
-   <main className="main-view">
-    {children}
-   </main>
+   <main className="main-view">{children}</main>
   </div>
  )
 }

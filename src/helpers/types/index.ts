@@ -1,4 +1,3 @@
-
 import React from 'react'
 
 //==============================================================================
@@ -29,8 +28,8 @@ export interface AuthState {
  loading: boolean
  currentUser: User
  isAuthenticated: boolean
- error: boolean,
- msg: string,
+ error: boolean
+ msg: string
 }
 
 export interface RootState {
