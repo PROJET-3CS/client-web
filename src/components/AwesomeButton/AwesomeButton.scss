@@ -8,7 +8,7 @@
     transition: filter 250ms;
     width: 100%;
   }
-  .shadow-primary {
+  /* .shadow-primary {
     position: absolute;
     top: 0;
     left: 0;
@@ -37,13 +37,13 @@
       hsl(237, 90%, 60%) 92%,
       hsl(237, 90%, 33%) 100%
     );
-  }
+  }*/
   
   .front-primary {
     display: block;
     position: relative;
     padding: 12px 42px;
-    border-radius: 12px;
+    border-radius: 8px;
     font-size: 1.25rem;
     color: white;
     background: #5b63f6;
