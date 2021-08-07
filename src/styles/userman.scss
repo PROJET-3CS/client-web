@@ -12,6 +12,7 @@
     float: right;
     font-size: large;
     color: #5B63F6;
+    display: inline;
 }
 
 .main-title{
@@ -39,4 +40,30 @@
 
 .maintt{
     float: left !important;
+}
+.tct {
+    display: inline-block;
+    margin-right: 10px;
+    color: black;
+}
+.user-img{
+    width: 40px;
+    border-radius: 50%;
+    display: inline-block;
+    vertical-align: top;
+    
+}
+
+.user-opt{
+    font-family: Montserrat;
+font-style: normal;
+font-weight: 600;
+font-size: 12px;
+line-height: 177.5%;
+text-align: right;
+color: #BDBDBD;
+}
+
+.user-name{
+    margin: 0%;
 }
