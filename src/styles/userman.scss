@@ -1,0 +1,42 @@
+.navIcons{
+    list-style-type: none;
+    display: inline;
+}
+.navbar1{
+    padding-right: 2%;
+    padding-top: 2%;
+}
+
+.navIcon{
+   margin-left: 15%;
+    float: right;
+    font-size: large;
+    color: #5B63F6;
+}
+
+.main-title{
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 600;
+    float: left;
+    font-size: 30px;
+    line-height: 177.5%;
+    margin-top: 2%;
+    display: block;
+}
+
+.main-button{
+    background-color: #5B63F6 !important;
+    font-family: Montserrat !important;
+    font-style: normal !important;
+    font-weight: 600 !important;
+    font-size: 14px !important;
+    line-height: 177.5% !important;
+    border-radius: 10px !important;
+    float: right;
+    margin-top: 4%;
+}
+
+.maintt{
+    float: left !important;
+}

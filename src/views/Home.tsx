@@ -16,6 +16,10 @@ const Home: FC = () => {
     <Link to="dashboard" className="App-link">
      <code>/Dashboard</code>
     </Link>
+    {'  '}
+    <Link to="/userman" className="App-link">
+     <code>/users management</code>
+    </Link>
    </div>
   </header>
  )

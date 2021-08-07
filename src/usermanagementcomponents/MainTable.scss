@@ -1,0 +1,45 @@
+.maintable-icon-sort{
+    color: #5B63F6;
+}
+
+.maintable{
+    border-collapse:separate;
+	border-spacing:0 15px;
+}
+
+.maintable-header-title{
+    
+font-family: Montserrat;
+font-size: 15px;
+font-style: normal;
+font-weight: 600;
+line-height: 28px;
+letter-spacing: 0em;
+text-align: center;
+
+}
+
+.maintable-header-item{
+    font-family: Montserrat;
+font-size: 15px;
+font-style: normal;
+font-weight: 600;
+line-height: 28px;
+letter-spacing: 0em;
+text-align: center;
+}
+
+.maintable-row{
+    background-color: white;
+    border-radius: 14px;
+    
+}
+
+.maintable-header-img{
+    width: 30px;
+    border-radius: 50%;
+}
+
+td , tr {
+    border-radius: 14px;
+}
