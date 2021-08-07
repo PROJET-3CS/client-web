@@ -8,7 +8,7 @@
     transition: filter 250ms;
     width: 100%;
   }
-  .shadow {
+  /*.shadow {
     position: absolute;
     top: 0;
     left: 0;
@@ -37,12 +37,12 @@
       hsl(7, 71%, 40%) 92%,
       hsl(7, 71%, 20%) 100%
     );
-  }
+  }*/
   .front {
     display: block;
     position: relative;
     padding: 12px 42px;
-    border-radius: 12px;
+    border-radius: 8px;
     font-size: 1.25rem;
     color: white;
     background: hsl(7, 71%, 55%);
