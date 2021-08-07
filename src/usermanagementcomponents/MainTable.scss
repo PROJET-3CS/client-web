@@ -10,7 +10,7 @@
 .maintable-header-title{
     
 font-family: Montserrat;
-font-size: 15px;
+font-size: 13px;
 font-style: normal;
 font-weight: 600;
 line-height: 28px;
@@ -21,7 +21,7 @@ text-align: center;
 
 .maintable-header-item{
     font-family: Montserrat;
-font-size: 15px;
+font-size: 13px;
 font-style: normal;
 font-weight: 600;
 line-height: 28px;
@@ -40,6 +40,12 @@ text-align: center;
     border-radius: 50%;
 }
 
-td , tr {
-    border-radius: 14px;
+.raduisadd{
+    border-top-left-radius: 14px;
+    border-bottom-left-radius: 14px;
+}
+
+.raduisadd1{
+    border-top-right-radius: 14px;
+    border-bottom-right-radius: 14px;
 }

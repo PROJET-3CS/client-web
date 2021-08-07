@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 import './MainTable.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faSort , faSlidersH} from '@fortawesome/free-solid-svg-icons'
+import { faSort , faSlidersH , faEllipsisH} from '@fortawesome/free-solid-svg-icons'
 import { Table } from 'reactstrap'
 
 interface IState {
@@ -19,7 +19,7 @@ interface IState {
 
 
 
-library.add(faSort , faSlidersH)
+library.add(faSort , faSlidersH , faEllipsisH)
 
 
 
@@ -31,13 +31,13 @@ const MainTable:React.FC<IState> = ({users})=>{
    return(
     // eslint-disable-next-line react/jsx-key
     <tr className='maintable-row'>
-     <th scope="row" className='maintable-header-item'><img className='maintable-header-img' src={user.url} alt="" /> {user.name}</th>
+     <th scope="row" className='maintable-header-item raduisadd'><img className='maintable-header-img' src={user.url} alt="" /> {user.name}</th>
      <td className='maintable-header-item'>{user.role}</td>
      <td className='maintable-header-item'>{user.year}</td>
      <td className='maintable-header-item'>{user.ngroupe}</td>
      <td className='maintable-header-item'>{user.status}</td>
      <td className='maintable-header-item'>{user.lastconnexion}</td>
-     <td className='maintable-header-item'>@mdo</td>
+     <td className='maintable-header-item raduisadd1'><FontAwesomeIcon icon="ellipsis-h" /></td>
     </tr>
    )
   })

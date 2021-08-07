@@ -27,7 +27,7 @@ export interface IState {
 
 const UserMan: FC = () => {
 
- const [users ,setPeosetUsers] = useState<IState['users']>([
+ const [users ] = useState<IState['users']>([
   {
    name:'jimm carter',
    year:2005,
