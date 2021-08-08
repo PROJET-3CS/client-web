@@ -59,9 +59,9 @@ const MainTable:React.FC<IState> = ({users})=>{
      <th className='maintable-header-title'> <FontAwesomeIcon icon="sliders-h" /></th>
     </tr>
    </thead>
-   <tbody>
+   <tbody className='maintable-body'>
     {renderList()}
-   </tbody>
+   </tbody >
   </Table> 
  )
 }

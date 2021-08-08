@@ -8,7 +8,7 @@
 }
 
 .navIcon{
-   margin-left: 15%;
+   margin-left: 6%;
     float: right;
     font-size: large;
     color: #5B63F6;
@@ -20,7 +20,7 @@
     font-style: normal;
     font-weight: 600;
     float: left;
-    font-size: 30px;
+    font-size: 23px;
     line-height: 177.5%;
     margin-top: 2%;
     display: block;
@@ -67,3 +67,12 @@ color: #BDBDBD;
 .user-name{
     margin: 0%;
 }
+
+.userman-cnt{
+    height: 100%;
+    overflow: scroll;
+    float: right;
+    margin-right: 0%;
+    padding-right: 3% !important;
+}
+
