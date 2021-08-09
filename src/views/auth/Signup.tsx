@@ -1,12 +1,8 @@
-import React, { FC, useState } from 'react'
+import React, { FC } from 'react'
 import { Col, Form, FormFeedback, FormGroup, Input, Label, Row } from 'reactstrap'
-import { useDispatch, useSelector } from 'react-redux'
+
 import AwesomeButton from '../../components/AwesomeButton/AwesomeButton'
 import AwesomeButtonSecondary from '../../components/AwesomeButton/AwesomeButtonSecondary'
-
-import { getAuth } from '../../store/selectors'
-import { authData, ReactChangeEvent, ReactSubmitEvent } from '../../helpers/types'
-import { loginError, loginSuccess } from '../../store/slices/auth'
 
 const Signup: FC = () => {
  // ===========================================================================
