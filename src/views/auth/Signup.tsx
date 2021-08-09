@@ -1,12 +1,8 @@
-import React, { FC, useState } from 'react'
-import { Col, Form, FormFeedback, FormGroup, Input, Label, Row } from 'reactstrap'
-import { useDispatch, useSelector } from 'react-redux'
+import React, { FC } from 'react'
+import { Col, Form, FormFeedback, FormGroup, Row, Label } from 'reactstrap'
 import AwesomeButton from '../../components/AwesomeButton/AwesomeButton'
 import AwesomeButtonSecondary from '../../components/AwesomeButton/AwesomeButtonSecondary'
-
-import { getAuth } from '../../store/selectors'
-import { authData, ReactChangeEvent, ReactSubmitEvent } from '../../helpers/types'
-import { loginError, loginSuccess } from '../../store/slices/auth'
+import PrimaryInput from '../../components/PrimaryInput/PrimaryInput'
 
 const Signup: FC = () => {
  // ===========================================================================
@@ -39,38 +35,27 @@ const Signup: FC = () => {
        Please note that to request a medical account, you must be eaither a student, a member of administration or an employee in this university.
        </p>
       </div>
-      <FormGroup className="signup__form-group">
-       <Label className="signup__form-group--label">
-        Enter your fullname
-       </Label>
-       <Input
-        className="signup__form-group--input"
-        type="text"
-        name="name"
-        placeholder="ex. Yacine Kharroubi"/>
-      </FormGroup>
-      <FormGroup className="signup__form-group">
-       <Label className="signup__form-group--label">
-        Enter your email
-       </Label>
-       <Input
-        className="signup__form-group--input"
-        type="email"
-        name="email"
-        placeholder="ex. y.kharroubi@gmail.com"/>
-      </FormGroup>
+      <PrimaryInput
+       label="Enter your name"
+       type="text"
+       name="name"
+       placeholder="ex. Kharroubi Yacine"/>
+      <PrimaryInput
+       label="Enter your name"
+       type="email"
+       name="email"
+       placeholder="ex. y.kharroubi@gmail.com"/>
       <FormFeedback>Please enter a valid email</FormFeedback>
-      <FormGroup className="signup__form-group--repass" inline>
-       <a href='/'>Forgot Password?</a>
-      </FormGroup>
-      <FormGroup className="auth__form-group--action" inline>
+      <FormGroup className="signup__form-group--action" inline>
        <AwesomeButton>Request</AwesomeButton>
       </FormGroup>
+      <div className="signup__form-footer">
+       <Label className="signup__form-footer--label">
+        Already have an account? &nbsp;
+        <a href="/login">Sign In Now!</a>
+       </Label>
+      </div>
      </Form>
-     <div className="signup__form-footer">
-      <p className="signup__form-footer--text">Or login using</p>
-      <AwesomeButtonSecondary>Google</AwesomeButtonSecondary>
-     </div>
     </Col>
    </Row>
   </div>
