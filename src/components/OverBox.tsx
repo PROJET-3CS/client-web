@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faUsers, faUserGraduate, faUserTie, faUserPlus } from '@fortawesome/free-solid-svg-icons'
 import { Col, Row } from 'reactstrap'
-import './OverBox.scss'
+import '../styles/main.scss'
 
 library.add(faUsers, faUserGraduate, faUserTie, faUserPlus)
 

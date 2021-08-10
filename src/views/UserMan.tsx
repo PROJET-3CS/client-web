@@ -6,25 +6,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faCog , faBell } from '@fortawesome/free-solid-svg-icons'
 import Layout from './layouts/Layout'
-import SearchBar from '../usermanagementcomponents/SearchBar'
-import OverBox from '../usermanagementcomponents/OverBox'
-import MainTable from '../usermanagementcomponents/MainTable'
+import SearchBar from '../components/SearchBar'
+import OverBox from '../components/OverBox'
+import MainTable from '../components/MainTable'
+import {IState} from '../helpers/types'
 
 
 library.add(faCog , faBell)
 
-export interface IState {
 
-    users : {
-      name:string,
-      year:number,
-      role:string,
-      ngroupe?:string,
-      status:string,
-      lastconnexion?:string,
-      url:string,
-  }[]
-    }
 
 const UserMan: FC = () => {
 

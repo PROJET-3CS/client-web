@@ -1,5 +1,5 @@
-import React, { FC } from 'react'
-import './MainTable.scss'
+import React from 'react'
+import '../styles/main.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faSort , faSlidersH , faEllipsisH} from '@fortawesome/free-solid-svg-icons'

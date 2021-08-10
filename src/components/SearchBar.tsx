@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import './SearchBar.scss'
+import '../styles/main.scss'
 import { FormGroup, Input } from 'reactstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'

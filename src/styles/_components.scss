@@ -249,3 +249,146 @@
   }
  }
 }
+
+//////////////////////////////
+// maintable
+.maintable-icon-sort{
+    color: $color-primary;
+}
+
+.maintable{
+    margin-top: 30px;
+    border-collapse:separate;
+	border-spacing:0 12px;
+   
+}
+
+.maintable-header-title{
+    
+font-size: 1.3rem;
+font-style: normal;
+font-weight: 600;
+
+
+text-align: left;
+
+}
+
+.maintable-header-item{
+
+font-size: 13px;
+font-style: normal;
+font-weight: 600;   
+text-align: center;
+text-align: left;
+}
+
+.maintable-row{
+    background-color: white;
+    border-radius: 14px;
+    
+}
+
+.maintable-header-img{
+    width: 30px;
+    border-radius: 50%;
+}
+
+.raduisadd{
+    border-top-left-radius: 14px;
+    border-bottom-left-radius: 14px;
+}
+
+.raduisadd1{
+    border-top-right-radius: 14px;
+    border-bottom-right-radius: 14px;
+    
+}
+
+
+
+
+//////////////////////////////
+//overbox
+.ovrrow{
+    margin-top: 6%  !important;
+    
+    }
+    
+    .ovrbx {
+     border-radius: 10px;
+     width: 97%;
+     position: relative;
+     background-color: white;
+     text-align: center !important;
+     height: 100px;
+     display: block;
+    }
+    
+    .ovrtitle {
+     position: absolute;
+     left: 3%;
+     top: 10.34%;
+     bottom: 63.79%;
+    
+    
+     font-style: normal;
+     font-size: 18px;
+     /* or 30px */
+    
+     color: #000000;
+    }
+    
+    .ovrnmb {
+     position: relative;
+     left: -25%;
+     bottom: -40%;
+     font-style: normal;
+     font-size: 3.2rem;
+    
+     /* or 57px */
+    
+     
+    
+     color: #000000;
+    }
+    
+    .users-icon {
+     position: absolute;
+    
+     right: 8%;
+     bottom: 8%;
+     font-size: 3rem;
+     color: #2a2f64;
+    }
+
+    
+
+    ///////////////////////////////////
+    // searchbar
+
+
+    
+
+.searchbar {
+    height: 3.8rem !important;
+    font-size: medium !important;
+    border-radius: 1.2rem !important;
+    width: 80% !important;
+    background-color: #f7f7fe !important;
+    
+   }
+   
+   .searchbar::placeholder {
+    font-size: medium;
+   }
+   
+   .search-icon {
+    font-size: large;
+    position: relative;
+    float: right;
+    margin-right: 22%;
+    bottom: -2.7rem;
+    color: $color-primary;
+   }
+   
