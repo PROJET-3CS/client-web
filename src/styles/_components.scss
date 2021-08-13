@@ -214,6 +214,14 @@
   width: 100%;
  }
 
+ &__link {
+  &--btn {
+   border: none;
+   background-color: transparent;
+   padding: 1rem 0;
+  }
+ }
+
  &__link:link,
  &__link:visited {
   color: $color-primary-dark;

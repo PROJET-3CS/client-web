@@ -1,7 +1,19 @@
 import React, { FC } from 'react'
+import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { logout } from '../../store/slices/auth'
 
-const Layout: FC = ({children}) => {
+const Layout: FC = ({ children }) => {
+ // ===========================================================================
+ // Dispatch
+ // ==========================================================================
+
+ const dispatch = useDispatch()
+
+ const _logout = () => {
+  dispatch(logout())
+ }
+
  return (
   <div className="content">
    <nav className="sidebar">
@@ -49,14 +61,12 @@ const Layout: FC = ({children}) => {
     </ul>
 
     <div className="legal">
-     <Link to="/login" className="side-nav__link">
+     <button type="button" onClick={_logout} className="side-nav__link--btn">
       <img className="side-nav__icon" src="/img/power.svg" alt="Power icon" />
-     </Link>
+     </button>
     </div>
    </nav>
-   <main className="main-view">
-    {children}
-   </main>
+   <main className="main-view">{children}</main>
   </div>
  )
 }

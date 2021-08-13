@@ -4,6 +4,7 @@ import { AuthState } from '../../helpers/types'
 
 export const initialState: AuthState = {
  currentUser: {},
+ user: {},
  isAuthenticated: false,
  error: false,
  msg: '',
@@ -14,13 +15,23 @@ const authSlice = createSlice({
  name: 'auth',
  initialState,
  reducers: {
-  login: (state) => {
+  verify: (state) => {
+   state.loading = false
+  },
+  // eslint-disable-next-line
+  verifySuccess: (state, { payload }: PayloadAction<any>) => {
+   state.isAuthenticated = payload.isValid
+   state.user = payload.user
+  },
+  // eslint-disable-next-line
+  login: (state, { payload }: PayloadAction<any>) => {
    state.loading = true
+   state.currentUser = payload
   },
 
   // eslint-disable-next-line
   loginSuccess: (state, { payload }: PayloadAction<any>) => {
-   state.currentUser = payload
+   state.user = payload
    state.isAuthenticated = true
    state.loading = false
    state.error = false
@@ -47,6 +58,6 @@ const authSlice = createSlice({
  },
 })
 
-export const { login, loginSuccess, loginError, logout, logoutSuccess } = authSlice.actions
+export const { verify, verifySuccess, login, loginSuccess, loginError, logout, logoutSuccess } = authSlice.actions
 
 export default authSlice.reducer

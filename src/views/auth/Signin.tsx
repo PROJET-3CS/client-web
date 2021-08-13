@@ -1,19 +1,20 @@
 import React, { FC, useState } from 'react'
 import { Col, Form, FormFeedback, FormGroup, Input, Label, Row } from 'reactstrap'
 import { useDispatch, useSelector } from 'react-redux'
+import { Redirect } from 'react-router-dom'
 import AwesomeButton from '../../components/AwesomeButton/AwesomeButton'
 import AwesomeButtonSecondary from '../../components/AwesomeButton/AwesomeButtonSecondary'
 
 import { getAuth } from '../../store/selectors'
 import { authData, ReactChangeEvent, ReactSubmitEvent } from '../../helpers/types'
-import { loginError, loginSuccess } from '../../store/slices/auth'
+import { loginError, login } from '../../store/slices/auth'
 
 const Signin: FC = () => {
  // ===========================================================================
  // Selectors
  // ===========================================================================
 
- const { error } = useSelector(getAuth)
+ const { error, isAuthenticated } = useSelector(getAuth)
 
  // ===========================================================================
  // Dispatch
@@ -21,8 +22,8 @@ const Signin: FC = () => {
 
  const dispatch = useDispatch()
 
- const _loginSuccess = (payload: authData) => {
-  dispatch(loginSuccess(payload))
+ const _login = (payload: authData) => {
+  dispatch(login(payload))
  }
 
  const _loginError = (payload: string) => {
@@ -52,7 +53,7 @@ const Signin: FC = () => {
   const payload = { email: user.email.trim(), password: user.password }
 
   if (payload.email && payload.password) {
-   _loginSuccess(user)
+   _login(payload)
   } else {
    _loginError('Empty email or password !')
   }
@@ -61,6 +62,8 @@ const Signin: FC = () => {
  // ===========================================================================
  // Hooks
  // ===========================================================================
+
+ if (isAuthenticated) return <Redirect to="/dashboard" />
 
  return (
   <div>
