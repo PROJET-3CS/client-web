@@ -32,6 +32,7 @@ const authSlice = createSlice({
   // eslint-disable-next-line
   loginSuccess: (state, { payload }: PayloadAction<any>) => {
    state.user = payload
+   state.currentUser = {}
    state.isAuthenticated = true
    state.loading = false
    state.error = false

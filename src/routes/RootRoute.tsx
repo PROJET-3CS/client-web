@@ -1,7 +1,8 @@
 import React, { FC } from 'react'
-import { BrowserRouter as Router, Switch } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Signin from '../views/auth/Signin'
 import Signup from '../views/auth/Signup'
+import Resetpassword from '../views/auth/Password_reset'
 import Dashboard from '../views/Dashboard'
 import Home from '../views/Home'
 
@@ -12,9 +13,11 @@ const RootRoute: FC = () => {
  return (
   <Router>
    <Switch>
-    <PublicRoute path="/" component={Home} exact />
+    <Route path="/" component={Home} exact />
+    
     <PublicRoute path="/login" component={Signin} exact />
     <PublicRoute path="/signup" component={Signup} exact />
+    <PublicRoute path="/resetpassword" component={Resetpassword} exact />
 
     <PrivateRoute path="/dashboard" component={Dashboard} exact />
    </Switch>
