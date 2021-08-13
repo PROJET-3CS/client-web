@@ -5,6 +5,7 @@ import Signup from '../views/auth/Signup'
 import Resetpassword from '../views/auth/Password_reset'
 import Dashboard from '../views/Dashboard'
 import Home from '../views/Home'
+import UserMan from '../views/UserMan'
 
 import PrivateRoute from './PrivateRoutes'
 import PublicRoute from './PublicRoutes'
@@ -20,6 +21,7 @@ const RootRoute: FC = () => {
     <PublicRoute path="/resetpassword" component={Resetpassword} exact />
 
     <PrivateRoute path="/dashboard" component={Dashboard} exact />
+    <PrivateRoute path="/management" component={UserMan} exact />
    </Switch>
   </Router>
  )

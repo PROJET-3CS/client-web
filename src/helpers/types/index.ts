@@ -1,4 +1,3 @@
-
 import React from 'react'
 
 //==============================================================================
@@ -30,8 +29,8 @@ export interface AuthState {
  currentUser: User
  user: User
  isAuthenticated: boolean
- error: boolean,
- msg: string,
+ error: boolean
+ msg: string
 }
 
 export interface RootState {
@@ -57,3 +56,21 @@ export interface RootState {
 
 export type ReactChangeEvent = React.ChangeEvent<HTMLInputElement>
 export type ReactSubmitEvent = React.FormEvent<HTMLFormElement> | React.FocusEvent<HTMLInputElement>
+
+
+//==============================================================================
+
+export interface IState {
+
+    users : {
+        name:string,
+        year:number,
+        role:string,
+        ngroupe?:string,
+        status:string,
+        lastconnexion?:string,
+        url:string,
+    }[]
+      }
+
+//==========================================================================

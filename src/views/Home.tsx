@@ -24,6 +24,9 @@ const Home: FC = () => {
     <Link to="/resetpassword" className="App-link">
      <code>/Reset Password</code>
     </Link>
+    <Link to="/management" className="App-link">
+     <code>/Management</code>
+    </Link>
    </div>
   </header>
  )
