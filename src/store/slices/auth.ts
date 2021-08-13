@@ -4,6 +4,7 @@ import { AuthState } from '../../helpers/types'
 
 export const initialState: AuthState = {
  currentUser: {},
+ user: {},
  isAuthenticated: false,
  error: false,
  msg: '',
@@ -20,7 +21,8 @@ const authSlice = createSlice({
 
   // eslint-disable-next-line
   loginSuccess: (state, { payload }: PayloadAction<any>) => {
-   state.currentUser = payload
+   state.user = payload
+   state.currentUser = {}
    state.isAuthenticated = true
    state.loading = false
    state.error = false

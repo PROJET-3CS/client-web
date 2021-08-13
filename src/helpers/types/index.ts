@@ -28,6 +28,7 @@ export interface SyncState {
 export interface AuthState {
  loading: boolean
  currentUser: User
+ user: User
  isAuthenticated: boolean
  error: boolean,
  msg: string,

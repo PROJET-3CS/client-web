@@ -20,6 +20,10 @@ const Home: FC = () => {
     <Link to="/signup" className="App-link">
      <code>/Signup</code>
     </Link>
+    {'  '}
+    <Link to="/resetpassword" className="App-link">
+     <code>/Reset Password</code>
+    </Link>
    </div>
   </header>
  )
