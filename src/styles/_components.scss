@@ -516,7 +516,7 @@
  font-size: medium !important;
  border-radius: 1.2rem !important;
  width: 80% !important;
- background-color: #f7f7fe !important;
+ background-color: $color-grey-light-1 !important;
 }
 
 .searchbar::placeholder {
@@ -530,4 +530,133 @@
  margin-right: 22%;
  bottom: -2.7rem;
  color: $color-primary;
+}
+
+////////////////////////////////////////
+// SEARCH
+.search {
+ flex: 0 0 40%;
+
+ display: flex;
+ align-items: center;
+ justify-content: center;
+
+ @media only screen and (max-width: $bp-smallest) {
+  order: 1;
+  flex: 0 0 100%;
+  background-color: $color-grey-light-2;
+ }
+
+ &__input {
+  font-size: 1.5rem !important;
+  font-weight: 500 !important;
+  padding: 0.7rem 2rem !important;
+  border-radius: 0.7rem !important;
+  height: 4rem;
+  color: inherit;
+  background-color: $color-grey-light-1;
+  border: none;
+  width: 90%;
+  margin-right: -3.25rem;
+  border-bottom: 1px solid $color-grey-light-3;
+
+  &::-webkit-input-placeholder {
+   font-weight: 100;
+  }
+ }
+
+ &__input:focus + &__button {
+  background-color: $color-grey-light-3;
+ }
+
+ &__button {
+  border: none;
+  background-color: transparent;
+  color: $color-primary;
+
+  &:focus {
+   outline: none;
+  }
+
+  &:active {
+   transform: translateY(2px);
+  }
+ }
+
+ &__icon {
+  height: 2rem;
+  width: 2rem;
+  fill: $color-grey-dark-3;
+ }
+}
+
+////////////////////////////////////////
+// USER NAVIGATION
+.user-nav {
+ align-self: stretch;
+
+ display: flex;
+ align-items: center;
+
+ & > * {
+  padding: 0 2rem;
+  cursor: pointer;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  column-gap: 1rem;
+ }
+
+ & > *:hover {
+  background-color: $color-grey-light-2;
+ }
+
+ &__user-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  font-size: 1rem;
+  font-weight: 600;
+
+  &--name {
+    color: $color-grey-dark-1
+  }
+
+  &--link {
+    color: $color-grey-dark-5;
+  }
+ }
+
+ &__icon-box {
+  position: relative;
+  font-size: 2rem;
+  color: $color-primary;
+ }
+
+ &__icon {
+  height: 2.25rem;
+  width: 2.25rem;
+  fill: $color-grey-dark-2;
+ }
+
+ &__notification {
+  height: .7rem;
+  width: .7rem;
+  border-radius: 50%;
+  background-color: $color-red;
+  color: $color-red;
+  position: absolute;
+  top: 2.5rem;
+  right: 2rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ }
+
+ &__user-photo {
+  height: 3.75rem;
+  border-radius: 50%;
+  margin-right: 1rem;
+ }
 }

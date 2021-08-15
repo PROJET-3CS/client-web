@@ -9,6 +9,7 @@ import UserMan from '../views/UserMan'
 
 import PrivateRoute from './PrivateRoutes'
 import PublicRoute from './PublicRoutes'
+import medicalFolder from '../views/medicalFolder/medicalFolder'
 
 const RootRoute: FC = () => {
  return (
@@ -21,6 +22,7 @@ const RootRoute: FC = () => {
     <PublicRoute path="/resetpassword" component={Resetpassword} exact />
 
     <PrivateRoute path="/dashboard" component={Dashboard} exact />
+    <PrivateRoute path="/folder" component={medicalFolder} exact />
     <PrivateRoute path="/management" component={UserMan} exact />
    </Switch>
   </Router>

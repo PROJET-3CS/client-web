@@ -30,7 +30,7 @@ const Layout: FC = ({ children }) => {
      </li>
 
      <li className="side-nav__item">
-      <Link to="/folders" className="side-nav__link">
+      <Link to="/folder" className="side-nav__link">
        <img className="side-nav__icon" src="/img/folders.svg" alt="folder icon" />
       </Link>
      </li>
