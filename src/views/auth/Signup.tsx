@@ -39,12 +39,14 @@ const Signup: FC = () => {
        label="Enter your name"
        type="text"
        name="name"
-       placeholder="ex. Kharroubi Yacine"/>
+       placeholder="ex. Kharroubi Yacine"
+      />
       <PrimaryInput
        label="Enter your name"
        type="email"
        name="email"
-       placeholder="ex. y.kharroubi@gmail.com"/>
+       placeholder="ex. y.kharroubi@gmail.com"
+      />
       <FormFeedback>Please enter a valid email</FormFeedback>
       <FormGroup className="signup__form-group--action" inline>
        <AwesomeButton>Request</AwesomeButton>

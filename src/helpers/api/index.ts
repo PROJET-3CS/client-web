@@ -5,7 +5,7 @@ This File is for reusable API calls such as:
 PS: Keep it clean, only API calls
 */
 
-export const getToken = () : string | null => {
+export const getToken = (): string | null => {
  const token = localStorage.getItem('token')
 
  return token

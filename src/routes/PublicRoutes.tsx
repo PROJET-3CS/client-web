@@ -14,7 +14,7 @@ const PrivateRoute: FC<Props & RouteProps> = ({ component: Component, ...rest })
   <Route
    {...rest}
    // eslint-disable-next-line
-   render={(props) => !isAuthenticated ? <Component {...props} /> : <Redirect to="/dashboard" />}
+   render={(props) => (!isAuthenticated ? <Component {...props} /> : <Redirect to="/dashboard" />)}
   />
  )
 }

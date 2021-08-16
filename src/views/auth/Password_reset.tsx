@@ -15,7 +15,7 @@ const Resetpassword: FC = () => {
      <div className="signup__heading">
       <h2 className="signup__heading-title">Reset Password</h2>
       <p className="signup__heading-subtitle">
-      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum, amet quo! Laudantium
+       Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum, amet quo! Laudantium
        animi fugiat itaque?
       </p>
       <img
@@ -31,19 +31,22 @@ const Resetpassword: FC = () => {
       <div className="signup__form-heading">
        <h2 className="signup__form-heading--title">Reset Password.</h2>
        <p className="signup__form-heading--text">
-       Please note that to request a medical account, you must be eaither a student, a member of administration or an employee in this university.
+        Please note that to request a medical account, you must be eaither a student, a member of
+        administration or an employee in this university.
        </p>
       </div>
       <PrimaryInput
        label="Enter your new password"
        type="password"
        name="password"
-       placeholder="at least 8 caracters"/>
+       placeholder="at least 8 caracters"
+      />
       <PrimaryInput
        label="Re-enter your password"
        type="password"
        name="re-password"
-       placeholder="at least 8 caracters"/>
+       placeholder="at least 8 caracters"
+      />
       <FormFeedback>Please enter a valid email</FormFeedback>
       <FormGroup className="signup__form-group--action" inline>
        <AwesomeButton>Reset Password</AwesomeButton>
