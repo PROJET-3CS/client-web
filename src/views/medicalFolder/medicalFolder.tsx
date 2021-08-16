@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFileAlt } from '@fortawesome/free-solid-svg-icons'
-
+import { Table } from 'reactstrap'
 import Layout from '../layouts/Layout'
 import Header from '../../components/Header'
 import AwesomeButton from '../../components/AwesomeButton/AwesomeButton'
@@ -153,7 +153,36 @@ const medicalFolder: FC = () => {
       </div>
      </div>
     </div>
-    <div className="folder__item">hello</div>
+
+    <div className="folder__item">
+     <h3 className="folder__item-title">Examinations Medicales:</h3>
+     <button type="button" className="folder__item-exam--btn">
+      + New Examination
+     </button>
+     <div className="folder__item-exam--table">
+      <Table borderless>
+       <thead>
+        <tr>
+         <th>Médecin</th>
+         <th>Date</th>
+         <th>Duration</th>
+        </tr>
+       </thead>
+       <tbody>
+        <tr>
+         <td>Nassim Amraoui</td>
+         <td>25th October 2021</td>
+         <td>3 mois</td>
+        </tr>
+        <tr>
+         <td>Nassim Amraoui</td>
+         <td>9th August 2019</td>
+         <td>2 années</td>
+        </tr>
+       </tbody>
+      </Table>
+     </div>
+    </div>
    </div>
   </Layout>
  )

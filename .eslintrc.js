@@ -49,7 +49,7 @@ module.exports = {
   '@typescript-eslint/ban-ts-ignore': 'off',
   '@typescript-eslint/ban-ts-comment': 'off',
   'no-unused-vars': 'warn',
-  indent: ['error', 2],
+  indent: ['error', 1],
   'linebreak-style': ['error', 'unix'],
   quotes: ['error', 'single'],
   semi: ['error', 'never'],
