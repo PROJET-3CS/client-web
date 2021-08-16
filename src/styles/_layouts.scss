@@ -107,7 +107,8 @@
 
 .content {
  display: flex;
- height: 100vh;
+ height: fit-content;
+ min-height: 100vh;
 
  @media only screen and (max-width: $bp-medium) {
   flex-direction: column;
@@ -122,6 +123,11 @@
  background-color: $color-primary;
  align-items: center;
  padding-right: 2rem;
+
+ height: 100vh;
+ position: -webkit-sticky;
+ position: sticky;
+ top: 0;
 }
 
 .main-view {
@@ -130,6 +136,10 @@
  border-radius: 2rem 0 0 2rem;
  margin-left: -2rem;
  z-index: 3;
+
+ text-align: left;
+ padding: 0 4rem;
+ position: relative;
 }
 
 /* Header */
@@ -140,6 +150,7 @@
  display: flex;
  justify-content: space-between;
  align-items: center;
+ margin-bottom: 3rem;
 
  @media only screen and (max-width: $bp-smallest) {
   flex-wrap: wrap;

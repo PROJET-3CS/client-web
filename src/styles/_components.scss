@@ -540,6 +540,7 @@
  display: flex;
  align-items: center;
  justify-content: center;
+ margin-left: -3.25rem;
 
  @media only screen and (max-width: $bp-smallest) {
   order: 1;
@@ -611,21 +612,24 @@
   background-color: $color-grey-light-2;
  }
 
- &__user-info {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  font-weight: 500;
+ &__user {
+  padding-right: 0;
+  &-info {
+   display: flex;
+   flex-direction: column;
+   align-items: flex-end;
+   font-weight: 500;
 
-  &--name {
+   &--name  {
     font-size: 1.2rem;
-    color: $color-grey-dark-1
-  }
+    color: $color-grey-dark-1;
+   }
 
-  &--link {
+   &--link {
     font-size: 1rem;
     text-decoration: underline;
     color: $color-grey-dark-5;
+   }
   }
  }
 
@@ -642,8 +646,8 @@
  }
 
  &__notification {
-  height: .7rem;
-  width: .7rem;
+  height: 0.7rem;
+  width: 0.7rem;
   border-radius: 50%;
   background-color: $color-red;
   color: $color-red;
@@ -660,5 +664,101 @@
   height: 3.75rem;
   border-radius: 50%;
   margin-right: 1rem;
+ }
+}
+
+//
+// MAIN HEADING
+.main-heading {
+ font-size: 3rem;
+ font-weight: 500;
+ margin-bottom: 1.5rem;
+}
+
+//
+// MEDICAL FOLDER
+.folder {
+ &-container {
+  display: grid;
+  grid-template-columns: 0.3fr 0.7fr;
+  grid-template-rows: repeat(3, minmax(20rem, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+ }
+
+ &__item {
+  background-color: $color-white;
+  border-radius: 1rem;
+  padding: 2rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  &:nth-child(2) {
+   display: grid;
+   grid-template-columns: 1fr 1fr .8fr;
+   grid-template-rows: repeat(3, minmax(2rem, 1fr));
+   padding: 2.5rem 5rem 1rem;
+  }
+
+  &:nth-child(3) {
+   grid-row-start: 2;
+   grid-row-end: 4;
+  }
+
+  &-img {
+   width: 13rem;
+   margin-bottom: 2rem;
+  }
+
+  &-profile {
+   margin-bottom: 2rem;
+   display: flex;
+   flex-direction: column;
+   text-align: center;
+
+   &--name {
+    font-size: 1.7rem;
+    font-weight: 500;
+   }
+
+   &--email {
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: $color-grey-dark-5;
+   }
+  }
+
+  &-btn {
+   width: 20rem;
+  }
+
+  &-content {
+   display: flex;
+   flex-direction: column;
+   border-bottom: 1px dashed #e0e0e0;
+   padding-bottom: 2rem;
+
+   /* last row, doesn't matter how many cells */
+   &:nth-last-child(-n + 3):nth-child(3n + 1), /* first element of the last row */
+   &:nth-last-child(-n + 3):nth-child(3n + 1) ~ &  /* all its following elements */ {
+    border-bottom: none;
+   }
+
+   &--title {
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: $color-grey-dark-3;
+    margin: .5rem 0;
+   }
+
+   &--value {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: $color-grey-dark-1;
+   }
+  }
  }
 }
