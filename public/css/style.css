@@ -660,12 +660,18 @@ body {
   align-items: center; }
   .folder__item:nth-child(2) {
     display: grid;
-    grid-template-columns: 1fr 1fr .8fr;
+    grid-template-columns: 1fr 1fr 0.8fr;
     grid-template-rows: repeat(3, minmax(2rem, 1fr));
     padding: 2.5rem 5rem 1rem; }
   .folder__item:nth-child(3) {
     grid-row-start: 2;
     grid-row-end: 4; }
+  .folder__item:nth-child(4) > .folder__item-title {
+    margin-bottom: 1rem; }
+  .folder__item:nth-child(n + 3) {
+    padding: 3rem;
+    justify-content: center;
+    align-items: flex-start; }
   .folder__item-img {
     width: 13rem;
     margin-bottom: 2rem; }
@@ -696,8 +702,58 @@ body {
       font-size: 1.3rem;
       font-weight: 500;
       color: #828282;
-      margin: .5rem 0; }
+      margin: 0.5rem 0; }
     .folder__item-content--value {
       font-size: 1.5rem;
       font-weight: 500;
       color: #333333; }
+  .folder__item-title {
+    font-size: 2.2rem;
+    margin-bottom: 3rem; }
+  .folder__item-info {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center; }
+    .folder__item-info:not(:last-child) {
+      margin-bottom: 2rem; }
+    .folder__item-info--title {
+      font-size: 1.5rem;
+      font-weight: 500; }
+    .folder__item-info--value {
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: #828282; }
+  .folder__item-anteced {
+    display: flex;
+    align-items: center; }
+    .folder__item-anteced--container {
+      display: grid;
+      grid-template-columns: 1fr 0.8fr;
+      grid-template-rows: repeat(2, minmax(10rem, auto));
+      width: 100%; }
+    .folder__item-anteced--icon {
+      font-size: 2rem;
+      height: 5rem;
+      width: 5rem;
+      background-color: #f2f2f2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 0.5rem;
+      color: #5b63f6; }
+      .folder__item-anteced:nth-child(2) .folder__item-anteced--icon {
+        color: #f1923e; }
+      .folder__item-anteced:nth-child(4) .folder__item-anteced--icon {
+        color: #dd4b39; }
+    .folder__item-anteced--content {
+      display: flex;
+      flex-direction: column;
+      margin-left: 1rem; }
+    .folder__item-anteced--title {
+      font-size: 1.5rem;
+      font-weight: 500; }
+    .folder__item-anteced--date {
+      color: #bdbdbd;
+      font-size: 1.2rem;
+      font-weight: 500; }

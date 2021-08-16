@@ -1,5 +1,8 @@
 import React, { FC } from 'react'
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faFileAlt } from '@fortawesome/free-solid-svg-icons'
+
 import Layout from '../layouts/Layout'
 import Header from '../../components/Header'
 import AwesomeButton from '../../components/AwesomeButton/AwesomeButton'
@@ -58,8 +61,98 @@ const medicalFolder: FC = () => {
       <span className="folder__item-content--value">Cycle Supérieur</span>
      </div>
     </div>
-    <div className="folder__item">hello</div>
-    <div className="folder__item">hello</div>
+    <div className="folder__item">
+     <h3 className="folder__item-title">Informations:</h3>
+     <div className="folder__item-info">
+      <span className="folder__item-info--title">N° Folder:</span>
+      <span className="folder__item-info--value">03495 349394</span>
+     </div>
+     <div className="folder__item-info">
+      <span className="folder__item-info--title">Soc Security:</span>
+      <span className="folder__item-info--value">03495 349394</span>
+     </div>
+     <div className="folder__item-info">
+      <span className="folder__item-info--title">Gender:</span>
+      <span className="folder__item-info--value">Women</span>
+     </div>
+     <div className="folder__item-info">
+      <span className="folder__item-info--title">Blood Type:</span>
+      <span className="folder__item-info--value">O+ (Positive)</span>
+     </div>
+     <div className="folder__item-info">
+      <span className="folder__item-info--title">Allergies:</span>
+      <span className="folder__item-info--value">Milk, Penicilin</span>
+     </div>
+     <div className="folder__item-info">
+      <span className="folder__item-info--title">Diseases:</span>
+      <span className="folder__item-info--value">Diabetes</span>
+     </div>
+     <div className="folder__item-info">
+      <span className="folder__item-info--title">Medication:</span>
+      <span className="folder__item-info--value">Levoturox 100g, Aspirin, Dafalgan</span>
+     </div>
+     <div className="folder__item-info">
+      <span className="folder__item-info--title">Height:</span>
+      <span className="folder__item-info--value">1,87m</span>
+     </div>
+     <div className="folder__item-info">
+      <span className="folder__item-info--title">Weight:</span>
+      <span className="folder__item-info--value">65kg</span>
+     </div>
+     <div className="folder__item-info">
+      <span className="folder__item-info--title">Fumeur:</span>
+      <span className="folder__item-info--value">Non</span>
+     </div>
+     <div className="folder__item-info">
+      <span className="folder__item-info--title">Anc Fumeur:</span>
+      <span className="folder__item-info--value">Non</span>
+     </div>
+    </div>
+    <div className="folder__item">
+     <h3 className="folder__item-title">Les Antécedents:</h3>
+
+     <div className="folder__item-anteced--container">
+      <div className="folder__item-anteced">
+       <div className="folder__item-anteced--icon">
+        <FontAwesomeIcon icon={faFileAlt} />
+       </div>
+       <div className="folder__item-anteced--content">
+        <span className="folder__item-anteced--title">Affections Congénitaire</span>
+        <span className="folder__item-anteced--date">12th February 2020</span>
+       </div>
+      </div>
+
+      <div className="folder__item-anteced">
+       <div className="folder__item-anteced--icon">
+        <FontAwesomeIcon icon={faFileAlt} />
+       </div>
+       <div className="folder__item-anteced--content">
+        <span className="folder__item-anteced--title">Maladies Générales</span>
+        <span className="folder__item-anteced--date">12th February 2020</span>
+       </div>
+      </div>
+
+      <div className="folder__item-anteced">
+       <div className="folder__item-anteced--icon">
+        <FontAwesomeIcon icon={faFileAlt} />
+       </div>
+       <div className="folder__item-anteced--content">
+        <span className="folder__item-anteced--title">Allergies aux médciament</span>
+        <span className="folder__item-anteced--date">12th February 2020</span>
+       </div>
+      </div>
+
+      <div className="folder__item-anteced">
+       <div className="folder__item-anteced--icon">
+        <FontAwesomeIcon icon={faFileAlt} />
+       </div>
+       <div className="folder__item-anteced--content">
+        <span className="folder__item-anteced--title">Interventions chirurgicales</span>
+        <span className="folder__item-anteced--date">12th February 2020</span>
+       </div>
+      </div>
+     </div>
+    </div>
     <div className="folder__item">hello</div>
    </div>
   </Layout>
