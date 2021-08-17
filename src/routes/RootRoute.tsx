@@ -25,7 +25,7 @@ const RootRoute: FC = () => {
 
     <PrivateRoute path="/dashboard" component={Dashboard} exact />
     <PrivateRoute path="/folder" component={medicalFolder} exact />
-    <PrivateRoute path="/editmedicalfolder" component={EditMedicalFolder} exact />
+    <PrivateRoute path="/folder/edit" component={EditMedicalFolder} exact />
     <PrivateRoute path="/management" component={UserMan} exact />
 
     <Route component={_404} />

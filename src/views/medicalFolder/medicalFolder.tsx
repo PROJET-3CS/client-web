@@ -1,5 +1,7 @@
 import React, { FC } from 'react'
 
+import { Link } from 'react-router-dom'
+
 import Layout from '../layouts/Layout'
 import Header from '../../components/Header'
 import AwesomeButton from '../../components/AwesomeButton/AwesomeButton'
@@ -20,7 +22,9 @@ const medicalFolder: FC = () => {
       <span className="folder__item-profile--name">Mahdaoui Abdelouadoud</span>
       <span className="folder__item-profile--email">a.mahdaoui@esi-sba.dz</span>
      </div>
-     <AwesomeButton className="folder__item-btn">Update profile</AwesomeButton>
+     <Link to="/folder/edit">
+      <AwesomeButton className="folder__item-btn">Update profile</AwesomeButton>
+     </Link>
     </div>
 
     <PersonalInfo />
