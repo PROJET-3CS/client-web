@@ -890,3 +890,121 @@
   }
  }
 }
+
+
+
+///////////////////////////////////
+// edit medical folder
+.editfolder {
+  &-form {
+   text-align: left;
+   width: 100%;
+  }
+  &-heading--title {
+   font-size: 1.875rem;
+   font-weight: 600;
+  }
+ 
+  &__collapse {
+   background: transparent;
+ 
+   &-card {
+    background-color: transparent;
+    border-radius: 10rem;
+    border: none;
+ 
+    &--contentsubtitle {
+     padding: 2rem 0rem 0rem 0rem;
+     font-size: 2rem;
+     font-weight: 600;
+     text-align: left;
+    }
+ 
+    &--col {
+     padding: 2rem;
+    }
+ 
+    &--row {
+     margin-bottom: 1rem;
+ 
+     &-spec {
+      background-color: red;
+      align-items: flex-start;
+     }
+     &-spec p {
+      background-color: yellow;
+      font-size: 1.625rem;
+      font-weight: 500;
+      text-align: left;
+      width: 16.3%;
+     }
+    }
+   }
+  }
+  &__tabacsection {
+   &-col {
+    text-align: left !important;
+   }
+   &-row {
+    font-size: 1.625rem;
+    font-weight: 500;
+    margin-bottom: 3rem;
+    align-items: center;
+   }
+ 
+   &-box {
+    font-size: 1.438rem !important;
+    width: 12rem !important;
+    padding: 1rem !important;
+    margin-right: 4rem;
+   }
+ 
+   &-input {
+    font-size: 1.438rem !important;
+    width: 15rem !important;
+    padding: 1rem !important;
+   }
+  }
+ 
+  &__medicalsection {
+   &-card {
+    border-color: black !important;
+    border-radius: 0.5rem !important;
+    border-width: 0.2rem !important;
+    margin-bottom: 3rem;
+   }
+ 
+   &-col {
+    padding: 2rem !important;
+    text-align: left;
+   }
+ 
+   &-col p {
+    font-size: 1.31rem;
+    font-weight: 500;
+    margin-bottom: 1.188rem;
+   }
+ 
+   &-box {
+    width: fit-content !important;
+    font-size: 1.5rem !important;
+    font-weight: 500 !important;
+    border-radius: 5.62rem !important;
+    padding: 0.813rem 2.5rem 0.813rem 2.5rem !important;
+    margin-right: 1.4rem;
+    margin-bottom: 1.4rem;
+   }
+ 
+   &-button {
+    width: fit-content !important;
+    font-size: 1.5rem;
+    font-weight: 500;
+    border-color: black;
+    background-color: white;
+    border-radius: 5.62rem;
+    padding: 0.813rem 2.5rem 0.813rem 2.5rem !important;
+    margin-bottom: 1.4rem;
+   }
+  }
+ }
+ 

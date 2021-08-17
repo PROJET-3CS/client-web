@@ -27,6 +27,10 @@ const Home: FC = () => {
     <Link to="/management" className="App-link">
      <code>/Management</code>
     </Link>
+    {'  '}
+    <Link to="/editmedicalfolder" className="App-link">
+     <code>/Edit Medical Folder</code>
+    </Link>
    </div>
   </header>
  )
