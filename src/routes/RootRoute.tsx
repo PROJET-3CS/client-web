@@ -21,11 +21,10 @@ const RootRoute: FC = () => {
     <PublicRoute path="/login" component={Signin} exact />
     <PublicRoute path="/signup" component={Signup} exact />
     <PublicRoute path="/resetpassword" component={Resetpassword} exact />
-    <PublicRoute path="/editmedicalfolder" component={EditMedicalFolder} exact />
-    
 
     <PrivateRoute path="/dashboard" component={Dashboard} exact />
     <PrivateRoute path="/folder" component={medicalFolder} exact />
+    <PrivateRoute path="/editmedicalfolder" component={EditMedicalFolder} exact />
     <PrivateRoute path="/management" component={UserMan} exact />
    </Switch>
   </Router>
