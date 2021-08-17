@@ -10,6 +10,7 @@ import UserMan from '../views/UserMan'
 import PrivateRoute from './PrivateRoutes'
 import PublicRoute from './PublicRoutes'
 import medicalFolder from '../views/medicalFolder/medicalFolder'
+import _404 from '../views/_404'
 
 const RootRoute: FC = () => {
  return (
@@ -24,6 +25,8 @@ const RootRoute: FC = () => {
     <PrivateRoute path="/dashboard" component={Dashboard} exact />
     <PrivateRoute path="/folder" component={medicalFolder} exact />
     <PrivateRoute path="/management" component={UserMan} exact />
+
+    <Route component={_404} />
    </Switch>
   </Router>
  )
