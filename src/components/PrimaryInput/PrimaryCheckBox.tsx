@@ -1,8 +1,8 @@
-import { useState } from 'react'
+import { FC, useState } from 'react'
 import { Button } from 'reactstrap'
 import './PrimaryCheckBox.scss'
 
-const PrimaryCheckBox = () => {
+const PrimaryCheckBox: FC = () => {
  const [rSelected, setRSelected] = useState<number | undefined>()
 
  return (

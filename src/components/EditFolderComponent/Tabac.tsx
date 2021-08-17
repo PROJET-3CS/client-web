@@ -1,7 +1,8 @@
+import { FC } from 'react'
 import { Col } from 'reactstrap'
 import TabacBoxes from './TabacBoxes'
 
-const Tabac = () => {
+const Tabac: FC = () => {
  return (
   <div>
    <Col className="editfolder__tabacsection-col">

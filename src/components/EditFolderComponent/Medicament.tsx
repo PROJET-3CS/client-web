@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { FC, useState } from 'react'
 import { Button, Card, Col, Row } from 'reactstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -6,7 +6,7 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons'
 
 library.add(faPlus)
 
-const Example = () => {
+const Medicament: FC = () => {
  const [cSelected, setCSelected] = useState<number[]>([])
 
  const onCheckboxBtnClick = (selected: number) => {
@@ -103,4 +103,4 @@ const Example = () => {
  )
 }
 
-export default Example
+export default Medicament
