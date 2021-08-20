@@ -26,7 +26,7 @@ const _404: FC = () => {
      We can&apos;t seem to find the page you are looking for
     </p>
     <Link to="/" style={{ textDecoration: 'none', color: 'black', fontSize: '1.5rem' }}>
-     Go back <code style={{ textDecoration: 'underline', color: '#5B63F6' }} >/Home</code>
+     Go back <code style={{ textDecoration: 'underline', color: '#5B63F6' }}>/Home</code>
     </Link>
    </div>
   </div>

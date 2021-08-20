@@ -9,8 +9,8 @@ import { Input } from 'reactstrap'
 library.add(faCheck)
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
-    icon: ComponentProps<typeof Input>['icon']
-    text: string
+ icon: ComponentProps<typeof Input>['icon']
+ text: string
 }
 const AwesomeButtonIcon: FC<InputProps> = ({ icon, text }) => {
  return (

@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 
 import { Table } from 'reactstrap'
 
-const Examination : FC = () => {
+const Examination: FC = () => {
  return (
   <div className="folder__item">
    <h3 className="folder__item-title">Examinations Medicales:</h3>

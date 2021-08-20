@@ -6,7 +6,7 @@ interface InputProps {
  title: ComponentProps<typeof Input>['name']
 }
 
-const Collapses: FC<InputProps> = ({ title, children}) => {
+const Collapses: FC<InputProps> = ({ title, children }) => {
  const [collapse, setCollapse] = useState(false)
  const [, setStatus] = useState('Closed')
 

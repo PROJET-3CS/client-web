@@ -12,6 +12,10 @@ export interface authData {
  password: string
 }
 
+export interface Folder {
+ [anyProp: string]: any
+}
+
 //==============================================================================
 // State
 //==============================================================================
@@ -22,6 +26,12 @@ export interface SyncState {
  lastSynced: string
  error: string
  pendingSync: boolean
+}
+
+export interface FolderState {
+ loading: boolean
+ error: boolean
+ folder: Folder | object
 }
 
 export interface AuthState {
@@ -36,6 +46,7 @@ export interface AuthState {
 export interface RootState {
  authState: AuthState
  syncState: SyncState
+ folderState: FolderState
 }
 
 //==============================================================================
@@ -46,8 +57,8 @@ export interface SyncPayload {
  categories: Number[]
 }
 
-export interface RootState {
- syncState: SyncState
+export interface FolderPayload {
+ folder: Folder
 }
 
 //==============================================================================
