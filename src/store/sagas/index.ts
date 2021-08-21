@@ -12,6 +12,7 @@ import {
  verifySuccess,
  verify,
 } from '../slices/auth'
+import { getFolder, getFolderSuccess, getFolderError } from '../slices/folder'
 import { getAuth } from '../selectors'
 import { getToken, removeToken, setToken } from '../../helpers/api'
 
@@ -56,6 +57,20 @@ function* logoutUser() {
  }
 }
 
+function* loadFolder() {
+ try {
+  const USER_TOKEN = getToken()
+  const authToken = `Bearer ${USER_TOKEN}`
+
+  const { data } = yield axios.get('/medical_folder/', {
+   headers: { Authorization: authToken }
+  })
+  yield put(getFolderSuccess(data))
+ } catch (Err) {
+  yield put(getFolderError())
+ }
+}
+
 // If any of these functions are dispatched, invoke the appropriate saga
 // eslint-disable-next-line
 function* rootSaga() {
@@ -63,6 +78,7 @@ function* rootSaga() {
   takeLatest(login.type, loginUser),
   takeLatest(logout.type, logoutUser),
   takeLatest(verify.type, verifyUser),
+  takeLatest(getFolder.type, loadFolder),
  ])
 }
 
