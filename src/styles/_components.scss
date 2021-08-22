@@ -846,6 +846,33 @@
     font-size: 1.2rem;
     font-weight: 500;
    }
+
+   &--consultmodal {
+    &-header {
+     display: flex;
+     align-items: center;
+    }
+
+    &-icon {
+     font-size: 2rem;
+     height: 5rem;
+     width: 5rem;
+     background-color: $color-grey-light-5;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     border-radius: 0.5rem;
+     color: $color-primary;
+
+     .folder__item-anteced:nth-child(2) & {
+      color: $color-secondary;
+     }
+
+     .folder__item-anteced:nth-child(4) & {
+      color: $color-tertiary;
+     }
+    }
+   }
   }
 
   &-exam {
@@ -1002,6 +1029,36 @@
    border-radius: 5.62rem;
    padding: 0.813rem 2.5rem 0.813rem 2.5rem !important;
    margin-bottom: 1.4rem;
+  }
+ }
+}
+
+// CREATE APPOINTMENT ( INDIVIDUAL & COLLECTIF )
+.newappointment {
+ &__resultmodal {
+  &-body {
+   background-color: $color-grey-light-2;
+   padding: 2rem !important;
+  }
+
+  &-header p {
+   font-size: 2rem;
+   font-weight: 600;
+   border: none !important;
+  }
+
+  &-formgroup {
+   margin-bottom: 2rem;
+
+   &--label {
+    font-size: 1rem;
+    line-height: 1.279rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: #4f4f4f;
+    margin-bottom: 1rem;
+    letter-spacing: 0.12rem;
+   }
   }
  }
 }

@@ -63,7 +63,7 @@ function* loadFolder() {
   const authToken = `Bearer ${USER_TOKEN}`
 
   const { data } = yield axios.get('/medical_folder/', {
-   headers: { Authorization: authToken }
+   headers: { Authorization: authToken },
   })
   yield put(getFolderSuccess(data))
  } catch (Err) {
