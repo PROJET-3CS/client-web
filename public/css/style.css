@@ -130,6 +130,17 @@ body {
 .overview__cards-container {
   display: flex; }
 
+.users-list {
+  margin-top: 2rem; }
+  .users-list__header {
+    display: flex;
+    justify-content: space-between; }
+  .users-list__button {
+    width: 25rem !important;
+    font-size: 3rem !important; }
+  .users-list__table {
+    margin-top: -3rem; }
+
 .auth__header {
   font-weight: 600;
   font-style: italic;
@@ -429,81 +440,6 @@ body {
     margin-bottom: 1rem; }
   .signup__form-footer {
     text-align: center; }
-
-.maintable-icon-sort {
-  color: #5b63f6; }
-
-.maintable {
-  margin-top: 30px;
-  border-collapse: separate;
-  border-spacing: 0 12px; }
-
-.maintable-header-title {
-  font-size: 1.3rem;
-  font-style: normal;
-  font-weight: 600;
-  text-align: left; }
-
-.maintable-header-item {
-  font-size: 13px;
-  font-style: normal;
-  font-weight: 600;
-  text-align: center;
-  text-align: left; }
-
-.maintable-row {
-  background-color: white;
-  border-radius: 14px; }
-
-.maintable-header-img {
-  width: 30px;
-  border-radius: 50%; }
-
-.raduisadd {
-  border-top-left-radius: 14px;
-  border-bottom-left-radius: 14px; }
-
-.raduisadd1 {
-  border-top-right-radius: 14px;
-  border-bottom-right-radius: 14px; }
-
-.ovrrow {
-  margin-top: 6% !important; }
-
-.ovrbx {
-  border-radius: 10px;
-  width: 97%;
-  position: relative;
-  background-color: white;
-  text-align: center !important;
-  height: 100px;
-  display: block; }
-
-.ovrtitle {
-  position: absolute;
-  left: 3%;
-  top: 10.34%;
-  bottom: 63.79%;
-  font-style: normal;
-  font-size: 18px;
-  /* or 30px */
-  color: #000000; }
-
-.ovrnmb {
-  position: relative;
-  left: -25%;
-  bottom: -40%;
-  font-style: normal;
-  font-size: 3.2rem;
-  /* or 57px */
-  color: #000000; }
-
-.users-icon {
-  position: absolute;
-  right: 8%;
-  bottom: 8%;
-  font-size: 3rem;
-  color: #2a2f64; }
 
 .searchbar {
   height: 3.8rem !important;
@@ -882,3 +818,30 @@ body {
     color: red !important; }
   .card__infos--icon {
     font-size: 2rem; }
+
+.awesome-table {
+  margin-top: 30px;
+  border-collapse: separate;
+  border-spacing: 0 12px; }
+  .awesome-table__header-title {
+    font-size: 1.3rem;
+    font-style: normal;
+    font-weight: 600;
+    text-align: left; }
+    .awesome-table__header-title--icon {
+      color: #5b63f6;
+      margin-left: 1rem; }
+  .awesome-table__body {
+    padding: 0 3rem; }
+  .awesome-table__body-row {
+    padding: 10px !important;
+    background-color: white;
+    border-radius: 20px !important;
+    margin-bottom: 6rem;
+    align-items: center; }
+  .awesome-table__body-item {
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 600;
+    text-align: center;
+    text-align: left; }
