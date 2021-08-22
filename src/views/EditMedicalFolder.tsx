@@ -9,7 +9,7 @@ import PrimaryCheckBox from '../components/PrimaryInput/PrimaryCheckBox'
 import Header from '../components/Header'
 import Medicament from '../components/EditFolderComponent/Medicament'
 import Tabac from '../components/EditFolderComponent/Tabac'
- 
+
 const EditMedicalFolder: FC = () => {
  return (
   <Layout>
