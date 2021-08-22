@@ -81,6 +81,7 @@ const UsersManagement: FC = () => {
 
  const ShowNameWithPicture = (item: any) => {
   const { name, url } = item
+
   return (
    <Link to="/">
     <img src={url} alt="" style={{ width: '4rem', borderRadius: '10px', marginRight: '1rem' }} />

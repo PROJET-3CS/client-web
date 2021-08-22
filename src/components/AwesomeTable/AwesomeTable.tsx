@@ -1,6 +1,5 @@
-import React, { FC } from 'react'
-// import '../styles/main.scss'
-// import './AwesomeTable.scss'
+import React from 'react'
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faSort, faSlidersH, faEllipsisH } from '@fortawesome/free-solid-svg-icons'
@@ -22,17 +21,18 @@ const AwesomeTableHead: React.FC<ITable> = ({ tableHead }) => {
      <FontAwesomeIcon icon="sort" className="awesome-table__header-title--icon" />
     </th>
    )
+
   return null
  }
+
  return (
   <thead>
    <tr>
     {tableHead.map((head, index) => {
-     let i = index
+     const i = index
 
      return renderColumn(head.name, i)
     })}
-
     <th className="awesome-table__header-title">
      <FontAwesomeIcon icon="sliders-h" />
     </th>
@@ -44,6 +44,7 @@ const AwesomeTableHead: React.FC<ITable> = ({ tableHead }) => {
 const AwesomeTableBody: React.FC<ITable> = ({ tableHead, tableBody }) => {
  const renderCell = (item: any, column: any) => {
   if (column.action) return column.action(item)
+
   return item[column.path]
  }
 
@@ -51,11 +52,13 @@ const AwesomeTableBody: React.FC<ITable> = ({ tableHead, tableBody }) => {
   return (
    <>
     {tableBody?.map((item, i) => {
-     let ii = i
+     const ii = i
+
      return (
       <tr key={new Date().getTime() + ii} className="awesome-table__body-row">
        {tableHead.map((head, j) => {
-        let jj = ii + j
+        const jj = ii + j
+
         return (
          <td key={new Date().getTime() + jj} className="awesome-table__body-item">
           {renderCell(item, head)}
