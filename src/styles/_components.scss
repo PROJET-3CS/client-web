@@ -681,7 +681,7 @@
  &-container {
   display: grid;
   grid-template-columns: 0.3fr 0.7fr;
-  grid-template-rows: minmax(20rem, .9fr) minmax(20rem, .8fr) minmax(20rem, 1fr);
+  grid-template-rows: minmax(20rem, 0.9fr) minmax(20rem, 0.8fr) minmax(20rem, 1fr);
   gap: 1.5rem;
   margin-bottom: 2rem;
  }
@@ -714,10 +714,10 @@
   }
 
   &:nth-child(3) {
-    grid-row-start: 2;
-    grid-row-end: 4;
-    justify-content: flex-start;
-   }
+   grid-row-start: 2;
+   grid-row-end: 4;
+   justify-content: flex-start;
+  }
 
   &-img {
    width: 13rem;

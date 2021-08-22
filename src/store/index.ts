@@ -10,15 +10,15 @@ import rootReducer from './slices/index'
 const sagaMiddleware = createSagaMiddleware()
 
 const store = configureStore({
- reducer: rootReducer,
- middleware: [sagaMiddleware, ...getDefaultMiddleware({ thunk: false })],
- devTools: process.env.NODE_ENV !== 'production',
+  reducer: rootReducer,
+  middleware: [sagaMiddleware, ...getDefaultMiddleware({ thunk: false })],
+  devTools: process.env.NODE_ENV !== 'production',
 })
 
 sagaMiddleware.run(rootSaga)
 
 export type AppDispatch = typeof store.dispatch
 export const useAppDispatch = (): AppDispatch => {
- return useDispatch<AppDispatch>()
+  return useDispatch<AppDispatch>()
 }
 export default store

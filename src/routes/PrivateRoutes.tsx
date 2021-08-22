@@ -8,15 +8,15 @@ interface Props extends RouteProps {
 }
 
 const PublicRoute: FC<Props & RouteProps> = ({ component: Component, ...rest }) => {
- const { isAuthenticated } = useSelector(getAuth)
+  const { isAuthenticated } = useSelector(getAuth)
 
- return (
-  <Route
-   {...rest}
-   // eslint-disable-next-line
-   render={(props) => isAuthenticated ? <Component {...props} /> : <Redirect to="/login" />}
-  />
- )
+  return (
+    <Route
+      {...rest}
+      // eslint-disable-next-line
+   render={(props) => (isAuthenticated ? <Component {...props} /> : <Redirect to="/login" />)}
+    />
+  )
 }
 
 export default PublicRoute

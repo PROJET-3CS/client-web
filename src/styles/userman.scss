@@ -1,78 +1,76 @@
-.navIcons{
-    list-style-type: none;
-    display: inline;
+.navIcons {
+ list-style-type: none;
+ display: inline;
 }
-.navbar1{
-    padding-right: 2%;
-    padding-top: 2%;
-}
-
-.navIcon{
-   margin-left: 6%;
-    float: right;
-    font-size: large;
-    color: #5B63F6;
-    display: inline;
+.navbar1 {
+ padding-right: 2%;
+ padding-top: 2%;
 }
 
-.main-title{
-    font-family: Montserrat;
-    font-style: normal;
-    font-weight: 600;
-    float: left;
-    font-size: 23px;
-    line-height: 177.5%;
-    margin-top: 2%;
-    display: block;
+.navIcon {
+ margin-left: 6%;
+ float: right;
+ font-size: large;
+ color: #5b63f6;
+ display: inline;
 }
 
-.main-button{
-    background-color: #5B63F6 !important;
-    font-family: Montserrat !important;
-    font-style: normal !important;
-    font-weight: 600 !important;
-    font-size: 14px !important;
-    line-height: 177.5% !important;
-    border-radius: 10px !important;
-    float: right;
-    margin-top: 4%;
+.main-title {
+ font-family: Montserrat;
+ font-style: normal;
+ font-weight: 600;
+ float: left;
+ font-size: 23px;
+ line-height: 177.5%;
+ margin-top: 2%;
+ display: block;
 }
 
-.maintt{
-    float: left !important;
+.main-button {
+ background-color: #5b63f6 !important;
+ font-family: Montserrat !important;
+ font-style: normal !important;
+ font-weight: 600 !important;
+ font-size: 14px !important;
+ line-height: 177.5% !important;
+ border-radius: 10px !important;
+ float: right;
+ margin-top: 4%;
+}
+
+.maintt {
+ float: left !important;
 }
 .tct {
-    display: inline-block;
-    margin-right: 10px;
-    color: black;
+ display: inline-block;
+ margin-right: 10px;
+ color: black;
 }
-.user-img{
-    width: 40px;
-    border-radius: 50%;
-    display: inline-block;
-    vertical-align: top;
-    
-}
-
-.user-opt{
-    font-family: Montserrat;
-font-style: normal;
-font-weight: 600;
-font-size: 12px;
-line-height: 177.5%;
-text-align: right;
-color: #BDBDBD;
+.user-img {
+ width: 40px;
+ border-radius: 50%;
+ display: inline-block;
+ vertical-align: top;
 }
 
-.user-name{
-    margin: 0%;
+.user-opt {
+ font-family: Montserrat;
+ font-style: normal;
+ font-weight: 600;
+ font-size: 12px;
+ line-height: 177.5%;
+ text-align: right;
+ color: #bdbdbd;
 }
 
-.userman-cnt{
-    height: 100%;
-    overflow: scroll;
-    float: right;
-    margin-right: 0%;
-    padding-right: 3% !important;
+.user-name {
+ margin: 0%;
 }
 
+.userman-cnt {
+ height: 100%;
+ overflow: scroll;
+ float: right;
+ margin-right: 0%;
+ padding-right: 3% !important;
+}

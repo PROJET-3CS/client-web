@@ -8,18 +8,18 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons'
 library.add(faSearch)
 
 const SearchBar: FC = () => {
- return (
-  <FormGroup className="searchBar">
-   <FontAwesomeIcon icon="search" className="search-icon" />
-   <Input
-    className="searchbar"
-    type="search"
-    name="search"
-    id="exampleSearch"
-    placeholder="search..."
-   />
-  </FormGroup>
- )
+  return (
+    <FormGroup className="searchBar">
+      <FontAwesomeIcon icon="search" className="search-icon" />
+      <Input
+        className="searchbar"
+        type="search"
+        name="search"
+        id="exampleSearch"
+        placeholder="search..."
+      />
+    </FormGroup>
+  )
 }
 
 export default SearchBar

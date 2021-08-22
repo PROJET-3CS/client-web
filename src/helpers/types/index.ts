@@ -1,8 +1,8 @@
 import React from 'react'
 
-//==============================================================================
+//= =============================================================================
 // Items
-//==============================================================================
+//= =============================================================================
 export interface User {
  [anyProp: string]: any
 }
@@ -12,9 +12,9 @@ export interface authData {
  password: string
 }
 
-//==============================================================================
+//= =============================================================================
 // State
-//==============================================================================
+//= =============================================================================
 
 // The code down below is only an example
 export interface SyncState {
@@ -36,41 +36,38 @@ export interface AuthState {
 export interface RootState {
  authState: AuthState
  syncState: SyncState
+ managementState: managementState
 }
 
-//==============================================================================
+//= =============================================================================
 // API
-//==============================================================================
+//= =============================================================================
 
 export interface SyncPayload {
- categories: Number[]
+ categories: number[]
+}
+export interface ManagementPayload {
+ users: User[]
 }
 
-export interface RootState {
- syncState: SyncState
-}
-
-//==============================================================================
+//= =============================================================================
 // Events
-//==============================================================================
+//= =============================================================================
 
 export type ReactChangeEvent = React.ChangeEvent<HTMLInputElement>
 export type ReactSubmitEvent = React.FormEvent<HTMLFormElement> | React.FocusEvent<HTMLInputElement>
 
+//= =============================================================================
 
-//==============================================================================
+// export interface ManagementState {
+//     loading:false,
+//     error:'',
+//     users:[],
+// }
 
-export interface IState {
-
-    users : {
-        name:string,
-        year:number,
-        role:string,
-        ngroupe?:string,
-        status:string,
-        lastconnexion?:string,
-        url:string,
-    }[]
-      }
-
-//==========================================================================
+//= =========================================================================
+export interface managementState {
+ users: User[]
+ loading: boolean
+ error: string
+}

@@ -10,12 +10,12 @@ interface InputProps {
 }
 
 const PrimaryInput: FC<InputProps> = ({ name, placeholder, type, label }) => {
- return (
-  <FormGroup className="Primary__form-group">
-   <Label className="Primary__form-label">{label}</Label>
-   <Input name={name} placeholder={placeholder} type={type} className="Primary__form-input" />
-  </FormGroup>
- )
+  return (
+    <FormGroup className="Primary__form-group">
+      <Label className="Primary__form-label">{label}</Label>
+      <Input name={name} placeholder={placeholder} type={type} className="Primary__form-input" />
+    </FormGroup>
+  )
 }
 
 export default PrimaryInput
