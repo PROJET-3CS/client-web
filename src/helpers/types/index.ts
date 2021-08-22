@@ -72,6 +72,14 @@ export interface FolderPayload {
 export type ReactChangeEvent = React.ChangeEvent<HTMLInputElement>
 export type ReactSubmitEvent = React.FormEvent<HTMLFormElement> | React.FocusEvent<HTMLInputElement>
 
+//  ==============================================================================
+//  Props
+//  ==============================================================================
+export interface OptionType {
+ value: string
+ label: string
+}
+
 // ==============================================================================
 
 export interface IState {

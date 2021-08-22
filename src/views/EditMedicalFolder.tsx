@@ -1,16 +1,49 @@
-import { FC } from 'react'
-import { Col, Row, DropdownItem, Label, FormGroup } from 'reactstrap'
-import AwesomeButtonIcon from '../components/AwesomeButton/AwesomeButtonIcon'
-import Collapses from '../components/Collapses/Collapses'
-import PrimaryDropdown from '../components/PrimaryDropdown/PrimaryDropdown'
-import PrimaryInput from '../components/PrimaryInput/PrimaryInput'
+import { FC, useEffect } from 'react'
+import { FormGroup } from 'reactstrap'
+import { useParams } from 'react-router'
+import { useDispatch, useSelector } from 'react-redux'
+
 import Layout from './layouts/Layout'
-import PrimaryCheckBox from '../components/PrimaryInput/PrimaryCheckBox'
 import Header from '../components/Header'
-import Medicament from '../components/EditFolderComponent/Medicament'
-import Tabac from '../components/EditFolderComponent/Tabac'
+import { getFolder } from '../store/selectors'
+import { syncFolder } from '../store/slices/folder'
+import InfoGeneral from './editMedicalFolder/InfoGeneral'
+import InfoMedical from './editMedicalFolder/InfoMedical'
+import Antecedent from './editMedicalFolder/Antecedent'
 
 const EditMedicalFolder: FC = () => {
+ // ===========================================================================
+ // Selectors
+ // ===========================================================================
+
+ const { patient } = useSelector(getFolder)
+ const { id } = useParams<{ id: string }>()
+
+ // ===========================================================================
+ // Dispatch
+ // ==========================================================================
+
+ const dispatch = useDispatch()
+
+ const _syncFolder = () => {
+  dispatch(syncFolder(id))
+ }
+
+ // ===========================================================================
+ // State
+ // ===========================================================================
+
+ // ===========================================================================
+ // Handlers
+ // ===========================================================================
+
+ // ===========================================================================
+ // Hooks
+ // ===========================================================================
+ useEffect(() => {
+  _syncFolder()
+ }, [])
+
  return (
   <Layout>
    <Header />
@@ -18,87 +51,13 @@ const EditMedicalFolder: FC = () => {
     <div>
      <p className="editfolder-heading--title">Edit Medical Folder</p>
     </div>
-    <Collapses title="Informations Générales">
-     <Col className="editfolder__collapse-card--col">
-      <Row md="2" className="editfolder__collapse-card--row">
-       <PrimaryInput defaultValue='testing' name="first-name" type="text" label="Last Name" placeholder="ex. Yacine" />
-       <PrimaryInput name="last-name" type="text" label="First Name" placeholder="ex. Kharroubi" />
-      </Row>
-      <Row md="2" className="editfolder__collapse-card--row">
-       <PrimaryInput name="gender" type="text" label="Gender" placeholder="ex. Yacine" />
-       <PrimaryInput name="address" type="text" label="Address" placeholder="ex. Kharroubi" />
-      </Row>
-      <Row md="2" className="editfolder__collapse-card--row">
-       <PrimaryInput name="birthday" type="date" label="Birthday" placeholder="ex. 07/02/2001" />
-       <PrimaryInput name="birth-place" type="text" label="In" placeholder="ex. Relizane" />
-      </Row>
-      <Row md="2" className="editfolder__collapse-card--row">
-       <PrimaryDropdown placeholder="Faculty" name="faculty" label="Faculty">
-        <DropdownItem className="PrimaryDropdown__form-item">ESI-SBA</DropdownItem>
-        <DropdownItem divider />
-        <DropdownItem className="PrimaryDropdown__form-item">MI</DropdownItem>
-       </PrimaryDropdown>
-       <PrimaryInput
-        name="speciality"
-        type="text"
-        label="Speciality"
-        placeholder="ex. Cycle Supérieur"
-       />
-      </Row>
-      <Row md="2" className="editfolder__collapse-card--row">
-       <PrimaryDropdown placeholder="Situation" name="situation" label="Situation">
-        <DropdownItem className="PrimaryDropdown__form-item">Marié (e)</DropdownItem>
-        <DropdownItem divider />
-        <DropdownItem className="PrimaryDropdown__form-item">Célibataire</DropdownItem>
-        <DropdownItem divider />
-        <DropdownItem className="PrimaryDropdown__form-item">Divorcé (e)</DropdownItem>
-       </PrimaryDropdown>
-      </Row>
-      <AwesomeButtonIcon icon="check" text="Save Changes" />
-     </Col>
-    </Collapses>
-    <Collapses title="Informations Médicales">
-     <Col className="editfolder__collapse-card--col">
-      <Row md="2" className="editfolder__collapse-card--row">
-       <PrimaryInput
-        name="folder-number"
-        type="number"
-        label="N° Folder"
-        placeholder="ex. Yacine"
-       />
-       <PrimaryInput
-        name="soc-sec-number"
-        type="number"
-        label="Social Security Number"
-        placeholder="ex. Kharroubi"
-       />
-      </Row>
-      <Row md="2" className="editfolder__collapse-card--row">
-       <PrimaryInput name="height" type="number" label="Height (in cm)" placeholder="ex. 173" />
-       <PrimaryInput name="weight" type="number" label="Weight" placeholder="ex. 60.3kg" />
-      </Row>
-      <Row className="editfolder__collapse-card--row">
-       <FormGroup className="Primary__form-group ">
-        <Label className="Primary__form-label">Blood Type</Label>
-        <PrimaryCheckBox />
-       </FormGroup>
-      </Row>
-      <AwesomeButtonIcon icon="check" text="Save Changes" />
-     </Col>
-    </Collapses>
-    <Collapses title="Antécédents Personnels">
-     <Col className="editfolder__collapse-card--col">
-      <div>
-       <p className="editfolder__collapse-card--contentsubtitle">Tabac</p>
-       <Tabac />
-      </div>
-      <div>
-       <p className="editfolder__collapse-card--contentsubtitle">Médicaments</p>
-       <Medicament />
-      </div>
-      <AwesomeButtonIcon icon="check" text="Save Changes" />
-     </Col>
-    </Collapses>
+
+    <InfoGeneral patient={patient} />
+
+    <InfoMedical />
+    
+    <Antecedent />
+
    </FormGroup>
   </Layout>
  )
