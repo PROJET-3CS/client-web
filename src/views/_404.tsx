@@ -14,7 +14,7 @@ const _404: FC = () => {
     backgroundColor: '#F9F6FC',
    }}
   >
-   <img alt="404 illustration" src="img/_404.svg" style={{ width: '60rem' }} />
+   <img alt="404 illustration" src="/img/_404.svg" style={{ width: '60rem' }} />
    <div className="not_found-content">
     <span
      className="not_found-title"

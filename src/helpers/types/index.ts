@@ -1,9 +1,10 @@
 import React from 'react'
 
-//==============================================================================
-// Items
-//==============================================================================
+//  ==============================================================================
+//  Items
+//  ==============================================================================
 export interface User {
+ // eslint-disable-next-line @typescript-eslint/no-explicit-any
  [anyProp: string]: any
 }
 
@@ -13,12 +14,13 @@ export interface authData {
 }
 
 export interface Folder {
+ // eslint-disable-next-line @typescript-eslint/no-explicit-any
  [anyProp: string]: any
 }
 
-//==============================================================================
-// State
-//==============================================================================
+//  ==============================================================================
+//  State
+//  ==============================================================================
 
 // The code down below is only an example
 export interface SyncState {
@@ -31,7 +33,8 @@ export interface SyncState {
 export interface FolderState {
  loading: boolean
  error: boolean
- folder: Folder | object
+ folder: Folder | Record<string, unknown>
+ patient: User
 }
 
 export interface AuthState {
@@ -49,26 +52,27 @@ export interface RootState {
  folderState: FolderState
 }
 
-//==============================================================================
+// ==============================================================================
 // API
-//==============================================================================
+// ==============================================================================
 
 export interface SyncPayload {
- categories: Number[]
+ categories: number[]
 }
 
 export interface FolderPayload {
- folder: Folder
+ medicalFolder: Folder
+ user: User
 }
 
-//==============================================================================
+// ==============================================================================
 // Events
-//==============================================================================
+// ==============================================================================
 
 export type ReactChangeEvent = React.ChangeEvent<HTMLInputElement>
 export type ReactSubmitEvent = React.FormEvent<HTMLFormElement> | React.FocusEvent<HTMLInputElement>
 
-//==============================================================================
+// ==============================================================================
 
 export interface IState {
  users: {
@@ -82,4 +86,4 @@ export interface IState {
  }[]
 }
 
-//==========================================================================
+// ==========================================================================

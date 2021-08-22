@@ -1,5 +1,4 @@
 // This file for all async call funct in store
-
 import { all, put, takeLatest, select } from 'redux-saga/effects'
 import axios from 'axios'
 
@@ -12,8 +11,8 @@ import {
  verifySuccess,
  verify,
 } from '../slices/auth'
-import { getFolder, getFolderSuccess, getFolderError } from '../slices/folder'
-import { getAuth } from '../selectors'
+import { syncFolder, syncFolderSuccess, syncFolderError } from '../slices/folder'
+import { getAuth, getFolder } from '../selectors'
 import { getToken, removeToken, setToken } from '../../helpers/api'
 
 // Hit the Express endpoint to get the current user from the cookie
@@ -37,8 +36,12 @@ function* loginUser() {
    email: currentUser.email,
    password: currentUser.password,
   })
-  setToken(data.token)
-  yield put(loginSuccess(data))
+  if (data.status === 'success') {
+   setToken(data.body.token)
+   yield put(loginSuccess(data.body.user))
+  } else {
+   yield put(loginError('Something went wrong !'))
+  }
  } catch (error) {
   yield put(loginError('Something went wrong !'))
  }
@@ -62,12 +65,17 @@ function* loadFolder() {
   const USER_TOKEN = getToken()
   const authToken = `Bearer ${USER_TOKEN}`
 
-  const { data } = yield axios.get('/medical_folder/', {
-   headers: { Authorization: authToken }
+  const { patient } = yield select(getFolder)
+  const { data } = yield axios.get(`/users/${patient.id}`, {
+   headers: { Authorization: authToken },
   })
-  yield put(getFolderSuccess(data))
+  if (data.status === 'success') {
+   yield put(syncFolderSuccess(data.body))
+  } else {
+   yield put(syncFolderError())
+  }
  } catch (Err) {
-  yield put(getFolderError())
+  yield put(syncFolderError())
  }
 }
 
@@ -78,7 +86,7 @@ function* rootSaga() {
   takeLatest(login.type, loginUser),
   takeLatest(logout.type, logoutUser),
   takeLatest(verify.type, verifyUser),
-  takeLatest(getFolder.type, loadFolder),
+  takeLatest(syncFolder.type, loadFolder),
  ])
 }
 

@@ -6,14 +6,15 @@ interface InputProps {
  type: ComponentProps<typeof Input>['type']
  name: ComponentProps<typeof Input>['name']
  placeholder: ComponentProps<typeof Input>['placeholder']
- label: ComponentProps<typeof Input>['label']
+ label: ComponentProps<typeof Input>['label'],
+ defaultValue?: ComponentProps<typeof Input>['value'] | undefined
 }
 
-const PrimaryInput: FC<InputProps> = ({ name, placeholder, type, label }) => {
+const PrimaryInput: FC<InputProps> = ({ name, placeholder, type, label, defaultValue }) => {
  return (
   <FormGroup className="Primary__form-group">
    <Label className="Primary__form-label">{label}</Label>
-   <Input name={name} placeholder={placeholder} type={type} className="Primary__form-input" />
+   <Input name={name} placeholder={placeholder} type={type} defaultValue={defaultValue} className="Primary__form-input" />
   </FormGroup>
  )
 }

@@ -6,6 +6,7 @@ export const initialState: FolderState = {
  loading: true,
  error: false,
  folder: {},
+ patient: {},
 }
 
 const folderSlice = createSlice({
@@ -13,24 +14,27 @@ const folderSlice = createSlice({
  initialState,
  reducers: {
   // eslint-disable-next-line
-  getFolder: (state) => {
+  syncFolder: (state, { payload }: PayloadAction<string>) => {
    state.loading = true
+   state.patient = { id: payload }
   },
 
-  getFolderSuccess: (state, { payload }: PayloadAction<FolderPayload>) => {
+  syncFolderSuccess: (state, { payload }: PayloadAction<FolderPayload>) => {
    state.loading = false
    state.error = false
-   state.folder = payload
+   state.folder = payload.medicalFolder
+   state.patient = payload.user
   },
 
-  getFolderError: (state) => {
+  syncFolderError: (state) => {
    state.loading = false
    state.error = true
    state.folder = {}
+   state.patient = {}
   },
  },
 })
 
-export const { getFolder, getFolderSuccess, getFolderError } = folderSlice.actions
+export const { syncFolder, syncFolderSuccess, syncFolderError } = folderSlice.actions
 
 export default folderSlice.reducer

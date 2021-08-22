@@ -21,7 +21,7 @@ const EditMedicalFolder: FC = () => {
     <Collapses title="Informations Générales">
      <Col className="editfolder__collapse-card--col">
       <Row md="2" className="editfolder__collapse-card--row">
-       <PrimaryInput name="first-name" type="text" label="Last Name" placeholder="ex. Yacine" />
+       <PrimaryInput defaultValue='testing' name="first-name" type="text" label="Last Name" placeholder="ex. Yacine" />
        <PrimaryInput name="last-name" type="text" label="First Name" placeholder="ex. Kharroubi" />
       </Row>
       <Row md="2" className="editfolder__collapse-card--row">

@@ -1,6 +1,11 @@
 import React, { FC } from 'react'
+import { User } from '../../helpers/types'
 
-const PersonalInfo: FC = () => {
+interface Props {
+ patient: User | undefined
+}
+
+const PersonalInfo: FC<Props> = ({ patient }) => {
  return (
   <div className="folder__item">
    <div className="folder__item-content">
@@ -9,20 +14,20 @@ const PersonalInfo: FC = () => {
    </div>
    <div className="folder__item-content">
     <span className="folder__item-content--title">Nom</span>
-    <span className="folder__item-content--value">Mahdaoui</span>
+    <span className="folder__item-content--value">{patient?.lastname}</span>
    </div>
    <div className="folder__item-content">
     <span className="folder__item-content--title">Prénom</span>
-    <span className="folder__item-content--value">Abdelouadoud</span>
+    <span className="folder__item-content--value">{patient?.firstname}</span>
    </div>
 
    <div className="folder__item-content">
     <span className="folder__item-content--title">Address</span>
-    <span className="folder__item-content--value">Cité 70 log, Bt 05, N12</span>
+    <span className="folder__item-content--value">{patient?.adress}</span>
    </div>
    <div className="folder__item-content">
     <span className="folder__item-content--title">Né le</span>
-    <span className="folder__item-content--value">08/02/2001</span>
+    <span className="folder__item-content--value">{patient?.birthDay}</span>
    </div>
    <div className="folder__item-content">
     <span className="folder__item-content--title">à</span>

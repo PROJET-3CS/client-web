@@ -1,12 +1,27 @@
 import React, { FC } from 'react'
+import { Folder, User } from '../../helpers/types'
 
-const MedicalInfo: FC = () => {
+interface Props {
+ folder: Folder | undefined
+ patient: User | undefined
+}
+
+const MedicalInfo: FC<Props> = ({ folder, patient }) => {
+
+ const renderTxt = (array: Array<string>) => {
+  if (array && array.length > 0) {
+   return array.toString()
+  }
+
+  return ''
+ }
+
  return (
   <div className="folder__item">
    <h3 className="folder__item-title">Informations:</h3>
    <div className="folder__item-info">
     <span className="folder__item-info--title">N° Folder:</span>
-    <span className="folder__item-info--value">03495 349394</span>
+    <span className="folder__item-info--value">{folder?.id}</span>
    </div>
    <div className="folder__item-info">
     <span className="folder__item-info--title">Soc Security:</span>
@@ -14,39 +29,39 @@ const MedicalInfo: FC = () => {
    </div>
    <div className="folder__item-info">
     <span className="folder__item-info--title">Gender:</span>
-    <span className="folder__item-info--value">Women</span>
+    <span className="folder__item-info--value">{patient?.gender}</span>
    </div>
    <div className="folder__item-info">
     <span className="folder__item-info--title">Blood Type:</span>
-    <span className="folder__item-info--value">O+ (Positive)</span>
+    <span className="folder__item-info--value">{folder?.blood}</span>
    </div>
    <div className="folder__item-info">
     <span className="folder__item-info--title">Allergies:</span>
-    <span className="folder__item-info--value">Milk, Penicilin</span>
+    <span className="folder__item-info--value">{renderTxt(folder?.allergicReactions)}</span>
    </div>
    <div className="folder__item-info">
     <span className="folder__item-info--title">Diseases:</span>
-    <span className="folder__item-info--value">Diabetes</span>
+    <span className="folder__item-info--value">{renderTxt(folder?.generalIllnesses)}</span>
    </div>
    <div className="folder__item-info">
     <span className="folder__item-info--title">Medication:</span>
-    <span className="folder__item-info--value">Levoturox 100g, Aspirin, Dafalgan</span>
+    <span className="folder__item-info--value">{renderTxt(folder?.medicaments)}</span>
    </div>
    <div className="folder__item-info">
     <span className="folder__item-info--title">Height:</span>
-    <span className="folder__item-info--value">1,87m</span>
+    <span className="folder__item-info--value">{folder?.tall}</span>
    </div>
    <div className="folder__item-info">
     <span className="folder__item-info--title">Weight:</span>
-    <span className="folder__item-info--value">65kg</span>
+    <span className="folder__item-info--value">{folder?.weight ? `${folder.weight} kg` : '' }</span>
    </div>
    <div className="folder__item-info">
     <span className="folder__item-info--title">Fumeur:</span>
-    <span className="folder__item-info--value">Non</span>
+    <span className="folder__item-info--value">{folder?.smoker ? 'Yes' : 'No'}</span>
    </div>
    <div className="folder__item-info">
     <span className="folder__item-info--title">Anc Fumeur:</span>
-    <span className="folder__item-info--value">Non</span>
+    <span className="folder__item-info--value">{folder?.exSmoker ? 'Yes' : 'No'}</span>
    </div>
   </div>
  )
