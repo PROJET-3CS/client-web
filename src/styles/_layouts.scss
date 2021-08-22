@@ -126,3 +126,12 @@
   height: 11rem;
  }
 }
+
+/* USERS MANAGEMENT */
+.overview {
+ &__cards-container {
+  display: flex;
+  //   justify-content: space-between;
+  //   width: 100vw;
+ }
+}

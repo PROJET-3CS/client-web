@@ -1,19 +1,14 @@
 import React, { FC, useState } from 'react'
-import '../styles/userman.scss'
-
-import { Row, Col, Button, Container } from 'reactstrap'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faCog, faBell } from '@fortawesome/free-solid-svg-icons'
+import { faCog, faBell, faUser, faUsers } from '@fortawesome/free-solid-svg-icons'
 import Layout from './layouts/Layout'
-import SearchBar from '../components/SearchBar'
-import OverBox from '../components/OverBox'
-import MainTable from '../components/MainTable'
 import { IState } from '../helpers/types'
+import OverviewCard from '../components/OverviewCard'
+import Header from '../components/Header'
 
 library.add(faCog, faBell)
 
-const UserMan: FC = () => {
+const UsersManagement: FC = () => {
  const userprofile = {
   username: 'lebron james',
   userpic:
@@ -73,45 +68,42 @@ const UserMan: FC = () => {
 
  return (
   <Layout>
-   <Container className="userman-cnt">
-    <Row>
-     <Col md="6" sm="6" xs="6" className="userman-searchbar">
-      <SearchBar />
-     </Col>
-     <Col md="6" sm="6" xs="6" className="navbar1">
-      <ul className="navIcons">
-       <li className="navIcon">
-        <div className="tct">
-         <p className="user-name">{userprofile.username}</p>
-         <p className="user-opt">view profile</p>
-        </div>
-        <img src={userprofile.userpic} alt="" className="user-img" />
-       </li>
-       <li className="navIcon">
-        <FontAwesomeIcon icon="bell" />
-       </li>
-       <li className="navIcon">
-        <FontAwesomeIcon icon="cog" />
-       </li>
-      </ul>
-     </Col>
-    </Row>
-    <Row className="maintt">
-     <p className="main-title">Overview</p>
-    </Row>
-    <OverBox />
-    <Row>
-     <Col>
-      <p className="main-title">Users list</p>
-     </Col>
-     <Col>
-      <Button className="main-button"> + create new user</Button>
-     </Col>
-    </Row>
-    <MainTable users={users} />
-   </Container>
+   <Header />
+   <div className="overview">
+    <h2>Overview</h2>
+    <div className="overview__cards-container">
+     <OverviewCard
+      cardTitle="Total Patients"
+      cardInfo={1600}
+      cardGrowth={!false}
+      cardGrowthValue={22}
+      cardIcon={faUser}
+     />
+     <OverviewCard
+      cardTitle="Total Patients"
+      cardInfo={1600}
+      cardGrowth={false}
+      cardGrowthValue={22}
+      cardIcon={faUser}
+     />
+     <OverviewCard
+      cardTitle="Total Patients"
+      cardInfo={1600}
+      cardGrowth={!false}
+      cardGrowthValue={22}
+      cardIcon={faUsers}
+     />
+     <OverviewCard
+      cardTitle="Total Patients"
+      cardInfo={1600}
+      cardGrowth={false}
+      cardGrowthValue={22}
+      cardIcon={faUser}
+     />
+    </div>
+   </div>
   </Layout>
  )
 }
 
-export default UserMan
+export default UsersManagement

@@ -1005,3 +1005,57 @@
   }
  }
 }
+
+///////////////////////////////////
+// OVERVIEW CARD
+
+.card {
+ width: 25rem;
+ margin-right: 3rem;
+ background-color: $color-white;
+ border-radius: 15px !important;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+
+ &__container {
+  width: 80%;
+  margin-top: 1rem;
+ }
+
+ &__header {
+  font-weight: 600;
+  font-size: 1.5rem;
+  line-height: 200%;
+  color: #000000;
+ }
+
+ &__body {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+ }
+
+ &__infos {
+  h2 {
+   font-weight: 600;
+   font-size: 3rem;
+   line-height: 65%;
+   letter-spacing: 0.02em;
+   color: #000000;
+   span {
+    font-size: 1.2rem;
+    // color: $color-primary;
+   }
+  }
+  &--up {
+   color: $color-primary;
+  }
+  &--down {
+   color: red !important;
+  }
+  &--icon {
+   font-size: 2rem;
+  }
+ }
+}
