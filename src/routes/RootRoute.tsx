@@ -5,13 +5,13 @@ import Signup from '../views/auth/Signup'
 import Resetpassword from '../views/auth/Password_reset'
 import Dashboard from '../views/Dashboard'
 import Home from '../views/Home'
-import UserMan from '../views/UserMan'
 
 import PrivateRoute from './PrivateRoutes'
 import PublicRoute from './PublicRoutes'
 import medicalFolder from '../views/medicalFolder/medicalFolder'
 import _404 from '../views/_404'
 import EditMedicalFolder from '../views/EditMedicalFolder'
+import UsersManagement from '../views/usersManagement/UsersManagement'
 
 const RootRoute: FC = () => {
  return (
@@ -26,7 +26,7 @@ const RootRoute: FC = () => {
     <PrivateRoute path="/dashboard" component={Dashboard} exact />
     <PrivateRoute path="/folder" component={medicalFolder} exact />
     <PrivateRoute path="/folder/edit" component={EditMedicalFolder} exact />
-    <PrivateRoute path="/management" component={UserMan} exact />
+    <PrivateRoute path="/management" component={UsersManagement} exact />
 
     <Route component={_404} />
    </Switch>
