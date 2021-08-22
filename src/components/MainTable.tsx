@@ -14,24 +14,30 @@ library.add(faSort, faSlidersH, faEllipsisH)
 
 const MainTable: React.FC = () => {
 
-
-
+  // ===========================================================================
+  // Selectors
+  // ===========================================================================
 
   const {users} = useSelector(getManagement)
 
+
+  // ===========================================================================
+  // Dispatch
+  // ==========================================================================
   const dispatch = useDispatch()
 
   const _getUsers = () => {
     dispatch(fetchUsers())
   }
 
+  // ===========================================================================
+  // Hooks
+  // ===========================================================================
   useEffect(() => {
     _getUsers()
   } , [])
 
-
-  console.log(users)
-
+  
 
   return (
     <Table borderless responsive className="maintable">
