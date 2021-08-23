@@ -11,7 +11,17 @@ import {
  verifySuccess,
  verify,
 } from '../slices/auth'
-import { syncFolder, syncFolderSuccess, syncFolderError } from '../slices/folder'
+import {
+ syncFolder,
+ syncFolderSuccess,
+ syncFolderError,
+ updatePatientError,
+ updatePatientSuccess,
+ updatePatient,
+ updateFolderSuccess,
+ updateFolderError,
+ updateFolder,
+} from '../slices/folder'
 import { getAuth, getFolder } from '../selectors'
 import { getToken, removeToken, setToken } from '../../helpers/api'
 
@@ -79,6 +89,54 @@ function* loadFolder() {
  }
 }
 
+function* _updatePatient() {
+ try {
+  //   const USER_TOKEN = getToken()
+  //   const authToken = `Bearer ${USER_TOKEN}`
+
+  const { infoGeneral, patient } = yield select(getFolder)
+  const updatedUser = { ...patient, ...infoGeneral }
+  //   const { data } = yield axios.post(`/users/${patient.id}`, updatedUser, {
+  //    headers: { Authorization: authToken },
+  //   })
+
+  // this should be removed later
+  const data = {
+   status: 'success',
+   body: updatedUser,
+  }
+
+  if (data.status === 'success') {
+   yield put(updatePatientSuccess(data.body))
+  } else {
+   yield put(updatePatientError())
+  }
+ } catch (Err) {
+  yield put(updatePatientError())
+ }
+}
+
+function* _updateFolder() {
+ try {
+  const USER_TOKEN = getToken()
+  const authToken = `Bearer ${USER_TOKEN}`
+
+  const { infoMedical, folder, patient } = yield select(getFolder)
+  const updatedFolder = { ...folder, ...infoMedical }
+  const { data } = yield axios.post(`/medical_folder/${patient.id}`, updatedFolder, {
+   headers: { Authorization: authToken },
+  })
+
+  if (data.status === 'success') {
+   yield put(updateFolderSuccess(data.body))
+  } else {
+   yield put(updateFolderError())
+  }
+ } catch (Err) {
+  yield put(updateFolderError())
+ }
+}
+
 // If any of these functions are dispatched, invoke the appropriate saga
 // eslint-disable-next-line
 function* rootSaga() {
@@ -87,6 +145,8 @@ function* rootSaga() {
   takeLatest(logout.type, logoutUser),
   takeLatest(verify.type, verifyUser),
   takeLatest(syncFolder.type, loadFolder),
+  takeLatest(updatePatient.type, _updatePatient),
+  takeLatest(updateFolder.type, _updateFolder),
  ])
 }
 

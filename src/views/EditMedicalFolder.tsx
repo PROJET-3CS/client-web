@@ -16,7 +16,7 @@ const EditMedicalFolder: FC = () => {
  // Selectors
  // ===========================================================================
 
- const { patient } = useSelector(getFolder)
+ const { patient, folder } = useSelector(getFolder)
  const { id } = useParams<{ id: string }>()
 
  // ===========================================================================
@@ -54,7 +54,7 @@ const EditMedicalFolder: FC = () => {
 
     <InfoGeneral patient={patient} />
 
-    <InfoMedical />
+    <InfoMedical folder={folder} />
     
     <Antecedent />
 

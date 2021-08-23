@@ -1,27 +1,25 @@
-import React, { ComponentProps, FC } from 'react'
-import { FormGroup, Label, Input } from 'reactstrap'
+import React, { FC } from 'react'
+import { FormGroup, Label } from 'reactstrap'
 import Select from 'react-select'
 
-import { OptionType } from '../../helpers/types'
+import { InputProps, OptionType } from '../../helpers/types'
 
-interface InputProps {
- id?: ComponentProps<typeof Input>['id']
- name?: ComponentProps<typeof Input>['name']
- placeholder?: ComponentProps<typeof Input>['placeholder']
- label?: ComponentProps<typeof Input>['label']
- options: OptionType[]
- defaultOption?: string | undefined
+interface SelectProps {
+    getValue: (value: string) => void 
 }
 
-const PrimarySelect: FC<InputProps> = ({ id, name, label, options }) => {
- //  const formatOption = () => {
- //   if (defaultOption) {
- //    return options.find((el) => {
- //     return el.value === defaultOption
- //    })
- //   }
- //   return null
- //  }
+const PrimarySelect: FC<InputProps & SelectProps> = ({ id, name, label, options, defaultValue, getValue}) => {
+ const formatOption = () => {
+  if (defaultValue) {
+   const option = options?.find((el) => {
+    return el.value === defaultValue.toString()
+   })
+
+   return option
+  }
+
+  return null
+ }
 
  const customStyles = {
   // eslint-disable-next-line
@@ -41,11 +39,20 @@ const PrimarySelect: FC<InputProps> = ({ id, name, label, options }) => {
   <FormGroup className="Primary__form-group">
    <Label className="Primary__form-label">{label}</Label>
    <Select
+    value={formatOption()}
     id={id}
     name={name}
     options={options}
     className="Primary__form-input--select"
     styles={customStyles}
+    onChange={(selectedOption) => {
+     if (Array.isArray(selectedOption)) {
+      throw new Error('Unexpected type passed to ReactSelect onChange handler')
+     }
+     const {value} = selectedOption as OptionType
+
+     getValue(value)
+    }}
    />
   </FormGroup>
  )

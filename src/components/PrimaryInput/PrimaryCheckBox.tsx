@@ -1,90 +1,99 @@
-import { FC, useState } from 'react'
+import { FC, useState, useEffect } from 'react'
 import { Button } from 'reactstrap'
+import { InputProps } from '../../helpers/types'
 import './PrimaryCheckBox.scss'
 
-const PrimaryCheckBox: FC = () => {
- const [rSelected, setRSelected] = useState<number | undefined>()
+interface Props {
+ handleBloodChange: (payload: string | undefined) => void
+}
+
+const PrimaryCheckBox: FC<InputProps & Props> = ({ value, handleBloodChange }) => {
+ const [rSelected, setRSelected] = useState(value)
+
+ useEffect(() => {
+  handleBloodChange(rSelected?.toString())
+ }, [rSelected])
 
  return (
   <div>
    <Button
-    className="editfolder__checkbox"
+    className={`editfolder__checkbox ${rSelected === 'A+' ? 'editfolder__checkbox-active' : ''}`}
     color="primary"
     onClick={() => {
-     setRSelected(1)
+     setRSelected('A+')
     }}
-    active={rSelected === 1}
+    active={rSelected === 'A+'}
    >
     A+
    </Button>
    <Button
-    className="editfolder__checkbox"
+    className={`editfolder__checkbox ${rSelected === 'A-' ? 'editfolder__checkbox-active' : ''}`}
     color="primary"
     onClick={() => {
-     setRSelected(2)
+     setRSelected('A-')
     }}
-    active={rSelected === 2}
+    active={rSelected === 'A-'}
    >
     A-
    </Button>
    <Button
-    className="editfolder__checkbox"
+    className={`editfolder__checkbox ${rSelected === 'B+' ? 'editfolder__checkbox-active' : ''}`}
     color="primary"
     onClick={() => {
-     setRSelected(3)
+     setRSelected('B+')
     }}
-    active={rSelected === 3}
+    active={rSelected === 'B+'}
    >
     B+
    </Button>
    <Button
-    className="editfolder__checkbox"
+    className={`editfolder__checkbox ${rSelected === 'B-' ? 'editfolder__checkbox-active' : ''}`}
     color="primary"
     onClick={() => {
-     setRSelected(4)
+     setRSelected('B-')
     }}
-    active={rSelected === 4}
+    active={rSelected === 'B-'}
    >
     B-
    </Button>
 
    <Button
-    className="editfolder__checkbox"
+    className={`editfolder__checkbox ${rSelected === 'O+' ? 'editfolder__checkbox-active' : ''}`}
     color="primary"
     onClick={() => {
-     setRSelected(5)
+     setRSelected('O+')
     }}
-    active={rSelected === 5}
+    active={rSelected === 'O+'}
    >
     O+
    </Button>
    <Button
-    className="editfolder__checkbox"
+    className={`editfolder__checkbox ${rSelected === 'O-' ? 'editfolder__checkbox-active' : ''}`}
     color="primary"
     onClick={() => {
-     setRSelected(6)
+     setRSelected('O-')
     }}
-    active={rSelected === 6}
+    active={rSelected === 'O-'}
    >
     O-
    </Button>
    <Button
-    className="editfolder__checkbox"
+    className={`editfolder__checkbox ${rSelected === 'AB+' ? 'editfolder__checkbox-active' : ''}`}
     color="primary"
     onClick={() => {
-     setRSelected(7)
+     setRSelected('AB+')
     }}
-    active={rSelected === 7}
+    active={rSelected === 'AB+'}
    >
     AB+
    </Button>
    <Button
-    className="editfolder__checkbox"
+    className={`editfolder__checkbox ${rSelected === 'AB-' ? 'editfolder__checkbox-active' : ''}`}
     color="primary"
     onClick={() => {
-     setRSelected(8)
+     setRSelected('AB-')
     }}
-    active={rSelected === 8}
+    active={rSelected === 'AB-'}
    >
     AB-
    </Button>

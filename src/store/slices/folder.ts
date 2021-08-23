@@ -1,12 +1,14 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-import { FolderState, FolderPayload } from '../../helpers/types'
+import { FolderState, FolderPayload, InfoGeneralType, User, InfoMedicalType, Folder } from '../../helpers/types'
 
 export const initialState: FolderState = {
  loading: true,
  error: false,
  folder: {},
  patient: {},
+ infoGeneral: {},
+ infoMedical: {},
 }
 
 const folderSlice = createSlice({
@@ -32,9 +34,55 @@ const folderSlice = createSlice({
    state.folder = {}
    state.patient = {}
   },
+
+  updatePatient: (state, { payload }: PayloadAction<InfoGeneralType>) => {
+   state.loading = true
+   state.infoGeneral = payload
+  },
+
+  updatePatientSuccess: (state, { payload }: PayloadAction<User>) => {
+   state.loading = false
+   state.error = false
+   state.patient = payload
+   state.infoGeneral = {}
+  },
+
+  updatePatientError: (state) => {
+   state.loading = false
+   state.error = true
+   state.infoGeneral = {}
+  },
+
+  updateFolder: (state, { payload }: PayloadAction<InfoMedicalType>) => {
+   state.loading = true
+   state.infoMedical = payload
+  },
+
+  updateFolderSuccess: (state, { payload }: PayloadAction<Folder>) => {
+   state.loading = false
+   state.error = false
+   state.folder = payload
+   state.infoMedical = {}
+  },
+
+  updateFolderError: (state) => {
+   state.loading = false
+   state.error = true
+   state.infoMedical = {}
+  },
  },
 })
 
-export const { syncFolder, syncFolderSuccess, syncFolderError } = folderSlice.actions
+export const {
+ syncFolder,
+ syncFolderSuccess,
+ syncFolderError,
+ updatePatient,
+ updatePatientSuccess,
+ updatePatientError,
+ updateFolder,
+ updateFolderError,
+ updateFolderSuccess
+} = folderSlice.actions
 
 export default folderSlice.reducer

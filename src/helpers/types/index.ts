@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { ComponentProps, ChangeEventHandler } from 'react'
+import { Input } from 'reactstrap'
 
 //  ==============================================================================
 //  Items
@@ -18,6 +19,25 @@ export interface Folder {
  [anyProp: string]: any
 }
 
+export interface InfoGeneralType {
+ firstname: string
+ lastname: string
+ gender: string
+ adress: string
+ birthDay: string
+ birthPlace: string
+ situation: string
+ speciality: string
+}
+
+export interface InfoMedicalType {
+ numFolder: string
+ socSecNum: string
+ tall: number
+ weight: number
+ blood: string
+}
+
 //  ==============================================================================
 //  State
 //  ==============================================================================
@@ -35,6 +55,8 @@ export interface FolderState {
  error: boolean
  folder: Folder | Record<string, unknown>
  patient: User
+ infoGeneral: InfoGeneralType | Record<string, unknown>
+ infoMedical: InfoMedicalType | Record<string, unknown>
 }
 
 export interface AuthState {
@@ -67,10 +89,12 @@ export interface FolderPayload {
 
 // ==============================================================================
 // Events
-// ==============================================================================
+// =============================================================================
 
 export type ReactChangeEvent = React.ChangeEvent<HTMLInputElement>
 export type ReactSubmitEvent = React.FormEvent<HTMLFormElement> | React.FocusEvent<HTMLInputElement>
+export type ReactClickEvent = React.MouseEvent<HTMLButtonElement, MouseEvent>
+export type ReactClickEventHandler = React.MouseEventHandler<HTMLButtonElement>
 
 //  ==============================================================================
 //  Props
@@ -78,6 +102,19 @@ export type ReactSubmitEvent = React.FormEvent<HTMLFormElement> | React.FocusEve
 export interface OptionType {
  value: string
  label: string
+}
+
+export interface InputProps {
+ id?: ComponentProps<typeof Input>['id']
+ type?: ComponentProps<typeof Input>['type']
+ name?: ComponentProps<typeof Input>['name']
+ placeholder?: ComponentProps<typeof Input>['placeholder']
+ label?: ComponentProps<typeof Input>['label']
+ value?: ComponentProps<typeof Input>['value']
+ defaultValue?: ComponentProps<typeof Input>['value'] | undefined
+ onChange?: ChangeEventHandler<HTMLInputElement> | undefined
+ onClick?: ReactClickEventHandler | undefined
+ options?: OptionType[]
 }
 
 // ==============================================================================
