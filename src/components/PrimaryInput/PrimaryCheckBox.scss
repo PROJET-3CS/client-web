@@ -4,10 +4,13 @@
   width: 6rem !important;
   padding: 1rem !important;
   margin: 0rem 2rem 1rem 0rem !important;
+  background-color: #bdbdbd !important;
+  border-color: #bdbdbd !important;
 
-  &-active, &:active {
-   background-color: #dd4b39 !important;
-   border-color: #dd4b39 !important;
+  &-active,
+  &:active {
+   background-color: #0d6efd !important;
+   border-color: #0d6efd !important;
   }
  }
 }

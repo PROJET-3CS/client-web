@@ -88,7 +88,7 @@ const InfoMedical: FC<Props> = ({ folder }) => {
   <Collapses title="Informations Médicales">
    <Col className="editfolder__collapse-card--col">
     <Alert isOpen={open} className="clinity-alert" color={!error ? 'success' : 'danger'}>
-     {!error ? '🎉 Patient data was successfuly been updated !' : '🤕 Sorry something went wrong !'}
+     {!error ? '🎉 Medical folder data was successfuly updated !' : '🤕 Sorry something went wrong !'}
     </Alert>
     <Row md="2" className="editfolder__collapse-card--row">
      <PrimaryInput

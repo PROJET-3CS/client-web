@@ -956,10 +956,13 @@
    padding: 1rem !important;
    margin-right: 4rem;
 
+   background-color: $color-grey-dark-5 !important;
+   border-color: $color-grey-dark-5 !important;
+
    &--active,
    &:active {
-    background-color: $color-tertiary !important;
-    border-color: $color-tertiary !important;
+    background-color: $color-blue !important;
+    border-color: $color-blue !important;
    }
   }
 
@@ -997,6 +1000,26 @@
    padding: 0.813rem 2.5rem 0.813rem 2.5rem !important;
    margin-right: 1.4rem;
    margin-bottom: 1.4rem;
+
+   &:hover,
+   &:active {
+    background-color: $color-tertiary !important;
+    border-color: $color-tertiary !important;
+   }
+
+   &:visited {
+    background-color: #0d6efd !important;
+   }
+
+   &--close {
+    visibility: hidden;
+    transition: all 0.2s ease-in-out;
+
+    .editfolder__medicalsection-box:hover & {
+     visibility: visible;
+     margin-left: 2rem;
+    }
+   }
   }
 
   &-button {
@@ -1012,9 +1035,33 @@
  }
 }
 
-.clinity-alert {
- text-align: left;
- font-size: 1.5rem;
- padding: 1.5rem !important;
- margin-bottom: 2rem !important;
+.clinity {
+ &-alert {
+  text-align: left;
+  font-size: 1.5rem;
+  padding: 1.5rem !important;
+  margin-bottom: 2rem !important;
+ }
+
+ &__modal {
+  max-width: 60rem !important;
+  &-header {
+   font-size: 2rem;
+   font-weight: 500;
+   padding: 1.5rem !important;
+  }
+
+  &-body {
+   font-size: 1.5rem !important;
+  }
+
+  &-footer {
+   padding: 1.5rem;
+  }
+
+  &-btn {
+   font-size: 1.5rem !important;
+   padding: 0.75rem 1.5rem !important;
+  }
+ }
 }

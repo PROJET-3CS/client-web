@@ -51,6 +51,12 @@ export interface AntecedentType {
  medicaments: string[]
 }
 
+export interface medicamentType {
+ name: string
+ dose: number
+ unit: string
+}
+
 //  ==============================================================================
 //  State
 //  ==============================================================================
@@ -125,6 +131,7 @@ export interface InputProps {
  placeholder?: ComponentProps<typeof Input>['placeholder']
  label?: ComponentProps<typeof Input>['label']
  value?: ComponentProps<typeof Input>['value']
+ required?: ComponentProps<typeof Input>['required']
  defaultValue?: ComponentProps<typeof Input>['value'] | undefined
  onChange?: ChangeEventHandler<HTMLInputElement> | undefined
  onClick?: ReactClickEventHandler | undefined

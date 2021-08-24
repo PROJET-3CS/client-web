@@ -803,10 +803,12 @@ body {
   font-size: 1.438rem !important;
   width: 12rem !important;
   padding: 1rem !important;
-  margin-right: 4rem; }
+  margin-right: 4rem;
+  background-color: #bdbdbd !important;
+  border-color: #bdbdbd !important; }
   .editfolder__tabacsection-box--active, .editfolder__tabacsection-box:active {
-    background-color: #dd4b39 !important;
-    border-color: #dd4b39 !important; }
+    background-color: #0d6efd !important;
+    border-color: #0d6efd !important; }
 
 .editfolder__tabacsection-input {
   font-size: 1.438rem !important;
@@ -836,6 +838,17 @@ body {
   padding: 0.813rem 2.5rem 0.813rem 2.5rem !important;
   margin-right: 1.4rem;
   margin-bottom: 1.4rem; }
+  .editfolder__medicalsection-box:hover, .editfolder__medicalsection-box:active {
+    background-color: #dd4b39 !important;
+    border-color: #dd4b39 !important; }
+  .editfolder__medicalsection-box:visited {
+    background-color: #0d6efd !important; }
+  .editfolder__medicalsection-box--close {
+    visibility: hidden;
+    transition: all 0.2s ease-in-out; }
+    .editfolder__medicalsection-box:hover .editfolder__medicalsection-box--close {
+      visibility: visible;
+      margin-left: 2rem; }
 
 .editfolder__medicalsection-button {
   width: fit-content !important;
@@ -852,3 +865,17 @@ body {
   font-size: 1.5rem;
   padding: 1.5rem !important;
   margin-bottom: 2rem !important; }
+
+.clinity__modal {
+  max-width: 60rem !important; }
+  .clinity__modal-header {
+    font-size: 2rem;
+    font-weight: 500;
+    padding: 1.5rem !important; }
+  .clinity__modal-body {
+    font-size: 1.5rem !important; }
+  .clinity__modal-footer {
+    padding: 1.5rem; }
+  .clinity__modal-btn {
+    font-size: 1.5rem !important;
+    padding: 0.75rem 1.5rem !important; }

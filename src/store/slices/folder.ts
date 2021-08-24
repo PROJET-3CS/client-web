@@ -77,12 +77,14 @@ const folderSlice = createSlice({
    state.error = false
    state.folder = payload
    state.infoMedical = {}
+   state.antecedent = {}
   },
 
   updateFolderError: (state) => {
    state.loading = false
    state.error = true
    state.infoMedical = {}
+   state.antecedent = {}
   },
  },
 })

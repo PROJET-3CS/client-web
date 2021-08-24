@@ -55,6 +55,13 @@ const Antecedent: FC<Props> = ({ folder }) => {
   })
  }
 
+ const handleMedicamentChange = (payload: string[]) => {
+  setInfo({
+   ...info,
+   medicaments: payload,
+  })
+ }
+
  const submitInfoAntecedent = () => {
   _updateFolder(info)
  }
@@ -78,10 +85,12 @@ const Antecedent: FC<Props> = ({ folder }) => {
 
  return (
   <Collapses title="Antécédents Personnels">
-   <Alert isOpen={open} className="clinity-alert" color={!error ? 'success' : 'danger'}>
-    {!error ? '🎉 Patient data was successfuly been updated !' : '🤕 Sorry something went wrong !'}
-   </Alert>
    <Col className="editfolder__collapse-card--col">
+    <Alert isOpen={open} className="clinity-alert" color={!error ? 'success' : 'danger'}>
+     {!error
+      ? '🎉 Medical folder data was successfuly updated !'
+      : '🤕 Sorry something went wrong !'}
+    </Alert>
     <div>
      <p className="editfolder__collapse-card--contentsubtitle">Tabac</p>
      <Tabac
@@ -94,7 +103,7 @@ const Antecedent: FC<Props> = ({ folder }) => {
     </div>
     <div>
      <p className="editfolder__collapse-card--contentsubtitle">Médicaments</p>
-     <Medicament />
+     <Medicament handleMedicamentChange={handleMedicamentChange} medicaments={info?.medicaments} />
     </div>
     <AwesomeButtonIcon onClick={submitInfoAntecedent} icon="check" text="Save Changes" />
    </Col>

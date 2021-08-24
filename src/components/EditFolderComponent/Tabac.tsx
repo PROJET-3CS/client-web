@@ -18,7 +18,7 @@ const Tabac: FC<Props> = ({handleTabacChange, fumer, chiquer, prise, exFumeur}) 
     <TabacBoxes
      btn1text="Oui, déja"
      btn2text="Non, jamais"
-     inputname="cigarette-fumer"
+     inputname="fumer"
      titre1="à fumer:"
      titre2="Nbr Cigarettes/j:"
      handleTabacChange={handleTabacChange}
@@ -27,7 +27,7 @@ const Tabac: FC<Props> = ({handleTabacChange, fumer, chiquer, prise, exFumeur}) 
     <TabacBoxes
      btn1text="Oui, déja"
      btn2text="Non, jamais"
-     inputname="cigarette-chiquer"
+     inputname="chiquer"
      titre1="à chiquer:"
      titre2="Nbr Cigarettes/j:"
      handleTabacChange={handleTabacChange}
@@ -36,7 +36,7 @@ const Tabac: FC<Props> = ({handleTabacChange, fumer, chiquer, prise, exFumeur}) 
     <TabacBoxes
      btn1text="Oui, déja"
      btn2text="Non, jamais"
-     inputname="cigarette-prise"
+     inputname="prise"
      titre1="à prise:"
      titre2="Nbr Cigarettes/j:"
      handleTabacChange={handleTabacChange}
@@ -45,7 +45,7 @@ const Tabac: FC<Props> = ({handleTabacChange, fumer, chiquer, prise, exFumeur}) 
     <TabacBoxes
      btn1text="Oui, déja"
      btn2text="Non, jamais"
-     inputname="ancien-fumeur"
+     inputname="exFumeur"
      titre1="ancien fumeur: "
      titre2="Période dexposition:"
      handleTabacChange={handleTabacChange}

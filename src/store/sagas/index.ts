@@ -122,8 +122,8 @@ function* _updateFolder() {
   const USER_TOKEN = getToken()
   const authToken = `Bearer ${USER_TOKEN}`
 
-  const { infoMedical, folder, patient } = yield select(getFolder)
-  const updatedFolder = { ...folder, ...infoMedical }
+  const { infoMedical, folder, patient, antecedent } = yield select(getFolder)
+  const updatedFolder = { ...folder, ...infoMedical, ...antecedent }
   const { data } = yield axios.post(`/medical_folder/${patient.id}`, updatedFolder, {
    headers: { Authorization: authToken },
   })
