@@ -76,11 +76,12 @@ const InfoMedical: FC<Props> = ({ folder }) => {
  useEffect(() => {
   if (initialRender.current) {
    initialRender.current = false
-  } else { // initially called every time after the component renders
+  } else {
+   // initially called every time after the component renders
    setOpen(true)
    setTimeout(() => {
     setOpen(false)
-   }, 3000) 
+   }, 3000)
   }
  }, [infoMedical])
 
@@ -88,7 +89,9 @@ const InfoMedical: FC<Props> = ({ folder }) => {
   <Collapses title="Informations Médicales">
    <Col className="editfolder__collapse-card--col">
     <Alert isOpen={open} className="clinity-alert" color={!error ? 'success' : 'danger'}>
-     {!error ? '🎉 Medical folder data was successfuly updated !' : '🤕 Sorry something went wrong !'}
+     {!error
+      ? '🎉 Medical folder data was successfuly updated !'
+      : '🤕 Sorry something went wrong !'}
     </Alert>
     <Row md="2" className="editfolder__collapse-card--row">
      <PrimaryInput

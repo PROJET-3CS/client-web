@@ -2,11 +2,11 @@ import React, { FC } from 'react'
 import { Button } from 'reactstrap'
 
 interface Props {
-    box: string
-    handleRemoveMedicament: (payload: string) => void
+ box: string
+ handleRemoveMedicament: (payload: string) => void
 }
 
-const MedicamentBox: FC<Props> = ({box, handleRemoveMedicament}) => {
+const MedicamentBox: FC<Props> = ({ box, handleRemoveMedicament }) => {
  return (
   <Button
    color="primary"

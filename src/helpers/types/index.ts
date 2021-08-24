@@ -91,6 +91,7 @@ export interface AuthState {
 export interface RootState {
  authState: AuthState
  syncState: SyncState
+ managementState: managementState
  folderState: FolderState
 }
 
@@ -101,6 +102,13 @@ export interface RootState {
 export interface SyncPayload {
  categories: number[]
 }
+export interface ManagementPayload {
+ users: User[]
+}
+
+//= =============================================================================
+// Events
+//= =============================================================================
 
 export interface FolderPayload {
  medicalFolder: Folder
@@ -124,6 +132,20 @@ export interface OptionType {
  label: string
 }
 
+//= =============================================================================
+
+// export interface ManagementState {
+//     loading:false,
+//     error:'',
+//     users:[],
+// }
+
+//= =========================================================================
+export interface managementState {
+ users: User[]
+ loading: boolean
+ error: string
+}
 export interface InputProps {
  id?: ComponentProps<typeof Input>['id']
  type?: ComponentProps<typeof Input>['type']

@@ -11,7 +11,7 @@ interface Props {
  exFumeur: TabacType
 }
 
-const Tabac: FC<Props> = ({handleTabacChange, fumer, chiquer, prise, exFumeur}) => {
+const Tabac: FC<Props> = ({ handleTabacChange, fumer, chiquer, prise, exFumeur }) => {
  return (
   <div>
    <Col className="editfolder__tabacsection-col">

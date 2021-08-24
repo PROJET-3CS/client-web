@@ -65,10 +65,9 @@ const Medicament: FC<Props> = ({ medicaments, handleMedicamentChange }) => {
   <Card className="editfolder__medicalsection-card">
    <Col className="editfolder__medicalsection-col">
     <Row className="editfolder__medicalsection-row">
-
-     {medicaments.map((box) => {return (
-      <MedicamentBox key={box} box={box} handleRemoveMedicament={handleRemoveMedicament} />
-     )})}
+     {medicaments.map((box) => {
+      return <MedicamentBox key={box} box={box} handleRemoveMedicament={handleRemoveMedicament} />
+     })}
 
      <button onClick={toggle} type="submit" className="editfolder__medicalsection-button">
       <FontAwesomeIcon icon="plus" className="AwesomeButtonIcon-icon" />

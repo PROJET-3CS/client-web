@@ -7,7 +7,6 @@ interface Props {
 }
 
 const MedicalInfo: FC<Props> = ({ folder, patient }) => {
-
  const renderTxt = (array: Array<string>) => {
   if (array && array.length > 0) {
    return array.toString()
@@ -53,7 +52,7 @@ const MedicalInfo: FC<Props> = ({ folder, patient }) => {
    </div>
    <div className="folder__item-info">
     <span className="folder__item-info--title">Weight:</span>
-    <span className="folder__item-info--value">{folder?.weight ? `${folder.weight} kg` : '' }</span>
+    <span className="folder__item-info--value">{folder?.weight ? `${folder.weight} kg` : ''}</span>
    </div>
    <div className="folder__item-info">
     <span className="folder__item-info--title">Fumeur:</span>

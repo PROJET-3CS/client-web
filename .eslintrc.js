@@ -58,14 +58,11 @@ module.exports = {
   'newline-before-return': 1,
   'no-useless-return': 1,
   'prefer-const': 1,
-  'no-useless-return': 1,
-  'no-unused-vars': 0,
   'default-case': 1, // require `default` cases in `switch` statements
   'default-case-last': 1, // enforce default clauses in switch statements to be last
   eqeqeq: 1, // require the use of `===` and `!==`
   'no-empty-function': 1,
   'no-multi-spaces': 1,
-  'no-useless-return': 1,
   'require-await': 1,
   camelcase: 'error',
   'max-lines': ['error', 200],
