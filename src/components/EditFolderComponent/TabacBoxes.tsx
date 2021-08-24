@@ -3,6 +3,7 @@ import { Button, Input, Row } from 'reactstrap'
 import { InputProps, TabacType } from '../../helpers/types'
 
 interface Props {
+ // eslint-disable-next-line no-unused-vars
  handleTabacChange: (type: string, value: boolean, nbr: number) => void
  btn1text: ComponentProps<typeof Input>['text1']
  btn2text: ComponentProps<typeof Input>['text2']

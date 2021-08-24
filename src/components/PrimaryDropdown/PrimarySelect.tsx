@@ -5,6 +5,7 @@ import Select from 'react-select'
 import { InputProps, OptionType } from '../../helpers/types'
 
 interface SelectProps {
+ // eslint-disable-next-line no-unused-vars
  getValue: (value: string) => void
 }
 

@@ -34,9 +34,9 @@ export interface InfoMedicalType {
  numFolder: string
  socSecNum: string
 
- // to Fix later 
+ // to Fix later
  tall: number
- 
+
  weight: number
  blood: string
 }
@@ -91,10 +91,17 @@ export interface AuthState {
  msg: string
 }
 
+export interface managmentState {
+ users: User[]
+ selectedUser: User | Record<string, unknown>
+ loading: boolean
+ error: string
+}
+
 export interface RootState {
  authState: AuthState
  syncState: SyncState
- managementState: managementState
+ managmentState: managmentState
  folderState: FolderState
 }
 
@@ -135,20 +142,6 @@ export interface OptionType {
  label: string
 }
 
-//= =============================================================================
-
-// export interface ManagementState {
-//     loading:false,
-//     error:'',
-//     users:[],
-// }
-
-//= =========================================================================
-export interface managementState {
- users: User[]
- loading: boolean
- error: string
-}
 export interface InputProps {
  id?: ComponentProps<typeof Input>['id']
  type?: ComponentProps<typeof Input>['type']

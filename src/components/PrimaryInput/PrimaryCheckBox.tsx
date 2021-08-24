@@ -4,6 +4,7 @@ import { InputProps } from '../../helpers/types'
 import './PrimaryCheckBox.scss'
 
 interface Props {
+ // eslint-disable-next-line no-unused-vars
  handleBloodChange: (payload: string | undefined) => void
 }
 

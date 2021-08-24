@@ -14,6 +14,7 @@ import { medicamentType, ReactSubmitEvent } from '../../helpers/types'
 import PrimaryInput from '../PrimaryInput/PrimaryInput'
 
 interface Props {
+ // eslint-disable-next-line no-unused-vars
  handleSubmitMedicament: (e: ReactSubmitEvent) => void
  medicament: medicamentType
 }

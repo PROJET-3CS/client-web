@@ -11,6 +11,7 @@ library.add(faPlus)
 
 interface Props {
  medicaments: string[]
+ // eslint-disable-next-line no-unused-vars
  handleMedicamentChange: (payload: string[]) => void
 }
 

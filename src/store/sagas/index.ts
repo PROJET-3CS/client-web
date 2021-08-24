@@ -95,8 +95,8 @@ function* getUsers() {
 function* archiverUser() {
  
  try {
-  const {user} = yield select(getManagement)
-  const uri = `medical_folder/activate${user.id}`
+  const {selectedUser} = yield select(getManagement)
+  const uri = `medical_folder/activate${selectedUser.id}`
   const {data} = yield axios.delete(uri)
   if (data.status === 'success') {  
    yield put(archiveUserSuccess(data))

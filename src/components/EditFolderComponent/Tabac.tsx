@@ -4,6 +4,7 @@ import { TabacType } from '../../helpers/types'
 import TabacBoxes from './TabacBoxes'
 
 interface Props {
+ // eslint-disable-next-line no-unused-vars
  handleTabacChange: (type: string, value: boolean, nbr: number) => void
  fumer: TabacType
  prise: TabacType

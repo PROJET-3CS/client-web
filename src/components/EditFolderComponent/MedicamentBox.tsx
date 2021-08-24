@@ -3,6 +3,7 @@ import { Button } from 'reactstrap'
 
 interface Props {
  box: string
+ // eslint-disable-next-line no-unused-vars
  handleRemoveMedicament: (payload: string) => void
 }
 
