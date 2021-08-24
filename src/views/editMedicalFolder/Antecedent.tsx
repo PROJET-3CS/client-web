@@ -1,11 +1,11 @@
 import React, { FC, useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Col } from 'reactstrap'
+import { Alert, Col } from 'reactstrap'
 import AwesomeButtonIcon from '../../components/AwesomeButton/AwesomeButtonIcon'
 import Collapses from '../../components/Collapses/Collapses'
 import Medicament from '../../components/EditFolderComponent/Medicament'
 import Tabac from '../../components/EditFolderComponent/Tabac'
-import { AntecedentType, Folder, ReactChangeEvent } from '../../helpers/types'
+import { AntecedentType, Folder } from '../../helpers/types'
 import { getFolder } from '../../store/selectors'
 import { updateInfoAntecedent } from '../../store/slices/folder'
 
@@ -17,7 +17,7 @@ const Antecedent: FC<Props> = ({ folder }) => {
  // ===========================================================================
  // Selectors
  // ===========================================================================
- const { error, infoMedical } = useSelector(getFolder)
+ const { error, antecedent } = useSelector(getFolder)
 
  // ===========================================================================
  // Dispatch
@@ -47,17 +47,11 @@ const Antecedent: FC<Props> = ({ folder }) => {
  // ===========================================================================
  // Handlers
  // ===========================================================================
- const handleChange = (e: ReactChangeEvent) => {
-  setInfo({
-   ...info,
-   [e.target.id]: e.target.value,
-  })
- }
 
  const handleTabacChange = (type: string, value: boolean, nbr: number) => {
   setInfo({
    ...info,
-   [type]: { value, nbr }
+   [type]: { value, nbr },
   })
  }
 
@@ -80,10 +74,13 @@ const Antecedent: FC<Props> = ({ folder }) => {
     setOpen(false)
    }, 3000)
   }
- }, [infoMedical])
+ }, [antecedent])
 
  return (
   <Collapses title="Antécédents Personnels">
+   <Alert isOpen={open} className="clinity-alert" color={!error ? 'success' : 'danger'}>
+    {!error ? '🎉 Patient data was successfuly been updated !' : '🤕 Sorry something went wrong !'}
+   </Alert>
    <Col className="editfolder__collapse-card--col">
     <div>
      <p className="editfolder__collapse-card--contentsubtitle">Tabac</p>
