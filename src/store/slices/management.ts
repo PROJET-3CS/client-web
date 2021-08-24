@@ -25,9 +25,22 @@ const ManagementSlice = createSlice({
       state.error = ''
       state.users = []
     },
+    archiveUserSuccess: (state, { payload }: PayloadAction<any>) => {
+      state.loading = false
+      state.error = ''
+      state.users = payload
+    },
+    archiveUser: (state,{ payload }: PayloadAction<any>) => {
+      state.loading = true
+    },
+    archiveUserError: (state) => {
+      state.loading = false
+      state.error = ''
+      state.users = []
+    },
   },
 })
 
-export const { fetchUsersSuccess, fetchUsers, fetchUsersError } = ManagementSlice.actions
+export const { fetchUsersSuccess, fetchUsers, fetchUsersError, archiveUser , archiveUserError , archiveUserSuccess } = ManagementSlice.actions
 
 export default ManagementSlice.reducer

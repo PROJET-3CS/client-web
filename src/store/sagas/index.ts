@@ -14,7 +14,7 @@ import {
 } from '../slices/auth'
 import { getAuth } from '../selectors'
 import { getToken, removeToken, setToken } from '../../helpers/api'
-import { fetchUsers, fetchUsersSuccess, fetchUsersError } from '../slices/management'
+import { fetchUsers, fetchUsersSuccess, fetchUsersError , archiveUser , archiveUserError , archiveUserSuccess } from '../slices/management'
 
 // Hit the Express endpoint to get the current user from the cookie
 
@@ -76,6 +76,23 @@ function* getUsers() {
     yield put(fetchUsersError())
   }
 }
+
+function* archiverUser(action:any) {
+ 
+  try {
+    const uri = `medical_folder/activate${action.value.id}`
+    const {data} = yield axios.delete(uri)
+    if (data.status === 'success') {  
+      yield put(archiveUserSuccess(data))
+    }
+    else {
+      yield put(archiveUserError())
+    }
+  } 
+  catch {
+    yield put(archiveUserError())
+  }
+} 
 // If any of these functions are dispatched, invoke the appropriate saga
 // eslint-disable-next-line
 function* rootSaga() {
@@ -84,6 +101,7 @@ function* rootSaga() {
     takeLatest(logout.type, logoutUser),
     takeLatest(verify.type, verifyUser),
     takeLatest(fetchUsers.type, getUsers),
+    takeLatest(archiveUser.type, archiverUser)
   ])
 }
 
