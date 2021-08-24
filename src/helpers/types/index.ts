@@ -33,7 +33,10 @@ export interface InfoGeneralType {
 export interface InfoMedicalType {
  numFolder: string
  socSecNum: string
+
+ // to Fix later 
  tall: number
+ 
  weight: number
  blood: string
 }
