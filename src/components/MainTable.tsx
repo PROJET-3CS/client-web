@@ -7,6 +7,7 @@ import { faSort, faSlidersH, faEllipsisH } from '@fortawesome/free-solid-svg-ico
 import { Table } from 'reactstrap'
 import { getManagement } from '../store/selectors'
 import { fetchUsers, archiveUser } from '../store/slices/management'
+import { User } from '../helpers/types'
 
 library.add(faSort, faSlidersH, faEllipsisH)
 
@@ -48,9 +49,9 @@ const MainTable: React.FC = () => {
 
  //
  // this is the filtering function , waiting for the other data to ve fetched from the API to add all filters
- function filterRole(rows: any) {
+ function filterRole(rows: User[]) {
   // eslint-disable-next-line arrow-body-style
-  return rows.filter((row: any) => roleFilter === '' || row.role == roleFilter)
+  return rows.filter((row: User) => roleFilter === '' || row.role == roleFilter)
  }
 
  function filterson() {
@@ -96,7 +97,7 @@ const MainTable: React.FC = () => {
    <tbody className="maintable-body">
     {users &&
      users.length > 0 &&
-     filterRole(users).map((user: any) => {
+     filterRole(users).map((user: User) => {
       return (
        <tr className="maintable-row" key={user.id}>
         <th scope="row" className="maintable-header-item raduisadd">

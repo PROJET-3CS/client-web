@@ -23,7 +23,7 @@ import {
  updateInfoAntecedent,
  updateInfoMedical
 } from '../slices/folder'
-import { getAuth, getFolder } from '../selectors'
+import { getAuth, getFolder, getManagement } from '../selectors'
 import { getToken, removeToken, setToken } from '../../helpers/api'
 import { fetchUsers, fetchUsersSuccess, fetchUsersError , archiveUser , archiveUserError , archiveUserSuccess } from '../slices/management'
 
@@ -92,10 +92,11 @@ function* getUsers() {
  }
 }
 
-function* archiverUser(action:any) {
+function* archiverUser() {
  
  try {
-  const uri = `medical_folder/activate${action.value.id}`
+  const {user} = yield select(getManagement)
+  const uri = `medical_folder/activate${user.id}`
   const {data} = yield axios.delete(uri)
   if (data.status === 'success') {  
    yield put(archiveUserSuccess(data))

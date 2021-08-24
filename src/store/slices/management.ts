@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { managementState } from '../../helpers/types'
+import { managementState , User } from '../../helpers/types'
 
 // eslint-disable-next-line import/prefer-default-export
 export const initialState: managementState = {
@@ -25,7 +25,7 @@ const ManagementSlice = createSlice({
    state.error = ''
    state.users = []
   },
-  archiveUserSuccess: (state, { payload }: PayloadAction<any>) => {
+  archiveUserSuccess: (state, { payload }: PayloadAction<User[]>) => {
    state.loading = false
    state.error = ''
    state.users = payload
