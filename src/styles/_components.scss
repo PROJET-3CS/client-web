@@ -955,6 +955,12 @@
    width: 12rem !important;
    padding: 1rem !important;
    margin-right: 4rem;
+
+   &--active,
+   &:active {
+    background-color: $color-tertiary !important;
+    border-color: $color-tertiary !important;
+   }
   }
 
   &-input {

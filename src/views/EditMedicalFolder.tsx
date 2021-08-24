@@ -56,7 +56,7 @@ const EditMedicalFolder: FC = () => {
 
     <InfoMedical folder={folder} />
     
-    <Antecedent />
+    <Antecedent folder={folder} />
 
    </FormGroup>
   </Layout>

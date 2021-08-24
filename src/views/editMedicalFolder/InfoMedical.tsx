@@ -7,7 +7,7 @@ import PrimaryCheckBox from '../../components/PrimaryInput/PrimaryCheckBox'
 import PrimaryInput from '../../components/PrimaryInput/PrimaryInput'
 import { Folder, InfoMedicalType, ReactChangeEvent } from '../../helpers/types'
 import { getFolder } from '../../store/selectors'
-import { updateFolder } from '../../store/slices/folder'
+import { updateInfoMedical } from '../../store/slices/folder'
 
 interface Props {
  folder: Folder | undefined
@@ -26,7 +26,7 @@ const InfoMedical: FC<Props> = ({ folder }) => {
  const dispatch = useDispatch()
 
  const _updateFolder = (payload: InfoMedicalType) => {
-  dispatch(updateFolder(payload))
+  dispatch(updateInfoMedical(payload))
  }
 
  //  ==============================================================================

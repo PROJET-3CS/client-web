@@ -804,6 +804,9 @@ body {
   width: 12rem !important;
   padding: 1rem !important;
   margin-right: 4rem; }
+  .editfolder__tabacsection-box--active, .editfolder__tabacsection-box:active {
+    background-color: #dd4b39 !important;
+    border-color: #dd4b39 !important; }
 
 .editfolder__tabacsection-input {
   font-size: 1.438rem !important;

@@ -20,7 +20,8 @@ import {
  updatePatient,
  updateFolderSuccess,
  updateFolderError,
- updateFolder,
+ updateInfoAntecedent,
+ updateInfoMedical
 } from '../slices/folder'
 import { getAuth, getFolder } from '../selectors'
 import { getToken, removeToken, setToken } from '../../helpers/api'
@@ -146,7 +147,8 @@ function* rootSaga() {
   takeLatest(verify.type, verifyUser),
   takeLatest(syncFolder.type, loadFolder),
   takeLatest(updatePatient.type, _updatePatient),
-  takeLatest(updateFolder.type, _updateFolder),
+  takeLatest(updateInfoAntecedent.type, _updateFolder),
+  takeLatest(updateInfoMedical.type, _updateFolder),
  ])
 }
 

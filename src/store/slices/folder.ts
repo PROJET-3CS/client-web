@@ -1,6 +1,14 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-import { FolderState, FolderPayload, InfoGeneralType, User, InfoMedicalType, Folder } from '../../helpers/types'
+import {
+ FolderState,
+ FolderPayload,
+ InfoGeneralType,
+ User,
+ InfoMedicalType,
+ Folder,
+ AntecedentType,
+} from '../../helpers/types'
 
 export const initialState: FolderState = {
  loading: true,
@@ -9,6 +17,7 @@ export const initialState: FolderState = {
  patient: {},
  infoGeneral: {},
  infoMedical: {},
+ antecedent: {},
 }
 
 const folderSlice = createSlice({
@@ -53,9 +62,14 @@ const folderSlice = createSlice({
    state.infoGeneral = {}
   },
 
-  updateFolder: (state, { payload }: PayloadAction<InfoMedicalType>) => {
+  updateInfoMedical: (state, { payload }: PayloadAction<InfoMedicalType>) => {
    state.loading = true
    state.infoMedical = payload
+  },
+
+  updateInfoAntecedent: (state, { payload }: PayloadAction<AntecedentType>) => {
+   state.loading = true
+   state.antecedent = payload
   },
 
   updateFolderSuccess: (state, { payload }: PayloadAction<Folder>) => {
@@ -80,9 +94,10 @@ export const {
  updatePatient,
  updatePatientSuccess,
  updatePatientError,
- updateFolder,
+ updateInfoAntecedent,
+ updateInfoMedical,
  updateFolderError,
- updateFolderSuccess
+ updateFolderSuccess,
 } = folderSlice.actions
 
 export default folderSlice.reducer

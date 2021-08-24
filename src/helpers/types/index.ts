@@ -38,6 +38,19 @@ export interface InfoMedicalType {
  blood: string
 }
 
+export interface TabacType {
+ value: boolean
+ nbr: number
+}
+
+export interface AntecedentType {
+ fumer: TabacType
+ chiquer: TabacType
+ prise: TabacType
+ exFumeur: TabacType
+ medicaments: string[]
+}
+
 //  ==============================================================================
 //  State
 //  ==============================================================================
@@ -57,6 +70,7 @@ export interface FolderState {
  patient: User
  infoGeneral: InfoGeneralType | Record<string, unknown>
  infoMedical: InfoMedicalType | Record<string, unknown>
+ antecedent: AntecedentType | Record<string, unknown>
 }
 
 export interface AuthState {
