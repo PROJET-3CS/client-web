@@ -25,14 +25,16 @@ const TabacBoxes: FC<InputProps & Props> = ({
  const [nbr, setNbr] = useState(tabac.nbr || 0)
 
  useEffect(() => {
-  handleTabacChange(inputname, rSelected, nbr )
+  handleTabacChange(inputname, rSelected, nbr)
  }, [rSelected])
 
  return (
   <Row md="5" className="editfolder__tabacsection-row">
    <span>{titre1}</span>
    <Button
-    className={`editfolder__tabacsection-box ${rSelected === true ? 'editfolder__tabacsection-box--active' : ''}`}
+    className={`editfolder__tabacsection-box ${
+     rSelected === true ? 'editfolder__tabacsection-box--active' : ''
+    }`}
     color="primary"
     onClick={() => {
      setRSelected(true)
@@ -42,7 +44,9 @@ const TabacBoxes: FC<InputProps & Props> = ({
     {btn1text}
    </Button>
    <Button
-    className={`editfolder__tabacsection-box ${rSelected === false ? 'editfolder__tabacsection-box--active' : ''}`}
+    className={`editfolder__tabacsection-box ${
+     rSelected === false ? 'editfolder__tabacsection-box--active' : ''
+    }`}
     color="primary"
     onClick={() => {
      setRSelected(false)
@@ -58,7 +62,9 @@ const TabacBoxes: FC<InputProps & Props> = ({
     type="number"
     className="editfolder__tabacsection-input"
     value={nbr}
-    onChange={(e) => {setNbr(Number(e.target.value))}}
+    onChange={(e) => {
+     setNbr(Number(e.target.value))
+    }}
    />
   </Row>
  )

@@ -5,10 +5,17 @@ import Select from 'react-select'
 import { InputProps, OptionType } from '../../helpers/types'
 
 interface SelectProps {
-    getValue: (value: string) => void 
+ getValue: (value: string) => void
 }
 
-const PrimarySelect: FC<InputProps & SelectProps> = ({ id, name, label, options, defaultValue, getValue}) => {
+const PrimarySelect: FC<InputProps & SelectProps> = ({
+ id,
+ name,
+ label,
+ options,
+ defaultValue,
+ getValue,
+}) => {
  const formatOption = () => {
   if (defaultValue) {
    const option = options?.find((el) => {
@@ -49,7 +56,7 @@ const PrimarySelect: FC<InputProps & SelectProps> = ({ id, name, label, options,
      if (Array.isArray(selectedOption)) {
       throw new Error('Unexpected type passed to ReactSelect onChange handler')
      }
-     const {value} = selectedOption as OptionType
+     const { value } = selectedOption as OptionType
 
      getValue(value)
     }}

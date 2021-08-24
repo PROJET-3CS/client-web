@@ -6,7 +6,6 @@ import Resetpassword from '../views/auth/Password_reset'
 import Dashboard from '../views/Dashboard'
 import Home from '../views/Home'
 import UserMan from '../views/UserMan'
-
 import PrivateRoute from './PrivateRoutes'
 import PublicRoute from './PublicRoutes'
 import medicalFolder from '../views/medicalFolder/medicalFolder'

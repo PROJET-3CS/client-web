@@ -23,8 +23,9 @@ import {
  updateInfoAntecedent,
  updateInfoMedical
 } from '../slices/folder'
-import { getAuth, getFolder } from '../selectors'
+import { getAuth, getFolder, getManagement } from '../selectors'
 import { getToken, removeToken, setToken } from '../../helpers/api'
+import { fetchUsers, fetchUsersSuccess, fetchUsersError , archiveUser , archiveUserError , archiveUserSuccess } from '../slices/management'
 
 // Hit the Express endpoint to get the current user from the cookie
 
@@ -70,6 +71,46 @@ function* logoutUser() {
   yield put(logoutSuccess())
  }
 }
+
+//
+
+
+function* getUsers() {
+ try {
+  const {data} = yield axios.get( '/users/get_users/0')
+  if (data.status === 'success') {
+     
+   // const users = (data.body.length === 1) ? [data.body] : data.body  
+   yield put(fetchUsersSuccess(data.body.users))
+  }
+  else {
+   yield put(fetchUsersError())
+  }
+    
+ } catch (error) {
+  yield put(fetchUsersError())
+ }
+}
+
+function* archiverUser() {
+ 
+ try {
+  const {user} = yield select(getManagement)
+  const uri = `medical_folder/activate${user.id}`
+  const {data} = yield axios.delete(uri)
+  if (data.status === 'success') {  
+   yield put(archiveUserSuccess(data))
+  }
+  else {
+   yield put(archiveUserError())
+  }
+ } 
+ catch {
+  yield put(archiveUserError())
+ }
+} 
+// If any of these functions are dispatched, invoke the appropriate saga
+// eslint-disable-next-line
 
 function* loadFolder() {
  try {
@@ -145,6 +186,8 @@ function* rootSaga() {
   takeLatest(login.type, loginUser),
   takeLatest(logout.type, logoutUser),
   takeLatest(verify.type, verifyUser),
+  takeLatest(fetchUsers.type, getUsers),
+  takeLatest(archiveUser.type, archiverUser),
   takeLatest(syncFolder.type, loadFolder),
   takeLatest(updatePatient.type, _updatePatient),
   takeLatest(updateInfoAntecedent.type, _updateFolder),

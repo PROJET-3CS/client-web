@@ -1,14 +1,30 @@
 import React, { FC } from 'react'
-import { Modal, Form, ModalHeader, ModalBody, Row, Col, ModalFooter, Button, InputProps } from 'reactstrap'
+import {
+ Modal,
+ Form,
+ ModalHeader,
+ ModalBody,
+ Row,
+ Col,
+ ModalFooter,
+ Button,
+ InputProps,
+} from 'reactstrap'
 import { medicamentType, ReactSubmitEvent } from '../../helpers/types'
 import PrimaryInput from '../PrimaryInput/PrimaryInput'
 
 interface Props {
-    handleSubmitMedicament: (e: ReactSubmitEvent) => void
-    medicament: medicamentType
+ handleSubmitMedicament: (e: ReactSubmitEvent) => void
+ medicament: medicamentType
 }
 
-const AddModal : FC<Props & InputProps> = ({ modal, toggle, handleSubmitMedicament, medicament, handleChange }) => {
+const AddModal: FC<Props & InputProps> = ({
+ modal,
+ toggle,
+ handleSubmitMedicament,
+ medicament,
+ handleChange,
+}) => {
  return (
   <Modal isOpen={modal} toggle={toggle} className="clinity__modal">
    <Form onSubmit={handleSubmitMedicament}>
