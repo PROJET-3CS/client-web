@@ -33,6 +33,7 @@ const Signup: FC = () => {
               <p className="signup__form-heading--text">
         Please note that to request a medical account, you must be eaither a student, a member of
         administration or an employee in this university.
+<<<<<<< HEAD
               </p>
             </div>
             <PrimaryInput
@@ -53,6 +54,28 @@ const Signup: FC = () => {
             </FormGroup>
             <div className="signup__form-footer">
               <Label className="signup__form-footer--label">
+=======
+       </p>
+      </div>
+      <PrimaryInput
+       label="Enter your name"
+       type="text"
+       name="name"
+       placeholder="ex. Kharroubi Yacine"
+      />
+      <PrimaryInput
+       label="Enter your name"
+       type="email"
+       name="email"
+       placeholder="ex. y.kharroubi@gmail.com"
+      />
+      <FormFeedback>Please enter a valid email</FormFeedback>
+      <FormGroup className="signup__form-group--action" inline>
+       <AwesomeButton>Request</AwesomeButton>
+      </FormGroup>
+      <div className="signup__form-footer">
+       <Label className="signup__form-footer--label">
+>>>>>>> 1a05ac864fd6def133a9848daf86e8d848d7a005
         Already have an account? &nbsp;
                 <a href="/login">Sign In Now!</a>
               </Label>

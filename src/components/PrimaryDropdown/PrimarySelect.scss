@@ -1,0 +1,25 @@
+.Primary__form-group {
+ margin-bottom: 2rem;
+ text-align: left;
+}
+@media only screen and (max-width: 75em) {
+ .Primary__form-group {
+  margin-bottom: 1.5rem;
+ }
+}
+.Primary__form-label {
+ font-size: 1.5rem;
+ font-weight: 600;
+ color: #4f4f4f;
+ margin-bottom: 1rem;
+}
+.Primary__form-input {
+ font-family: inherit;
+ font-size: 1.5rem !important;
+ font-weight: 500 !important;
+ color: inherit;
+ padding: 0 !important;
+ border-radius: 0.5rem !important;
+ width: 100%;
+ height: 5rem;
+}

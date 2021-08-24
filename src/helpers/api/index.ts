@@ -6,7 +6,11 @@ PS: Keep it clean, only API calls
 */
 
 export const getToken = (): string | null => {
+<<<<<<< HEAD
   const token = localStorage.getItem('token')
+=======
+ const token = localStorage.getItem('token')
+>>>>>>> 1a05ac864fd6def133a9848daf86e8d848d7a005
 
   return token
 }

@@ -890,3 +890,178 @@
   }
  }
 }
+
+///////////////////////////////////
+// edit medical folder
+.editfolder {
+ &-form {
+  text-align: left;
+  width: 100%;
+ }
+ &-heading--title {
+  font-size: 1.875rem;
+  font-weight: 600;
+ }
+
+ &__collapse {
+  background: transparent;
+
+  &-card {
+   background-color: transparent;
+   border-radius: 10rem;
+   border: none;
+
+   &--contentsubtitle {
+    padding: 2rem 0rem 0rem 0rem;
+    font-size: 2rem;
+    font-weight: 600;
+    text-align: left;
+   }
+
+   &--col {
+    padding: 2rem;
+   }
+
+   &--row {
+    margin-bottom: 1rem;
+
+    &-spec {
+     background-color: red;
+     align-items: flex-start;
+    }
+    &-spec p {
+     background-color: yellow;
+     font-size: 1.625rem;
+     font-weight: 500;
+     text-align: left;
+     width: 16.3%;
+    }
+   }
+  }
+ }
+ &__tabacsection {
+  &-col {
+   text-align: left !important;
+  }
+  &-row {
+   font-size: 1.625rem;
+   font-weight: 500;
+   margin-bottom: 3rem;
+   align-items: center;
+  }
+
+  &-box {
+   font-size: 1.438rem !important;
+   width: 12rem !important;
+   padding: 1rem !important;
+   margin-right: 4rem;
+
+   background-color: $color-grey-dark-5 !important;
+   border-color: $color-grey-dark-5 !important;
+
+   &--active,
+   &:active {
+    background-color: $color-blue !important;
+    border-color: $color-blue !important;
+   }
+  }
+
+  &-input {
+   font-size: 1.438rem !important;
+   width: 15rem !important;
+   padding: 1rem !important;
+  }
+ }
+
+ &__medicalsection {
+  &-card {
+   border-color: black !important;
+   border-radius: 0.5rem !important;
+   border-width: 0.2rem !important;
+   margin-bottom: 3rem;
+  }
+
+  &-col {
+   padding: 2rem !important;
+   text-align: left;
+  }
+
+  &-col p {
+   font-size: 1.31rem;
+   font-weight: 500;
+   margin-bottom: 1.188rem;
+  }
+
+  &-box {
+   width: fit-content !important;
+   font-size: 1.5rem !important;
+   font-weight: 500 !important;
+   border-radius: 5.62rem !important;
+   padding: 0.813rem 2.5rem 0.813rem 2.5rem !important;
+   margin-right: 1.4rem;
+   margin-bottom: 1.4rem;
+
+   &:hover,
+   &:active {
+    background-color: $color-tertiary !important;
+    border-color: $color-tertiary !important;
+   }
+
+   &:visited {
+    background-color: #0d6efd !important;
+   }
+
+   &--close {
+    visibility: hidden;
+    transition: all 0.2s ease-in-out;
+
+    .editfolder__medicalsection-box:hover & {
+     visibility: visible;
+     margin-left: 2rem;
+    }
+   }
+  }
+
+  &-button {
+   width: fit-content !important;
+   font-size: 1.5rem;
+   font-weight: 500;
+   border-color: black;
+   background-color: white;
+   border-radius: 5.62rem;
+   padding: 0.813rem 2.5rem 0.813rem 2.5rem !important;
+   margin-bottom: 1.4rem;
+  }
+ }
+}
+
+.clinity {
+ &-alert {
+  text-align: left;
+  font-size: 1.5rem;
+  padding: 1.5rem !important;
+  margin-bottom: 2rem !important;
+ }
+
+ &__modal {
+  max-width: 60rem !important;
+  &-header {
+   font-size: 2rem;
+   font-weight: 500;
+   padding: 1.5rem !important;
+  }
+
+  &-body {
+   font-size: 1.5rem !important;
+  }
+
+  &-footer {
+   padding: 1.5rem;
+  }
+
+  &-btn {
+   font-size: 1.5rem !important;
+   padding: 0.75rem 1.5rem !important;
+  }
+ }
+}
