@@ -6,7 +6,6 @@ import Resetpassword from '../views/auth/Password_reset'
 import Dashboard from '../views/Dashboard'
 import Home from '../views/Home'
 import UserMan from '../views/UserMan'
-
 import PrivateRoute from './PrivateRoutes'
 import PublicRoute from './PublicRoutes'
 import medicalFolder from '../views/medicalFolder/medicalFolder'
@@ -14,23 +13,6 @@ import _404 from '../views/_404'
 import EditMedicalFolder from '../views/EditMedicalFolder'
 
 const RootRoute: FC = () => {
-<<<<<<< HEAD
-  return (
-    <Router>
-      <Switch>
-        <Route path="/" component={Home} exact />
-
-        <PublicRoute path="/login" component={Signin} exact />
-        <PublicRoute path="/signup" component={Signup} exact />
-        <PublicRoute path="/resetpassword" component={Resetpassword} exact />
-
-        <PrivateRoute path="/dashboard" component={Dashboard} exact />
-        <PrivateRoute path="/folder" component={medicalFolder} exact />
-        <PrivateRoute path="/management" component={UserMan} exact />
-      </Switch>
-    </Router>
-  )
-=======
  return (
   <Router>
    <Switch>
@@ -49,7 +31,6 @@ const RootRoute: FC = () => {
    </Switch>
   </Router>
  )
->>>>>>> 1a05ac864fd6def133a9848daf86e8d848d7a005
 }
 
 export default RootRoute

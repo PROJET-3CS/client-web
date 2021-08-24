@@ -30,7 +30,7 @@ const MainTable: React.FC = () => {
  }
 
  const _archiveUser = (payload: number) => {
-  return (event: React.MouseEvent) => {
+  return () => {
    dispatch(archiveUser(payload))
   }
  }

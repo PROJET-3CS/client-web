@@ -1,15 +1,9 @@
 import React, { ComponentProps, ChangeEventHandler } from 'react'
 import { Input } from 'reactstrap'
 
-<<<<<<< HEAD
-//= =============================================================================
-// Items
-//= =============================================================================
-=======
 //  ==============================================================================
 //  Items
 //  ==============================================================================
->>>>>>> 1a05ac864fd6def133a9848daf86e8d848d7a005
 export interface User {
  // eslint-disable-next-line @typescript-eslint/no-explicit-any
  [anyProp: string]: any
@@ -20,11 +14,6 @@ export interface authData {
  password: string
 }
 
-<<<<<<< HEAD
-//= =============================================================================
-// State
-//= =============================================================================
-=======
 export interface Folder {
  // eslint-disable-next-line @typescript-eslint/no-explicit-any
  [anyProp: string]: any
@@ -71,7 +60,6 @@ export interface medicamentType {
 //  ==============================================================================
 //  State
 //  ==============================================================================
->>>>>>> 1a05ac864fd6def133a9848daf86e8d848d7a005
 
 // The code down below is only an example
 export interface SyncState {
@@ -103,26 +91,17 @@ export interface AuthState {
 export interface RootState {
  authState: AuthState
  syncState: SyncState
-<<<<<<< HEAD
  managementState: managementState
-}
-
-//= =============================================================================
-// API
-//= =============================================================================
-=======
  folderState: FolderState
 }
 
 // ==============================================================================
 // API
 // ==============================================================================
->>>>>>> 1a05ac864fd6def133a9848daf86e8d848d7a005
 
 export interface SyncPayload {
  categories: number[]
 }
-<<<<<<< HEAD
 export interface ManagementPayload {
  users: User[]
 }
@@ -130,7 +109,6 @@ export interface ManagementPayload {
 //= =============================================================================
 // Events
 //= =============================================================================
-=======
 
 export interface FolderPayload {
  medicalFolder: Folder
@@ -140,7 +118,6 @@ export interface FolderPayload {
 // ==============================================================================
 // Events
 // =============================================================================
->>>>>>> 1a05ac864fd6def133a9848daf86e8d848d7a005
 
 export type ReactChangeEvent = React.ChangeEvent<HTMLInputElement>
 export type ReactSubmitEvent = React.FormEvent<HTMLFormElement> | React.FocusEvent<HTMLInputElement>
@@ -155,7 +132,6 @@ export interface OptionType {
  label: string
 }
 
-<<<<<<< HEAD
 //= =============================================================================
 
 // export interface ManagementState {
@@ -170,7 +146,6 @@ export interface managementState {
  loading: boolean
  error: string
 }
-=======
 export interface InputProps {
  id?: ComponentProps<typeof Input>['id']
  type?: ComponentProps<typeof Input>['type']
@@ -200,4 +175,3 @@ export interface IState {
 }
 
 // ==========================================================================
->>>>>>> 1a05ac864fd6def133a9848daf86e8d848d7a005

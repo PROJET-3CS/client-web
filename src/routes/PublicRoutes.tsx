@@ -8,17 +8,8 @@ interface Props extends RouteProps {
 }
 
 const PrivateRoute: FC<Props & RouteProps> = ({ component: Component, ...rest }) => {
-  const { isAuthenticated } = useSelector(getAuth)
+ const { isAuthenticated } = useSelector(getAuth)
 
-<<<<<<< HEAD
-  return (
-    <Route
-      {...rest}
-      // eslint-disable-next-line
-   render={(props) => (!isAuthenticated ? <Component {...props} /> : <Redirect to="/dashboard" />)}
-    />
-  )
-=======
  return (
   <Route
    {...rest}
@@ -26,7 +17,6 @@ const PrivateRoute: FC<Props & RouteProps> = ({ component: Component, ...rest })
    render={(props) => (!isAuthenticated ? <Component {...props} /> : <Redirect to="/dashboard" />)}
   />
  )
->>>>>>> 1a05ac864fd6def133a9848daf86e8d848d7a005
 }
 
 export default PrivateRoute
