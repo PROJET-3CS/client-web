@@ -30,7 +30,7 @@ const MainTable: React.FC = () => {
   dispatch(fetchUsers())
  }
 
- const _archiveUser = (payload: number) => {
+ const _archiveUser = (payload: User[]) => {
   return () => {
    dispatch(archiveUser(payload))
   }
@@ -51,7 +51,7 @@ const MainTable: React.FC = () => {
  // this is the filtering function , waiting for the other data to ve fetched from the API to add all filters
  function filterRole(rows: User[]) {
   // eslint-disable-next-line arrow-body-style
-  return rows.filter((row: User) => roleFilter === '' || row.role == roleFilter)
+  return rows.filter((row: User) => roleFilter === '' || row.role === parseInt(roleFilter , 10) )
  }
 
  function filterson() {
@@ -71,8 +71,8 @@ const MainTable: React.FC = () => {
      {showFilter === 1 && (
       <select value={roleFilter} onChange={handleChange}>
        <option value="">all</option>
-       <option value={0}>admin</option>
-       <option value={1}>student</option>
+       <option value='0'>admin</option>
+       <option value='1'>student</option>
       </select>
      )}
 

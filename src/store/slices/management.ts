@@ -12,7 +12,7 @@ const ManagementSlice = createSlice({
  name: 'management',
  initialState,
  reducers: {
-  fetchUsersSuccess: (state, { payload }: PayloadAction<any>) => {
+  fetchUsersSuccess: (state, { payload }: PayloadAction<User[]>) => {
    state.loading = false
    state.error = ''
    state.users = payload
@@ -30,7 +30,7 @@ const ManagementSlice = createSlice({
    state.error = ''
    state.users = payload
   },
-  archiveUser: (state, { payload }: PayloadAction<any>) => {
+  archiveUser: (state, { payload }: PayloadAction<User[]>) => {
    state.loading = true
   },
   archiveUserError: (state) => {
