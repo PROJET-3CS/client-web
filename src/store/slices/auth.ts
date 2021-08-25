@@ -5,7 +5,7 @@ import { AuthState } from '../../helpers/types'
 export const initialState: AuthState = {
  currentUser: {},
  user: {},
- isAuthenticated: false,
+ isAuthenticated: undefined,
  error: false,
  msg: '',
  loading: true,

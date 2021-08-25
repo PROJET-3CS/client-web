@@ -86,7 +86,7 @@ export interface AuthState {
  loading: boolean
  currentUser: User
  user: User
- isAuthenticated: boolean
+ isAuthenticated: boolean | undefined
  error: boolean
  msg: string
 }

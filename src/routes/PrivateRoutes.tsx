@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import { useSelector } from 'react-redux'
-import { Route, Redirect, RouteProps } from 'react-router-dom'
+import { Route, Redirect, RouteProps, useLocation } from 'react-router-dom'
 import { getAuth } from '../store/selectors'
 
 interface Props extends RouteProps {
@@ -9,12 +9,13 @@ interface Props extends RouteProps {
 
 const PublicRoute: FC<Props & RouteProps> = ({ component: Component, ...rest }) => {
  const { isAuthenticated } = useSelector(getAuth)
+ const location = useLocation()
 
  return (
   <Route
    {...rest}
    // eslint-disable-next-line
-   render={(props) => (isAuthenticated ? <Component {...props} /> : <Redirect to="/login" />)}
+   render={(props) => (isAuthenticated === true ? <Component {...props} /> : isAuthenticated === false ? <Redirect to="/login" /> : <Redirect to={location.pathname} /> )}
   />
  )
 }
