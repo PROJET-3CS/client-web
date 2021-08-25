@@ -7,7 +7,6 @@ import OverBox from '../components/OverBox'
 import MainTable from '../components/MainTable'
 import Header from '../components/Header'
 
-
 const UserMan: FC = () => {
  return (
   <Layout>
@@ -29,7 +28,6 @@ const UserMan: FC = () => {
     <LazyLoad>
      <MainTable />
     </LazyLoad>
-    
    </Container>
   </Layout>
  )

@@ -24,5 +24,4 @@ const UserNav: FC = () => {
  )
 }
 
-
 export default UserNav

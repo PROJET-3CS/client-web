@@ -108,7 +108,12 @@ const MainTable: React.FC = () => {
         <td className="maintable-header-item">{user.status ? user.status : '//'}</td>
         <td className="maintable-header-item">{user.lastCnx ? user.lastCnx : '//'}</td>
         <td className="maintable-header-item raduisadd1">
-         <FontAwesomeIcon icon="ellipsis-h" onClick={() => {_archiveUser(user)}} />
+         <FontAwesomeIcon
+          icon="ellipsis-h"
+          onClick={() => {
+           _archiveUser(user)
+          }}
+         />
         </td>
        </tr>
       )
