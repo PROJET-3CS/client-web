@@ -1122,3 +1122,40 @@
   }
  }
 }
+
+// USER CONFIRMATION
+.user_confirmation {
+ height: 100vh;
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+ background-color: #f9f6fc;
+
+ &-illustration1 {
+  width: 55rem !important;
+  margin-bottom: 3rem;
+ }
+
+ &-illustration2 {
+  width: 35rem !important;
+  margin-bottom: 3rem;
+ }
+
+ &-title {
+  font-size: 4rem;
+  font-weight: 700;
+  color: #5b63f6;
+ }
+
+ &-text {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #000;
+ }
+
+ &-button {
+  margin-top: 2rem;
+  width: 60%;
+ }
+}
