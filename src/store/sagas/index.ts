@@ -21,11 +21,18 @@ import {
  updateFolderSuccess,
  updateFolderError,
  updateInfoAntecedent,
- updateInfoMedical
+ updateInfoMedical,
 } from '../slices/folder'
 import { getAuth, getFolder, getManagement } from '../selectors'
 import { getToken, removeToken, setToken } from '../../helpers/api'
-import { fetchUsers, fetchUsersSuccess, fetchUsersError , archiveUser , archiveUserError , archiveUserSuccess } from '../slices/management'
+import {
+ fetchUsers,
+ fetchUsersSuccess,
+ fetchUsersError,
+ archiveUser,
+ archiveUserError,
+ archiveUserSuccess,
+} from '../slices/management'
 
 // Hit the Express endpoint to get the current user from the cookie
 
@@ -74,41 +81,34 @@ function* logoutUser() {
 
 //
 
-
 function* getUsers() {
  try {
-  const {data} = yield axios.get( '/users/get_users/0')
+  const { data } = yield axios.get('/users/get_users/0')
   if (data.status === 'success') {
-     
-   // const users = (data.body.length === 1) ? [data.body] : data.body  
+   // const users = (data.body.length === 1) ? [data.body] : data.body
    yield put(fetchUsersSuccess(data.body.users))
-  }
-  else {
+  } else {
    yield put(fetchUsersError())
   }
-    
  } catch (error) {
   yield put(fetchUsersError())
  }
 }
 
 function* archiverUser() {
- 
  try {
-  const {selectedUser} = yield select(getManagement)
+  const { selectedUser } = yield select(getManagement)
   const uri = `medical_folder/activate${selectedUser.id}`
-  const {data} = yield axios.delete(uri)
-  if (data.status === 'success') {  
+  const { data } = yield axios.delete(uri)
+  if (data.status === 'success') {
    yield put(archiveUserSuccess(data))
-  }
-  else {
+  } else {
    yield put(archiveUserError())
   }
- } 
- catch {
+ } catch {
   yield put(archiveUserError())
  }
-} 
+}
 // If any of these functions are dispatched, invoke the appropriate saga
 // eslint-disable-next-line
 
