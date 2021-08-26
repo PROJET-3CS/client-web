@@ -1,4 +1,6 @@
 import React, { FC } from 'react'
+import moment from 'moment'
+
 import { User } from '../../helpers/types'
 
 interface Props {
@@ -27,11 +29,11 @@ const PersonalInfo: FC<Props> = ({ patient }) => {
    </div>
    <div className="folder__item-content">
     <span className="folder__item-content--title">Né le</span>
-    <span className="folder__item-content--value">{patient?.birthDay}</span>
+    <span className="folder__item-content--value">{patient?.birthDay ? moment(patient.birthDay).format('l') : ''}</span>
    </div>
    <div className="folder__item-content">
     <span className="folder__item-content--title">à</span>
-    <span className="folder__item-content--value">Blida</span>
+    <span className="folder__item-content--value">{patient?.birthPlace}</span>
    </div>
 
    <div className="folder__item-content">
