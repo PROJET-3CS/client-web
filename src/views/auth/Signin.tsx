@@ -14,7 +14,7 @@ const Signin: FC = () => {
  // Selectors
  // ===========================================================================
 
- const { error, isAuthenticated } = useSelector(getAuth)
+ const { error, isAuthenticated, currentUser } = useSelector(getAuth)
 
  // ===========================================================================
  // Dispatch
@@ -54,16 +54,20 @@ const Signin: FC = () => {
 
   if (payload.email && payload.password) {
    _login(payload)
+   console.log(currentUser)
   } else {
    _loginError('Empty email or password !')
   }
  }
 
+
+
  // ===========================================================================
  // Hooks
  // ===========================================================================
 
- if (isAuthenticated) return <Redirect to="/dashboard" />
+ if (isAuthenticated && currentUser.status === 'active') return <Redirect to="/dashboard" /> 
+ if (isAuthenticated && currentUser.status !== 'active') return <Redirect to="/dashboard" /> 
 
  return (
   <div>

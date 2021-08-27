@@ -98,11 +98,25 @@ export interface managmentState {
  error: string
 }
 
+export interface activeState {
+  error: boolean
+  id:string
+ }
+
+export interface ResetPassState {
+ email: string,
+ error: boolean,
+ msg: string,
+ password: string,
+   }
+
 export interface RootState {
  authState: AuthState
  syncState: SyncState
  managmentState: managmentState
  folderState: FolderState
+ resetPassState: ResetPassState
+ activeState: activeState
 }
 
 // ==============================================================================

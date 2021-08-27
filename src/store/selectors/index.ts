@@ -5,4 +5,6 @@ export const getSync = (state: RootState) => state.syncState
 export const getAuth = (state: RootState) => state.authState
 export const getManagement = (state: RootState) => state.managmentState
 export const getFolder = (state: RootState) => state.folderState
+export const getReset = (state: RootState) => state.resetPassState
+export const getActive = (state: RootState) => state.activeState
 /* eslint-enable */
