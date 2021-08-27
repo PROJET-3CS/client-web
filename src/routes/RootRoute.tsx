@@ -16,6 +16,7 @@ import EmailConfirmation from '../views/EmailConfirmation'
 
 const Dashboard = React.lazy(() => import('../views/Dashboard'))
 const medicalFolder = React.lazy(() => import('../views/medicalFolder/medicalFolder'))
+const Appointment = React.lazy(() => import('../views/Appointment/Appointment'))
 
 const RootRoute: FC = () => {
  return (
@@ -30,9 +31,10 @@ const RootRoute: FC = () => {
      <PublicRoute path="/confirmation" component={EmailConfirmation} exact />
 
      <PrivateRoute path="/dashboard" component={Dashboard} exact />
+     <PrivateRoute path="/management" component={UserMan} exact />
      <PrivateRoute path="/folder/:id" component={medicalFolder} exact />
      <PrivateRoute path="/folder/:id/edit" component={EditMedicalFolder} exact />
-     <PrivateRoute path="/management" component={UserMan} exact />
+     <PrivateRoute path="/appointments" component={Appointment} exact />
 
      <Route component={_404} />
     </Switch>

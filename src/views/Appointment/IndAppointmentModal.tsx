@@ -1,24 +1,19 @@
+import { FC, ReactEventHandler } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { ComponentProps, FC, useState } from 'react'
-import { Button, Modal, ModalBody, FormGroup, Label, Row, Input } from 'reactstrap'
+import { Modal, ModalBody, FormGroup, Label, Row } from 'reactstrap'
 import DoctorBox from '../../components/AppointmentComponents/DoctorBox'
 import AwesomeButton from '../../components/AwesomeButton/AwesomeButton'
 import SecondaryInput from '../../components/PrimaryInput/SecondaryInput'
 
-const IndAppointmentModal: FC = (props: ComponentProps<typeof Input>['props']) => {
- const { buttonLabel } = props
+interface Props {
+ modal: boolean
+ toggle: ReactEventHandler
+}
 
- const [modal, setModal] = useState(false)
-
- const toggle = () => {
-  setModal(!modal)
- }
+const IndAppointmentModal: FC<Props> = ({modal, toggle}) => {
 
  return (
-  <div>
-   <Button color="danger" onClick={toggle}>
-    {buttonLabel}
-   </Button>
+  <>
    <Modal
     isOpen={modal}
     modalTransition={{ timeout: 100 }}
@@ -64,7 +59,7 @@ const IndAppointmentModal: FC = (props: ComponentProps<typeof Input>['props']) =
      </div>
     </ModalBody>
    </Modal>
-  </div>
+  </>
  )
 }
 
