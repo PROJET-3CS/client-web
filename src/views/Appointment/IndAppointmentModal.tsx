@@ -12,6 +12,7 @@ interface Props {
 
 const IndAppointmentModal: FC<Props> = ({modal, toggle}) => {
 
+
  return (
   <>
    <Modal
@@ -37,6 +38,9 @@ const IndAppointmentModal: FC<Props> = ({modal, toggle}) => {
         <DoctorBox name="Dr Amirouche" speciality="Generaliste" image="/img/doctor1.png" />
         <DoctorBox name="Dr Amirouche" speciality="Generaliste" image="/img/doctor2.png" />
         <DoctorBox name="Dr Amirouche" speciality="Generaliste" image="/img/doctor3.png" />
+        <DoctorBox name="Dr Amirouche" speciality="Generaliste" image="/img/doctor4.png" />
+        <DoctorBox name="Dr Amirouche" speciality="Generaliste" image="/img/doctor4.png" />
+        <DoctorBox name="Dr Amirouche" speciality="Generaliste" image="/img/doctor4.png" />
         <DoctorBox name="Dr Amirouche" speciality="Generaliste" image="/img/doctor4.png" />
        </Row>
       </FormGroup>

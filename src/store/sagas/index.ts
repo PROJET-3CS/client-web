@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 // This file for all async call funct in store
 import { all, put, takeLatest, select } from 'redux-saga/effects'
 import axios from 'axios'
@@ -23,7 +24,7 @@ import {
  updateInfoAntecedent,
  updateInfoMedical,
 } from '../slices/folder'
-import { getAuth, getFolder, getManagement } from '../selectors'
+import { getAppointment, getAuth, getFolder, getManagement } from '../selectors'
 import { getToken, removeToken, setToken } from '../../helpers/api'
 import {
  fetchUsers,
@@ -33,6 +34,12 @@ import {
  archiveUserError,
  archiveUserSuccess,
 } from '../slices/management'
+
+import {
+ addAppointmentSuccess,
+ addAppointmentError,
+ addAppointment,
+} from '../slices/appointment'
 
 // Hit the Express endpoint to get the current user from the cookie
 
@@ -179,6 +186,26 @@ function* _updateFolder() {
  }
 }
 
+function* _addAppointment() {
+ try {
+  const USER_TOKEN = getToken()
+  const authToken = `Bearer ${USER_TOKEN}`
+
+  const { appointment } = yield select(getAppointment)
+  const { data } = yield axios.post('/demand_appointment/', appointment, {
+   headers: { Authorization: authToken },
+  })
+
+  if (data.status === 'success') {
+   yield put(addAppointmentSuccess(data.body))
+  } else {
+   yield put(addAppointmentError())
+  }
+ } catch (Err) {
+  yield put(addAppointmentError())
+ }
+}
+
 // If any of these functions are dispatched, invoke the appropriate saga
 // eslint-disable-next-line
 function* rootSaga() {
@@ -192,6 +219,7 @@ function* rootSaga() {
   takeLatest(updatePatient.type, _updatePatient),
   takeLatest(updateInfoAntecedent.type, _updateFolder),
   takeLatest(updateInfoMedical.type, _updateFolder),
+  takeLatest(addAppointment.type, _addAppointment)
  ])
 }
 

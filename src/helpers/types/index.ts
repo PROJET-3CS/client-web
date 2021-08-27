@@ -19,6 +19,21 @@ export interface Folder {
  [anyProp: string]: any
 }
 
+export interface Appointment {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    [anyProp: string]: any
+   }
+
+export interface AppointmentInfo {
+ doctorId: number
+ patientId: number
+ targetEmail?: string
+ description?: string
+ date: Date
+ startTime: Date
+ endTime: Date 
+}
+
 export interface InfoGeneralType {
  firstname: string
  lastname: string
@@ -98,11 +113,19 @@ export interface managmentState {
  error: string
 }
 
+export interface AppointmentState {
+ loading: boolean
+ error: boolean
+ appointments: Appointment | Record<string, unknown>
+ appointment: Appointment | Record<string, unknown>
+}
+
 export interface RootState {
  authState: AuthState
  syncState: SyncState
  managmentState: managmentState
  folderState: FolderState
+ appointmentState: AppointmentState
 }
 
 // ==============================================================================
@@ -114,6 +137,10 @@ export interface SyncPayload {
 }
 export interface ManagementPayload {
  users: User[]
+}
+
+export interface AppointmentPayload {
+ apointments: Appointment[]
 }
 
 //= =============================================================================
