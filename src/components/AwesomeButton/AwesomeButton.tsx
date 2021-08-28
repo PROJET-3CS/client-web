@@ -1,9 +1,10 @@
 import React, { FC } from 'react'
+import { InputProps } from '../../helpers/types'
 import './AwesomeButton.scss'
 
-const AwesomeButton: FC<React.HTMLAttributes<HTMLDivElement>> = ({ children, className }) => {
+const AwesomeButton: FC<InputProps> = ({ children, className, onClick }) => {
  return (
-  <button type="submit" className={`pushable-primary ${className}`}>
+  <button type="submit" onClick={onClick} className={`pushable-primary ${className}`}>
    <span className="shadow-primary"> </span>
    <span className="edge-primary"> </span>
    <span className="front-primary">{children}</span>

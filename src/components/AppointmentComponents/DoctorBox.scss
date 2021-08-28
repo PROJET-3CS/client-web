@@ -3,7 +3,17 @@
  padding: 0.594rem 0.9rem 0.3rem 0.9rem !important;
  width: fit-content !important;
  border-radius: 1rem;
+ border: 2px white solid;
  margin-right: 0.65rem;
+
+ &:hover,
+ &:active {
+  border: 2px #5b63f6 solid;
+ }
+
+ &-active {
+  border: 2px #5b63f6 solid;
+ }
 
  & img {
   border-radius: 0.8rem;

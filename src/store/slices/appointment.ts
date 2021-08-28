@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-import { AppointmentState, AppointmentPayload } from '../../helpers/types'
+import { AppointmentState, AppointmentPayload, AppointmentType } from '../../helpers/types'
 
 export const initialState: AppointmentState = {
  loading: true,
@@ -28,18 +28,21 @@ const appointmentSlice = createSlice({
    state.error = false
   },
 
-  addAppointment: (state) => {
+  addAppointment: (state, { payload }: PayloadAction<AppointmentType>) => {
    state.loading = true
+   state.appointment = payload
   },
 
   addAppointmentError: (state) => {
    state.loading = false
+   state.appointment = {}
    state.error = true
   },
 
   addAppointmentSuccess: (state, { payload }: PayloadAction<AppointmentPayload>) => {
    state.loading = false
    state.appointments = payload
+   state.appointment = {}
    state.error = false
   },
  },

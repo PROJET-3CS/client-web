@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 import React, { ComponentProps, ChangeEventHandler } from 'react'
 import { Input } from 'reactstrap'
 
@@ -20,18 +21,24 @@ export interface Folder {
 }
 
 export interface Appointment {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    [anyProp: string]: any
-   }
+ // eslint-disable-next-line @typescript-eslint/no-explicit-any
+ [anyProp: string]: any
+}
 
-export interface AppointmentInfo {
- doctorId: number
- patientId: number
+export interface AppointmentType {
+ doctorId: number | string
+ patientId: number | string
  targetEmail?: string
  description?: string
- date: Date
- startTime: Date
- endTime: Date 
+ date: string | number
+ startTime: Date | string
+ endTime: Date | string
+}
+
+export interface AppointmentInfo {
+ medecins: User[]
+ patients: User[]
+ appointment: AppointmentType | Record<string, unknown>
 }
 
 export interface InfoGeneralType {
@@ -178,6 +185,7 @@ export interface InputProps {
  value?: ComponentProps<typeof Input>['value']
  required?: ComponentProps<typeof Input>['required']
  defaultValue?: ComponentProps<typeof Input>['value'] | undefined
+ className?: ComponentProps<typeof Input>['className'] | undefined
  onChange?: ChangeEventHandler<HTMLInputElement> | undefined
  onClick?: ReactClickEventHandler | undefined
  options?: OptionType[]

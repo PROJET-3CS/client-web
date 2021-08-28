@@ -1,22 +1,27 @@
 import { FC, ComponentProps } from 'react'
 import { Input } from 'reactstrap'
+import { InputProps } from '../../helpers/types'
 import './DoctorBox.scss'
 
-interface InputProps {
- image: ComponentProps<typeof Input>['placeholder']
- name: ComponentProps<typeof Input>['name']
+interface Props extends InputProps {
+ image: string
+ name: string
  speciality: ComponentProps<typeof Input>['label']
+ // eslint-disable-next-line no-unused-vars
+ selectDoctor: (payload: string) => void
+ doctor: number | string
+ selectedDoctor: number | string
 }
 
-const DoctorBox: FC<InputProps> = ({ image, name, speciality }) => {
+const DoctorBox: FC<Props> = ({ id, doctor, image, name, speciality, selectDoctor, selectedDoctor }) => {
  return (
-  <div className="doctorbox">
+  <button id={id} onClick={() => {selectDoctor(`${doctor}`)}} type="button" className={`doctorbox ${selectedDoctor === doctor.toString() ? 'doctorbox-active': ''}`}>
    <img src={image} alt="" />
    <div>
     <p className="doctorbox-title">{name}</p>
     <p className="doctorbox-speciality">{speciality}</p>
    </div>
-  </div>
+  </button>
  )
 }
 
