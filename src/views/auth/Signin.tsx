@@ -54,7 +54,6 @@ const Signin: FC = () => {
 
   if (payload.email && payload.password) {
    _login(payload)
-   console.log(currentUser)
   } else {
    _loginError('Empty email or password !')
   }
@@ -67,7 +66,7 @@ const Signin: FC = () => {
  // ===========================================================================
 
  if (isAuthenticated && currentUser.status === 'active') return <Redirect to="/dashboard" /> 
- if (isAuthenticated && currentUser.status !== 'active') return <Redirect to="/dashboard" /> 
+ if (isAuthenticated && currentUser.status !== 'active') return <Redirect to="/" /> 
 
  return (
   <div>

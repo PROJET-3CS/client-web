@@ -1,8 +1,7 @@
 import React, { FC, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { Redirect } from 'react-router'
-import { Col, Form, FormFeedback, FormGroup, Row, Label, Input, Alert 
- , Modal, ModalHeader, ModalBody, ModalFooter , Button } from 'reactstrap'
+import { Col, Form, FormFeedback, FormGroup, Row, Label, Input, Alert } from 'reactstrap'
 import AwesomeButton from '../../components/AwesomeButton/AwesomeButton'
 import { ReactSubmitEvent } from '../../helpers/types'
 import { change, changeError } from '../../store/slices/resetPass'

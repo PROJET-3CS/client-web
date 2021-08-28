@@ -2,7 +2,8 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 export const initialState = {
  error : false,
- id: ''
+ id: '',
+ msg : '',
 }
 
 const activeSlice = createSlice({
@@ -11,14 +12,16 @@ const activeSlice = createSlice({
  reducers: {
  
   activeError: (state, { payload }: PayloadAction<string>) => {
-   
+   state.msg = payload
    state.error = true
   },
   activeSuccess: (state, { payload }: PayloadAction<string>) => {
+   state.id = payload
    state.error = false
   },
   active: (state, { payload }: PayloadAction<string>) => {
    state.error = false
+   state.id = payload
   },
  
  }

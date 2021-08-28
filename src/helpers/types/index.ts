@@ -101,6 +101,7 @@ export interface managmentState {
 export interface activeState {
   error: boolean
   id:string
+  msg:string
  }
 
 export interface ResetPassState {
