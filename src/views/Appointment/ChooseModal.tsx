@@ -33,7 +33,7 @@ const ChooseModal: FC<Props> = ({ modal, toggle, toggleOne, toggleTwo }) => {
       <i className="newappointment__select-icon">
        <FontAwesomeIcon icon={faUsers} />
       </i>
-      <span className="newappointment__select-text">Group</span>
+      <span className="newappointment__select-text">Collectif</span>
      </button>
     </div>
    </ModalBody>

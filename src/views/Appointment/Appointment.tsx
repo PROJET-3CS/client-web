@@ -1,11 +1,5 @@
-/* eslint-disable max-lines */
 import React, { FC, useEffect, useMemo, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-
-import FullCalendar from '@fullcalendar/react' // must go before plugins
-import dayGridPlugin from '@fullcalendar/daygrid' // a plugin!
-import interactionPlugin from '@fullcalendar/interaction'
-import timeGridPlugin from '@fullcalendar/timegrid'
 
 import Header from '../../components/Header'
 import Layout from '../layouts/Layout'
@@ -15,19 +9,15 @@ import { getAppointment, getManagement } from '../../store/selectors'
 import { AppointmentInfo, User } from '../../helpers/types'
 import { fetchUsers } from '../../store/slices/management'
 import Toaster from '../../components/Toast/Toaster'
-import { syncAppointment } from '../../store/slices/appointment'
-
-export interface AppointmentItem {
- // eslint-disable-next-line @typescript-eslint/no-explicit-any
- [anyProp: string]: any
-}
+import ColAppointmentModal from './ColAppointmentModal'
+import AppointmentCalendar from './AppointmentCalendar'
 
 const Appointment: FC = () => {
  // ===========================================================================
  // Selectors
  // ===========================================================================
  const { users } = useSelector(getManagement)
- const { error, msg, appointment, appointments } = useSelector(getAppointment)
+ const { error, msg, appointment} = useSelector(getAppointment)
 
  // ===========================================================================
  // Dispatch
@@ -39,20 +29,18 @@ const Appointment: FC = () => {
   dispatch(fetchUsers())
  }
 
- const _syncAppointments = () => {
-  dispatch(syncAppointment())
- }
-
  //  ==============================================================================
  //  State
  //  ==============================================================================
  const initState: AppointmentInfo = {
   medecins: [],
   patients: [],
-  events: [],
   appointment: {
+   type: '',
    doctorId: '',
    patientId: '',
+   promo: '',
+   group: '',
    targetEmail: '',
    description: '',
    date: new Date().getTime(),
@@ -63,7 +51,8 @@ const Appointment: FC = () => {
 
  const [state, setState] = useState(initState)
 
- const [addModal, setAddModal] = useState(false)
+ const [addInvModal, setAddInvModal] = useState(false)
+ const [addColModal, setAddColModal] = useState(false)
  const [selectModal, setSelect] = useState(false)
  const [open, setOpen] = useState(false)
 
@@ -91,52 +80,28 @@ const Appointment: FC = () => {
   })
  }
 
- const getUser = (id: string | number) => {
-  const user = users.find((el) => {
-   return el.id === id
-  })
-
-  return `${user?.firstname} ${user?.lastname}`
- }
-
- const generateEvents = () => {
-  if (appointments?.length > 0) {
-   const events = appointments.map((appoint: AppointmentItem) => {
-    return {
-     title: getUser(appoint.patientId), // a property!
-     start: `${appoint.date}T${appoint.start_time}+01:00`, // a property!
-     end: `${appoint.date}T${appoint.end_time}+01:00`, // a property! ** see important note below about 'end' **
-     backgroundColor: 'rgba(14, 165, 233, .1)',
-     textColor: '#0369A1',
-    }
-   })
-
-   setState({
-    ...state,
-    events,
-   })
-  }
- }
-
- const toggleAdd = () => {
+ const toggleAddInd = () => {
   setSelect(false)
   setState({
    ...state,
-   appointment: {
-    doctorId: '',
-    patientId: '',
-    targetEmail: '',
-    description: '',
-    date: new Date().getTime(),
-    startTime: '',
-    endTime: '',
-   },
+   appointment: initState.appointment,
   })
-  setAddModal(!addModal)
+  setAddColModal(false)
+  setAddInvModal(!addInvModal)
+ }
+
+ const toggleAddCol = () => {
+  setSelect(false)
+  setState({
+   ...state,
+   appointment: initState.appointment,
+  })
+  setAddInvModal(false)
+  setAddColModal(!addColModal)
  }
 
  const toggleSelect = () => {
-  setAddModal(false)
+  setAddInvModal(false)
   setSelect(!selectModal)
  }
 
@@ -149,14 +114,9 @@ const Appointment: FC = () => {
   }
  }, [users])
 
- useEffect(() => {
-  _syncAppointments()
- }, [])
-
  useMemo(() => {
   sortUsers()
-  generateEvents()
- }, [users, appointments])
+ }, [users])
 
  const initialRender = useRef(true) // SOL from stackoverflow for excuting useEffect after the first renders
  useEffect(() => {
@@ -180,39 +140,24 @@ const Appointment: FC = () => {
      medecins={state.medecins}
      patients={state.patients}
      appointment={state.appointment}
-     modal={addModal}
-     toggle={toggleAdd}
+     modal={addInvModal}
+     toggle={toggleAddInd}
+    />
+    <ColAppointmentModal
+     medecins={state.medecins}
+     appointment={state.appointment}
+     modal={addColModal}
+     toggle={toggleAddCol}
     />
     <ChooseModal
      modal={selectModal}
      toggle={toggleSelect}
-     toggleOne={toggleAdd}
-     toggleTwo={toggleAdd}
+     toggleOne={toggleAddInd}
+     toggleTwo={toggleAddCol}
     />
-    <FullCalendar
-     locale="fr"
-     plugins={[dayGridPlugin, interactionPlugin, timeGridPlugin]}
-     customButtons={{
-      add: {
-       text: '+ New Appointment',
-       click() {
-        toggleSelect()
-       },
-      },
-     }}
-     events={state.events}
-     headerToolbar={{
-      left: 'prev,next today',
-      center: 'title',
-      right: 'add',
-     }}
-     slotDuration="00:15:00"
-     slotMinTime="08:00:00"
-     slotMaxTime="17:00:00"
-     displayEventEnd
-     allDaySlot={false}
-     initialView="timeGridWeek"
-    />
+
+    <AppointmentCalendar toggleSelect={toggleSelect} />
+    
    </div>
    {/* Toast for diplaying error msgs */}
    <Toaster modal={open} type={error ? 'danger' : 'success'}>

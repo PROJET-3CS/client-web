@@ -34,8 +34,11 @@ export interface eventType {
 }
 
 export interface AppointmentType {
+ type?: string
  doctorId: number | string
- patientId: number | string
+ patientId?: number | string
+ group?: number | string
+ promo?: number | string
  targetEmail?: string
  description?: string
  date: string | number
@@ -46,7 +49,6 @@ export interface AppointmentType {
 export interface AppointmentInfo {
  medecins: User[]
  patients: User[]
- events: eventType[]
  appointment: AppointmentType
 }
 
@@ -157,7 +159,7 @@ export interface ManagementPayload {
 }
 
 export interface AppointmentPayload {
- apointments: Appointment[]
+ appointments: Appointment[]
 }
 
 //= =============================================================================

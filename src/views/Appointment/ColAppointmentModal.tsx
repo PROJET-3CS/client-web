@@ -1,7 +1,7 @@
 /* eslint-disable max-lines */
-import { FC, useEffect, useState, useMemo } from 'react'
+import { FC, useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { Modal, ModalBody, FormGroup, Label, Row } from 'reactstrap'
+import { Modal, ModalBody, FormGroup, Label, Row, Col } from 'reactstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
 
@@ -16,11 +16,10 @@ interface Props {
  modal: boolean
  toggle: () => void
  medecins: User[]
- patients: User[]
  appointment: AppointmentType
 }
 
-const IndAppointmentModal: FC<Props> = ({ modal, toggle, medecins, appointment, patients }) => {
+const ColAppointmentModal: FC<Props> = ({ modal, toggle, medecins, appointment }) => {
  // ===========================================================================
  // Dispatch
  // ==========================================================================
@@ -34,8 +33,10 @@ const IndAppointmentModal: FC<Props> = ({ modal, toggle, medecins, appointment, 
  //  State
  //  ==============================================================================
  const initState: AppointmentType = {
-  type: 'individual',
+  type: 'collectif',
   doctorId: appointment?.doctorId ? appointment.doctorId : '',
+  promo: appointment?.promo ? appointment.promo : '',
+  group: appointment?.group ? appointment.group : '',
   patientId: appointment?.patientId ? appointment.patientId : '',
   date: appointment?.date ? appointment.date : new Date().getTime(),
   startTime: appointment?.startTime ? appointment.startTime : '',
@@ -49,24 +50,26 @@ const IndAppointmentModal: FC<Props> = ({ modal, toggle, medecins, appointment, 
  // ===========================================================================
 
  const handleChange = (e: ReactChangeEvent) => {
-  if (e.target.id === 'date') {
-   setState({
-    ...state,
-    [e.target.id]: new Date(e.target.value).getTime.toString(),
-   })
-  }
-
   setState({
    ...state,
    [e.target.id]: e.target.value,
   })
  }
 
- const handleSelectPatient = (value: string) => {
+ const handleSelectPromo = (value: string) => {
   setState({
    ...state,
-   patientId: value,
+   promo: value,
   })
+ }
+
+ const handleSelectGroup = (value: string) => {
+  if (state.promo) {
+   setState({
+    ...state,
+    group: value,
+   })
+  }
  }
 
  const selectDoctor = (payload: string) => {
@@ -88,14 +91,31 @@ const IndAppointmentModal: FC<Props> = ({ modal, toggle, medecins, appointment, 
   setState(initState)
  }, [appointment])
 
- const options = useMemo(() => {
-  return patients.map((el) => {
-   return {
-    value: el?.id,
-    label: `${el?.firstname} ${el?.lastname}`,
-   }
-  })
- }, [patients])
+ const promoOptions = [
+  { value: '1', label: '1CPI' },
+  { value: '2', label: '2CPI' },
+  { value: '3', label: '1CS' },
+  { value: '4', label: '2CS' },
+  { value: '5', label: '3CS' },
+ ]
+
+ const groupOptions = [
+  { value: '1', label: 'G01' },
+  { value: '2', label: 'G02' },
+  { value: '3', label: 'G03' },
+  { value: '4', label: 'G04' },
+  { value: '5', label: 'G05' },
+  { value: '6', label: 'G06' },
+  { value: '7', label: 'G07' },
+  { value: '8', label: 'G08' },
+  { value: '9', label: 'G09' },
+  { value: '10', label: 'G10' },
+  { value: '11', label: 'G11' },
+  { value: '12', label: 'G12' },
+  { value: '13', label: 'G13' },
+  { value: '14', label: 'G14' },
+  { value: '15', label: 'G15' },
+ ]
 
  return (
   <>
@@ -108,20 +128,36 @@ const IndAppointmentModal: FC<Props> = ({ modal, toggle, medecins, appointment, 
    >
     <ModalBody className="newappointment__resultmodal-body">
      <div className="newappointment__resultmodal-header">
-      <p>Create Individual Appointment</p>
+      <p>Create Collectif Appointment</p>
       <FontAwesomeIcon onClick={toggle} icon={faTimes} color="primary-color" />
      </div>
      <div>
       <FormGroup className="newappointment__resultmodal-formgroup">
-       <Label className="newappointment__resultmodal-formgroup--label">Select Patient</Label>
-       <SecondarySelect
-        id="patientId"
-        name="name"
-        label="name"
-        options={options}
-        getValue={handleSelectPatient}
-        defaultValue={state.patientId}
-       />
+       <Label className="newappointment__resultmodal-formgroup--label">Select by group</Label>
+       <Row>
+        <Col>
+         <SecondarySelect
+          id="promo"
+          name="promo"
+          label="promo"
+          placeholder="Promo..."
+          options={promoOptions}
+          getValue={handleSelectPromo}
+          defaultValue={state.promo}
+         />
+        </Col>
+        <Col>
+         <SecondarySelect
+          id="group"
+          name="group"
+          label="group"
+          placeholder="Group..."
+          options={groupOptions}
+          getValue={handleSelectGroup}
+          defaultValue={state.group}
+         />
+        </Col>
+       </Row>
       </FormGroup>
       <FormGroup className="newappointment__resultmodal-formgroup">
        <Label className="newappointment__resultmodal-formgroup--label">Assigned to</Label>
@@ -193,4 +229,4 @@ const IndAppointmentModal: FC<Props> = ({ modal, toggle, medecins, appointment, 
  )
 }
 
-export default IndAppointmentModal
+export default ColAppointmentModal

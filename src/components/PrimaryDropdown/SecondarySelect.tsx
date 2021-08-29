@@ -15,6 +15,7 @@ const SecondarySelect: FC<InputProps & SelectProps> = ({
  options,
  defaultValue,
  getValue,
+ placeholder = 'Select...'
 }) => {
  const formatOption = () => {
   if (defaultValue) {
@@ -48,6 +49,7 @@ const SecondarySelect: FC<InputProps & SelectProps> = ({
    options={options}
    className="secondary__form-input--select"
    styles={customStyles}
+   placeholder={placeholder}
    onChange={(selectedOption) => {
     if (Array.isArray(selectedOption)) {
      throw new Error('Unexpected type passed to ReactSelect onChange handler')

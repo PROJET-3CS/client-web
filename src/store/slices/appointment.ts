@@ -25,7 +25,7 @@ const appointmentSlice = createSlice({
 
   syncAppointmentSuccess: (state, { payload }: PayloadAction<AppointmentPayload>) => {
    state.loading = false
-   state.appointments = payload
+   state.appointments = payload.appointments
    state.error = false
   },
 

@@ -26,7 +26,7 @@ import {
  updateInfoMedical,
 } from '../slices/folder'
 import { getAppointment, getAuth, getFolder, getManagement } from '../selectors'
-import { getToken, removeToken, setToken } from '../../helpers/api'
+import { getToken, mixAppointments, removeToken, setToken } from '../../helpers/api'
 import {
  fetchUsers,
  fetchUsersSuccess,
@@ -200,7 +200,11 @@ function* loadAppointment() {
   })
 
   if (data.success === 'success') {
-   yield put(syncAppointmentSuccess(data.response.individualAppointment))
+   const payload = mixAppointments(
+    data.response?.individualAppointment,
+    data.response?.collectifAppointment
+   )
+   yield put(syncAppointmentSuccess(payload))
   } else {
    yield put(syncAppointmentError())
   }
@@ -218,13 +222,19 @@ function* _addAppointment() {
   const payload = {
    doctorId: Number(appointment.doctorId),
    patientId: Number(appointment.patientId),
+   promo: Number(appointment.promo),
+   group: Number(appointment.group),
    description: 'Please don\'t forget to put your mask on !',
    date: moment(appointment.date).format(),
    start_time: appointment.startTime,
    end_time: appointment.endTime,
   }
 
-  const { data } = yield axios.post('/appointment/demand_appointment/', payload, {
+  const url = `/appointment/demand_appointment${
+   appointment?.type === 'collectif' ? '_collectif' : ''
+  }/`
+
+  const { data } = yield axios.post(url, payload, {
    headers: { Authorization: authToken },
   })
 
