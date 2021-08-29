@@ -116,8 +116,8 @@ function* archiverUser() {
 
 function* resetPassword() {
  try {
-  const { email } = yield select(getReset)
-  const uri = `users/forget_password/${email}`
+  const { user } = yield select(getAuth)
+  const uri = `users/forgot_password/${user.email}`
   const { data } = yield axios.get(uri)
   yield put(resetSuccess(data))
  } catch {
@@ -127,9 +127,9 @@ function* resetPassword() {
 
 function* changePassword() {
  try {
-  const { currentUser } = yield select(getAuth)
+  const { user } = yield select(getAuth)
   const { password } = yield select(getReset)
-  const uri = `users/forget_password/${currentUser.id}/${password}`
+  const uri = `users/forgot_password/${user.id}/${password}`
   const { data } = yield axios.get(uri)
   yield put(changeSuccess(data))
  } catch {
@@ -140,8 +140,8 @@ function* changePassword() {
 
 function* activateAcc() {
  try {
-  const { currentUser } = yield select(getAuth)
-  const uri = `medical_folder/activate/${currentUser.id}/`
+  const { user } = yield select(getAuth)
+  const uri = `medical_folder/activate/${user.id}/`
   const { data } = yield axios.get(uri)
   yield put(activeSuccess(data))
  } catch {

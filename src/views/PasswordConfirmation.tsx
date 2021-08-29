@@ -1,17 +1,19 @@
 import { FC } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import AwesomeButton from '../components/AwesomeButton/AwesomeButton'
+import { Button } from 'reactstrap'
 import { getAuth } from '../store/selectors'
 import { reset } from '../store/slices/resetPass'
 
 const PasswordConfirmation: FC = () => {
 
  const dispatch = useDispatch()
- const { currentUser } = useSelector(getAuth)
+ const { user } = useSelector(getAuth)
 
 
  const _resetPassword = () => {
-  dispatch(reset(currentUser.email))
+
+  dispatch(reset(user.email))
+
  }
       
  
@@ -26,7 +28,7 @@ const PasswordConfirmation: FC = () => {
    <div className="user_confirmation-content">
     <span className="user_confirmation-title">Check Your Email</span>
     <p className="user_confirmation-text">click here to get the reset <link rel="stylesheet" href="" /></p>
-    <AwesomeButton onClick={_resetPassword} className="user_confirmation-button">Send Email Confirmation</AwesomeButton>
+    <Button onClick={_resetPassword} className="user_confirmation-button">Send Email Confirmation</Button>
    </div>
   </div>
  )

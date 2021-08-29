@@ -13,7 +13,6 @@ import PublicRoute from './PublicRoutes'
 import _404 from '../views/_404'
 import EditMedicalFolder from '../views/EditMedicalFolder'
 import PasswordConfirmation from '../views/PasswordConfirmation'
-import UserConfirmed from '../views/UserConfirmed'
 import EmailConfirmation from '../views/EmailConfirmation'
 
 const Dashboard = React.lazy(() => import('../views/Dashboard'))
@@ -32,7 +31,6 @@ const RootRoute: FC = () => {
      <PublicRoute path="/signup" component={Signup} exact />
      <Route path="/resetpassword" component={Resetpassword} exact />
      <Route path="/confirmation" component={PasswordConfirmation} exact />
-     <Route path="/confirmation2" component={UserConfirmed} exact />
      <Route path="/confirmation2" component={EmailConfirmation} exact />
      <PrivateRoute path="/dashboard" component={Dashboard} exact />
      <PrivateRoute path="/management" component={UserMan} exact />

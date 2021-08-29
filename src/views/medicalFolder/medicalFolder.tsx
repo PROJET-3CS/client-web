@@ -19,6 +19,7 @@ const medicalFolder: FC = () => {
  // ===========================================================================
 
  const { folder, patient, error } = useSelector(getFolder)
+
  const { id } = useParams<{ id: string }>()
 
  // ===========================================================================
