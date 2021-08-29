@@ -7,6 +7,7 @@ export const initialState: AppointmentState = {
  appointments: [],
  appointment: {},
  error: false,
+ msg: '',
 }
 
 const appointmentSlice = createSlice({
@@ -30,13 +31,16 @@ const appointmentSlice = createSlice({
 
   addAppointment: (state, { payload }: PayloadAction<AppointmentType>) => {
    state.loading = true
+   state.error = false
+   state.msg = ''
    state.appointment = payload
   },
 
-  addAppointmentError: (state) => {
+  addAppointmentError: (state, { payload }: PayloadAction<string>) => {
    state.loading = false
    state.appointment = {}
    state.error = true
+   state.msg = payload
   },
 
   addAppointmentSuccess: (state, { payload }: PayloadAction<AppointmentPayload>) => {
@@ -44,6 +48,7 @@ const appointmentSlice = createSlice({
    state.appointments = payload
    state.appointment = {}
    state.error = false
+   state.msg = 'Your appointment has been successfuly added '
   },
  },
 })

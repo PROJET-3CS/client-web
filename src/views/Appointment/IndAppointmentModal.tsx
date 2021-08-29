@@ -1,4 +1,5 @@
-import { FC, useEffect, useState } from 'react'
+/* eslint-disable max-lines */
+import { FC, useEffect, useState, useMemo } from 'react'
 import { useDispatch } from 'react-redux'
 import { Modal, ModalBody, FormGroup, Label, Row } from 'reactstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -9,6 +10,7 @@ import AwesomeButton from '../../components/AwesomeButton/AwesomeButton'
 import SecondaryInput from '../../components/PrimaryInput/SecondaryInput'
 import { AppointmentType, ReactChangeEvent, User } from '../../helpers/types'
 import { addAppointment } from '../../store/slices/appointment'
+import SecondarySelect from '../../components/PrimaryDropdown/SecondarySelect'
 
 interface Props {
  modal: boolean
@@ -18,11 +20,10 @@ interface Props {
  appointment: AppointmentType
 }
 
-const IndAppointmentModal: FC<Props> = ({ modal, toggle, medecins, appointment }) => {
+const IndAppointmentModal: FC<Props> = ({ modal, toggle, medecins, appointment, patients }) => {
  // ===========================================================================
  // Dispatch
  // ==========================================================================
-
  const dispatch = useDispatch()
 
  const _addAppointment = (payload: AppointmentType) => {
@@ -60,6 +61,13 @@ const IndAppointmentModal: FC<Props> = ({ modal, toggle, medecins, appointment }
   })
  }
 
+ const handleSelectPatient = (value: string) => {
+  setState({
+   ...state,
+   patientId: value,
+  })
+ }
+
  const selectDoctor = (payload: string) => {
   setState({
    ...state,
@@ -68,12 +76,25 @@ const IndAppointmentModal: FC<Props> = ({ modal, toggle, medecins, appointment }
  }
 
  const createAppointment = () => {
-  _addAppointment(appointment)
+  _addAppointment(state)
  }
+
+ // ===========================================================================
+ // Hooks
+ // ===========================================================================
 
  useEffect(() => {
   setState(initState)
  }, [appointment])
+
+ const options = useMemo(() => {
+  return patients.map((el) => {
+   return {
+    value: el?.id,
+    label: `${el?.firstname} ${el?.lastname}`,
+   }
+  })
+ }, [patients])
 
  return (
   <>
@@ -92,14 +113,13 @@ const IndAppointmentModal: FC<Props> = ({ modal, toggle, medecins, appointment }
      <div>
       <FormGroup className="newappointment__resultmodal-formgroup">
        <Label className="newappointment__resultmodal-formgroup--label">Select Patient</Label>
-       <SecondaryInput
+       <SecondarySelect
         id="patientId"
-        onChange={handleChange}
-        value={state.patientId}
         name="name"
-        placeholder="Yacine Kharroubi"
-        type="text"
-        label="Name"
+        label="name"
+        options={options}
+        getValue={handleSelectPatient}
+        defaultValue={state.patientId}
        />
       </FormGroup>
       <FormGroup className="newappointment__resultmodal-formgroup">
@@ -141,6 +161,8 @@ const IndAppointmentModal: FC<Props> = ({ modal, toggle, medecins, appointment }
           id="startTime"
           onChange={handleChange}
           value={state.startTime.toString()}
+          min="08:00"
+          max="16:50"
           name="start"
           placeholder="Yacine Kharroubi"
           type="time"
@@ -150,6 +172,8 @@ const IndAppointmentModal: FC<Props> = ({ modal, toggle, medecins, appointment }
         <div>
          <SecondaryInput
           id="endTime"
+          min="8:10"
+          max="17:00"
           onChange={handleChange}
           value={state.endTime.toString()}
           name="finish"

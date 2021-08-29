@@ -25,6 +25,14 @@ export interface Appointment {
  [anyProp: string]: any
 }
 
+export interface eventType {
+ title: string
+ start: string
+ end: string
+ backgroundColor: string
+ textColor: string
+}
+
 export interface AppointmentType {
  doctorId: number | string
  patientId: number | string
@@ -38,7 +46,8 @@ export interface AppointmentType {
 export interface AppointmentInfo {
  medecins: User[]
  patients: User[]
- appointment: AppointmentType | Record<string, unknown>
+ events: eventType[]
+ appointment: AppointmentType
 }
 
 export interface InfoGeneralType {
@@ -123,6 +132,7 @@ export interface managmentState {
 export interface AppointmentState {
  loading: boolean
  error: boolean
+ msg: string
  appointments: Appointment | Record<string, unknown>
  appointment: Appointment | Record<string, unknown>
 }
@@ -189,6 +199,8 @@ export interface InputProps {
  onChange?: ChangeEventHandler<HTMLInputElement> | undefined
  onClick?: ReactClickEventHandler | undefined
  options?: OptionType[]
+ min?: ComponentProps<typeof Input>['min']
+ max?: ComponentProps<typeof Input>['max']
 }
 
 // ==============================================================================

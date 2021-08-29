@@ -1,7 +1,8 @@
 /* eslint-disable max-lines */
 // This file for all async call funct in store
-import { all, put, takeLatest, select } from 'redux-saga/effects'
+import { all, put, takeLatest, select, call } from 'redux-saga/effects'
 import axios from 'axios'
+import moment from 'moment'
 
 import {
  login,
@@ -39,6 +40,9 @@ import {
  addAppointmentSuccess,
  addAppointmentError,
  addAppointment,
+ syncAppointmentSuccess,
+ syncAppointmentError,
+ syncAppointment,
 } from '../slices/appointment'
 
 // Hit the Express endpoint to get the current user from the cookie
@@ -186,23 +190,52 @@ function* _updateFolder() {
  }
 }
 
+function* loadAppointment() {
+ try {
+  const USER_TOKEN = getToken()
+  const authToken = `Bearer ${USER_TOKEN}`
+
+  const { data } = yield axios.get('/appointment', {
+   headers: { Authorization: authToken },
+  })
+
+  if (data.success === 'success') {
+   yield put(syncAppointmentSuccess(data.response.individualAppointment))
+  } else {
+   yield put(syncAppointmentError())
+  }
+ } catch (Err) {
+  yield put(addAppointmentError('Sorry something went wrong !'))
+ }
+}
+
 function* _addAppointment() {
  try {
   const USER_TOKEN = getToken()
   const authToken = `Bearer ${USER_TOKEN}`
 
   const { appointment } = yield select(getAppointment)
-  const { data } = yield axios.post('/demand_appointment/', appointment, {
+  const payload = {
+   doctorId: Number(appointment.doctorId),
+   patientId: Number(appointment.patientId),
+   description: 'Please don\'t forget to put your mask on !',
+   date: moment(appointment.date).format(),
+   start_time: appointment.startTime,
+   end_time: appointment.endTime,
+  }
+
+  const { data } = yield axios.post('/appointment/demand_appointment/', payload, {
    headers: { Authorization: authToken },
   })
 
-  if (data.status === 'success') {
+  if (data.success === 'success') {
    yield put(addAppointmentSuccess(data.body))
+   yield call(loadAppointment)
   } else {
-   yield put(addAppointmentError())
+   yield put(addAppointmentError(data.body))
   }
  } catch (Err) {
-  yield put(addAppointmentError())
+  yield put(addAppointmentError('Sorry something went wrong !'))
  }
 }
 
@@ -219,7 +252,8 @@ function* rootSaga() {
   takeLatest(updatePatient.type, _updatePatient),
   takeLatest(updateInfoAntecedent.type, _updateFolder),
   takeLatest(updateInfoMedical.type, _updateFolder),
-  takeLatest(addAppointment.type, _addAppointment)
+  takeLatest(addAppointment.type, _addAppointment),
+  takeLatest(syncAppointment.type, loadAppointment),
  ])
 }
 

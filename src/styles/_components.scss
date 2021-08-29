@@ -1141,7 +1141,7 @@
 
    &:hover,
    &:active {
-     border: 2px $color-primary solid;
+    border: 2px $color-primary solid;
    }
   }
 
@@ -1326,4 +1326,22 @@
  right: 4rem;
  top: 22rem;
  z-index: 2;
+}
+
+// TOAST
+.clinity_toast {
+  width: fit-content !important;
+ &-container {
+  position: fixed;
+  top: 89vh;
+  background-color: red;
+  z-index: 10;
+ }
+
+ &-header {
+  font-size: 1.3rem;
+ }
+ &-body {
+  font-size: 1.3rem;
+ }
 }

@@ -1,0 +1,47 @@
+.secondary {
+ &__form {
+  &-group {
+   display: inline-block;
+   background-color: white;
+   border: 2px solid white;
+   border-radius: 0.8rem;
+   width: 100%;
+   padding: 0.5rem 1.9rem 0.813rem 1.9rem;
+   text-align: left;
+
+   &:hover {
+    border: 2px solid #5b63f6;
+   }
+   &:active {
+    border: 2px solid #5b63f6;
+   }
+   &:focus-visible {
+    border: 2px solid #5b63f6;
+   }
+
+   &--label {
+    display: block;
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #5b63f6;
+   }
+  }
+  &-input {
+   &--select {
+    font-family: inherit;
+    font-size: 1.3rem !important;
+    font-weight: 500 !important;
+    color: inherit;
+    padding: 0 !important;
+    border-radius: 0.5rem !important;
+    width: 100%;
+   }
+  }
+ }
+}
+
+@media only screen and (max-width: 75em) {
+ .Secondary__form-subgroup {
+  margin-bottom: 1.5rem;
+ }
+}

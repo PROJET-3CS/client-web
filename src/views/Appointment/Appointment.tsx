@@ -1,4 +1,5 @@
-import React, { FC, useEffect, useState } from 'react'
+/* eslint-disable max-lines */
+import React, { FC, useEffect, useMemo, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import FullCalendar from '@fullcalendar/react' // must go before plugins
@@ -10,14 +11,15 @@ import Header from '../../components/Header'
 import Layout from '../layouts/Layout'
 import IndAppointmentModal from './IndAppointmentModal'
 import ChooseModal from './ChooseModal'
-import { getManagement } from '../../store/selectors'
-import { AppointmentType, User } from '../../helpers/types'
+import { getAppointment, getManagement } from '../../store/selectors'
+import { AppointmentInfo, User } from '../../helpers/types'
 import { fetchUsers } from '../../store/slices/management'
+import Toaster from '../../components/Toast/Toaster'
+import { syncAppointment } from '../../store/slices/appointment'
 
-interface Appointment {
- medecins: User[]
- patients: User[]
- appointment: AppointmentType
+export interface AppointmentItem {
+ // eslint-disable-next-line @typescript-eslint/no-explicit-any
+ [anyProp: string]: any
 }
 
 const Appointment: FC = () => {
@@ -25,6 +27,7 @@ const Appointment: FC = () => {
  // Selectors
  // ===========================================================================
  const { users } = useSelector(getManagement)
+ const { error, msg, appointment, appointments } = useSelector(getAppointment)
 
  // ===========================================================================
  // Dispatch
@@ -36,12 +39,17 @@ const Appointment: FC = () => {
   dispatch(fetchUsers())
  }
 
+ const _syncAppointments = () => {
+  dispatch(syncAppointment())
+ }
+
  //  ==============================================================================
  //  State
  //  ==============================================================================
- const initState: Appointment = {
+ const initState: AppointmentInfo = {
   medecins: [],
   patients: [],
+  events: [],
   appointment: {
    doctorId: '',
    patientId: '',
@@ -57,6 +65,7 @@ const Appointment: FC = () => {
 
  const [addModal, setAddModal] = useState(false)
  const [selectModal, setSelect] = useState(false)
+ const [open, setOpen] = useState(false)
 
  // ===========================================================================
  // Handlers
@@ -80,6 +89,33 @@ const Appointment: FC = () => {
    medecins,
    patients,
   })
+ }
+
+ const getUser = (id: string | number) => {
+  const user = users.find((el) => {
+   return el.id === id
+  })
+
+  return `${user?.firstname} ${user?.lastname}`
+ }
+
+ const generateEvents = () => {
+  if (appointments?.length > 0) {
+   const events = appointments.map((appoint: AppointmentItem) => {
+    return {
+     title: getUser(appoint.patientId), // a property!
+     start: `${appoint.date}T${appoint.start_time}+01:00`, // a property!
+     end: `${appoint.date}T${appoint.end_time}+01:00`, // a property! ** see important note below about 'end' **
+     backgroundColor: 'rgba(14, 165, 233, .1)',
+     textColor: '#0369A1',
+    }
+   })
+
+   setState({
+    ...state,
+    events,
+   })
+  }
  }
 
  const toggleAdd = () => {
@@ -111,8 +147,29 @@ const Appointment: FC = () => {
   if (users.length < 1) {
    _fetchUsers()
   }
-  sortUsers()
  }, [users])
+
+ useEffect(() => {
+  _syncAppointments()
+ }, [])
+
+ useMemo(() => {
+  sortUsers()
+  generateEvents()
+ }, [users, appointments])
+
+ const initialRender = useRef(true) // SOL from stackoverflow for excuting useEffect after the first renders
+ useEffect(() => {
+  if (initialRender.current) {
+   initialRender.current = false
+  } else {
+   // initially called every time after the component renders
+   setOpen(true)
+   setTimeout(() => {
+    setOpen(false)
+   }, 5000)
+  }
+ }, [appointment])
 
  return (
   <Layout>
@@ -143,22 +200,7 @@ const Appointment: FC = () => {
        },
       },
      }}
-     events={[
-      {
-       title: 'Mahdaoui Abdelouadoud', // a property!
-       start: '2021-08-23T09:00:00+01:00', // a property!
-       end: '2021-08-23T09:30:00+01:00', // a property! ** see important note below about 'end' **
-       backgroundColor: 'rgba(14, 165, 233, .1)',
-       textColor: '#0369A1',
-      },
-      {
-       title: 'Yacine Kharoubi', // a property!
-       start: '2021-08-26T08:00:00+01:00', // a property!
-       end: '2021-08-26T08:15:00+01:00', // a property! ** see important note below about 'end' **
-       backgroundColor: 'rgba(14, 165, 233, .1)',
-       textColor: '#0369A1',
-      },
-     ]}
+     events={state.events}
      headerToolbar={{
       left: 'prev,next today',
       center: 'title',
@@ -172,6 +214,10 @@ const Appointment: FC = () => {
      initialView="timeGridWeek"
     />
    </div>
+   {/* Toast for diplaying error msgs */}
+   <Toaster modal={open} type={error ? 'danger' : 'success'}>
+    {msg}
+   </Toaster>
   </Layout>
  )
 }
