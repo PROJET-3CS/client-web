@@ -15,7 +15,16 @@ const PublicRoute: FC<Props & RouteProps> = ({ component: Component, ...rest }) 
   <Route
    {...rest}
    // eslint-disable-next-line
-   render={(props) => (isAuthenticated === true ? <Component {...props} /> : isAuthenticated === false ? <Redirect to="/login" /> : <Redirect to={location.pathname} /> )}
+   render={(props) => {
+    // eslint-disable-next-line no-nested-ternary
+    return isAuthenticated === true ? (
+     <Component {...props} />
+    ) : isAuthenticated === false ? (
+     <Redirect to="/login" />
+    ) : (
+     <Redirect to={location.pathname} />
+    )
+   }}
   />
  )
 }

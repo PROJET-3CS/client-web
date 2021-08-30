@@ -29,7 +29,9 @@ const PersonalInfo: FC<Props> = ({ patient }) => {
    </div>
    <div className="folder__item-content">
     <span className="folder__item-content--title">Né le</span>
-    <span className="folder__item-content--value">{patient?.birthDay ? moment(patient.birthDay).format('l') : ''}</span>
+    <span className="folder__item-content--value">
+     {patient?.birthDay ? moment(patient.birthDay).format('l') : ''}
+    </span>
    </div>
    <div className="folder__item-content">
     <span className="folder__item-content--title">à</span>

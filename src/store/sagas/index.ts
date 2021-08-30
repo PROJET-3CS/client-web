@@ -35,11 +35,7 @@ import {
  archiveUserSuccess,
 } from '../slices/management'
 
-import {
- addAppointmentSuccess,
- addAppointmentError,
- addAppointment,
-} from '../slices/appointment'
+import { addAppointmentSuccess, addAppointmentError, addAppointment } from '../slices/appointment'
 
 // Hit the Express endpoint to get the current user from the cookie
 
@@ -219,7 +215,7 @@ function* rootSaga() {
   takeLatest(updatePatient.type, _updatePatient),
   takeLatest(updateInfoAntecedent.type, _updateFolder),
   takeLatest(updateInfoMedical.type, _updateFolder),
-  takeLatest(addAppointment.type, _addAppointment)
+  takeLatest(addAppointment.type, _addAppointment),
  ])
 }
 

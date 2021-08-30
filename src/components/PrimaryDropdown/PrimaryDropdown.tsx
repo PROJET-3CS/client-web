@@ -8,7 +8,7 @@ interface InputProps {
  label: ComponentProps<typeof Input>['label']
 }
 
-const PrimaryDropdown2: FC<InputProps> = ({ name, placeholder, label, children }) => {
+const PrimaryDropdown: FC<InputProps> = ({ name, placeholder, label, children }) => {
  const [dropdownOpen, setOpen] = useState(false)
 
  const toggle = () => {
@@ -33,4 +33,4 @@ const PrimaryDropdown2: FC<InputProps> = ({ name, placeholder, label, children }
  )
 }
 
-export default PrimaryDropdown2
+export default PrimaryDropdown
