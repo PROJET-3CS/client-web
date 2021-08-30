@@ -8,6 +8,7 @@ import AwesomeButtonSecondary from '../../components/AwesomeButton/AwesomeButton
 import { getAuth } from '../../store/selectors'
 import { authData, ReactChangeEvent, ReactSubmitEvent } from '../../helpers/types'
 import { loginError, login } from '../../store/slices/auth'
+import CreateUserModal from '../UserManagement/CreateUserModal'
 
 const Signin: FC = () => {
  // ===========================================================================
@@ -135,6 +136,7 @@ const Signin: FC = () => {
      </div>
     </Col>
    </Row>
+   <CreateUserModal buttonLabel="Create New User" />
   </div>
  )
 }

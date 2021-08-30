@@ -1,9 +1,9 @@
-import React, { FC } from 'react'
+import { FC } from 'react'
 import { Label } from 'reactstrap'
 import { InputProps } from '../../helpers/types'
 import './SecondaryInput.scss'
 
-const SecondaryInput: FC<InputProps> = ({ name, placeholder, type, label, id, onChange }) => {
+const SecondaryInput: FC<InputProps> = ({ name, placeholder, type, label, onChange, id }) => {
  return (
   <div className="Secondary__form-subgroup">
    <Label className="Secondary__form-subgroup--label">{label}</Label>
