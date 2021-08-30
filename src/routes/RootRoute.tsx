@@ -6,7 +6,6 @@ import Signup from '../views/auth/Signup'
 import Resetpassword from '../views/auth/Password_reset'
 // import Dashboard from '../views/Dashboard'
 import Home from '../views/Home'
-import UserMan from '../views/UserMan'
 import PrivateRoute from './PrivateRoutes'
 import PublicRoute from './PublicRoutes'
 // import medicalFolder from '../views/medicalFolder/medicalFolder'
@@ -15,8 +14,10 @@ import EditMedicalFolder from '../views/EditMedicalFolder'
 import EmailConfirmation from '../views/EmailConfirmation'
 
 const Dashboard = React.lazy(() => import('../views/Dashboard'))
+const usersManagement = React.lazy(() => import('../views/usersManagement/Management'))
 const medicalFolder = React.lazy(() => import('../views/medicalFolder/medicalFolder'))
 const Appointment = React.lazy(() => import('../views/Appointment/Appointment'))
+const MyAppointments = React.lazy(() => import('../views/Appointment/MyAppointments'))
 
 const RootRoute: FC = () => {
  return (
@@ -31,10 +32,11 @@ const RootRoute: FC = () => {
      <PublicRoute path="/confirmation" component={EmailConfirmation} exact />
 
      <PrivateRoute path="/dashboard" component={Dashboard} exact />
-     <PrivateRoute path="/management" component={UserMan} exact />
+     <PrivateRoute path="/management" component={usersManagement} exact />
      <PrivateRoute path="/folder/:id" component={medicalFolder} exact />
      <PrivateRoute path="/folder/:id/edit" component={EditMedicalFolder} exact />
      <PrivateRoute path="/appointments" component={Appointment} exact />
+     <PrivateRoute path="/appointments/:id" component={MyAppointments} exact />
 
      <Route component={_404} />
     </Switch>
