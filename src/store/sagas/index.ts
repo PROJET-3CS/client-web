@@ -24,7 +24,7 @@ import {
  updateInfoAntecedent,
  updateInfoMedical,
 } from '../slices/folder'
-import { getAuth, getFolder, getManagement , getReset } from '../selectors'
+import { getAuth, getFolder, getManagement, getReset } from '../selectors'
 import { getToken, removeToken, setToken } from '../../helpers/api'
 import {
  fetchUsers,
@@ -34,8 +34,15 @@ import {
  archiveUserError,
  archiveUserSuccess,
 } from '../slices/management'
-import { reset, resetError, resetSuccess , change , changeError , changeSuccess } from '../slices/resetPass'
-import {active, activeError, activeSuccess } from '../slices/active'
+import {
+ reset,
+ resetError,
+ resetSuccess,
+ change,
+ changeError,
+ changeSuccess,
+} from '../slices/resetPass'
+import { active, activeError, activeSuccess } from '../slices/active'
 
 // Hit the Express endpoint to get the current user from the cookie
 
@@ -113,7 +120,6 @@ function* archiverUser() {
  }
 }
 
-
 function* resetPassword() {
  try {
   const { user } = yield select(getAuth)
@@ -136,7 +142,6 @@ function* changePassword() {
   yield put(changeError('invalid password'))
  }
 }
-
 
 function* activateAcc() {
  try {
@@ -234,7 +239,6 @@ function* rootSaga() {
   takeLatest(reset.type, resetPassword),
   takeLatest(change.type, changePassword),
   takeLatest(active.type, activateAcc),
-
  ])
 }
 

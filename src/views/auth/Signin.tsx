@@ -59,14 +59,12 @@ const Signin: FC = () => {
   }
  }
 
-
-
  // ===========================================================================
  // Hooks
  // ===========================================================================
 
- if (isAuthenticated && currentUser.status === 'active') return <Redirect to="/dashboard" /> 
- if (isAuthenticated && currentUser.status !== 'active') return <Redirect to="/" /> 
+ if (isAuthenticated && currentUser.status === 'active') return <Redirect to="/dashboard" />
+ if (isAuthenticated && currentUser.status !== 'active') return <Redirect to="/" />
 
  return (
   <div>

@@ -19,7 +19,6 @@ const Dashboard = React.lazy(() => import('../views/Dashboard'))
 const medicalFolder = React.lazy(() => import('../views/medicalFolder/medicalFolder'))
 const Appointment = React.lazy(() => import('../views/Appointment/Appointment'))
 
-
 const RootRoute: FC = () => {
  return (
   <Suspense fallback={<p>loading...</p>}>

@@ -89,6 +89,8 @@ export interface AuthState {
  isAuthenticated: boolean | undefined
  error: boolean
  msg: string
+ activeState: activeState
+ resetPassState: ResetPassState
 }
 
 export interface managmentState {
@@ -99,25 +101,23 @@ export interface managmentState {
 }
 
 export interface activeState {
-  error: boolean
-  id:string
-  msg:string
- }
+ error: boolean
+ id: string
+ msg: string
+}
 
 export interface ResetPassState {
- email: string,
- error: boolean,
- msg: string,
- password: string,
-   }
+ email: string
+ error: boolean
+ msg: string
+ password: string
+}
 
 export interface RootState {
  authState: AuthState
  syncState: SyncState
  managmentState: managmentState
  folderState: FolderState
- resetPassState: ResetPassState
- activeState: activeState
 }
 
 // ==============================================================================

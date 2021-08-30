@@ -11,7 +11,6 @@ const resetSlice = createSlice({
  name: 'resetPass',
  initialState,
  reducers: {
- 
   resetError: (state, { payload }: PayloadAction<string>) => {
    state.msg = payload
    state.error = true
@@ -19,12 +18,12 @@ const resetSlice = createSlice({
   resetSuccess: (state, { payload }: PayloadAction<string>) => {
    state.msg = payload
    state.error = false
-   state.email=''
+   state.email = ''
   },
   reset: (state, { payload }: PayloadAction<string>) => {
    state.msg = payload
    state.error = false
-   state.email=''
+   state.email = ''
   },
   changeError: (state, { payload }: PayloadAction<string>) => {
    state.msg = payload
@@ -33,18 +32,17 @@ const resetSlice = createSlice({
   changeSuccess: (state, { payload }: PayloadAction<string>) => {
    state.msg = payload
    state.error = false
-   state.password=''
+   state.password = ''
   },
   change: (state, { payload }: PayloadAction<string>) => {
    state.msg = payload
    state.error = false
-   state.password=''
+   state.password = ''
   },
- 
  },
 })
 
-export const { resetError , reset , resetSuccess , change , changeError , changeSuccess } =
+export const { resetError, reset, resetSuccess, change, changeError, changeSuccess } =
  resetSlice.actions
 
 export default resetSlice.reducer

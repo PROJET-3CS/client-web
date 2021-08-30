@@ -1,16 +1,15 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 export const initialState = {
- error : false,
+ error: false,
  id: '',
- msg : '',
+ msg: '',
 }
 
 const activeSlice = createSlice({
  name: 'activePass',
  initialState,
  reducers: {
- 
   activeError: (state, { payload }: PayloadAction<string>) => {
    state.msg = payload
    state.error = true
@@ -23,12 +22,9 @@ const activeSlice = createSlice({
    state.error = false
    state.id = payload
   },
- 
- }
+ },
 })
 
-
-export const { activeError , active , activeSuccess } =
- activeSlice.actions
+export const { activeError, active, activeSuccess } = activeSlice.actions
 
 export default activeSlice.reducer

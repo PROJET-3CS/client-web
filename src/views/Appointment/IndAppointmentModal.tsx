@@ -10,8 +10,7 @@ interface Props {
  toggle: ReactEventHandler
 }
 
-const IndAppointmentModal: FC<Props> = ({modal, toggle}) => {
-
+const IndAppointmentModal: FC<Props> = ({ modal, toggle }) => {
  return (
   <>
    <Modal

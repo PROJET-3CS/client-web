@@ -8,16 +8,25 @@ import { change, changeError } from '../../store/slices/resetPass'
 
 const Resetpassword: FC = () => {
  // ===========================================================================
- // Hooks
+ // selectors
  // ===========================================================================
 
+ // ===========================================================================
+ // dispatch
+ // ===========================================================================
  const dispatch = useDispatch()
- const [password , setPassword] = useState('')
- const [password2 , setPassword2] = useState('')
+
+ // ===========================================================================
+ // state
+ // ===========================================================================
+ const [password, setPassword] = useState('')
+ const [password2, setPassword2] = useState('')
  const [visible, setVisible] = useState(false)
- const [redirection , setRedirection] = useState(false)
+ const [redirection, setRedirection] = useState(false)
 
-
+ // ===========================================================================
+ // handlers
+ // ===========================================================================
 
  const _changepassword = () => {
   dispatch(change(password))
@@ -40,20 +49,15 @@ const Resetpassword: FC = () => {
    _changepassword()
    //  setRedirection(true)
    setRedirection(true)
-  } else 
-   setVisible(true)
+  } else setVisible(true)
   _changeError()
  }
 
- 
-
- if (redirection) return <Redirect to='/dashboard' />
-
-
+ if (redirection) return <Redirect to="/dashboard" />
 
  return (
   <div>
-   <Row> 
+   <Row>
     <Col md="7" className="signup__side_2">
      <div className="signup__heading">
       <h2 className="signup__heading-title">Reset Password</h2>
@@ -90,7 +94,8 @@ const Resetpassword: FC = () => {
         onChange={handleChange}
        />
        <FormFeedback>Please enter a valid password !</FormFeedback>
-      </FormGroup> <FormGroup className="auth__form-group">
+      </FormGroup>{' '}
+      <FormGroup className="auth__form-group">
        <Label className="auth__form-group--label" for="password">
         Enter your password
        </Label>
@@ -114,13 +119,12 @@ const Resetpassword: FC = () => {
        </Label>
       </div>
      </Form>
-     <Alert color="danger" isOpen={visible} >
-        confirm your password correctly
+     <Alert color="danger" isOpen={visible}>
+      confirm your password correctly
      </Alert>
     </Col>
    </Row>
   </div>
- 
  )
 }
 
