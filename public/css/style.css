@@ -700,7 +700,14 @@ body {
       color: #828282; }
   .folder__item-anteced {
     display: flex;
-    align-items: center; }
+    align-items: center;
+    cursor: pointer;
+    background-color: inherit;
+    border: none; }
+    .folder__item-anteced:active, .folder__item-anteced:hover {
+      border: 0px transparent solid;
+      background-color: rgba(91, 99, 246, 0.1);
+      border-radius: 0.5rem; }
     .folder__item-anteced--container {
       display: grid;
       grid-template-columns: 1fr 0.8fr;
@@ -1176,3 +1183,59 @@ body {
       font-weight: 500; }
     .cilinity-card__infos--icon {
       font-size: 4rem; }
+
+.clinity__modal-header {
+  padding: 0 !important;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 2rem; }
+  .clinity__modal-header--title {
+    font-size: 2.3rem; }
+
+.clinity__modal-body {
+  margin-bottom: 2rem; }
+
+.clinity__modal-footer {
+  padding: 0; }
+
+.anteced__item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: white;
+  border-radius: 1rem;
+  padding: 1.5rem; }
+  .anteced__item:not(:last-child) {
+    margin-bottom: 1.5rem; }
+  .anteced__item-icon {
+    padding: 1rem;
+    font-size: 2rem;
+    color: white;
+    background-color: #5b63f6;
+    border-radius: 0.5rem;
+    height: 4rem;
+    width: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 1.5rem; }
+  .anteced__item-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    width: 100%; }
+    .anteced__item-content > div {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem; }
+  .anteced__item-title {
+    font-size: 1.5rem;
+    font-weight: 500; }
+  .anteced__item-subtitle {
+    font-size: 1rem;
+    color: #828282; }
+  .anteced__item-date {
+    font-size: 1rem;
+    font-style: italic;
+    color: #828282; }

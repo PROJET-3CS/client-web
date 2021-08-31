@@ -13,9 +13,9 @@ interface Props extends InputProps {
  icon: ComponentProps<typeof Input>['icon']
  text: string
 }
-const AwesomeButtonIcon: FC<Props> = ({ icon, text, onClick }) => {
+const AwesomeButtonIcon: FC<Props> = ({ icon, text, onClick, style }) => {
  return (
-  <button onClick={onClick} type="submit" className="AwesomeButtonIcon">
+  <button onClick={onClick} type="submit" className="AwesomeButtonIcon" style={style} >
    <FontAwesomeIcon icon={icon} className="AwesomeButtonIcon-icon" />
    <span>{text}</span>
   </button>

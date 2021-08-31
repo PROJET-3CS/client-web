@@ -203,6 +203,12 @@ export interface InputProps {
  options?: OptionType[]
  min?: ComponentProps<typeof Input>['min']
  max?: ComponentProps<typeof Input>['max']
+ style?: ComponentProps<typeof Input>['style']
+}
+
+export interface ModalProps {
+ modal: boolean
+ toggle: () => void
 }
 
 // ==============================================================================
