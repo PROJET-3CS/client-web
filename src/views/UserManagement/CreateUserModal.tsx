@@ -1,12 +1,11 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { useState } from 'react'
-import { Button, Modal, ModalBody, FormGroup, Label } from 'reactstrap'
+import { FC, useState } from 'react'
+import { Modal, ModalBody, FormGroup, Label } from 'reactstrap'
 import AwesomeButton from '../../components/AwesomeButton/AwesomeButton'
 import PrimaryDropdown from '../../components/PrimaryDropdown/PrimaryDropdown'
 import SecondaryInput from '../../components/PrimaryInput/SecondaryInput'
 
-const CreateUserModal = (props: { buttonLabel: string }) => {
- const { buttonLabel } = props
+const CreateUserModal : FC<{buttonLabel: string}> = () => {
 
  const [modal, setModal] = useState(false)
 
@@ -16,9 +15,6 @@ const CreateUserModal = (props: { buttonLabel: string }) => {
 
  return (
   <div>
-   <Button color="danger" onClick={toggle}>
-    {buttonLabel}
-   </Button>
    <Modal
     isOpen={modal}
     modalTransition={{ timeout: 100 }}
