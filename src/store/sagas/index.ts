@@ -25,8 +25,13 @@ import {
  updateInfoAntecedent,
  updateInfoMedical,
 } from '../slices/folder'
+<<<<<<< HEAD
 import { getAppointment, getAuth, getFolder, getManagement } from '../selectors'
 import { getToken, mixAppointments, removeToken, setToken } from '../../helpers/api'
+=======
+import { getAuth, getFolder, getManagement, getReset } from '../selectors'
+import { getToken, removeToken, setToken } from '../../helpers/api'
+>>>>>>> med-zino-zino-branche
 import {
  fetchUsers,
  fetchUsersSuccess,
@@ -35,6 +40,15 @@ import {
  archiveUserError,
  archiveUserSuccess,
 } from '../slices/management'
+import {
+ reset,
+ resetError,
+ resetSuccess,
+ change,
+ changeError,
+ changeSuccess,
+} from '../slices/resetPass'
+import { active, activeError, activeSuccess } from '../slices/active'
 
 import {
  addAppointmentSuccess,
@@ -118,6 +132,40 @@ function* archiverUser() {
   }
  } catch {
   yield put(archiveUserError())
+ }
+}
+
+function* resetPassword() {
+ try {
+  const { user } = yield select(getAuth)
+  const uri = `users/forgot_password/${user.email}`
+  const { data } = yield axios.get(uri)
+  yield put(resetSuccess(data))
+ } catch {
+  yield put(resetError('invalid email'))
+ }
+}
+
+function* changePassword() {
+ try {
+  const { user } = yield select(getAuth)
+  const { password } = yield select(getReset)
+  const uri = `users/forgot_password/${user.id}/${password}`
+  const { data } = yield axios.get(uri)
+  yield put(changeSuccess(data))
+ } catch {
+  yield put(changeError('invalid password'))
+ }
+}
+
+function* activateAcc() {
+ try {
+  const { user } = yield select(getAuth)
+  const uri = `medical_folder/activate/${user.id}/`
+  const { data } = yield axios.get(uri)
+  yield put(activeSuccess(data))
+ } catch {
+  yield put(activeError('invalid password'))
  }
 }
 // If any of these functions are dispatched, invoke the appropriate saga
@@ -262,8 +310,14 @@ function* rootSaga() {
   takeLatest(updatePatient.type, _updatePatient),
   takeLatest(updateInfoAntecedent.type, _updateFolder),
   takeLatest(updateInfoMedical.type, _updateFolder),
+<<<<<<< HEAD
   takeLatest(addAppointment.type, _addAppointment),
   takeLatest(syncAppointment.type, loadAppointment),
+=======
+  takeLatest(reset.type, resetPassword),
+  takeLatest(change.type, changePassword),
+  takeLatest(active.type, activateAcc),
+>>>>>>> med-zino-zino-branche
  ])
 }
 

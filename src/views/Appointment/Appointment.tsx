@@ -1,5 +1,13 @@
+<<<<<<< HEAD
 import React, { FC, useEffect, useMemo, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+=======
+import React, { FC, useState } from 'react'
+import FullCalendar from '@fullcalendar/react'
+import dayGridPlugin from '@fullcalendar/daygrid'
+import interactionPlugin from '@fullcalendar/interaction'
+import timeGridPlugin from '@fullcalendar/timegrid'
+>>>>>>> med-zino-zino-branche
 
 import Header from '../../components/Header'
 import Layout from '../layouts/Layout'

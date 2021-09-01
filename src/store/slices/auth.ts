@@ -9,6 +9,17 @@ export const initialState: AuthState = {
  error: false,
  msg: '',
  loading: true,
+ resetPassState: {
+  email: '',
+  error: false,
+  msg: '',
+  password: '',
+ },
+ activeState: {
+  error: false,
+  id: '',
+  msg: '',
+ },
 }
 
 const authSlice = createSlice({

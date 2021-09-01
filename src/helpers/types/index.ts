@@ -122,6 +122,8 @@ export interface AuthState {
  isAuthenticated: boolean | undefined
  error: boolean
  msg: string
+ activeState: activeState
+ resetPassState: ResetPassState
 }
 
 export interface managmentState {
@@ -137,6 +139,18 @@ export interface AppointmentState {
  msg: string
  appointments: Appointment | Record<string, unknown>
  appointment: Appointment | Record<string, unknown>
+}
+export interface activeState {
+ error: boolean
+ id: string
+ msg: string
+}
+
+export interface ResetPassState {
+ email: string
+ error: boolean
+ msg: string
+ password: string
 }
 
 export interface RootState {

@@ -14,7 +14,7 @@ const Signin: FC = () => {
  // Selectors
  // ===========================================================================
 
- const { error, isAuthenticated } = useSelector(getAuth)
+ const { error, isAuthenticated, currentUser } = useSelector(getAuth)
 
  // ===========================================================================
  // Dispatch
@@ -63,7 +63,8 @@ const Signin: FC = () => {
  // Hooks
  // ===========================================================================
 
- if (isAuthenticated) return <Redirect to="/dashboard" />
+ if (isAuthenticated && currentUser.status === 'active') return <Redirect to="/dashboard" />
+ if (isAuthenticated && currentUser.status !== 'active') return <Redirect to="/" />
 
  return (
   <div>

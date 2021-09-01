@@ -11,6 +11,7 @@ import PublicRoute from './PublicRoutes'
 // import medicalFolder from '../views/medicalFolder/medicalFolder'
 import _404 from '../views/_404'
 import EditMedicalFolder from '../views/EditMedicalFolder'
+import PasswordConfirmation from '../views/PasswordConfirmation'
 import EmailConfirmation from '../views/EmailConfirmation'
 
 const Dashboard = React.lazy(() => import('../views/Dashboard'))
@@ -28,9 +29,9 @@ const RootRoute: FC = () => {
 
      <PublicRoute path="/login" component={Signin} exact />
      <PublicRoute path="/signup" component={Signup} exact />
-     <PublicRoute path="/resetpassword" component={Resetpassword} exact />
-     <PublicRoute path="/confirmation" component={EmailConfirmation} exact />
-
+     <Route path="/resetpassword" component={Resetpassword} exact />
+     <Route path="/confirmation" component={PasswordConfirmation} exact />
+     <Route path="/confirmation2" component={EmailConfirmation} exact />
      <PrivateRoute path="/dashboard" component={Dashboard} exact />
      <PrivateRoute path="/management" component={usersManagement} exact />
      <PrivateRoute path="/folder/:id" component={medicalFolder} exact />

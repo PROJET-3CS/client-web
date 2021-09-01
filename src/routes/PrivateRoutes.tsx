@@ -1,3 +1,4 @@
+/* eslint-disable arrow-body-style */
 import React, { FC } from 'react'
 import { useSelector } from 'react-redux'
 import { Route, Redirect, RouteProps, useLocation } from 'react-router-dom'
@@ -15,7 +16,16 @@ const PublicRoute: FC<Props & RouteProps> = ({ component: Component, ...rest }) 
   <Route
    {...rest}
    // eslint-disable-next-line
-   render={(props) => (isAuthenticated === true ? <Component {...props} /> : isAuthenticated === false ? <Redirect to="/login" /> : <Redirect to={location.pathname} /> )}
+   render={(props) =>
+    // eslint-disable-next-line no-nested-ternary
+    isAuthenticated === true ? (
+     <Component {...props} />
+    ) : isAuthenticated === false ? (
+     <Redirect to="/login" />
+    ) : (
+     <Redirect to={location.pathname} />
+    )
+   }
   />
  )
 }
