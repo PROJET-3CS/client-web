@@ -25,13 +25,8 @@ import {
  updateInfoAntecedent,
  updateInfoMedical,
 } from '../slices/folder'
-<<<<<<< HEAD
-import { getAppointment, getAuth, getFolder, getManagement } from '../selectors'
-import { getToken, mixAppointments, removeToken, setToken } from '../../helpers/api'
-=======
-import { getAuth, getFolder, getManagement, getReset } from '../selectors'
-import { getToken, removeToken, setToken } from '../../helpers/api'
->>>>>>> med-zino-zino-branche
+import { getAuth, getFolder, getManagement, getReset, getAppointment} from '../selectors'
+import { getToken, removeToken, setToken, mixAppointments } from '../../helpers/api'
 import {
  fetchUsers,
  fetchUsersSuccess,
@@ -310,14 +305,11 @@ function* rootSaga() {
   takeLatest(updatePatient.type, _updatePatient),
   takeLatest(updateInfoAntecedent.type, _updateFolder),
   takeLatest(updateInfoMedical.type, _updateFolder),
-<<<<<<< HEAD
   takeLatest(addAppointment.type, _addAppointment),
   takeLatest(syncAppointment.type, loadAppointment),
-=======
   takeLatest(reset.type, resetPassword),
   takeLatest(change.type, changePassword),
   takeLatest(active.type, activateAcc),
->>>>>>> med-zino-zino-branche
  ])
 }
 
