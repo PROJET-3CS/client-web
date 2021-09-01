@@ -9,7 +9,6 @@ import AwesomeButton from '../../components/AwesomeButton/AwesomeButton'
 import AwesomeTable from '../../components/AwesomeTable/AwesomeTable'
 
 const UsersManagement: FC = () => {
-
  return (
   <Layout>
    <Header />
@@ -50,7 +49,7 @@ const UsersManagement: FC = () => {
     <div className="users-list__header">
      <h2 className="main-heading">Users list</h2>
      <AwesomeButton className="users-list__button">
-      <FontAwesomeIcon icon={faPlus} />{' '} Create New User
+      <FontAwesomeIcon icon={faPlus} /> Create New User
      </AwesomeButton>
     </div>
     <div className="users-list__table">

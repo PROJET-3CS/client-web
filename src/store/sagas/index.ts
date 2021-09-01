@@ -25,7 +25,7 @@ import {
  updateInfoAntecedent,
  updateInfoMedical,
 } from '../slices/folder'
-import { getAuth, getFolder, getManagement, getReset, getAppointment} from '../selectors'
+import { getAuth, getFolder, getManagement, getReset, getAppointment } from '../selectors'
 import { getToken, removeToken, setToken, mixAppointments } from '../../helpers/api'
 import {
  fetchUsers,
@@ -267,7 +267,7 @@ function* _addAppointment() {
    patientId: Number(appointment.patientId),
    promo: Number(appointment.promo),
    group: Number(appointment.group),
-   description: 'Please don\'t forget to put your mask on !',
+   description: 'Please dont forget to put your mask on !',
    date: moment(appointment.date).format(),
    start_time: appointment.startTime,
    end_time: appointment.endTime,

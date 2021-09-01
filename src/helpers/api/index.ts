@@ -26,7 +26,7 @@ export const mixAppointments = (appInd: AppointmentPayload, appCol: AppointmentP
  const res: Appointment[] = array.map((el) => {
   return {
    ...el,
-   type: Object.values(appInd).includes(el) ? 'individual' : 'collectif'
+   type: Object.values(appInd).includes(el) ? 'individual' : 'collectif',
   }
  })
 

@@ -4,7 +4,6 @@ import { InputProps, Modal, ModalBody } from 'reactstrap'
 import { ModalProps } from '../../helpers/types'
 
 const AwesomeModal: FC<ModalProps & InputProps> = ({ children, modal, toggle, style }) => {
-
  return (
   <>
    <Modal
@@ -15,9 +14,7 @@ const AwesomeModal: FC<ModalProps & InputProps> = ({ children, modal, toggle, st
     className="newappointment__resultmodal"
     style={style}
    >
-    <ModalBody className="newappointment__resultmodal-body">
-     {children}
-    </ModalBody>
+    <ModalBody className="newappointment__resultmodal-body">{children}</ModalBody>
    </Modal>
   </>
  )

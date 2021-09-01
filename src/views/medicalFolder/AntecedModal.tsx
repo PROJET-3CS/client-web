@@ -75,7 +75,11 @@ const AntecedModal: FC<ModalProps> = ({ modal, toggle }) => {
    </div>
 
    <div className="clinity__modal-footer">
-    <AwesomeButtonIcon style={{width:'100%', marginLeft: '0'}} icon={faPlus} text="New Affection" />
+    <AwesomeButtonIcon
+     style={{ width: '100%', marginLeft: '0' }}
+     icon={faPlus}
+     text="New Affection"
+    />
    </div>
   </AwesomeModal>
  )
