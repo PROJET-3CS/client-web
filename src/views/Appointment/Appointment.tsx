@@ -17,7 +17,7 @@ const Appointment: FC = () => {
  // Selectors
  // ===========================================================================
  const { users } = useSelector(getManagement)
- const { error, msg, appointment} = useSelector(getAppointment)
+ const { error, msg, appointment } = useSelector(getAppointment)
 
  // ===========================================================================
  // Dispatch
@@ -157,7 +157,6 @@ const Appointment: FC = () => {
     />
 
     <AppointmentCalendar toggleSelect={toggleSelect} />
-    
    </div>
    {/* Toast for diplaying error msgs */}
    <Toaster modal={open} type={error ? 'danger' : 'success'}>

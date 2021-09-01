@@ -13,9 +13,24 @@ interface Props extends InputProps {
  selectedDoctor: number | string
 }
 
-const DoctorBox: FC<Props> = ({ id, doctor, image, name, speciality, selectDoctor, selectedDoctor }) => {
+const DoctorBox: FC<Props> = ({
+ id,
+ doctor,
+ image,
+ name,
+ speciality,
+ selectDoctor,
+ selectedDoctor,
+}) => {
  return (
-  <button id={id} onClick={() => {selectDoctor(`${doctor}`)}} type="button" className={`doctorbox ${selectedDoctor === doctor.toString() ? 'doctorbox-active': ''}`}>
+  <button
+   id={id}
+   onClick={() => {
+    selectDoctor(`${doctor}`)
+   }}
+   type="button"
+   className={`doctorbox ${selectedDoctor === doctor.toString() ? 'doctorbox-active' : ''}`}
+  >
    <img src={image} alt="" />
    <div>
     <p className="doctorbox-title">{name}</p>

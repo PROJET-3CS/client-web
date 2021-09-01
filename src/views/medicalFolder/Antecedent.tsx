@@ -23,7 +23,7 @@ const Antecedent: FC = () => {
    <h3 className="folder__item-title">Les Antécedents:</h3>
 
    <div className="folder__item-anteced--container">
-    <button type="button" className="folder__item-anteced" onClick={toggle} >
+    <button type="button" className="folder__item-anteced" onClick={toggle}>
      <div className="folder__item-anteced--icon">
       <FontAwesomeIcon icon={faFileAlt} />
      </div>
@@ -33,7 +33,7 @@ const Antecedent: FC = () => {
      </div>
     </button>
 
-    <button type="button" className="folder__item-anteced" onClick={toggle} >
+    <button type="button" className="folder__item-anteced" onClick={toggle}>
      <div className="folder__item-anteced--icon">
       <FontAwesomeIcon icon={faFileAlt} />
      </div>
@@ -43,7 +43,7 @@ const Antecedent: FC = () => {
      </div>
     </button>
 
-    <button type="button"className="folder__item-anteced" onClick={toggle} >
+    <button type="button" className="folder__item-anteced" onClick={toggle}>
      <div className="folder__item-anteced--icon">
       <FontAwesomeIcon icon={faFileAlt} />
      </div>
@@ -53,7 +53,7 @@ const Antecedent: FC = () => {
      </div>
     </button>
 
-    <button type="button" className="folder__item-anteced" onClick={toggle} >
+    <button type="button" className="folder__item-anteced" onClick={toggle}>
      <div className="folder__item-anteced--icon">
       <FontAwesomeIcon icon={faFileAlt} />
      </div>
