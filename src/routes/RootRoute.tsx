@@ -15,7 +15,7 @@ import PasswordConfirmation from '../views/PasswordConfirmation'
 import EmailConfirmation from '../views/EmailConfirmation'
 
 const Dashboard = React.lazy(() => import('../views/Dashboard'))
-const usersManagement = React.lazy(() => import('../views/usersManagement/Management'))
+const usersManagement = React.lazy(() => import('../views/usersManagement/UsersManagement'))
 const medicalFolder = React.lazy(() => import('../views/medicalFolder/medicalFolder'))
 const Appointment = React.lazy(() => import('../views/Appointment/Appointment'))
 const MyAppointments = React.lazy(() => import('../views/Appointment/MyAppointments'))
