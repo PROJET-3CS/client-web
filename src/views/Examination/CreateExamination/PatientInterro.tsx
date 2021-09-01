@@ -3,7 +3,6 @@ import { Card, Col, FormGroup, Row } from 'reactstrap'
 
 import Layout from '../../layouts/Layout'
 import Header from '../../../components/Header'
-import PrimaryInput from '../../../components/PrimaryInput/PrimaryInput'
 import PrimaryDropdown from '../../../components/PrimaryDropdown/PrimaryDropdown'
 import AwesomeButtonIcon from '../../../components/AwesomeButton/AwesomeButtonIcon'
 
@@ -46,11 +45,10 @@ const PatientInterro: FC = () => {
      </p>
      <Col className="createExamination__PatInterro-card--col">
       <Row md="1" className="createExamination__PatInterro-card--row">
-       <PrimaryInput
-        name="sickness-details"
-        type="text"
-        label="Sickness details"
-        placeholder="Enter details..."
+       <textarea
+        name="conclusion"
+        className="createExamination__PatInterro-card--textarea"
+        placeholder="Enter all details..."
        />
       </Row>
      </Col>

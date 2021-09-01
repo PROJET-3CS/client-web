@@ -1,7 +1,7 @@
 import { FC, useState } from 'react'
 import { Button, InputProps, Row } from 'reactstrap'
 
-const Interrogatory: FC<InputProps> = ({ btn1text, btn2text}) => {
+const Interrogatory: FC<InputProps> = ({ btn1text, btn2text }) => {
  const [rSelected, setRSelected] = useState<number | undefined>()
 
  return (

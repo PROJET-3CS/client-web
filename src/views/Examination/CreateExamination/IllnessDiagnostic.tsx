@@ -5,7 +5,6 @@ import Layout from '../../layouts/Layout'
 import Header from '../../../components/Header'
 import AwesomeButtonIcon from '../../../components/AwesomeButton/AwesomeButtonIcon'
 import PrimaryDropdown from '../../../components/PrimaryDropdown/PrimaryDropdown'
-import PrimaryInput from '../../../components/PrimaryInput/PrimaryInput'
 import Illnesses from '../../../components/ExaminationComponents/Illnesses'
 import Interrogatory from '../../../components/ExaminationComponents/Interrogatory'
 
@@ -22,7 +21,10 @@ const IllnessDiagnostic: FC = () => {
       augue aenean.
      </p>
      <Col className="createExamination__PatInterro-card--col">
-      <Interrogatory btn1text="I want specific Illness" btn2text="Just general physical examination"/>
+      <Interrogatory
+       btn1text="I want specific Illness"
+       btn2text="Just general physical examination"
+      />
      </Col>
      <h1>Illnesses</h1>
      <p className="createExamination__PatInterro-card--description">
@@ -94,11 +96,10 @@ const IllnessDiagnostic: FC = () => {
      </p>
      <Col className="createExamination__PatInterro-card--col">
       <Row md="1" className="createExamination__PatInterro-card--row">
-       <PrimaryInput
-        name="observation-details"
-        type="text"
-        label="Observation details"
-        placeholder="Enter details..."
+       <textarea
+        name="conclusion"
+        className="createExamination__PatInterro-card--textarea"
+        placeholder="Enter all details..."
        />
       </Row>
      </Col>
