@@ -1,16 +1,23 @@
-import React from 'react'
+import React, { ReactNode } from 'react'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faSort, faSlidersH, faEllipsisH } from '@fortawesome/free-solid-svg-icons'
 import { Table } from 'reactstrap'
 import { v4 as uuid } from 'uuid'
+import ReactPaginate from 'react-paginate'
 
 interface ITable {
  tableHead: { name: string; path?: string; action?: any }[]
  tableBody?: any[]
 }
 
+interface ITableWithPagination {
+ tableHead: { name: string; path?: string; action?: any }[]
+ tableBody?: any[]
+ pageCount: number
+ handlePageChange: any
+}
 library.add(faSort, faSlidersH, faEllipsisH)
 
 const AwesomeTableHead: React.FC<ITable> = ({ tableHead }) => {
@@ -75,16 +82,35 @@ const AwesomeTableBody: React.FC<ITable> = ({ tableHead, tableBody }) => {
  return renderTableBody()
 }
 
-const AwesomeTableNew: React.FC<ITable> = ({ tableHead, tableBody }) => {
+const AwesomeTableNew: React.FC<ITableWithPagination> = ({
+ tableHead,
+ tableBody,
+ pageCount,
+ handlePageChange,
+}) => {
  return (
-  <div className="clinity__table">
-   <Table borderless responsive>
-    <AwesomeTableHead tableHead={tableHead} />
-    <tbody className="clinity__table-body">
-     <AwesomeTableBody tableHead={tableHead} tableBody={tableBody} />
-    </tbody>
-   </Table>
-  </div>
+  <>
+   <div className="clinity__table">
+    <Table borderless responsive>
+     <AwesomeTableHead tableHead={tableHead} />
+     <tbody className="clinity__table-body">
+      <AwesomeTableBody tableHead={tableHead} tableBody={tableBody} />
+     </tbody>
+    </Table>
+   </div>
+   <ReactPaginate
+    previousLabel="Previous"
+    nextLabel="Next"
+    breakLabel="..."
+    breakClassName="pagination__break-me"
+    pageCount={pageCount}
+    marginPagesDisplayed={10}
+    pageRangeDisplayed={10}
+    onPageChange={handlePageChange}
+    containerClassName="pagination"
+    activeClassName="pagination__active"
+   />
+  </>
  )
 }
 

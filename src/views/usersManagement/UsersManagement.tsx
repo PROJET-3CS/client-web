@@ -1,17 +1,20 @@
-import React, { FC } from 'react'
+import React, { FC, useEffect } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-
+import axios from 'axios'
+import ReactPaginate from 'react-paginate'
 import { faUser, faUsers, faPlus } from '@fortawesome/free-solid-svg-icons'
 import Layout from '../layouts/Layout'
 import OverviewCard from '../../components/OverviewCard'
 import Header from '../../components/Header'
 import AwesomeButton from '../../components/AwesomeButton/AwesomeButton'
-import AwesomeTable from '../../components/AwesomeTable/AwesomeTable'
 import AwesomeTableNew from '../../components/AwesomeTable/AwesomeTableNew'
 
 const UsersManagement: FC = () => {
+ const handlePageChange = (selected: number) => {
+  console.log(selected)
+ }
  const displayNameWithAvatar = (item: any) => {
-  const { name, url } = item
+  const { name } = item
 
   return (
    <>
@@ -75,6 +78,15 @@ const UsersManagement: FC = () => {
   },
  ]
 
+ const getUsers = async () => {
+  const usersS = await axios.get('http://localhost:5000/users?page=0&items=8')
+  console.log(usersS.data.body.users)
+ }
+
+ useEffect(() => {
+  getUsers()
+ }, [])
+
  return (
   <Layout>
    <Header />
@@ -119,8 +131,12 @@ const UsersManagement: FC = () => {
      </AwesomeButton>
     </div>
     <div className="users-list__table">
-     <AwesomeTableNew tableHead={tableColumns} tableBody={users} />
-     {/* <AwesomeTable /> */}
+     <AwesomeTableNew
+      tableHead={tableColumns}
+      tableBody={users}
+      pageCount={100}
+      handlePageChange={handlePageChange}
+     />
     </div>
    </div>
   </Layout>

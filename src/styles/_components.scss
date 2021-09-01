@@ -1540,7 +1540,7 @@
   }
 
   &-body {
-      margin-bottom: 2rem;
+   margin-bottom: 2rem;
   }
 
   &-footer {
@@ -1605,5 +1605,21 @@
    font-style: italic;
    color: #828282;
   }
+ }
+}
+
+.pagination {
+ font-size: 1.5rem;
+
+ li {
+  // background-color: #2a2f64;
+  margin-left: 1.8rem;
+ }
+ a {
+  // background-color: #f9f6fc;
+ }
+
+ &__active {
+  background-color: aqua !important;
  }
 }
