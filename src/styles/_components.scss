@@ -1607,3 +1607,49 @@
   }
  }
 }
+
+
+//CREATE EXAMINATION
+
+.createExamination {
+  text-align: right;
+  &__PatInterro {
+   &-card {
+    &:defined {
+     border: none;
+     border-radius: 0.68rem;
+     cursor: pointer;
+     margin-bottom: 2rem;
+    }
+ 
+    & h1 {
+     text-align: left;
+     padding: 2rem 0rem 0rem 2.35rem;
+     font-size: 2.5rem;
+     font-weight: 600;
+    }
+ 
+    &--description {
+     font-size: 1.1rem;
+     font-weight: 500;
+     text-align: left;
+     padding: 0rem 0rem 0rem 2.35rem;
+    }
+ 
+    &--col {
+     text-align: right;
+     padding: 1rem 2rem 0rem 2rem;
+    }
+ 
+    &--row {
+     margin-bottom: 1rem;
+    }
+ 
+    &--addbutton{
+      text-align: right !important;
+      padding-bottom: 2rem;
+    }
+   }
+  }
+ }
+ 
