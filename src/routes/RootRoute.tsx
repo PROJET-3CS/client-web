@@ -13,7 +13,7 @@ import _404 from '../views/_404'
 import EditMedicalFolder from '../views/EditMedicalFolder'
 import PasswordConfirmation from '../views/PasswordConfirmation'
 import EmailConfirmation from '../views/EmailConfirmation'
-import PatientInterro from '../views/Examination/CreateExamination/PatientInterro'
+import IllnessDiagnostic from '../views/Examination/CreateExamination/IllnessDiagnostic'
 
 const Dashboard = React.lazy(() => import('../views/Dashboard'))
 const usersManagement = React.lazy(() => import('../views/usersManagement/Management'))
@@ -34,7 +34,7 @@ const RootRoute: FC = () => {
      <Route path="/confirmation" component={PasswordConfirmation} exact />
      <Route path="/confirmation2" component={EmailConfirmation} exact />
 
-     <PrivateRoute path="/examination" component={PatientInterro} exact />
+     <PrivateRoute path="/examination" component={IllnessDiagnostic} exact />
      <PrivateRoute path="/dashboard" component={Dashboard} exact />
      <PrivateRoute path="/management" component={usersManagement} exact />
      <PrivateRoute path="/folder/:id" component={medicalFolder} exact />
