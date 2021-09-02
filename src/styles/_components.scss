@@ -844,6 +844,7 @@
     display: flex;
     flex-direction: column;
     margin-left: 1rem;
+    text-align: initial;
    }
 
    &--title {
@@ -1170,15 +1171,32 @@
  }
 
  &__resultmodal {
+  & > .modal-content {
+   border-radius: 1.5rem;
+  }
   &-body {
    background-color: $color-grey-light-2;
    padding: 2rem !important;
+   border-radius: 1.5rem;
   }
 
-  &-header p {
-   font-size: 2rem;
-   font-weight: 600;
-   border: none !important;
+  &-header {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   margin-bottom: 2rem;
+
+   & p {
+    font-size: 2rem;
+    font-weight: 600;
+    border: none !important;
+    margin-bottom: 0;
+   }
+
+   & svg {
+    font-size: 1.5rem;
+    cursor: pointer;
+   }
   }
 
   &-formgroup {
@@ -1690,6 +1708,26 @@
     text-decoration: underline;
     font-style: italic;
     cursor: pointer;
+   }
+  }
+ }
+
+ // ADD MODAL
+ &__add {
+  &-input {
+   &--title {
+    padding: 0.5rem 1em;
+    & label {
+     margin-bottom: 0.2rem;
+    }
+   }
+
+   &--date {
+    padding: 1rem 2rem !important;
+   }
+
+   &--details {
+    padding: 1rem;
    }
   }
  }

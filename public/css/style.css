@@ -730,7 +730,8 @@ body {
     .folder__item-anteced--content {
       display: flex;
       flex-direction: column;
-      margin-left: 1rem; }
+      margin-left: 1rem;
+      text-align: initial; }
     .folder__item-anteced--title {
       font-size: 1.5rem;
       font-weight: 500; }
@@ -952,14 +953,27 @@ body {
   justify-content: center;
   align-items: center; }
 
+.newappointment__resultmodal > .modal-content {
+  border-radius: 1.5rem; }
+
 .newappointment__resultmodal-body {
   background-color: #f1f1fe;
-  padding: 2rem !important; }
+  padding: 2rem !important;
+  border-radius: 1.5rem; }
 
-.newappointment__resultmodal-header p {
-  font-size: 2rem;
-  font-weight: 600;
-  border: none !important; }
+.newappointment__resultmodal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem; }
+  .newappointment__resultmodal-header p {
+    font-size: 2rem;
+    font-weight: 600;
+    border: none !important;
+    margin-bottom: 0; }
+  .newappointment__resultmodal-header svg {
+    font-size: 1.5rem;
+    cursor: pointer; }
 
 .newappointment__resultmodal-formgroup {
   margin-bottom: 2rem; }
@@ -1300,3 +1314,14 @@ body {
     text-decoration: underline;
     font-style: italic;
     cursor: pointer; }
+
+.anteced__add-input--title {
+  padding: 0.5rem 1em; }
+  .anteced__add-input--title label {
+    margin-bottom: 0.2rem; }
+
+.anteced__add-input--date {
+  padding: 1rem 2rem !important; }
+
+.anteced__add-input--details {
+  padding: 1rem; }

@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFileAlt } from '@fortawesome/free-solid-svg-icons'
 import AntecedModal from './AntecedModal'
 import AntecedDetails from './AntecedDetails'
+import AddAnteced from './AddAnteced'
 
 const Antecedent: FC = () => {
  //  ==============================================================================
@@ -12,18 +13,26 @@ const Antecedent: FC = () => {
  const [open, setOpen] = useState(false)
  const [detail, setDetail] = useState(false)
 
+ const [addModal, setAddModal] = useState(false)
+
  // ===========================================================================
  // Handlers
  // ===========================================================================
 
  const toggle = () => {
   setDetail(false)
+  setAddModal(false)
   setOpen(!open)
  }
 
  const toggleDetail = () => {
   setOpen(false)
   setDetail(!detail)
+ }
+
+ const toggleAdd = () => {
+  toggle()
+  setAddModal(!addModal)
  }
 
  return (
@@ -72,8 +81,9 @@ const Antecedent: FC = () => {
     </button>
    </div>
 
-   <AntecedModal modal={open} toggle={toggle} handler={toggleDetail} />
+   <AntecedModal modal={open} toggle={toggle} handler={toggleDetail} goForward={toggleAdd} />
    <AntecedDetails modal={detail} toggle={toggleDetail} goBack={toggle} />
+   <AddAnteced modal={addModal} toggle={toggleAdd} />
   </div>
  )
 }

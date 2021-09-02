@@ -17,6 +17,7 @@ const AntecedDetails: FC<ModalProps & Props & InputProps> = ({
  goBack,
  onKeyDown,
 }) => {
+
  return (
   <AwesomeModal
    style={{ maxWidth: '40%' }}
@@ -61,7 +62,13 @@ const AntecedDetails: FC<ModalProps & Props & InputProps> = ({
    </div>
 
    <div className="clinity__modal-footer anteced__detail-footer">
-    <i onClick={goBack} onKeyDown={onKeyDown} tabIndex={0} role='button' className="anteced__detail-footer-icon">
+    <i
+     onClick={goBack}
+     onKeyDown={onKeyDown}
+     tabIndex={0}
+     role="button"
+     className="anteced__detail-footer-icon"
+    >
      &#8592; Go back
     </i>
    </div>
