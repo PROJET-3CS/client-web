@@ -44,8 +44,16 @@ const ExaminationConclusion: FC = () => {
       augue aenean.
      </p>
      <Col className="createExamination__PatInterro-card--col">
-      <OtherFilesBox title="Create prescription" description="You can add import an existing one or create new one" image="/img/prescription.svg"/>
-      <OtherFilesBox title="Create prescription" description="You can add import an existing one or create new one" image="/img/medical_certificate.svg"/>
+      <OtherFilesBox
+       title="Create prescription"
+       description="You can add import an existing one or create new one"
+       image="/img/prescription.svg"
+      />
+      <OtherFilesBox
+       title="Create prescription"
+       description="You can add import an existing one or create new one"
+       image="/img/medical_certificate.svg"
+      />
      </Col>
     </Card>
     <AwesomeButtonIcon icon="check" text="Save Changes" />
