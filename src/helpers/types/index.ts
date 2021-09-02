@@ -93,6 +93,12 @@ export interface medicamentType {
  unit: string
 }
 
+export interface userInterface {
+ firstname: string
+ lastname: string
+ email: string
+}
+
 //  ==============================================================================
 //  State
 //  ==============================================================================

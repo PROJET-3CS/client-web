@@ -25,7 +25,7 @@ import {
  updateInfoAntecedent,
  updateInfoMedical,
 } from '../slices/folder'
-import { getAuth, getFolder, getManagement, getReset, getAppointment} from '../selectors'
+import { getAuth, getFolder, getUsersManagement, getReset, getAppointment } from '../selectors'
 import { getToken, removeToken, setToken, mixAppointments } from '../../helpers/api'
 import {
  fetchUsers,
@@ -34,7 +34,10 @@ import {
  archiveUser,
  archiveUserError,
  archiveUserSuccess,
-} from '../slices/management'
+ createUser,
+ createUserError,
+ createUserSuccess,
+} from '../slices/usersManagement'
 import {
  reset,
  resetError,
@@ -117,7 +120,7 @@ function* getUsers() {
 
 function* archiverUser() {
  try {
-  const { selectedUser } = yield select(getManagement)
+  const { selectedUser } = yield select(getUsersManagement)
   const uri = `medical_folder/activate${selectedUser.id}`
   const { data } = yield axios.delete(uri)
   if (data.status === 'success') {
@@ -165,6 +168,28 @@ function* activateAcc() {
 }
 // If any of these functions are dispatched, invoke the appropriate saga
 // eslint-disable-next-line
+
+function* _createUser() {
+ try {
+  const USER_TOKEN = getToken()
+  const authToken = `Bearer ${USER_TOKEN}`
+  const { selectedUser } = yield select(getUsersManagement)
+  const { data } = yield axios.post(
+   '/users',
+   { ...selectedUser, role: 3 },
+   {
+    headers: { Authorization: authToken },
+   }
+  )
+  if (data.status === 'success') {
+   yield put(createUserSuccess(data.body))
+  } else {
+   yield put(createUserError(data.body))
+  }
+ } catch (Err) {
+  yield put(createUserError(Err))
+ }
+}
 
 function* loadFolder() {
  try {
@@ -267,7 +292,7 @@ function* _addAppointment() {
    patientId: Number(appointment.patientId),
    promo: Number(appointment.promo),
    group: Number(appointment.group),
-   description: 'Please don\'t forget to put your mask on !',
+   description: 'Please dont forget to put your mask on !',
    date: moment(appointment.date).format(),
    start_time: appointment.startTime,
    end_time: appointment.endTime,
@@ -310,6 +335,7 @@ function* rootSaga() {
   takeLatest(reset.type, resetPassword),
   takeLatest(change.type, changePassword),
   takeLatest(active.type, activateAcc),
+  takeLatest(createUser.type, _createUser),
  ])
 }
 

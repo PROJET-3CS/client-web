@@ -1,15 +1,22 @@
-import React, { FC, useEffect } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import axios from 'axios'
-import ReactPaginate from 'react-paginate'
 import { faUser, faUsers, faPlus } from '@fortawesome/free-solid-svg-icons'
+
 import Layout from '../layouts/Layout'
 import OverviewCard from '../../components/OverviewCard'
 import Header from '../../components/Header'
 import AwesomeButton from '../../components/AwesomeButton/AwesomeButton'
 import AwesomeTableNew from '../../components/AwesomeTable/AwesomeTableNew'
+import CreateUserModal from './CreateUserModal'
 
 const UsersManagement: FC = () => {
+ const [createUserModal, setCreateUserModal] = useState(false)
+
+ const toggle = () => {
+  setCreateUserModal(!createUserModal)
+ }
+
  const handlePageChange = (selected: number) => {
   console.log(selected)
  }
@@ -88,58 +95,62 @@ const UsersManagement: FC = () => {
  }, [])
 
  return (
-  <Layout>
-   <Header />
-   <div className="overview">
-    <h2 className="main-heading">Overview</h2>
-    <div className="overview__cards-container">
-     <OverviewCard
-      cardTitle="Total Patients"
-      cardInfo={1600}
-      cardGrowth={!false}
-      cardGrowthValue={22}
-      cardIcon={faUser}
-     />
-     <OverviewCard
-      cardTitle="Total Patients"
-      cardInfo={1600}
-      cardGrowth={false}
-      cardGrowthValue={22}
-      cardIcon={faUser}
-     />
-     <OverviewCard
-      cardTitle="Total Patients"
-      cardInfo={1600}
-      cardGrowth={!false}
-      cardGrowthValue={22}
-      cardIcon={faUsers}
-     />
-     <OverviewCard
-      cardTitle="Total Patients"
-      cardInfo={1600}
-      cardGrowth={false}
-      cardGrowthValue={22}
-      cardIcon={faUser}
-     />
+  <>
+   <Layout>
+    <Header />
+    <div className="overview">
+     <h2 className="main-heading">Overview</h2>
+     <div className="overview__cards-container">
+      <OverviewCard
+       cardTitle="Total Patients"
+       cardInfo={1600}
+       cardGrowth={!false}
+       cardGrowthValue={22}
+       cardIcon={faUser}
+      />
+      <OverviewCard
+       cardTitle="Total Patients"
+       cardInfo={1600}
+       cardGrowth={false}
+       cardGrowthValue={22}
+       cardIcon={faUser}
+      />
+      <OverviewCard
+       cardTitle="Total Patients"
+       cardInfo={1600}
+       cardGrowth={!false}
+       cardGrowthValue={22}
+       cardIcon={faUsers}
+      />
+      <OverviewCard
+       cardTitle="Total Patients"
+       cardInfo={1600}
+       cardGrowth={false}
+       cardGrowthValue={22}
+       cardIcon={faUser}
+      />
+     </div>
     </div>
-   </div>
-   <div className="users-list">
-    <div className="users-list__header">
-     <h2 className="main-heading">Users list</h2>
-     <AwesomeButton className="users-list__button">
-      <FontAwesomeIcon icon={faPlus} /> Create New User
-     </AwesomeButton>
+    <div className="users-list">
+     <div className="users-list__header">
+      <h2 className="main-heading">Users list</h2>
+      <AwesomeButton className="users-list__button" onClick={toggle}>
+       <FontAwesomeIcon icon={faPlus} /> Create New User
+      </AwesomeButton>
+     </div>
+     <div className="users-list__table">
+      <AwesomeTableNew
+       tableHead={tableColumns}
+       tableBody={users}
+       pageCount={100}
+       handlePageChange={handlePageChange}
+      />
+     </div>
     </div>
-    <div className="users-list__table">
-     <AwesomeTableNew
-      tableHead={tableColumns}
-      tableBody={users}
-      pageCount={100}
-      handlePageChange={handlePageChange}
-     />
-    </div>
-   </div>
-  </Layout>
+   </Layout>
+
+   <CreateUserModal buttonLabel="add" isOpen={createUserModal} toggle={toggle} />
+  </>
  )
 }
 

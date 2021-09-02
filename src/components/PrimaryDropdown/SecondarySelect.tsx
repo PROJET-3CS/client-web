@@ -15,7 +15,7 @@ const SecondarySelect: FC<InputProps & SelectProps> = ({
  options,
  defaultValue,
  getValue,
- placeholder = 'Select...'
+ placeholder = 'Select...',
 }) => {
  const formatOption = () => {
   if (defaultValue) {

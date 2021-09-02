@@ -3,7 +3,7 @@ import { faEllipsisH } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Link } from 'react-router-dom'
 
-const AwesomeRow : FC = () => {
+const AwesomeRow: FC = () => {
  return (
   <tr className="clinity__table-row">
    <td className="clinity__table-cell">

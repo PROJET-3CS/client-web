@@ -47,6 +47,8 @@ const medicalFolder: FC = () => {
   _syncFolder()
  }, [])
 
+ console.log(useSelector(getFolder))
+
  if (error || !folder) {
   return <Layout>Sorry Something went wrong</Layout>
  }

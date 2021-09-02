@@ -40,6 +40,22 @@ const ManagementSlice = createSlice({
    state.error = ''
    state.users = []
   },
+
+  createUser: (state, { payload }) => {
+   state.loading = true
+   state.selectedUser = payload
+  },
+
+  createUserSuccess: (state, { payload }) => {
+   state.loading = false
+   state.error = ''
+   state.selectedUser = {}
+  },
+
+  createUserError: (state, { payload }) => {
+   state.loading = false
+   state.error = 'true'
+  },
  },
 })
 
@@ -50,6 +66,9 @@ export const {
  archiveUser,
  archiveUserError,
  archiveUserSuccess,
+ createUser,
+ createUserSuccess,
+ createUserError,
 } = ManagementSlice.actions
 
 export default ManagementSlice.reducer
