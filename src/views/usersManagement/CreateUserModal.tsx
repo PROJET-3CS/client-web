@@ -16,8 +16,23 @@ interface Props {
 }
 
 const CreateUserModal: FC<InputProps & Props> = ({ isOpen, toggle }) => {
+ // ===========================================================================
+ // Selectors
+ // ===========================================================================
  const { loading, error, selectedUser } = useSelector(getUsersManagement)
 
+ // ===========================================================================
+ // Dispatch
+ // ==========================================================================
+ const dispatch = useDispatch()
+
+ const _createUser = (payload: User) => {
+  dispatch(createUser(payload))
+ }
+
+ //  ==============================================================================
+ //  State
+ //  ==============================================================================
  const initialState: User = {
   firstname: selectedUser.firstname ? selectedUser.firstname : '',
   lastname: selectedUser.lastname ? selectedUser.lastname : '',
@@ -31,16 +46,18 @@ const CreateUserModal: FC<InputProps & Props> = ({ isOpen, toggle }) => {
   setState({ ...state, [event.target.name]: event.target.value })
  }
 
- const dispatch = useDispatch()
-
- const _createUser = (payload: User) => {
-  dispatch(createUser(payload))
- }
+ // ===========================================================================
+ // Handlers
+ // ===========================================================================
 
  const handleSubmit = () => {
   _createUser(state)
   //   toggle()
  }
+
+ // ===========================================================================
+ // Hooks
+ // ===========================================================================
 
  const initialRender = useRef(true) // SOL from stackoverflow for excuting useEffect after the first renders
 
