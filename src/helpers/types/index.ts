@@ -218,6 +218,9 @@ export interface InputProps {
  min?: ComponentProps<typeof Input>['min']
  max?: ComponentProps<typeof Input>['max']
  style?: ComponentProps<typeof Input>['style']
+ title?: ComponentProps<typeof Input>['title']
+ description?: ComponentProps<typeof Input>['description']
+ image?: ComponentProps<typeof Input>['image']
 }
 
 export interface ModalProps {

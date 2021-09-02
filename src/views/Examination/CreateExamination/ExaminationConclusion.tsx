@@ -5,6 +5,7 @@ import Layout from '../../layouts/Layout'
 import Header from '../../../components/Header'
 import AwesomeButtonIcon from '../../../components/AwesomeButton/AwesomeButtonIcon'
 import FileUpload from '../../../components/ExaminationComponents/FileUpload'
+import OtherFilesBox from '../../../components/ExaminationComponents/OtherFilesBox'
 
 const ExaminationConclusion: FC = () => {
  return (
@@ -42,6 +43,10 @@ const ExaminationConclusion: FC = () => {
       nibh amet. Placerat pellentesque maecenas sollicitudin lacinia commodo, luctus. A eu magna
       augue aenean.
      </p>
+     <Col className="createExamination__PatInterro-card--col">
+      <OtherFilesBox title="Create prescription" description="You can add import an existing one or create new one" image="/img/prescription.svg"/>
+      <OtherFilesBox title="Create prescription" description="You can add import an existing one or create new one" image="/img/medical_certificate.svg"/>
+     </Col>
     </Card>
     <AwesomeButtonIcon icon="check" text="Save Changes" />
    </FormGroup>
