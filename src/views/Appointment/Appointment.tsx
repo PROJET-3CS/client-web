@@ -26,7 +26,7 @@ const Appointment: FC = () => {
  const dispatch = useDispatch()
 
  const _fetchUsers = () => {
-  dispatch(fetchUsers())
+  dispatch(fetchUsers({ page: 0, items: 8 }))
  }
 
  //  ==============================================================================

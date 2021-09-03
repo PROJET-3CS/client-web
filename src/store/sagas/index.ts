@@ -106,10 +106,11 @@ function* logoutUser() {
 
 function* getUsers() {
  try {
-  const { data } = yield axios.get('/users/get_users/0')
+  const { routeQueries } = yield select(getUsersManagement)
+
+  const { data } = yield axios.get(`/users?page=${routeQueries.page}&items=${routeQueries.items}`)
   if (data.status === 'success') {
-   // const users = (data.body.length === 1) ? [data.body] : data.body
-   yield put(fetchUsersSuccess(data.body.users))
+   yield put(fetchUsersSuccess(data.body))
   } else {
    yield put(fetchUsersError())
   }
@@ -121,10 +122,14 @@ function* getUsers() {
 function* archiverUser() {
  try {
   const { selectedUser } = yield select(getUsersManagement)
-  const uri = `medical_folder/activate${selectedUser.id}`
-  const { data } = yield axios.delete(uri)
+  const path = `/users/archive/${selectedUser.id}`
+  console.log(path)
+
+  const { data } = yield axios.get(path)
+  console.log(data.body)
+
   if (data.status === 'success') {
-   yield put(archiveUserSuccess(data))
+   yield put(archiveUserSuccess())
   } else {
    yield put(archiveUserError())
   }
@@ -182,12 +187,12 @@ function* _createUser() {
    }
   )
   if (data.status === 'success') {
-   yield put(createUserSuccess(data.body))
+   yield put(createUserSuccess())
   } else {
-   yield put(createUserError(data.body))
+   yield put(createUserError())
   }
  } catch (Err) {
-  yield put(createUserError(Err))
+  yield put(createUserError())
  }
 }
 

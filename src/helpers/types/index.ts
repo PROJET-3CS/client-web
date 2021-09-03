@@ -133,10 +133,13 @@ export interface AuthState {
 }
 
 export interface managmentState {
+ routeQueries: Record<string, unknown>
+ usersCount: number
+ totalPages: number
  users: User[]
  selectedUser: User | Record<string, unknown>
  loading: boolean
- error: string
+ error: boolean
 }
 
 export interface AppointmentState {

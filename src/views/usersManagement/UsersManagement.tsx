@@ -1,7 +1,8 @@
-import React, { FC, useEffect, useState } from 'react'
+import React, { FC, SetStateAction, useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import axios from 'axios'
-import { faUser, faUsers, faPlus } from '@fortawesome/free-solid-svg-icons'
+import { faUser, faUsers, faPlus, faEllipsisH } from '@fortawesome/free-solid-svg-icons'
+import { useDispatch, useSelector } from 'react-redux'
+import { Dropdown, DropdownItem, DropdownMenu, DropdownToggle } from 'reactstrap'
 
 import Layout from '../layouts/Layout'
 import OverviewCard from '../../components/OverviewCard'
@@ -9,25 +10,81 @@ import Header from '../../components/Header'
 import AwesomeButton from '../../components/AwesomeButton/AwesomeButton'
 import AwesomeTableNew from '../../components/AwesomeTable/AwesomeTableNew'
 import CreateUserModal from './CreateUserModal'
+import { fetchUsers } from '../../store/slices/usersManagement'
+import { getUsersManagement } from '../../store/selectors'
+import { User } from '../../helpers/types'
+import ArchiveUserModal from './ArchiveUserModal'
 
 const UsersManagement: FC = () => {
  const [createUserModal, setCreateUserModal] = useState(false)
+ const [archiveModal, setArchiveModal] = useState(false)
 
  const toggle = () => {
   setCreateUserModal(!createUserModal)
  }
 
- const handlePageChange = (selected: number) => {
-  console.log(selected)
+ const [buffer, setBuffer] = useState(null)
+
+ const toggleArchive = (user: any) => {
+  setBuffer(user)
+  setArchiveModal(!archiveModal)
  }
+ const [page, setPage] = useState(0)
+
+ const routeQueriesInitialState = {
+  page,
+  items: 8,
+ }
+ const [routeQueries, setRouteQueries] = useState(routeQueriesInitialState)
  const displayNameWithAvatar = (item: any) => {
-  const { name } = item
+  const { firstname, lastname } = item
 
   return (
    <>
-    <img className="clinity__table-avatar" alt="profle pic" src="/img/profile.jpg" /> {name}
+    <img className="clinity__table-avatar" alt="profle pic" src="/img/profile.jpg" />{' '}
+    {`${firstname} ${lastname}`}
    </>
   )
+ }
+
+ const tableRowDropdown = (item: User) => {
+  const [dropdownOpen, setDropdownOpen] = useState(false)
+
+  const toggleDropdown = () => {
+   setDropdownOpen(!dropdownOpen)
+  }
+
+  return (
+   <>
+    <Dropdown isOpen={dropdownOpen} toggle={toggleDropdown}>
+     <DropdownToggle tag="span" data-toggle="dropdown">
+      <FontAwesomeIcon icon={faEllipsisH} />
+     </DropdownToggle>
+     <DropdownMenu>
+      <DropdownItem
+       onClick={() => {
+        toggleArchive(item)
+       }}
+      >
+       View profile
+      </DropdownItem>
+      <DropdownItem>Archive</DropdownItem>
+     </DropdownMenu>
+    </Dropdown>
+   </>
+  )
+ }
+
+ const dispatch = useDispatch()
+
+ const _fetchUsers = (payload: any) => {
+  dispatch(fetchUsers(payload))
+ }
+
+ const handlePageChange = async (selectedPage: { selected: number }) => {
+  const { selected } = selectedPage
+  await setPage(selected)
+  _fetchUsers({ page, items: 8 })
  }
 
  const tableColumns = [
@@ -39,60 +96,14 @@ const UsersManagement: FC = () => {
   { name: 'Year', path: 'year' },
   { name: 'N°Group', path: 'group' },
   { name: 'Status', path: 'status' },
-  { name: 'Last Connexion', path: 'lastConnexion' },
+  //   { name: 'Last Connexion', path: 'lastConnexion' },
+  { name: '', action: tableRowDropdown },
  ]
-
- const users = [
-  {
-   name: 'Mahdaoui Feddag',
-   role: 'Student',
-   year: '3CS',
-   group: 'Groupe 7',
-   status: 'activated',
-   lastConnexion: '21/3/2008',
-  },
-  {
-   name: 'Mahdaoui Feddag',
-   role: 'Student',
-   year: '3CS',
-   group: 'Groupe 7',
-   status: 'activated',
-   lastConnexion: '21/3/2008',
-  },
-  {
-   name: 'Mahdaoui Feddag',
-   role: 'Student',
-   year: '3CS',
-   group: 'Groupe 7',
-   status: 'activated',
-   lastConnexion: '21/3/2008',
-  },
-  {
-   name: 'Mahdaoui Feddag',
-   role: 'Student',
-   year: '3CS',
-   group: 'Groupe 7',
-   status: 'activated',
-   lastConnexion: '21/3/2008',
-  },
-  {
-   name: 'Mahdaoui Feddag',
-   role: 'Student',
-   year: '3CS',
-   group: 'Groupe 7',
-   status: 'activated',
-   lastConnexion: '21/3/2008',
-  },
- ]
-
- const getUsers = async () => {
-  const usersS = await axios.get('http://localhost:5000/users?page=0&items=8')
-  console.log(usersS.data.body.users)
- }
 
  useEffect(() => {
-  getUsers()
+  _fetchUsers(routeQueriesInitialState)
  }, [])
+ const { users, usersCount, totalPages } = useSelector(getUsersManagement)
 
  return (
   <>
@@ -103,7 +114,7 @@ const UsersManagement: FC = () => {
      <div className="overview__cards-container">
       <OverviewCard
        cardTitle="Total Patients"
-       cardInfo={1600}
+       cardInfo={usersCount}
        cardGrowth={!false}
        cardGrowthValue={22}
        cardIcon={faUser}
@@ -142,7 +153,7 @@ const UsersManagement: FC = () => {
       <AwesomeTableNew
        tableHead={tableColumns}
        tableBody={users}
-       pageCount={100}
+       pageCount={totalPages}
        handlePageChange={handlePageChange}
       />
      </div>
@@ -150,6 +161,12 @@ const UsersManagement: FC = () => {
    </Layout>
 
    <CreateUserModal buttonLabel="add" isOpen={createUserModal} toggle={toggle} />
+   <ArchiveUserModal
+    buttonLabel="archive user"
+    isOpen={archiveModal}
+    toggle={toggleArchive}
+    user={buffer}
+   />
   </>
  )
 }

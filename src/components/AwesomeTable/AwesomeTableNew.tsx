@@ -93,9 +93,11 @@ const AwesomeTableNew: React.FC<ITableWithPagination> = ({
    <div className="clinity__table">
     <Table borderless responsive>
      <AwesomeTableHead tableHead={tableHead} />
-     <tbody className="clinity__table-body">
-      <AwesomeTableBody tableHead={tableHead} tableBody={tableBody} />
-     </tbody>
+     {tableBody && tableBody?.length > 0 && (
+      <tbody className="clinity__table-body">
+       <AwesomeTableBody tableHead={tableHead} tableBody={tableBody} />
+      </tbody>
+     )}
     </Table>
    </div>
    <ReactPaginate
