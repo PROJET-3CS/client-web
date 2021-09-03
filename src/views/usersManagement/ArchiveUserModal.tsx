@@ -41,7 +41,6 @@ const ArchiveUserModal: FC<InputProps & Props> = ({ isOpen, toggle, user }) => {
  const handleSubmit = () => {
   _archiveUser(user)
   if (!error && !loading) setTimeout(toggle, 2000)
-  //   toggle()
  }
 
  // ===========================================================================

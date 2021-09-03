@@ -1,8 +1,9 @@
-import React, { FC, SetStateAction, useEffect, useState } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser, faUsers, faPlus, faEllipsisH } from '@fortawesome/free-solid-svg-icons'
 import { useDispatch, useSelector } from 'react-redux'
 import { Dropdown, DropdownItem, DropdownMenu, DropdownToggle } from 'reactstrap'
+import { PayloadAction } from '@reduxjs/toolkit'
 
 import Layout from '../layouts/Layout'
 import OverviewCard from '../../components/OverviewCard'
@@ -16,19 +17,25 @@ import { User } from '../../helpers/types'
 import ArchiveUserModal from './ArchiveUserModal'
 
 const UsersManagement: FC = () => {
+ // ===========================================================================
+ // Selectors
+ // ===========================================================================
+ const { users, usersCount, totalPages } = useSelector(getUsersManagement)
+
+ // ===========================================================================
+ // Dispatch
+ // ==========================================================================
+ const dispatch = useDispatch()
+
+ const _fetchUsers = (payload: any) => {
+  dispatch(fetchUsers(payload))
+ }
+ //  ==============================================================================
+ //  State
+ //  ==============================================================================
  const [createUserModal, setCreateUserModal] = useState(false)
  const [archiveModal, setArchiveModal] = useState(false)
-
- const toggle = () => {
-  setCreateUserModal(!createUserModal)
- }
-
  const [buffer, setBuffer] = useState(null)
-
- const toggleArchive = (user: any) => {
-  setBuffer(user)
-  setArchiveModal(!archiveModal)
- }
  const [page, setPage] = useState(0)
 
  const routeQueriesInitialState = {
@@ -36,7 +43,35 @@ const UsersManagement: FC = () => {
   items: 8,
  }
  const [routeQueries, setRouteQueries] = useState(routeQueriesInitialState)
- const displayNameWithAvatar = (item: any) => {
+ // ===========================================================================
+ // Handlers
+ // ===========================================================================
+ const toggle = () => {
+  setCreateUserModal(!createUserModal)
+ }
+
+ const toggleArchive = (user: any) => {
+  setBuffer(user)
+  setArchiveModal(!archiveModal)
+ }
+
+ const handlePageChange = async (selectedPage: { selected: number }) => {
+  const { selected } = selectedPage
+  await setPage(selected)
+  _fetchUsers({ page, items: 8 })
+ }
+ // ===========================================================================
+ // Hooks
+ // ===========================================================================
+ useEffect(() => {
+  _fetchUsers(routeQueriesInitialState)
+ }, [])
+
+ // ===========================================================================
+ // Table properties
+ // ===========================================================================
+
+ const displayNameWithAvatar = (item: User) => {
   const { firstname, lastname } = item
 
   return (
@@ -66,25 +101,13 @@ const UsersManagement: FC = () => {
         toggleArchive(item)
        }}
       >
-       View profile
+       Archive
       </DropdownItem>
-      <DropdownItem>Archive</DropdownItem>
+      <DropdownItem>View profile</DropdownItem>
      </DropdownMenu>
     </Dropdown>
    </>
   )
- }
-
- const dispatch = useDispatch()
-
- const _fetchUsers = (payload: any) => {
-  dispatch(fetchUsers(payload))
- }
-
- const handlePageChange = async (selectedPage: { selected: number }) => {
-  const { selected } = selectedPage
-  await setPage(selected)
-  _fetchUsers({ page, items: 8 })
  }
 
  const tableColumns = [
@@ -99,11 +122,6 @@ const UsersManagement: FC = () => {
   //   { name: 'Last Connexion', path: 'lastConnexion' },
   { name: '', action: tableRowDropdown },
  ]
-
- useEffect(() => {
-  _fetchUsers(routeQueriesInitialState)
- }, [])
- const { users, usersCount, totalPages } = useSelector(getUsersManagement)
 
  return (
   <>
