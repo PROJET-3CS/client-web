@@ -232,6 +232,7 @@ export interface InputProps {
 export interface ModalProps {
  modal: boolean
  toggle: () => void
+ handler?: () => void
 }
 
 // ==============================================================================

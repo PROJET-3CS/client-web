@@ -8,23 +8,20 @@ import AntecedItem from '../../components/Antecedent/AntecedItem'
 import AwesomeButtonIcon from '../../components/AwesomeButton/AwesomeButtonIcon'
 import AwesomeModal from '../../components/AwesomeModal/AwesomeModal'
 
-interface Props {
-    goForward: () => void
-}
-
-const AntecedModal: FC<ModalProps & Props> = ({ modal, toggle, handler, goForward }) => {
-
+const maladiesGeneral: FC<ModalProps> = ({ modal, toggle, handler }) => {
  return (
   <AwesomeModal style={{ maxWidth: '45%' }} modal={modal} toggle={toggle}>
    <div className="clinity__modal-header">
-    <h3>Affections Congénitaires</h3>
+    <h3>Maladies Générales</h3>
     <FontAwesomeIcon onClick={toggle} icon={faTimes} color="primary-color" />
    </div>
    <div className="clinity__modal-body">
+
     <AntecedItem
      title="Lorem ipsum dolor"
      content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Socii..."
      date="04/08/2021"
+     color='#F2994A'
      onClick={handler}
     />
 
@@ -32,6 +29,7 @@ const AntecedModal: FC<ModalProps & Props> = ({ modal, toggle, handler, goForwar
      title="Lorem ipsum dolor"
      content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Socii..."
      date="04/08/2021"
+     color='#F2994A'
      onClick={handler}
     />
 
@@ -39,6 +37,7 @@ const AntecedModal: FC<ModalProps & Props> = ({ modal, toggle, handler, goForwar
      title="Lorem ipsum dolor"
      content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Socii..."
      date="04/08/2021"
+     color='#F2994A'
      onClick={handler}
     />
 
@@ -46,6 +45,7 @@ const AntecedModal: FC<ModalProps & Props> = ({ modal, toggle, handler, goForwar
      title="Lorem ipsum dolor"
      content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Socii..."
      date="04/08/2021"
+     color='#F2994A'
      onClick={handler}
     />
    </div>
@@ -54,12 +54,11 @@ const AntecedModal: FC<ModalProps & Props> = ({ modal, toggle, handler, goForwar
     <AwesomeButtonIcon
      style={{ width: '100%', marginLeft: '0' }}
      icon={faPlus}
-     text="New Affection"
-     onClick={goForward}
+     text="Ajouter une maladie"
     />
    </div>
   </AwesomeModal>
  )
 }
 
-export default AntecedModal
+export default maladiesGeneral

@@ -1,6 +1,5 @@
 import React, { FC } from 'react'
-import { Label } from 'reactstrap'
-import { InputProps } from '../../helpers/types'
+import { InputProps, Label } from 'reactstrap'
 import './SecondaryInput.scss'
 
 const SecondaryInput: FC<InputProps> = ({
@@ -12,20 +11,32 @@ const SecondaryInput: FC<InputProps> = ({
  min,
  max,
  onChange,
+ className,
 }) => {
  return (
-  <div className="Secondary__form-subgroup">
+  <div className={`Secondary__form-subgroup ${className}`}>
    <Label className="Secondary__form-subgroup--label">{label}</Label>
-   <input
-    id={id}
-    min={min}
-    max={max}
-    className="Secondary__form-subgroup--input"
-    type={type}
-    name={name}
-    placeholder={placeholder}
-    onChange={onChange}
-   />
+   {type === 'textarea' ? (
+    <textarea
+     id={id}
+     className="Secondary__form-subgroup--input"
+     name={name}
+     placeholder={placeholder}
+     rows={4}
+     cols={50}
+    />
+   ) : (
+    <input
+     id={id}
+     min={min}
+     max={max}
+     className="Secondary__form-subgroup--input"
+     type={type}
+     name={name}
+     placeholder={placeholder}
+     onChange={onChange}
+    />
+   )}
   </div>
  )
 }

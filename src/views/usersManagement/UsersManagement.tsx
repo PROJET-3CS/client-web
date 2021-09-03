@@ -61,9 +61,6 @@ const UsersManagement: FC = () => {
 
  useEffect(() => {
   _fetchUsers(routeQueries)
-  console.log(routeQueries)
-
-  console.log(users)
  }, [routeQueries])
  // ===========================================================================
  // Hooks
