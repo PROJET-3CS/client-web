@@ -122,11 +122,8 @@ function* getUsers() {
 function* archiverUser() {
  try {
   const { selectedUser } = yield select(getUsersManagement)
-  const path = `/users/archive/${selectedUser.id}`
-  console.log(path)
 
-  const { data } = yield axios.get(path)
-  console.log(data.body)
+  const { data } = yield axios.get(`/users/archive/${selectedUser.id}`)
 
   if (data.status === 'success') {
    yield put(archiveUserSuccess())

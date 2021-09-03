@@ -3,7 +3,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser, faUsers, faPlus, faEllipsisH } from '@fortawesome/free-solid-svg-icons'
 import { useDispatch, useSelector } from 'react-redux'
 import { Dropdown, DropdownItem, DropdownMenu, DropdownToggle } from 'reactstrap'
-import { PayloadAction } from '@reduxjs/toolkit'
 
 import Layout from '../layouts/Layout'
 import OverviewCard from '../../components/OverviewCard'
@@ -39,7 +38,7 @@ const UsersManagement: FC = () => {
  const [page, setPage] = useState(0)
 
  const routeQueriesInitialState = {
-  page,
+  page: 0,
   items: 8,
  }
  const [routeQueries, setRouteQueries] = useState(routeQueriesInitialState)
@@ -57,14 +56,20 @@ const UsersManagement: FC = () => {
 
  const handlePageChange = async (selectedPage: { selected: number }) => {
   const { selected } = selectedPage
-  await setPage(selected)
-  _fetchUsers({ page, items: 8 })
+  setRouteQueries({ ...routeQueries, page: selected })
  }
+
+ useEffect(() => {
+  _fetchUsers(routeQueries)
+  console.log(routeQueries)
+
+  console.log(users)
+ }, [routeQueries])
  // ===========================================================================
  // Hooks
  // ===========================================================================
  useEffect(() => {
-  _fetchUsers(routeQueriesInitialState)
+  _fetchUsers(routeQueries)
  }, [])
 
  // ===========================================================================
@@ -171,7 +176,7 @@ const UsersManagement: FC = () => {
       <AwesomeTableNew
        tableHead={tableColumns}
        tableBody={users}
-       pageCount={totalPages}
+       pageCount={10}
        handlePageChange={handlePageChange}
       />
      </div>

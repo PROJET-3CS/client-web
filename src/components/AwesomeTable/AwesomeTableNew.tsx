@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react'
+import React from 'react'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -9,7 +9,9 @@ import ReactPaginate from 'react-paginate'
 
 interface ITable {
  tableHead: { name: string; path?: string; action?: any }[]
+ //  action is a complete component
  tableBody?: any[]
+ //  tablebody is an array of objects that we will display
 }
 
 interface ITableWithPagination {
