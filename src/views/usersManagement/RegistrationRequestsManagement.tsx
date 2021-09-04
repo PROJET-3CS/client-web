@@ -1,41 +1,41 @@
 import React, { FC, useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUser, faUsers, faPlus, faEllipsisH } from '@fortawesome/free-solid-svg-icons'
+import { faEllipsisH } from '@fortawesome/free-solid-svg-icons'
 import { useDispatch, useSelector } from 'react-redux'
 import { Dropdown, DropdownItem, DropdownMenu, DropdownToggle } from 'reactstrap'
-import { useHistory } from 'react-router'
 
 import Layout from '../layouts/Layout'
-import OverviewCard from '../../components/OverviewCard'
 import Header from '../../components/Header'
-import AwesomeButton from '../../components/AwesomeButton/AwesomeButton'
+
 import AwesomeTableNew from '../../components/AwesomeTable/AwesomeTableNew'
-import CreateUserModal from './CreateUserModal'
-import { fetchUsers } from '../../store/slices/usersManagement'
+
+import { fetchRegistrationRequests } from '../../store/slices/usersManagement'
 import { getUsersManagement } from '../../store/selectors'
 import { User } from '../../helpers/types'
-import ArchiveUserModal from './ArchiveUserModal'
+import AcceptUserModal from './AcceptUserModal'
+import RejectUserModal from './RejectUserModal'
 
-const UsersManagement: FC = () => {
+const RegistrationRequestsManagement: FC = () => {
  // ===========================================================================
  // Selectors
  // ===========================================================================
- const { users, usersCount, totalPages } = useSelector(getUsersManagement)
+ const { users, totalPages } = useSelector(getUsersManagement)
 
  // ===========================================================================
  // Dispatch
  // ==========================================================================
  const dispatch = useDispatch()
 
- const _fetchUsers = (payload: any) => {
-  dispatch(fetchUsers(payload))
+ const _fetchRequests = (payload: any) => {
+  dispatch(fetchRegistrationRequests(payload))
  }
  //  ==============================================================================
  //  State
  //  ==============================================================================
- const [createUserModal, setCreateUserModal] = useState(false)
- const [archiveModal, setArchiveModal] = useState(false)
  const [buffer, setBuffer] = useState(null)
+ const [acceptModal, setAcceptModal] = useState(false)
+ const [rejectModal, setRejectModal] = useState(false)
+
  const [page, setPage] = useState(0)
 
  const routeQueriesInitialState = {
@@ -46,14 +46,6 @@ const UsersManagement: FC = () => {
  // ===========================================================================
  // Handlers
  // ===========================================================================
- const toggle = () => {
-  setCreateUserModal(!createUserModal)
- }
-
- const toggleArchive = (user: any) => {
-  setBuffer(user)
-  setArchiveModal(!archiveModal)
- }
 
  const handlePageChange = async (selectedPage: { selected: number }) => {
   const { selected } = selectedPage
@@ -61,35 +53,34 @@ const UsersManagement: FC = () => {
  }
 
  useEffect(() => {
-  _fetchUsers(routeQueries)
+  _fetchRequests(routeQueries)
  }, [routeQueries])
+
+ const toggleAccept = (user: any) => {
+  setBuffer(user)
+  setAcceptModal(!acceptModal)
+ }
+
+ const toggleReject = (user: any) => {
+  setBuffer(user)
+  setRejectModal(!rejectModal)
+ }
  // ===========================================================================
  // Hooks
  // ===========================================================================
  useEffect(() => {
-  _fetchUsers(routeQueries)
+  _fetchRequests(routeQueries)
  }, [])
-
  // ===========================================================================
  // Table properties
  // ===========================================================================
 
- const displayNameWithAvatar = (item: User) => {
-  const { firstname, lastname } = item
-
-  return (
-   <>
-    <img className="clinity__table-avatar" alt="profle pic" src="/img/profile.jpg" />{' '}
-    {`${firstname} ${lastname}`}
-   </>
-  )
- }
  const tableRowDropdown = (item: User) => {
   const [dropdownOpen, setDropdownOpen] = useState(false)
+
   const toggleDropdown = () => {
    setDropdownOpen(!dropdownOpen)
   }
-  let history = useHistory()
 
   return (
    <>
@@ -100,34 +91,27 @@ const UsersManagement: FC = () => {
      <DropdownMenu>
       <DropdownItem
        onClick={() => {
-        toggleArchive(item)
+        toggleAccept(item)
        }}
       >
-       Archive
+       Accept
       </DropdownItem>
       <DropdownItem
        onClick={() => {
-        history.push(`/folder/${item.id}`)
+        toggleReject(item)
        }}
       >
-       View profile
+       Refuse
       </DropdownItem>
      </DropdownMenu>
     </Dropdown>
    </>
   )
  }
-
- const tableColumns = [
-  {
-   name: 'Name',
-   action: displayNameWithAvatar,
-  },
-  { name: 'Role', path: 'role' },
-  { name: 'Year', path: 'year' },
-  { name: 'N°Group', path: 'group' },
-  { name: 'Status', path: 'status' },
-  //   { name: 'Last Connexion', path: 'lastConnexion' },
+ const tableHead = [
+  { name: 'Firstname', path: 'firstname' },
+  { name: 'Lasttname', path: 'lastname' },
+  { name: 'E-mail', path: 'email' },
   { name: '', action: tableRowDropdown },
  ]
 
@@ -135,49 +119,14 @@ const UsersManagement: FC = () => {
   <>
    <Layout>
     <Header />
-    <div className="overview">
-     <h2 className="main-heading">Overview</h2>
-     <div className="overview__cards-container">
-      <OverviewCard
-       cardTitle="Total Patients"
-       cardInfo={usersCount}
-       cardGrowth={!false}
-       cardGrowthValue={22}
-       cardIcon={faUser}
-      />
-      <OverviewCard
-       cardTitle="Total Patients"
-       cardInfo={1600}
-       cardGrowth={false}
-       cardGrowthValue={22}
-       cardIcon={faUser}
-      />
-      <OverviewCard
-       cardTitle="Total Patients"
-       cardInfo={1600}
-       cardGrowth={!false}
-       cardGrowthValue={22}
-       cardIcon={faUsers}
-      />
-      <OverviewCard
-       cardTitle="Total Patients"
-       cardInfo={1600}
-       cardGrowth={false}
-       cardGrowthValue={22}
-       cardIcon={faUser}
-      />
-     </div>
-    </div>
+
     <div className="users-list">
      <div className="users-list__header">
       <h2 className="main-heading">Users list</h2>
-      <AwesomeButton className="users-list__button" onClick={toggle}>
-       <FontAwesomeIcon icon={faPlus} /> Create New User
-      </AwesomeButton>
      </div>
      <div className="users-list__table">
       <AwesomeTableNew
-       tableHead={tableColumns}
+       tableHead={tableHead}
        tableBody={users}
        pageCount={totalPages}
        handlePageChange={handlePageChange}
@@ -185,16 +134,20 @@ const UsersManagement: FC = () => {
      </div>
     </div>
    </Layout>
-
-   <CreateUserModal buttonLabel="add" isOpen={createUserModal} toggle={toggle} />
-   <ArchiveUserModal
-    buttonLabel="archive user"
-    isOpen={archiveModal}
-    toggle={toggleArchive}
+   <AcceptUserModal
+    buttonLabel="accept user"
+    isOpen={acceptModal}
+    toggle={toggleAccept}
+    user={buffer}
+   />
+   <RejectUserModal
+    buttonLabel="reject user"
+    isOpen={rejectModal}
+    toggle={toggleReject}
     user={buffer}
    />
   </>
  )
 }
 
-export default UsersManagement
+export default RegistrationRequestsManagement

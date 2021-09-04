@@ -29,6 +29,7 @@ const ManagementSlice = createSlice({
   fetchUsers: (state, { payload }) => {
    state.routeQueries = payload
    state.loading = true
+   state.users = []
   },
   fetchUsersError: (state) => {
    state.loading = false
@@ -64,6 +65,48 @@ const ManagementSlice = createSlice({
    state.loading = false
    state.error = true
   },
+  fetchRegistrationRequests: (state, { payload }) => {
+   state.loading = true
+   state.users = []
+   state.routeQueries = payload
+  },
+  fetchRegistrationRequestsSuccess: (state, { payload }) => {
+   state.loading = false
+   state.users = payload
+  },
+  fetchRegistrationRequestsError: (state) => {
+   state.loading = false
+   state.error = true
+  },
+
+  acceptUser: (state, { payload }: PayloadAction<User>) => {
+   state.loading = true
+   state.selectedUser = payload
+  },
+
+  acceptUserSucces: (state) => {
+   state.loading = false
+   state.selectedUser = {}
+  },
+
+  acceptUserError: (state) => {
+   state.loading = false
+   state.error = true
+  },
+  rejectUser: (state, { payload }: PayloadAction<User>) => {
+   state.loading = true
+   state.selectedUser = payload
+  },
+
+  rejectUserSucces: (state) => {
+   state.loading = false
+   state.selectedUser = {}
+  },
+
+  rejectUserError: (state) => {
+   state.loading = false
+   state.error = true
+  },
  },
 })
 
@@ -77,6 +120,15 @@ export const {
  createUser,
  createUserSuccess,
  createUserError,
+ fetchRegistrationRequests,
+ fetchRegistrationRequestsError,
+ fetchRegistrationRequestsSuccess,
+ acceptUser,
+ acceptUserSucces,
+ acceptUserError,
+ rejectUser,
+ rejectUserSucces,
+ rejectUserError,
 } = ManagementSlice.actions
 
 export default ManagementSlice.reducer

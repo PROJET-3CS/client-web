@@ -37,6 +37,14 @@ import {
  createUser,
  createUserError,
  createUserSuccess,
+ fetchRegistrationRequestsSuccess,
+ fetchRegistrationRequests,
+ acceptUser,
+ acceptUserError,
+ acceptUserSucces,
+ rejectUser,
+ rejectUserError,
+ rejectUserSucces,
 } from '../slices/usersManagement'
 import {
  reset,
@@ -319,6 +327,68 @@ function* _addAppointment() {
  }
 }
 
+// registration requests
+function* loadRegistrationRequests() {
+ try {
+  const USER_TOKEN = getToken()
+  const authToken = `Bearer ${USER_TOKEN}`
+  const { routeQueries } = yield select(getUsersManagement)
+
+  const { data } = yield axios.get(`/users/requests/${routeQueries.page}`, {
+   headers: { Authorization: authToken },
+  })
+
+  if (data.status === 'success') {
+   yield put(fetchRegistrationRequestsSuccess(data.body.requests))
+   console.log(data.body.requests)
+  } else {
+   yield put(syncAppointmentError())
+  }
+ } catch (Err) {
+  yield put(addAppointmentError('Sorry something went wrong !'))
+ }
+}
+
+function* acceptRegistrationRequest() {
+ try {
+  const USER_TOKEN = getToken()
+  const authToken = `Bearer ${USER_TOKEN}`
+  const { selectedUser } = yield select(getUsersManagement)
+
+  const { data } = yield axios.get(`/users/request/${selectedUser.id}`, {
+   headers: { Authorization: authToken },
+  })
+
+  if (data.status === 'success') {
+   yield put(acceptUserSucces())
+  } else {
+   yield put(acceptUserError())
+  }
+ } catch (Err) {
+  yield put(acceptUserError())
+ }
+}
+
+function* rejectRegistrationRequest() {
+ try {
+  const USER_TOKEN = getToken()
+  const authToken = `Bearer ${USER_TOKEN}`
+  const { selectedUser } = yield select(getUsersManagement)
+
+  const { data } = yield axios.delete(`/users/request/${selectedUser.id}`, {
+   headers: { Authorization: authToken },
+  })
+
+  if (data.status === 'success') {
+   yield put(rejectUserSucces())
+  } else {
+   yield put(rejectUserError())
+  }
+ } catch (Err) {
+  yield put(rejectUserError())
+ }
+}
+
 // If any of these functions are dispatched, invoke the appropriate saga
 // eslint-disable-next-line
 function* rootSaga() {
@@ -338,6 +408,9 @@ function* rootSaga() {
   takeLatest(change.type, changePassword),
   takeLatest(active.type, activateAcc),
   takeLatest(createUser.type, _createUser),
+  takeLatest(fetchRegistrationRequests, loadRegistrationRequests),
+  takeLatest(acceptUser, acceptRegistrationRequest),
+  takeLatest(rejectUser, rejectRegistrationRequest),
  ])
 }
 
