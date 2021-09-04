@@ -17,7 +17,6 @@ const AntecedDetails: FC<ModalProps & Props & InputProps> = ({
  goBack,
  onKeyDown,
 }) => {
-
  return (
   <AwesomeModal
    style={{ maxWidth: '40%' }}

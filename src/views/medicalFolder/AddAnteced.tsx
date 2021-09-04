@@ -31,16 +31,23 @@ const IndAppointmentModal: FC<ModalProps> = ({ modal, toggle }) => {
         placeholder="Lorem Ipsum"
         type="text"
         label="What's this affection"
-        className='anteced__add-input--title'
+        className="anteced__add-input--title"
        />
       </FormGroup>
       <FormGroup className="newappointment__resultmodal-formgroup">
        <Label className="newappointment__resultmodal-formgroup--label">Started From</Label>
-       <SecondaryInput id="date" name="date" type="date" className='anteced__add-input--date' />
+       <SecondaryInput id="date" name="date" type="date" className="anteced__add-input--date" />
       </FormGroup>
       <FormGroup className="newappointment__resultmodal-formgroup">
        <Label className="newappointment__resultmodal-formgroup--label">Details</Label>
-       <SecondaryInput id="details" name="details" type="textarea" placeholder='Enter details...' rows='10' className='anteced__add-input--details' />
+       <SecondaryInput
+        id="details"
+        name="details"
+        type="textarea"
+        placeholder="Enter details..."
+        rows="10"
+        className="anteced__add-input--details"
+       />
       </FormGroup>
       <AwesomeButton>Add Antécédent</AwesomeButton>
      </div>

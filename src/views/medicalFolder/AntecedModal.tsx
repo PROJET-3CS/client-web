@@ -9,11 +9,10 @@ import AwesomeButtonIcon from '../../components/AwesomeButton/AwesomeButtonIcon'
 import AwesomeModal from '../../components/AwesomeModal/AwesomeModal'
 
 interface Props {
-    goForward: () => void
+ goForward: () => void
 }
 
 const AntecedModal: FC<ModalProps & Props> = ({ modal, toggle, handler, goForward }) => {
-
  return (
   <AwesomeModal style={{ maxWidth: '45%' }} modal={modal} toggle={toggle}>
    <div className="clinity__modal-header">

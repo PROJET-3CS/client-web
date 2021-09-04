@@ -1,0 +1,54 @@
+.OtherFilesBox {
+ &__card {
+  &:defined {
+   width: 113.5rem;
+   background-color: #f1eeee;
+   border: none;
+   border-radius: 0.5rem;
+   height: 12rem !important;
+   padding: 3.5rem;
+   margin-bottom: 2rem;
+  }
+
+  &-row {
+   vertical-align: middle !important;
+  }
+
+  &-icon {
+   width: 10rem !important;
+   & img {
+    font-size: 2rem;
+    color: white !important;
+   }
+  }
+
+  &-title {
+   margin-left: 1rem;
+   text-align: left;
+   width: 38rem !important;
+   margin-right: 10rem;
+  }
+
+  & p {
+   font-size: 1.5rem;
+   font-weight: 600;
+   color: #999999;
+  }
+
+  & span {
+   font-size: 1.2rem;
+   font-weight: 500;
+   color: #c5c5c5;
+  }
+
+  &-button {
+   background-color: #f1eeee !important;
+   border: none !important;
+   color: #999999 !important;
+   font-weight: 700 !important;
+   font-size: 1.8rem !important;
+   width: 22rem !important;
+   text-transform: uppercase;
+  }
+ }
+}

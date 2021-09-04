@@ -16,12 +16,11 @@ const maladiesGeneral: FC<ModalProps> = ({ modal, toggle, handler }) => {
     <FontAwesomeIcon onClick={toggle} icon={faTimes} color="primary-color" />
    </div>
    <div className="clinity__modal-body">
-
     <AntecedItem
      title="Lorem ipsum dolor"
      content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Socii..."
      date="04/08/2021"
-     color='#F2994A'
+     color="#F2994A"
      onClick={handler}
     />
 
@@ -29,7 +28,7 @@ const maladiesGeneral: FC<ModalProps> = ({ modal, toggle, handler }) => {
      title="Lorem ipsum dolor"
      content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Socii..."
      date="04/08/2021"
-     color='#F2994A'
+     color="#F2994A"
      onClick={handler}
     />
 
@@ -37,7 +36,7 @@ const maladiesGeneral: FC<ModalProps> = ({ modal, toggle, handler }) => {
      title="Lorem ipsum dolor"
      content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Socii..."
      date="04/08/2021"
-     color='#F2994A'
+     color="#F2994A"
      onClick={handler}
     />
 
@@ -45,7 +44,7 @@ const maladiesGeneral: FC<ModalProps> = ({ modal, toggle, handler }) => {
      title="Lorem ipsum dolor"
      content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Socii..."
      date="04/08/2021"
-     color='#F2994A'
+     color="#F2994A"
      onClick={handler}
     />
    </div>

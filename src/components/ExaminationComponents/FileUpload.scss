@@ -1,0 +1,62 @@
+.FileUpload {
+ &__form {
+  &-group {
+   margin-bottom: 2rem;
+   text-align: left;
+  }
+
+  &-label {
+   font-size: 1.5rem;
+   font-weight: 600;
+   color: #4f4f4f;
+   margin-bottom: 1rem;
+  }
+
+  &-card:defined {
+   font-family: inherit;
+   border-width: 0.2rem;
+   border-color: #5b63f6;
+   border-radius: 0.5rem !important;
+   padding: 0.7rem 2rem !important;
+   width: 30%;
+   height: 22rem;
+   align-items: center;
+
+   & img {
+    margin-top: 1.5rem;
+    width: 10rem;
+    margin-bottom: 1rem;
+   }
+
+   & p {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #5b63f6;
+    margin-bottom: 1rem;
+   }
+
+   & span {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #736e6e;
+   }
+
+   &--select {
+    font-family: inherit;
+    font-size: 1.5rem !important;
+    font-weight: 500 !important;
+    color: inherit;
+    padding: 0 !important;
+    border-radius: 0.5rem !important;
+    width: 100%;
+   }
+  }
+ }
+}
+
+@media only screen and (max-width: 75em) {
+ .FileUpload__form-group {
+  margin-bottom: 1.5rem;
+ }
+}
