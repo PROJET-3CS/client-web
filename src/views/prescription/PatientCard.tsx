@@ -2,10 +2,7 @@ import React, { FC } from 'react'
 import { useSelector } from 'react-redux'
 import { getAuth } from '../../store/selectors'
 
-
-
 const PatientCard: FC = () => {
-
  const { user } = useSelector(getAuth)
 
  return (

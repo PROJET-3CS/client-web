@@ -1734,75 +1734,74 @@
 }
 
 ///////////////////////////////////////
-// Prescription 
+// Prescription
 
-.prescription{
-  color: #000;
-  margin: 0;
-&__item-title{
+.prescription {
+ color: #000;
+ margin: 0;
+ &__item-title {
   font-size: 2.2rem;
-}
-&-right-row{
+ }
+ &-right-row {
   margin-left: 6rem;
-}
-&__medications-container{
-background-color: $color-white;
-padding-left: 34px;
-padding-top: 39px;
-border-radius: 13px;
-}
-&__medications-details{
+ }
+ &__medications-container {
+  background-color: $color-white;
+  padding-left: 34px;
+  padding-top: 39px;
+  border-radius: 13px;
+ }
+ &__medications-details {
   // padding-top: 3.5rem;
   display: flex;
   padding-top: 1.5rem;
   width: 100%;
-
-}
-&__medications-element{
+ }
+ &__medications-element {
   padding-right: 3rem;
   border-bottom: 0.1px $color-grey-light-4 solid;
   height: 10rem;
   display: flex;
-}
-&__medications-pic{
+ }
+ &__medications-pic {
   background-color: $color-primary;
   border-radius: 10px;
-   width: 6rem;
-   height: 6rem;
-   text-align: center;
-   padding-top: 1.6rem;
-}
-&__medications-detailsname{
+  width: 6rem;
+  height: 6rem;
+  text-align: center;
+  padding-top: 1.6rem;
+ }
+ &__medications-detailsname {
   font-size: 1.8rem;
-}
-&__medications-detailsdose{
+ }
+ &__medications-detailsdose {
   font-size: 1.3rem;
   color: $color-grey-dark-3;
   margin-top: 1.1rem;
-}
+ }
 
-&__medications-detailstextl{
+ &__medications-detailstextl {
   margin-left: auto;
   font-size: 1.4rem;
   color: $color-grey-dark-3;
-}
-&__medications-detailstext{
+ }
+ &__medications-detailstext {
   margin-left: 1.4rem;
-}
-&__medications-add{
+ }
+ &__medications-add {
   height: 9.5rem;
-  padding-right:3rem ;
+  padding-right: 3rem;
   padding-top: 2.5rem;
-}
-&__medications-addbtn{
+ }
+ &__medications-addbtn {
   width: 20.5rem;
   float: right;
   font-size: 1.4rem;
-}
-&__savebtn{
+ }
+ &__savebtn {
   margin-top: 4rem;
-}
-&__folder__item{
+ }
+ &__folder__item {
   width: 38.6rem;
   margin-top: 4rem;
   background-color: $color-white;
@@ -1811,383 +1810,378 @@ border-radius: 13px;
   padding-bottom: 3rem;
   border-radius: 13px;
   margin-bottom: 2rem;
-}
-}
-
-.prescription-userprofile{
-  width: 38.5rem;
-  height: 27.3rem;
-  background-color: $color-white;
-  text-align: center;
-  padding-top: 3.7rem;
-  border-radius: 13px;
-}
-.prescription-userprofile-name{
-  font-size: 2.2rem;
-  display: block;
-  margin-top: 1.9rem;
+ }
 }
 
+.prescription-userprofile {
+ width: 38.5rem;
+ height: 27.3rem;
+ background-color: $color-white;
+ text-align: center;
+ padding-top: 3.7rem;
+ border-radius: 13px;
+}
+.prescription-userprofile-name {
+ font-size: 2.2rem;
+ display: block;
+ margin-top: 1.9rem;
+}
 
-
-///////////////////////// 
+/////////////////////////
 // doctore profile
 
-
-.doctor{
-  &-container{
+.doctor {
+ &-container {
+  display: flex;
+  &-right {
+   color: $color-dark;
+   width: 44.4rem;
+   background-color: $color-white;
+   height: 100rem;
+   padding-top: 4rem;
+   padding-left: 3.6rem;
+   padding-right: 3.6rem;
+   &-diplome {
+    border-top: 0.01rem dashed $color-grey-dark-5;
+    margin-top: 4rem;
+    padding-top: 2rem;
+    font-size: 1.9rem;
+    &-box {
+     margin-top: 1.5rem;
+     margin-left: 2.4rem;
+     background-color: $color-primary-light;
+     border-radius: 13px;
+     display: flex;
+     &-1 {
+      background-color: $color-primary;
+      color: $color-primary;
+      width: 0.75rem;
+      border-radius: 13px;
+     }
+     &-txt {
+      padding-top: 1.3rem;
+      padding-left: 2.6rem;
+      padding-bottom: 1rem;
+      &-1 {
+       color: $color-primary;
+       font-size: 1.1rem;
+       margin-top: 1rem;
+      }
+     }
+    }
+   }
+   &-info {
+    background-color: $color-primary-light;
+    margin-top: 2rem;
+    height: 28rem;
+    border-radius: 13px;
+    padding: 2.8rem 2.5rem;
+    &-row {
+     display: flex;
+     margin-bottom: 1.8rem;
+     &-icon {
+      height: 2rem;
+      width: 0.2rem;
+      background-color: $color-primary-dark;
+      border-radius: 50%;
+      margin-right: 1rem;
+     }
+     &-title {
+      font-size: 1.4rem;
+      margin-right: 3rem;
+     }
+     &-data {
+      font-size: 1rem;
+      color: $color-grey-dark-5;
+      padding-top: 0.3rem;
+     }
+     &-icon2 {
+      font-size: 1.3rem;
+      color: $color-dark;
+      margin-left: auto;
+      margin-top: 0.3rem;
+     }
+    }
+   }
+   &-bio {
+    margin-top: 2.1rem;
+    border-bottom: 0.01rem dashed $color-grey-dark-5;
+   }
+   &-bio-title {
+    font-size: 1.9rem;
+   }
+   &-bio-content {
+    font-size: 1rem;
+    color: $color-grey-dark-5;
+   }
+   &-user {
+    text-align: center;
+    margin-top: 1.4rem;
+    &-mail {
+     color: $color-grey-dark-5;
+     font-size: 1.3rem;
+    }
+    &-name {
+     font-size: 2.4rem;
+     margin-top: 1.5rem;
+     margin-bottom: 0;
+    }
+    &-pic {
+     border-radius: 50%;
+     width: 12rem;
+    }
+   }
+   &-header {
     display: flex;
-    &-right{
-      color: $color-dark;
-      width: 44.4rem;
-      background-color: $color-white;
-      height: 100rem;
-      padding-top: 4rem;
-      padding-left: 3.6rem;   
-      padding-right: 3.6rem; 
-      &-diplome{
-        border-top: 0.01rem dashed $color-grey-dark-5;
-        margin-top: 4rem;
-        padding-top: 2rem;
-        font-size: 1.9rem;
-        &-box{
-          margin-top: 1.5rem;
-          margin-left: 2.4rem;
-          background-color: $color-primary-light;
-          border-radius: 13px;
-          display: flex;
-          &-1{
-            background-color: $color-primary;
-            color: $color-primary;
-            width: 0.75rem;
-            border-radius: 13px;
-          }
-          &-txt{
-            padding-top: 1.3rem;
-            padding-left: 2.6rem; 
-            padding-bottom: 1rem;
-            &-1{
-              color: $color-primary;
-              font-size: 1.1rem;
-              margin-top: 1rem;
-            }
-          }
-        }
-      }
-      &-info{
-        background-color: $color-primary-light;
-        margin-top: 2rem;
-        height: 28rem;
-        border-radius: 13px;
-        padding: 2.8rem 2.5rem;
-        &-row{
-          display: flex;
-          margin-bottom: 1.8rem;
-          &-icon{
-            height: 2rem;
-            width: 0.2rem;
-            background-color: $color-primary-dark;
-            border-radius: 50%;
-            margin-right: 1rem;
-          }
-          &-title{
-            font-size: 1.4rem;
-            margin-right: 3rem;
-          }
-          &-data{
-            font-size: 1rem;
-            color: $color-grey-dark-5;
-            padding-top: 0.3rem;
-          }
-          &-icon2{
-            font-size: 1.3rem;
-            color: $color-dark;
-            margin-left: auto;
-            margin-top: 0.3rem;
-          }
-        }
-      }
-      &-bio{
-        margin-top: 2.1rem;
-        border-bottom: 0.01rem dashed $color-grey-dark-5;
-      }
-      &-bio-title{
-        font-size: 1.9rem;
-      }
-      &-bio-content{
-        font-size: 1rem;
-        color: $color-grey-dark-5;
-      }
-      &-user{
-        text-align: center;
-        margin-top: 1.4rem;
-        &-mail{
-          color: $color-grey-dark-5;
-          font-size: 1.3rem;
-        }
-        &-name{
-          font-size: 2.4rem;
-          margin-top: 1.5rem;
-          margin-bottom: 0;
-        }
-        &-pic{
-          border-radius: 50%;
-          width: 12rem;
-        }
-      }
-      &-header{
-        display: flex;
-        &-icon{
-          color: $color-primary;
-          font-size: 2.7rem;
-          &-bell{
-            color: $color-primary;
-            font-size: 2.7rem;
-            margin-left: auto;
-          }
-        }
-      }   
+    &-icon {
+     color: $color-primary;
+     font-size: 2.7rem;
+     &-bell {
+      color: $color-primary;
+      font-size: 2.7rem;
+      margin-left: auto;
+     }
     }
-    &-left{
-      width: 100%;
-      color: $color-dark;
-      text-align: left;
-      padding-top: 5.6rem;
-      padding-left: 2.7rem;
-      color: $color-dark;
-      &-searchbar{
-        height: max-content;
-        display: flex;
-        margin-bottom: 2.7rem;
-        padding-left: 2rem;
-      }
-      &-firstrow{
-        margin-top: 1rem;
-        height: 27rem;
-        padding: 0%;
-        margin-right: 3rem;
-        display: flex;
-        &-card{
-          &-up{
-            background-color: $color-white;
-            height: 12.4rem;
-            border-radius: 13px;
-            padding-left: 1.9rem;
-            padding-top: 1.7rem;
-            font-size: 1.6rem;
-          }
-          &-stats{
-            display: flex;
-            &-1{
-              font-size: 4.5rem;
-              margin-right: 3rem;
-            }
-            &-low{
-              font-size: 1rem;
-              margin-top: 2.8rem;
-              background-color: $color-red-light;
-              width: 4rem;
-              color: red;
-              height: fit-content;
-              border-radius: 13px;
-              text-align: center;
-            }
-            &-up{
-              font-size: 1rem;
-              margin-top: 2.8rem;
-              background-color: $color-green-light;
-              width: 4rem;
-              color: green;
-              height: fit-content;
-              border-radius: 13px;
-              text-align: center;
-            }
-          }
-          &-low{
-            background-color: $color-white;
-            height: 12.4rem;
-            border-radius: 13px;
-            margin-bottom: 1.8rem;
-            padding-left: 1.9rem;
-            padding-top: 1.7rem;
-            font-size: 1.6rem;
-          }
-        }
-        &-1{
-          width: 19.8rem;
-          background-color: $color-white;
-          border-radius: 13px;
-          margin-right: 1.5rem;
-        }
-        &-2{
-         width: 19.5rem;
-         margin-right: 3.3rem;
-        }
-        &-3{
-          background-color: $color-white;
-          border-radius: 13px;
-          width: 55%;
-         }
-
-      }
-      &-secondrow{
-        margin-top: 4.5rem;
-        margin-right: 6rem;
-        display: flex;
-        &-IRDV{
-          margin-top: 3rem;
-          background-color: $color-white;
-          height: 42rem;
-          border-radius: 13px;
-          padding-left: 2.8rem;
-          padding-top: 1.8rem;
-          &-icon{
-            margin-left: 248px;
-            font-size: 1.8rem;
-            margin-top: 7px;
-          }
-          &-details{
-            margin-left: 1.6rem;
-            &-name{
-              font-size: 1.4rem;
-              margin-bottom: 0%;
-            }
-            &-role{
-              font-size: 0.9rem;
-              color: $color-grey-dark-3;
-            }
-          }
-          &-pic{
-            width: 3.85rem;
-            height: 3.85rem;
-            border-radius: 50%;
-          }
-          &-row{
-            display: flex;
-            margin-bottom: 2rem;
-            &-txt{
-              color: $color-dark;
-              font-size: 1.4rem;
-              margin-left: 3rem;
-              padding-top: 2rem;
-            }
-            &-rdv{
-              background-color: $color-grey-dark-7;
-              display: flex;
-              width: 43rem;
-              margin-left: 3rem;
-              border-radius: 13px;
-              height: 5.8rem;
-              padding-top: 1rem;
-              padding-left: 2.2rem;
-
-            }
-          }
-        }
-        &-left{
-          width: 40rem;
-          margin-right: 3.5rem;
-        }
-        &-header{
-          display: flex;
-          &-right{
-            margin-left: auto;
-            font-size: 1.6rem;
-            color: $color-primary;
-            padding-top: 0.7rem;
-          }&-right2{
-            margin-left: 38.8rem;
-            font-size: 1.6rem;
-            color: $color-primary;
-            padding-top: 0.7rem;
-          }
-          &-left{
-            font-size: 2rem;
-          }
-        }
-        &-CRDV{
-          background-color: $color-white;
-          width: 40rem;
-          height: 12rem;
-          border-radius: 13px;
-          margin-top: 3rem;
-          padding-left: 2.4rem;
-          padding-top: 1.5rem;
-          display: flex;
-          padding-right: 1.8rem;
-          &-right{
-            margin-left: auto;
-            padding-top: 1.5rem;
-          }
-          &-btns{
-            display: flex;
-            margin-top: 1rem;
-            &-1{
-              border: none;
-              box-shadow: none;
-              background-color: #F1923E;
-              border-radius: 50%;
-              width: 3.4rem;
-              height: 3.4rem;
-              color: $color-white;
-              font-size: 1.5rem;
-            }
-            &-2{
-              border: none;
-              box-shadow: none;
-              background-color: #5B63F6;
-              border-radius: 50%;
-              margin-left: 1rem;
-              width: 3.4rem;
-              height: 3.4rem;
-              color: $color-white;
-              font-size: 1.5rem;
-            }
-          }
-          &-title{
-            font-size: 1.4rem;
-          }
-          &-time{
-            font-size: 1.4rem;
-            color: $color-grey-dark-5;
-          }
-          &-pics{
-            display: flex;
-            margin-top: 1.2rem;
-          }
-          &-pic{
-            width: 3.4rem;
-            height: 3.4rem;
-            background-color: $color-grey-dark-3;
-            border-radius: 50%;
-            margin-right: -1.6rem;
-            overflow: hidden;
-            text-align: center;
-            font-size: 1.5rem;
-            color: $color-white;
-            padding-top: 0.1rem;
-          }
-          &-img{
-            height: 100%;
-            width: 100%;
-          }
-
-        }
-      }
-      &-txt{
-        width: max-content;
-        margin-left: 10rem;
-        padding-top: 1.3rem;
-        font-size: 1.4rem;
-        color: $color-primary;
-        &-icon{
-          margin-left: 2rem;
-        }
-      }
-      &-btn{
-        width: auto;
-        margin-left: 9.6rem;
-      }
-    }
+   }
   }
+  &-left {
+   width: 100%;
+   color: $color-dark;
+   text-align: left;
+   padding-top: 5.6rem;
+   padding-left: 2.7rem;
+   color: $color-dark;
+   &-searchbar {
+    height: max-content;
+    display: flex;
+    margin-bottom: 2.7rem;
+    padding-left: 2rem;
+   }
+   &-firstrow {
+    margin-top: 1rem;
+    height: 27rem;
+    padding: 0%;
+    margin-right: 3rem;
+    display: flex;
+    &-card {
+     &-up {
+      background-color: $color-white;
+      height: 12.4rem;
+      border-radius: 13px;
+      padding-left: 1.9rem;
+      padding-top: 1.7rem;
+      font-size: 1.6rem;
+     }
+     &-stats {
+      display: flex;
+      &-1 {
+       font-size: 4.5rem;
+       margin-right: 3rem;
+      }
+      &-low {
+       font-size: 1rem;
+       margin-top: 2.8rem;
+       background-color: $color-red-light;
+       width: 4rem;
+       color: red;
+       height: fit-content;
+       border-radius: 13px;
+       text-align: center;
+      }
+      &-up {
+       font-size: 1rem;
+       margin-top: 2.8rem;
+       background-color: $color-green-light;
+       width: 4rem;
+       color: green;
+       height: fit-content;
+       border-radius: 13px;
+       text-align: center;
+      }
+     }
+     &-low {
+      background-color: $color-white;
+      height: 12.4rem;
+      border-radius: 13px;
+      margin-bottom: 1.8rem;
+      padding-left: 1.9rem;
+      padding-top: 1.7rem;
+      font-size: 1.6rem;
+     }
+    }
+    &-1 {
+     width: 19.8rem;
+     background-color: $color-white;
+     border-radius: 13px;
+     margin-right: 1.5rem;
+    }
+    &-2 {
+     width: 19.5rem;
+     margin-right: 3.3rem;
+    }
+    &-3 {
+     background-color: $color-white;
+     border-radius: 13px;
+     width: 55%;
+    }
+   }
+   &-secondrow {
+    margin-top: 4.5rem;
+    margin-right: 6rem;
+    display: flex;
+    &-IRDV {
+     margin-top: 3rem;
+     background-color: $color-white;
+     height: 42rem;
+     border-radius: 13px;
+     padding-left: 2.8rem;
+     padding-top: 1.8rem;
+     &-icon {
+      margin-left: 248px;
+      font-size: 1.8rem;
+      margin-top: 7px;
+     }
+     &-details {
+      margin-left: 1.6rem;
+      &-name {
+       font-size: 1.4rem;
+       margin-bottom: 0%;
+      }
+      &-role {
+       font-size: 0.9rem;
+       color: $color-grey-dark-3;
+      }
+     }
+     &-pic {
+      width: 3.85rem;
+      height: 3.85rem;
+      border-radius: 50%;
+     }
+     &-row {
+      display: flex;
+      margin-bottom: 2rem;
+      &-txt {
+       color: $color-dark;
+       font-size: 1.4rem;
+       margin-left: 3rem;
+       padding-top: 2rem;
+      }
+      &-rdv {
+       background-color: $color-grey-dark-7;
+       display: flex;
+       width: 43rem;
+       margin-left: 3rem;
+       border-radius: 13px;
+       height: 5.8rem;
+       padding-top: 1rem;
+       padding-left: 2.2rem;
+      }
+     }
+    }
+    &-left {
+     width: 40rem;
+     margin-right: 3.5rem;
+    }
+    &-header {
+     display: flex;
+     &-right {
+      margin-left: auto;
+      font-size: 1.6rem;
+      color: $color-primary;
+      padding-top: 0.7rem;
+     }
+     &-right2 {
+      margin-left: 38.8rem;
+      font-size: 1.6rem;
+      color: $color-primary;
+      padding-top: 0.7rem;
+     }
+     &-left {
+      font-size: 2rem;
+     }
+    }
+    &-CRDV {
+     background-color: $color-white;
+     width: 40rem;
+     height: 12rem;
+     border-radius: 13px;
+     margin-top: 3rem;
+     padding-left: 2.4rem;
+     padding-top: 1.5rem;
+     display: flex;
+     padding-right: 1.8rem;
+     &-right {
+      margin-left: auto;
+      padding-top: 1.5rem;
+     }
+     &-btns {
+      display: flex;
+      margin-top: 1rem;
+      &-1 {
+       border: none;
+       box-shadow: none;
+       background-color: #f1923e;
+       border-radius: 50%;
+       width: 3.4rem;
+       height: 3.4rem;
+       color: $color-white;
+       font-size: 1.5rem;
+      }
+      &-2 {
+       border: none;
+       box-shadow: none;
+       background-color: #5b63f6;
+       border-radius: 50%;
+       margin-left: 1rem;
+       width: 3.4rem;
+       height: 3.4rem;
+       color: $color-white;
+       font-size: 1.5rem;
+      }
+     }
+     &-title {
+      font-size: 1.4rem;
+     }
+     &-time {
+      font-size: 1.4rem;
+      color: $color-grey-dark-5;
+     }
+     &-pics {
+      display: flex;
+      margin-top: 1.2rem;
+     }
+     &-pic {
+      width: 3.4rem;
+      height: 3.4rem;
+      background-color: $color-grey-dark-3;
+      border-radius: 50%;
+      margin-right: -1.6rem;
+      overflow: hidden;
+      text-align: center;
+      font-size: 1.5rem;
+      color: $color-white;
+      padding-top: 0.1rem;
+     }
+     &-img {
+      height: 100%;
+      width: 100%;
+     }
+    }
+   }
+   &-txt {
+    width: max-content;
+    margin-left: 10rem;
+    padding-top: 1.3rem;
+    font-size: 1.4rem;
+    color: $color-primary;
+    &-icon {
+     margin-left: 2rem;
+    }
+   }
+   &-btn {
+    width: auto;
+    margin-left: 9.6rem;
+   }
+  }
+ }
 }

@@ -11,24 +11,16 @@ interface Props extends InputProps {
  date: Date | string
 }
 
-const AntecedItem: FC<Props> = ({title, content, date, onClick, onKeyDown, color}) => {
+const AntecedItem: FC<Props> = ({ title, content, date, onClick, onKeyDown, color }) => {
  return (
-  <div
-   className="anteced__item"
-   onClick={onClick}
-   onKeyDown={onKeyDown}
-   role="button"
-   tabIndex={0}
-  >
+  <div className="anteced__item" onClick={onClick} onKeyDown={onKeyDown} role="button" tabIndex={0}>
    <div className="anteced__item-icon">
     <FontAwesomeIcon color={color} icon={faFileAlt} />
    </div>
    <div className="anteced__item-content">
     <div>
      <span className="anteced__item-title">{title}</span>
-     <span className="anteced__item-subtitle">
-      {content}
-     </span>
+     <span className="anteced__item-subtitle">{content}</span>
     </div>
     <span className="anteced__item-date">{moment(date).format('l')}</span>
    </div>

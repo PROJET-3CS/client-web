@@ -22,7 +22,6 @@ const MyAppointments = React.lazy(() => import('../views/Appointment/MyAppointme
 const Prescription = React.lazy(() => import('../views/prescription/Prescription'))
 const Profile = React.lazy(() => import('../views/doctore/DocProfile'))
 
-
 const RootRoute: FC = () => {
  return (
   <Suspense fallback={<p>loading...</p>}>
@@ -32,7 +31,7 @@ const RootRoute: FC = () => {
 
      <PublicRoute path="/login" component={Signin} exact />
      <PublicRoute path="/signup" component={Signup} exact />
-     
+
      <Route path="/resetpassword" component={Resetpassword} exact />
      <Route path="/confirmation" component={PasswordConfirmation} exact />
      <Route path="/confirmation2" component={EmailConfirmation} exact />

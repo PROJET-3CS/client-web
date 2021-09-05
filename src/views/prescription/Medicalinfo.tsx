@@ -1,10 +1,6 @@
 import React, { FC } from 'react'
 
-
-
 const MedicalInfo: FC = () => {
-
-
  return (
   <div className="prescription__folder__item ">
    <div className="folder__item-info">
@@ -48,7 +44,6 @@ const MedicalInfo: FC = () => {
     <span className="folder__item-info--value"> Yes</span>
    </div>
   </div>
-
  )
 }
 

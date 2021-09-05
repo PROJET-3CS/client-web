@@ -1,20 +1,12 @@
-import React, {FC} from 'react'
+import React, { FC } from 'react'
 import '../../styles/main.scss'
 import Layout from '../layouts/Layout'
 import LeftContainer from './LeftConatiner'
 import RightContainer from './RightContainer'
 
-
-
-
-
-
-
 const Profile: FC = () => {
-
-
  return (
-  <Layout >
+  <Layout>
    <div className="doctor-container">
     <LeftContainer />
     <RightContainer />
