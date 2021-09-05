@@ -19,6 +19,9 @@ const usersManagement = React.lazy(() => import('../views/usersManagement/Manage
 const medicalFolder = React.lazy(() => import('../views/medicalFolder/medicalFolder'))
 const Appointment = React.lazy(() => import('../views/Appointment/Appointment'))
 const MyAppointments = React.lazy(() => import('../views/Appointment/MyAppointments'))
+const Prescription = React.lazy(() => import('../views/prescription/Prescription'))
+const Profile = React.lazy(() => import('../views/doctore/DocProfile'))
+
 
 const RootRoute: FC = () => {
  return (
@@ -34,10 +37,12 @@ const RootRoute: FC = () => {
      <Route path="/confirmation2" component={EmailConfirmation} exact />
      <PrivateRoute path="/dashboard" component={Dashboard} exact />
      <PrivateRoute path="/management" component={usersManagement} exact />
-     <PrivateRoute path="/folder/:id" component={medicalFolder} exact />
+     <PrivateRoute path="/folder" component={medicalFolder} exact />
      <PrivateRoute path="/folder/:id/edit" component={EditMedicalFolder} exact />
      <PrivateRoute path="/appointments" component={Appointment} exact />
      <PrivateRoute path="/appointments/:id" component={MyAppointments} exact />
+     <PrivateRoute path="/prescription" component={Prescription} exact />
+     <PrivateRoute path="/profile" component={Profile} exact />
 
      <Route component={_404} />
     </Switch>

@@ -47,9 +47,9 @@ const medicalFolder: FC = () => {
   _syncFolder()
  }, [])
 
- if (error || !folder) {
-  return <Layout>Sorry Something went wrong</Layout>
- }
+ //  if (error || !folder) {
+ //   return <Layout>Sorry Something went wrong</Layout>
+ //  }
 
  return (
   <Layout>
