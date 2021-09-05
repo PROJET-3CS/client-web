@@ -32,9 +32,11 @@ const RootRoute: FC = () => {
 
      <PublicRoute path="/login" component={Signin} exact />
      <PublicRoute path="/signup" component={Signup} exact />
+     
      <Route path="/resetpassword" component={Resetpassword} exact />
      <Route path="/confirmation" component={PasswordConfirmation} exact />
      <Route path="/confirmation2" component={EmailConfirmation} exact />
+
      <PrivateRoute path="/dashboard" component={Dashboard} exact />
      <PrivateRoute path="/management" component={usersManagement} exact />
      <PrivateRoute path="/folder" component={medicalFolder} exact />

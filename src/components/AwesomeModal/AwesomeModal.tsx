@@ -3,7 +3,7 @@ import { FC } from 'react'
 import { InputProps, Modal, ModalBody } from 'reactstrap'
 import { ModalProps } from '../../helpers/types'
 
-const AwesomeModal: FC<ModalProps & InputProps> = ({ children, modal, toggle, style }) => {
+const AwesomeModal: FC<ModalProps & InputProps> = ({ children, modal, toggle, style, className }) => {
  return (
   <>
    <Modal
@@ -11,10 +11,10 @@ const AwesomeModal: FC<ModalProps & InputProps> = ({ children, modal, toggle, st
     modalTransition={{ timeout: 100 }}
     backdropTransition={{ timeout: 400 }}
     toggle={toggle}
-    className="newappointment__resultmodal"
+    className={`newappointment__resultmodal clinity__modal ${className}`}
     style={style}
    >
-    <ModalBody className="newappointment__resultmodal-body">{children}</ModalBody>
+    <ModalBody className="newappointment__resultmodal-body clinity__modal-body">{children}</ModalBody>
    </Modal>
   </>
  )

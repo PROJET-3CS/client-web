@@ -844,6 +844,7 @@
     display: flex;
     flex-direction: column;
     margin-left: 1rem;
+    text-align: initial;
    }
 
    &--title {
@@ -1082,6 +1083,11 @@
 
  &__modal {
   max-width: 60rem !important;
+
+  & > .modal-content {
+   border-radius: 1.5rem;
+  }
+
   &-header {
    font-size: 2rem;
    font-weight: 500;
@@ -1090,6 +1096,7 @@
 
   &-body {
    font-size: 1.5rem !important;
+   border-radius: 1.5rem;
   }
 
   &-footer {
@@ -1164,15 +1171,32 @@
  }
 
  &__resultmodal {
+  & > .modal-content {
+   border-radius: 1.5rem;
+  }
   &-body {
    background-color: $color-grey-light-2;
    padding: 2rem !important;
+   border-radius: 1.5rem;
   }
 
-  &-header p {
-   font-size: 2rem;
-   font-weight: 600;
-   border: none !important;
+  &-header {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   margin-bottom: 2rem;
+
+   & p {
+    font-size: 2rem;
+    font-weight: 600;
+    border: none !important;
+    margin-bottom: 0;
+   }
+
+   & svg {
+    font-size: 1.5rem;
+    cursor: pointer;
+   }
   }
 
   &-formgroup {
@@ -1539,10 +1563,6 @@
    }
   }
 
-  &-body {
-   margin-bottom: 2rem;
-  }
-
   &-footer {
    padding: 0;
   }
@@ -1558,9 +1578,15 @@
   background-color: white;
   border-radius: 1rem;
   padding: 1.5rem;
+  margin-bottom: 1.5rem;
 
-  &:not(:last-child) {
-   margin-bottom: 1.5rem;
+  &:last-child {
+   margin-bottom: 3rem;
+  }
+
+  &:active,
+  &:hover {
+   background-color: rgba(91, 99, 246, 0.2);
   }
 
   &-icon {
@@ -1604,6 +1630,105 @@
    font-size: 1rem;
    font-style: italic;
    color: #828282;
+  }
+ }
+
+ // Detail
+ &__detail {
+  &-modal {
+   & .modal-body {
+    padding: 3rem !important;
+   }
+
+   &-body {
+    display: grid;
+    grid-template-columns: 0.1fr 1fr;
+    padding: 0 2rem;
+   }
+  }
+  &-header {
+   display: flex;
+   padding: 0 2rem;
+   margin-bottom: 2rem;
+  }
+
+  &-icon {
+   padding: 1rem;
+   font-size: 2.3rem;
+   color: #5b63f6;
+   background-color: white;
+   border-radius: 0.5rem;
+   height: 5rem;
+   width: 5rem;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   margin-right: 2rem;
+  }
+
+  &-content {
+   display: flex;
+   flex-direction: column;
+  }
+
+  &-subtitle {
+   color: #828282;
+   font-size: 1.3rem;
+  }
+
+  &-title {
+   font-weight: 600;
+   font-size: 2rem;
+  }
+
+  &-section {
+   margin-bottom: 4rem;
+
+   &--icon {
+    margin-top: 0.45rem;
+    color: $color-primary;
+   }
+
+   &-title {
+    font-size: 1.7rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+   }
+
+   &-content {
+    color: #828282;
+   }
+  }
+
+  &-footer {
+   text-align: end;
+
+   &-icon {
+    color: $color-primary;
+    text-decoration: underline;
+    font-style: italic;
+    cursor: pointer;
+   }
+  }
+ }
+
+ // ADD MODAL
+ &__add {
+  &-input {
+   &--title {
+    padding: 0.5rem 1em;
+    & label {
+     margin-bottom: 0.2rem;
+    }
+   }
+
+   &--date {
+    padding: 1rem 2rem !important;
+   }
+
+   &--details {
+    padding: 1rem;
+   }
   }
  }
 }
