@@ -32,3 +32,18 @@ export const mixAppointments = (appInd: AppointmentPayload, appCol: AppointmentP
 
  return { appointments: res }
 }
+
+// eslint-disable-next-line
+export const getUrlAnteced = (type: string, userId: string | number) => {
+ let url = '/medical_folder/'
+
+ if (type === 'affection' || type === 'generale') {
+  url = `/medical_folder/add_general_illness/${userId}`
+ } else if (type === 'intervention') {
+  url = `/medical_folder/add_surgical_intervention/${userId}`
+ } else if (type === 'allergies') {
+  url = `/medical_folder/add_allergic_reaction/${userId}`
+ }
+
+ return url
+}

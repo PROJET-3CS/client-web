@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, { FC, useState, useEffect } from 'react'
 import { InputProps } from 'reactstrap'
 import { faDotCircle, faFileAlt } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -8,7 +8,9 @@ import { ModalProps } from '../../helpers/types'
 import AwesomeModal from '../../components/AwesomeModal/AwesomeModal'
 
 interface Props {
- goBack: () => void
+ // eslint-disable-next-line no-unused-vars
+ goBack: (type?: string | undefined) => void
+ antecedType: string | undefined
 }
 
 const AntecedDetails: FC<ModalProps & Props & InputProps> = ({
@@ -16,7 +18,61 @@ const AntecedDetails: FC<ModalProps & Props & InputProps> = ({
  toggle,
  goBack,
  onKeyDown,
+ antecedType
 }) => {
+ const initState = {
+  title: '',
+  cta: '',
+ }
+ const [state, setState] = useState(initState)
+      
+ const getContent = () => {
+  switch (antecedType) {
+  case 'affection':
+   setState({
+    ...state,
+    title: 'Affections Congénitaire',
+    cta: 'New Affection',
+   })
+   break
+  
+  case 'generale':
+   setState({
+    ...state,
+    title: 'Maladies Générales',
+    cta: 'New Maladie',
+   })
+   break
+  case 'allergies':
+   setState({
+    ...state,
+    title: 'Allergies aux médciament',
+    cta: 'New Allergie',
+   })
+   break
+  
+  case 'intervention':
+   setState({
+    ...state,
+    title: 'Interventions chirurgicales',
+    cta: 'New Intervention',
+   })
+   break
+  
+  default:
+   setState({
+    ...state,
+    title: 'Affections Congénitaire',
+    cta: 'New Affection',
+   })
+   break
+  }
+ }
+      
+ useEffect(() => {
+  getContent()
+ }, [antecedType])
+
  return (
   <AwesomeModal
    style={{ maxWidth: '40%' }}
@@ -31,7 +87,7 @@ const AntecedDetails: FC<ModalProps & Props & InputProps> = ({
      </div>
      <div className="anteced__detail-content">
       <span className="anteced__detail-subtitle">Les Antécédents</span>
-      <span className="anteced__detail-title">Affections Congénitaire</span>
+      <span className="anteced__detail-title">{state.title}</span>
      </div>
     </div>
    </div>
@@ -62,7 +118,7 @@ const AntecedDetails: FC<ModalProps & Props & InputProps> = ({
 
    <div className="clinity__modal-footer anteced__detail-footer">
     <i
-     onClick={goBack}
+     onClick={() => {return goBack(antecedType)}}
      onKeyDown={onKeyDown}
      tabIndex={0}
      role="button"

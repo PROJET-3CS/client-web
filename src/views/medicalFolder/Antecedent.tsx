@@ -10,6 +10,12 @@ const Antecedent: FC = () => {
  //  ==============================================================================
  //  State
  //  ==============================================================================
+ const initState : {type: string | undefined, path: string | undefined} = {
+  type: '',
+  path: '',
+ }
+ const [state, setState] = useState(initState)
+
  const [open, setOpen] = useState(false)
  const [detail, setDetail] = useState(false)
 
@@ -19,9 +25,13 @@ const Antecedent: FC = () => {
  // Handlers
  // ===========================================================================
 
- const toggle = () => {
+ const toggle = (type?: string, path?: string) => {
   setDetail(false)
   setAddModal(false)
+  setState({
+   type,
+   path,
+  })
   setOpen(!open)
  }
 
@@ -30,8 +40,8 @@ const Antecedent: FC = () => {
   setDetail(!detail)
  }
 
- const toggleAdd = () => {
-  toggle()
+ const toggleAdd = (type?: string) => {
+  toggle(type)
   setAddModal(!addModal)
  }
 
@@ -40,7 +50,13 @@ const Antecedent: FC = () => {
    <h3 className="folder__item-title">Les Antécedents:</h3>
 
    <div className="folder__item-anteced--container">
-    <button type="button" className="folder__item-anteced" onClick={toggle}>
+    <button
+     type="button"
+     className="folder__item-anteced"
+     onClick={() => {
+      return toggle('affection')
+     }}
+    >
      <div className="folder__item-anteced--icon">
       <FontAwesomeIcon icon={faFileAlt} />
      </div>
@@ -50,7 +66,13 @@ const Antecedent: FC = () => {
      </div>
     </button>
 
-    <button type="button" className="folder__item-anteced" onClick={toggle}>
+    <button
+     type="button"
+     className="folder__item-anteced"
+     onClick={() => {
+      return toggle('generale')
+     }}
+    >
      <div className="folder__item-anteced--icon">
       <FontAwesomeIcon icon={faFileAlt} />
      </div>
@@ -60,7 +82,13 @@ const Antecedent: FC = () => {
      </div>
     </button>
 
-    <button type="button" className="folder__item-anteced" onClick={toggle}>
+    <button
+     type="button"
+     className="folder__item-anteced"
+     onClick={() => {
+      return toggle('allergies')
+     }}
+    >
      <div className="folder__item-anteced--icon">
       <FontAwesomeIcon icon={faFileAlt} />
      </div>
@@ -70,7 +98,13 @@ const Antecedent: FC = () => {
      </div>
     </button>
 
-    <button type="button" className="folder__item-anteced" onClick={toggle}>
+    <button
+     type="button"
+     className="folder__item-anteced"
+     onClick={() => {
+      return toggle('intervention')
+     }}
+    >
      <div className="folder__item-anteced--icon">
       <FontAwesomeIcon icon={faFileAlt} />
      </div>
@@ -81,9 +115,9 @@ const Antecedent: FC = () => {
     </button>
    </div>
 
-   <AntecedModal modal={open} toggle={toggle} handler={toggleDetail} goForward={toggleAdd} />
-   <AntecedDetails modal={detail} toggle={toggleDetail} goBack={toggle} />
-   <AddAnteced modal={addModal} toggle={toggleAdd} />
+   <AntecedModal modal={open} toggle={toggle} handler={toggleDetail} goForward={toggleAdd} type={state.type} />
+   <AntecedDetails modal={detail} toggle={toggleDetail} goBack={toggle} antecedType={state.type} />
+   <AddAnteced modal={addModal} toggle={toggleAdd} type={state.type} />
   </div>
  )
 }

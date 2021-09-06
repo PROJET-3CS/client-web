@@ -8,23 +8,29 @@ import {
  InfoMedicalType,
  Folder,
  AntecedentType,
+ AntecedentItem,
 } from '../../helpers/types'
 
 export const initialState: FolderState = {
  loading: true,
  error: false,
+ msg: '',
  folder: {},
  patient: {},
  infoGeneral: {},
  infoMedical: {},
  antecedent: {},
+ antecedentItem: {
+  title: '',
+  date: '',
+  details: '',
+ },
 }
 
 const folderSlice = createSlice({
  name: 'folder',
  initialState,
  reducers: {
-  // eslint-disable-next-line
   syncFolder: (state, { payload }: PayloadAction<string>) => {
    state.loading = true
    state.patient = { id: payload }
@@ -86,6 +92,28 @@ const folderSlice = createSlice({
    state.infoMedical = {}
    state.antecedent = {}
   },
+
+  addAntecedent: (state, { payload }: PayloadAction<AntecedentItem>) => {
+   state.loading = true
+   state.antecedentItem = payload
+  },
+
+  addAntecedentSuccess: (state) => {
+   state.loading = false
+   state.error = false
+   state.msg = ''
+   state.antecedentItem = {
+    title: '',
+    date: '',
+    details: '',
+   }
+  },
+
+  addAntecedentError: (state, { payload }: PayloadAction<string>) => {
+   state.loading = false
+   state.error = true
+   state.msg = payload
+  },
  },
 })
 
@@ -100,6 +128,9 @@ export const {
  updateInfoMedical,
  updateFolderError,
  updateFolderSuccess,
+ addAntecedent,
+ addAntecedentSuccess,
+ addAntecedentError,
 } = folderSlice.actions
 
 export default folderSlice.reducer
