@@ -10,11 +10,11 @@ import AwesomeButton from '../../components/AwesomeButton/AwesomeButton'
 import PrescriptionModal from './PrescriptionModal'
 
 const Prescription: FC = () => {
- const [modal ,setModal] = useState(false)
+ const [modal, setModal] = useState(false)
  const handleModale = () => {
   setModal(true)
  }
- 
+
  return (
   <Layout>
    <Header />
@@ -25,7 +25,10 @@ const Prescription: FC = () => {
       <div className="prescription__medications-container">
        <Medications />
        <div className="prescription__medications-add">
-        <AwesomeButton className="prescription__medications-addbtn" onClick={handleModale}> + Add medication</AwesomeButton>
+        <AwesomeButton className="prescription__medications-addbtn" onClick={handleModale}>
+         {' '}
+         + Add medication
+        </AwesomeButton>
        </div>
       </div>
       <AwesomeButton className="prescription__savebtn"> Save prescription</AwesomeButton>
@@ -39,7 +42,6 @@ const Prescription: FC = () => {
    </div>
    <PrescriptionModal modal={modal} setModal={setModal} />
   </Layout>
-  
  )
 }
 

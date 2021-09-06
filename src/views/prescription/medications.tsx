@@ -26,8 +26,6 @@ const Medications: FC = () => {
      </div>
     )
    })}
-
-   
   </div>
  )
 }

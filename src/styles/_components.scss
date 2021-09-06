@@ -1742,34 +1742,31 @@
  &__item-title {
   font-size: 2.2rem;
  }
- &-modal{
-   
-   &-formgroup{
-     margin-top: 1.8rem;
-     &-input{
-       height: 3.8rem;
-     }
-     &--label{
-       font-size: 1.6rem;
-       margin-bottom: 1rem;
-       color: $color-dark;
-     }
-
+ &-modal {
+  &-formgroup {
+   margin-top: 1.8rem;
+   &-input {
+    height: 3.8rem;
    }
-
-
-   & .modal-content{
-     margin-top: 14rem;
-     background-color: $color-grey-light-2;
-     padding: 2.5rem 3.4rem;
-     border-radius: 13px;
+   &--label {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+    color: $color-dark;
    }
+  }
 
-   &-header{
-     display: flex;
-     justify-content: space-between;
-     align-items: center;
-     
+  & .modal-content {
+   margin-top: 14rem;
+   background-color: $color-grey-light-2;
+   padding: 2.5rem 3.4rem;
+   border-radius: 13px;
+  }
+
+  &-header {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+
    & p {
     color: $color-dark;
     font-size: 2.4rem;
@@ -1782,7 +1779,7 @@
     font-size: 2.2rem;
     cursor: pointer;
    }
-   }
+  }
  }
  &-right-row {
   margin-left: 6rem;

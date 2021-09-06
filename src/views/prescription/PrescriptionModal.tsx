@@ -6,12 +6,11 @@ import { Col, FormGroup, Input, Label, Modal, Row } from 'reactstrap'
 import AwesomeButton from '../../components/AwesomeButton/AwesomeButton'
 
 interface IProps {
-    modal : boolean
-    setModal: React.Dispatch<React.SetStateAction<boolean>>
+ modal: boolean
+ setModal: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-const PrescriptionModal: FC<IProps> = ({modal , setModal}) => {
- 
+const PrescriptionModal: FC<IProps> = ({ modal, setModal }) => {
  const toggle = () => {
   setModal(false)
  }
@@ -35,11 +34,10 @@ const PrescriptionModal: FC<IProps> = ({modal , setModal}) => {
   { value: '3', label: '/semaine' },
   { value: '4', label: '/moi' },
  ]
-  
 
  return (
-  <div >
-   <Modal isOpen={modal} toggle={toggle} className="prescription-modal" >
+  <div>
+   <Modal isOpen={modal} toggle={toggle} className="prescription-modal">
     <div className="prescription-modal-header">
      <p>Add medication</p>
      <FontAwesomeIcon onClick={toggle} icon={faTimes} color="primary-color" />
@@ -69,12 +67,12 @@ const PrescriptionModal: FC<IProps> = ({modal , setModal}) => {
      <Row>
       <Col>
        <Input
-        type='number'
+        type="number"
         id="comprime"
         name="comprime"
         label="comprime"
         placeholder="comprime..."
-        className='prescription-modal-formgroup-input'
+        className="prescription-modal-formgroup-input"
        />
       </Col>
       <Col>
@@ -87,32 +85,24 @@ const PrescriptionModal: FC<IProps> = ({modal , setModal}) => {
        />
       </Col>
      </Row>
-  
     </FormGroup>
     <FormGroup className="prescription-modal-formgroup">
      <Label className="prescription-modal-formgroup--label">Quantity</Label>
      <Row>
       <Col>
        <Input
-        type='number'
+        type="number"
         id="nombre"
         name="nombre"
         label="nombre"
         placeholder="nombre..."
-        className='prescription-modal-formgroup-input'
+        className="prescription-modal-formgroup-input"
        />
       </Col>
       <Col>
-       <Select
-        id="type"
-        name="type"
-        label="type"
-        placeholder="type..."
-        options={chaqueOptions}
-       />
+       <Select id="type" name="type" label="type" placeholder="type..." options={chaqueOptions} />
       </Col>
      </Row>
-  
     </FormGroup>
     <AwesomeButton className="prescription__savebtn"> Add medication</AwesomeButton>
    </Modal>
