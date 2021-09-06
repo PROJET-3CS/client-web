@@ -1,7 +1,12 @@
+/* eslint-disable react/jsx-key */
 import React, { FC, useEffect, useState } from 'react'
+import { useSelector } from 'react-redux'
+import moment from 'moment'
+
 import { faPlus, faTimes } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
+import { getFolder } from '../../store/selectors'
 import { ModalProps } from '../../helpers/types'
 
 import AntecedItem from '../../components/Antecedent/AntecedItem'
@@ -14,10 +19,23 @@ interface Props {
  type: string | undefined
 }
 
+interface Antecedent {
+    name: string
+    description: string
+    date: Date | string
+    createdAt: Date | string
+}
+
 const AntecedModal: FC<ModalProps & Props> = ({ modal, toggle, handler, goForward, type }) => {
+ // ===========================================================================
+ // Selectors
+ // ===========================================================================
+ const { folder } = useSelector(getFolder)
+ 
  const initState = {
   title: '',
   cta: '',
+  antecedents: []
  }
  const [state, setState] = useState(initState)
 
@@ -26,6 +44,7 @@ const AntecedModal: FC<ModalProps & Props> = ({ modal, toggle, handler, goForwar
   case 'affection':
    setState({
     ...state,
+    antecedents: folder.generalIllnesses,
     title: 'Affections Congénitaire',
     cta: 'New Affection',
    })
@@ -34,6 +53,7 @@ const AntecedModal: FC<ModalProps & Props> = ({ modal, toggle, handler, goForwar
   case 'generale':
    setState({
     ...state,
+    antecedents: folder.generalIllnesses,
     title: 'Maladies Générales',
     cta: 'New Maladie',
    })
@@ -41,6 +61,7 @@ const AntecedModal: FC<ModalProps & Props> = ({ modal, toggle, handler, goForwar
   case 'allergies':
    setState({
     ...state,
+    antecedents: folder.allergicReactions,
     title: 'Allergies aux médciament',
     cta: 'New Allergie',
    })
@@ -49,6 +70,7 @@ const AntecedModal: FC<ModalProps & Props> = ({ modal, toggle, handler, goForwar
   case 'intervention':
    setState({
     ...state,
+    antecedents: folder.surgicalInterventions,
     title: 'Interventions chirurgicales',
     cta: 'New Intervention',
    })
@@ -75,33 +97,12 @@ const AntecedModal: FC<ModalProps & Props> = ({ modal, toggle, handler, goForwar
     <FontAwesomeIcon onClick={toggle} icon={faTimes} color="primary-color" />
    </div>
    <div className="clinity__modal-body">
-    <AntecedItem
-     title="Lorem ipsum dolor"
-     content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Socii..."
-     date="04/08/2021"
-     onClick={handler}
-    />
-
-    <AntecedItem
-     title="Lorem ipsum dolor"
-     content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Socii..."
-     date="04/08/2021"
-     onClick={handler}
-    />
-
-    <AntecedItem
-     title="Lorem ipsum dolor"
-     content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Socii..."
-     date="04/08/2021"
-     onClick={handler}
-    />
-
-    <AntecedItem
-     title="Lorem ipsum dolor"
-     content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Socii..."
-     date="04/08/2021"
-     onClick={handler}
-    />
+    {state.antecedents.map((anteced: Antecedent) => {
+     return <AntecedItem
+      title={anteced.name}
+      content={anteced.description}
+      date={moment(anteced.createdAt).format('l')}
+      onClick={handler} />})}
    </div>
 
    <div className="clinity__modal-footer">
