@@ -1,6 +1,7 @@
 .Primary__form-group {
  margin-bottom: 2rem;
  text-align: left;
+ display: block;
 }
 @media only screen and (max-width: 75em) {
  .Primary__form-group {
@@ -22,6 +23,49 @@
  border-radius: 0.5rem !important;
  width: 100%;
  height: 5rem;
+
+ &--select {
+  font-family: inherit;
+  font-size: 1.5rem !important;
+  font-weight: 500 !important;
+  color: inherit;
+  padding: 0 !important;
+  border-radius: 0.5rem !important;
+  width: 100%;
+ }
+}
+
+//for big inputs in examination
+
+.Primary__form-group2 {
+ margin-bottom: 2rem;
+ text-align: left;
+ float: left;
+ margin-right: 2rem;
+}
+@media only screen and (max-width: 75em) {
+ .Primary__form-group {
+  margin-bottom: 1.5rem;
+ }
+}
+.Primary__form-label2 {
+ font-size: 1.5rem;
+ font-weight: 600;
+ color: #4f4f4f;
+ margin-bottom: 1rem;
+}
+.Primary__form-card2:defined {
+ border: none !important;
+}
+.Primary__form-input2 {
+ font-family: inherit;
+ font-size: 1.5rem !important;
+ font-weight: 500 !important;
+ color: inherit;
+ padding: 0.7rem 2rem !important;
+ border-radius: 0.5rem !important;
+ width: 75rem !important;
+ height: 22rem;
 
  &--select {
   font-family: inherit;

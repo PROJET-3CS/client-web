@@ -93,6 +93,13 @@ export interface medicamentType {
  unit: string
 }
 
+export interface AntecedentItem {
+ title: string
+ date: Date | string
+ details: string
+ type?: string | undefined
+}
+
 //  ==============================================================================
 //  State
 //  ==============================================================================
@@ -108,11 +115,13 @@ export interface SyncState {
 export interface FolderState {
  loading: boolean
  error: boolean
+ msg: string
  folder: Folder | Record<string, unknown>
  patient: User
  infoGeneral: InfoGeneralType | Record<string, unknown>
  infoMedical: InfoMedicalType | Record<string, unknown>
  antecedent: AntecedentType | Record<string, unknown>
+ antecedentItem: AntecedentItem 
 }
 
 export interface AuthState {
@@ -218,6 +227,9 @@ export interface InputProps {
  min?: ComponentProps<typeof Input>['min']
  max?: ComponentProps<typeof Input>['max']
  style?: ComponentProps<typeof Input>['style']
+ title?: ComponentProps<typeof Input>['title']
+ description?: ComponentProps<typeof Input>['description']
+ image?: ComponentProps<typeof Input>['image']
 }
 
 export interface ModalProps {

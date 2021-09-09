@@ -447,7 +447,7 @@ body {
  }
 }
 
-.signup__form {
+/* .signup__form {
  /*&-group {
     margin-bottom: 2rem; }
     @media only screen and (max-width: 75em) {
@@ -467,7 +467,6 @@ body {
       border-radius: 0.5rem !important;
       width: 100%;
       height: 5rem; }*/
-}
 .signup__form-heading {
  margin-bottom: 3rem;
 }
@@ -1675,3 +1674,91 @@ body {
 .anteced__add-input--details {
  padding: 1rem;
 }
+.createExamination {
+  text-align: right; }
+  .createExamination__PatInterro-card:defined {
+    border: none;
+    border-radius: 0.68rem;
+    cursor: pointer;
+    margin-bottom: 2rem; }
+  .createExamination__PatInterro-card h1 {
+    text-align: left;
+    padding: 2rem 0rem 0rem 2.35rem;
+    font-size: 2.5rem;
+    font-weight: 600; }
+  .createExamination__PatInterro-card--description {
+    font-size: 1.1rem;
+    font-weight: 500;
+    text-align: left;
+    padding: 0rem 0rem 0rem 2.35rem; }
+  .createExamination__PatInterro-card--col {
+    text-align: right;
+    padding: 1rem 2rem 0rem 2rem; }
+  .createExamination__PatInterro-card--row {
+    margin-bottom: 1rem; }
+  .createExamination__PatInterro-card--addbutton {
+    text-align: right !important;
+    padding-bottom: 2rem; }
+  .createExamination__PatInterro-card--textarea {
+    font-family: inherit;
+    font-size: 1.5rem !important;
+    font-weight: 500 !important;
+    color: inherit;
+    padding: 0.7rem 2rem !important;
+    border-radius: 0.5rem !important;
+    width: 100% !important;
+    height: 22rem;
+    margin-bottom: 2rem; }
+    .createExamination__PatInterro-card--textarea--select {
+      font-family: inherit;
+      font-size: 1.5rem !important;
+      font-weight: 500 !important;
+      color: inherit;
+      padding: 0 !important;
+      border-radius: 0.5rem !important;
+      width: 100%; }
+  .createExamination__IllnessDiagno-Interrogatory--box {
+    font-size: 1.438rem !important;
+    width: fit-content !important;
+    padding: 1rem !important;
+    margin-right: 4rem;
+    background-color: #bdbdbd !important;
+    border-color: #bdbdbd !important; }
+    .createExamination__IllnessDiagno-Interrogatory--box--active, .createExamination__IllnessDiagno-Interrogatory--box:active {
+      background-color: #0d6efd !important;
+      border-color: #0d6efd !important; }
+  .createExamination__IllnessDiagno-Illnesses--col {
+    padding: 2rem !important;
+    text-align: left; }
+  .createExamination__IllnessDiagno-Illnesses--col p {
+    font-size: 1.31rem;
+    font-weight: 500;
+    margin-bottom: 1.188rem; }
+  .createExamination__IllnessDiagno-Illnesses--box {
+    width: fit-content !important;
+    font-size: 1.5rem !important;
+    font-weight: 500 !important;
+    border-radius: 5.62rem !important;
+    padding: 0.813rem 2.5rem 0.813rem 2.5rem !important;
+    margin-right: 1.4rem;
+    margin-bottom: 1.4rem; }
+    .createExamination__IllnessDiagno-Illnesses--box:hover, .createExamination__IllnessDiagno-Illnesses--box:active {
+      background-color: #dd4b39 !important;
+      border-color: #dd4b39 !important; }
+    .createExamination__IllnessDiagno-Illnesses--box:visited {
+      background-color: #0d6efd !important; }
+    .createExamination__IllnessDiagno-Illnesses--box--close {
+      visibility: hidden;
+      transition: all 0.2s ease-in-out; }
+      .editfolder__medicalsection-box:hover .createExamination__IllnessDiagno-Illnesses--box--close {
+        visibility: visible;
+        margin-left: 2rem; }
+  .createExamination__IllnessDiagno-Illnesses--button {
+    width: fit-content !important;
+    font-size: 1.5rem;
+    font-weight: 500;
+    border-color: black;
+    background-color: white;
+    border-radius: 5.62rem;
+    padding: 0.813rem 2.5rem 0.813rem 2.5rem !important;
+    margin-bottom: 1.4rem; }

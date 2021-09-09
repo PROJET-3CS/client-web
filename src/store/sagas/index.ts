@@ -24,9 +24,12 @@ import {
  updateFolderError,
  updateInfoAntecedent,
  updateInfoMedical,
+ addAntecedentError,
+ addAntecedentSuccess,
+ addAntecedent,
 } from '../slices/folder'
 import { getAuth, getFolder, getManagement, getReset, getAppointment } from '../selectors'
-import { getToken, removeToken, setToken, mixAppointments } from '../../helpers/api'
+import { getToken, removeToken, setToken, mixAppointments, getUrlAnteced } from '../../helpers/api'
 import {
  fetchUsers,
  fetchUsersSuccess,
@@ -175,6 +178,7 @@ function* loadFolder() {
   const { data } = yield axios.get(`/users/${patient.id}`, {
    headers: { Authorization: authToken },
   })
+
   if (data.status === 'success') {
    yield put(syncFolderSuccess(data.body))
   } else {
@@ -182,6 +186,42 @@ function* loadFolder() {
   }
  } catch (Err) {
   yield put(syncFolderError())
+ }
+}
+
+function* _addAntecedent() {
+ try {
+  const USER_TOKEN = getToken()
+  const authToken = `Bearer ${USER_TOKEN}`
+
+  const { antecedentItem, folder } = yield select(getFolder)
+
+  let type = ''
+  if (antecedentItem.type === 'affection') {
+   type = 'congenital'
+  } else if (antecedentItem.type === 'generale') {
+   type = 'genral'
+  }
+  const payload = {
+   name: antecedentItem.title,
+   description: antecedentItem.details,
+   type
+  }
+
+  const url = getUrlAnteced(antecedentItem.type, folder.userId)
+
+  const { data } = yield axios.post(url, payload, {
+   headers: { Authorization: authToken },
+  })
+
+  if (data.status === 'success') {
+   yield put(addAntecedentSuccess())
+   yield call(loadFolder)
+  } else {
+   yield put(addAntecedentError(data.body))
+  }
+ } catch (Err) {
+  yield put(addAntecedentError('Sorry something went wrong !'))
  }
 }
 
@@ -305,6 +345,7 @@ function* rootSaga() {
   takeLatest(updatePatient.type, _updatePatient),
   takeLatest(updateInfoAntecedent.type, _updateFolder),
   takeLatest(updateInfoMedical.type, _updateFolder),
+  takeLatest(addAntecedent.type, _addAntecedent),
   takeLatest(addAppointment.type, _addAppointment),
   takeLatest(syncAppointment.type, loadAppointment),
   takeLatest(reset.type, resetPassword),

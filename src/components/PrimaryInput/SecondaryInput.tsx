@@ -1,8 +1,12 @@
-import React, { FC } from 'react'
+import React, { ChangeEventHandler, FC } from 'react'
 import { InputProps, Label } from 'reactstrap'
 import './SecondaryInput.scss'
 
-const SecondaryInput: FC<InputProps> = ({
+interface Props {
+    changeTextArea?: ChangeEventHandler<HTMLTextAreaElement> | undefined 
+}
+
+const SecondaryInput: FC<InputProps & Props> = ({
  name,
  placeholder,
  type,
@@ -11,6 +15,7 @@ const SecondaryInput: FC<InputProps> = ({
  min,
  max,
  onChange,
+ changeTextArea,
  className,
 }) => {
  return (
@@ -24,6 +29,7 @@ const SecondaryInput: FC<InputProps> = ({
      placeholder={placeholder}
      rows={4}
      cols={50}
+     onChange={changeTextArea}
     />
    ) : (
     <input
