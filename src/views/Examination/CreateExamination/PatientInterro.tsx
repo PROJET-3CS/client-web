@@ -1,14 +1,13 @@
 import { FC } from 'react'
 import { Card, Col, FormGroup, Row } from 'reactstrap'
 
-import Layout from '../../layouts/Layout'
 import Header from '../../../components/Header'
 import PrimaryDropdown from '../../../components/PrimaryDropdown/PrimaryDropdown'
 import AwesomeButtonIcon from '../../../components/AwesomeButton/AwesomeButtonIcon'
 
 const PatientInterro: FC = () => {
  return (
-  <Layout>
+  <>
    <Header />
    <FormGroup className="createExamination">
     <Card className="createExamination__PatInterro-card">
@@ -55,7 +54,7 @@ const PatientInterro: FC = () => {
     </Card>
     <AwesomeButtonIcon icon="check" text="Save Changes" />
    </FormGroup>
-  </Layout>
+  </>
  )
 }
 

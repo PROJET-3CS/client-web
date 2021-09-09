@@ -100,6 +100,14 @@ export interface AntecedentItem {
  type?: string | undefined
 }
 
+export interface AntecedentDetail {
+ id: number
+ name: string
+ description: string
+ date: Date | string
+ createdAt: Date | string
+}
+
 //  ==============================================================================
 //  State
 //  ==============================================================================
@@ -121,7 +129,7 @@ export interface FolderState {
  infoGeneral: InfoGeneralType | Record<string, unknown>
  infoMedical: InfoMedicalType | Record<string, unknown>
  antecedent: AntecedentType | Record<string, unknown>
- antecedentItem: AntecedentItem 
+ antecedentItem: AntecedentItem
 }
 
 export interface AuthState {

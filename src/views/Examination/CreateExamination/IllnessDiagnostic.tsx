@@ -1,7 +1,6 @@
 import { FC } from 'react'
 import { Card, Col, FormGroup, Row } from 'reactstrap'
 
-import Layout from '../../layouts/Layout'
 import Header from '../../../components/Header'
 import AwesomeButtonIcon from '../../../components/AwesomeButton/AwesomeButtonIcon'
 import PrimaryDropdown from '../../../components/PrimaryDropdown/PrimaryDropdown'
@@ -10,7 +9,7 @@ import Interrogatory from '../../../components/ExaminationComponents/Interrogato
 
 const IllnessDiagnostic: FC = () => {
  return (
-  <Layout>
+  <>
    <Header />
    <FormGroup className="createExamination">
     <Card className="createExamination__PatInterro-card">
@@ -106,7 +105,7 @@ const IllnessDiagnostic: FC = () => {
     </Card>
     <AwesomeButtonIcon icon="check" text="Save Changes" />
    </FormGroup>
-  </Layout>
+  </>
  )
 }
 

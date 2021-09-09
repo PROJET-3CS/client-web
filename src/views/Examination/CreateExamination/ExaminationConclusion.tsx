@@ -1,7 +1,6 @@
 import { FC } from 'react'
 import { Card, Col, FormGroup, Label } from 'reactstrap'
 
-import Layout from '../../layouts/Layout'
 import Header from '../../../components/Header'
 import AwesomeButtonIcon from '../../../components/AwesomeButton/AwesomeButtonIcon'
 import FileUpload from '../../../components/ExaminationComponents/FileUpload'
@@ -9,7 +8,7 @@ import OtherFilesBox from '../../../components/ExaminationComponents/OtherFilesB
 
 const ExaminationConclusion: FC = () => {
  return (
-  <Layout>
+  <>
    <Header />
    <FormGroup className="createExamination">
     <Card className="createExamination__PatInterro-card">
@@ -58,7 +57,7 @@ const ExaminationConclusion: FC = () => {
     </Card>
     <AwesomeButtonIcon icon="check" text="Save Changes" />
    </FormGroup>
-  </Layout>
+  </>
  )
 }
 

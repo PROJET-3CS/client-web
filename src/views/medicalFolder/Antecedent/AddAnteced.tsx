@@ -4,12 +4,12 @@ import { useDispatch, useSelector } from 'react-redux'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
 
-import { addAntecedent } from '../../store/slices/folder'
+import { addAntecedent } from '../../../store/slices/folder'
 
-import AwesomeButton from '../../components/AwesomeButton/AwesomeButton'
-import SecondaryInput from '../../components/PrimaryInput/SecondaryInput'
-import { AntecedentItem, ModalProps, ReactChangeEvent, ReactSubmitEvent } from '../../helpers/types'
-import { getFolder } from '../../store/selectors'
+import AwesomeButton from '../../../components/AwesomeButton/AwesomeButton'
+import SecondaryInput from '../../../components/PrimaryInput/SecondaryInput'
+import { AntecedentItem, ModalProps, ReactChangeEvent, ReactSubmitEvent } from '../../../helpers/types'
+import { getFolder } from '../../../store/selectors'
 
 interface Props {
  type: string | undefined

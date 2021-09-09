@@ -3,7 +3,11 @@ import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { logout } from '../../store/slices/auth'
 
-const Layout: FC = ({ children }) => {
+interface Props {
+    page?: string
+} 
+
+const Layout: FC<Props> = ({ children, page }) => {
  // ===========================================================================
  // Dispatch
  // ==========================================================================
@@ -42,7 +46,7 @@ const Layout: FC = ({ children }) => {
      </li>
 
      <li className="side-nav__item">
-      <Link to="/medical" className="side-nav__link">
+      <Link to="/examination" className="side-nav__link">
        <img className="side-nav__icon" src="/img/medicalExam.svg" alt="Medical Exam icon" />
       </Link>
      </li>
@@ -66,7 +70,7 @@ const Layout: FC = ({ children }) => {
      </button>
     </div>
    </nav>
-   <main className="main-view">{children}</main>
+   <main className={page === 'exam' ? 'secondary-view' : 'main-view'}>{children}</main>
   </div>
  )
 }

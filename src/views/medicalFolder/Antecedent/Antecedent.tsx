@@ -5,19 +5,30 @@ import { faFileAlt } from '@fortawesome/free-solid-svg-icons'
 import AntecedModal from './AntecedModal'
 import AntecedDetails from './AntecedDetails'
 import AddAnteced from './AddAnteced'
+import { AntecedentDetail } from '../../../helpers/types'
+
+interface detailProps {
+    open: boolean
+    anteced: AntecedentDetail | undefined
+}
 
 const Antecedent: FC = () => {
  //  ==============================================================================
  //  State
  //  ==============================================================================
- const initState : {type: string | undefined, path: string | undefined} = {
+ const initState: { type: string | undefined; path: string | undefined } = {
   type: '',
   path: '',
+ }
+
+ const detailState = {
+  open: false,
+  anteced: undefined,
  }
  const [state, setState] = useState(initState)
 
  const [open, setOpen] = useState(false)
- const [detail, setDetail] = useState(false)
+ const [detail, setDetail] = useState<detailProps>(detailState)
 
  const [addModal, setAddModal] = useState(false)
 
@@ -26,7 +37,10 @@ const Antecedent: FC = () => {
  // ===========================================================================
 
  const toggle = (type?: string, path?: string) => {
-  setDetail(false)
+  setDetail({
+   ...detail,
+   open: false,
+  })
   setAddModal(false)
   setState({
    type,
@@ -35,9 +49,13 @@ const Antecedent: FC = () => {
   setOpen(!open)
  }
 
- const toggleDetail = () => {
+ const toggleDetail = (anteced?: AntecedentDetail) => {
   setOpen(false)
-  setDetail(!detail)
+  setDetail({
+   ...detail,
+   open: !detail.open,
+   anteced,
+  })
  }
 
  const toggleAdd = (type?: string) => {
@@ -115,8 +133,20 @@ const Antecedent: FC = () => {
     </button>
    </div>
 
-   <AntecedModal modal={open} toggle={toggle} handler={toggleDetail} goForward={toggleAdd} type={state.type} />
-   <AntecedDetails modal={detail} toggle={toggleDetail} goBack={toggle} antecedType={state.type} />
+   <AntecedModal
+    modal={open}
+    toggle={toggle}
+    handler={toggleDetail}
+    goForward={toggleAdd}
+    type={state.type}
+   />
+   <AntecedDetails
+    modal={detail.open}
+    toggle={toggleDetail}
+    goBack={toggle}
+    antecedType={state.type}
+    details={detail.anteced}
+   />
    <AddAnteced modal={addModal} toggle={toggleAdd} type={state.type} />
   </div>
  )

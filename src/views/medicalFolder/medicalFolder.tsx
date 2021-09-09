@@ -7,7 +7,7 @@ import Header from '../../components/Header'
 import AwesomeButton from '../../components/AwesomeButton/AwesomeButton'
 import PersonalInfo from './PersonalInfo'
 import MedicalInfo from './MedicalInfo'
-import Antecedent from './Antecedent'
+import Antecedent from './Antecedent/Antecedent'
 import Examination from './Examination'
 
 import { getFolder } from '../../store/selectors'
