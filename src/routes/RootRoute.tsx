@@ -21,6 +21,7 @@ const Appointment = React.lazy(() => import('../views/Appointment/Appointment'))
 const MyAppointments = React.lazy(() => import('../views/Appointment/MyAppointments'))
 const Prescription = React.lazy(() => import('../views/prescription/Prescription'))
 const Profile = React.lazy(() => import('../views/doctore/DocProfile'))
+const Chatt = React.lazy(() => import('../views/Chatt/Chatt'))
 
 const RootRoute: FC = () => {
  return (
@@ -44,6 +45,7 @@ const RootRoute: FC = () => {
      <PrivateRoute path="/appointments/:id" component={MyAppointments} exact />
      <PrivateRoute path="/prescription" component={Prescription} exact />
      <PrivateRoute path="/profile" component={Profile} exact />
+     <PrivateRoute path="/chatt" component={Chatt} exact />
 
      <Route component={_404} />
     </Switch>

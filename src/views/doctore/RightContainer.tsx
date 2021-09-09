@@ -1,11 +1,15 @@
 import { faBell, faCog } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { FC } from 'react'
+import { useSelector } from 'react-redux'
+import { getAuth } from '../../store/selectors'
 import InfoDoc from './Info'
 
 const RightContainer: FC = () => {
  const bioText =
   'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus, odio hac diam dolor, sit. Eu purus hendrerit ultricies at aliquet vitae interdum porta. Mi vulputate malesuada cursus aliquet tincidunt mauris.'
+
+ const { user } = useSelector(getAuth)
 
  return (
   <div className="doctor-container-right">
@@ -15,8 +19,10 @@ const RightContainer: FC = () => {
    </div>
    <div className="doctor-container-right-user">
     <img src="/img/userRect.png" alt="userpic" className="doctor-container-right-user-pic" />
-    <p className="doctor-container-right-user-name">Jhon Snow</p>
-    <p className="doctor-container-right-user-mail">medzino85@gmail.com</p>
+    <p className="doctor-container-right-user-name">
+     {user.firstname} {user.lastname}
+    </p>
+    <p className="doctor-container-right-user-mail">{user.email}</p>
    </div>
    <div className="doctor-container-right-bio">
     <p className="doctor-container-right-bio-title">Biography</p>

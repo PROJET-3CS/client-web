@@ -1,14 +1,20 @@
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { FC } from 'react'
+import { useSelector } from 'react-redux'
+import { getAuth } from '../../store/selectors'
 
 const InfoDoc: FC = () => {
+ const { user } = useSelector(getAuth)
+
  return (
   <div className="doctor-container-right-info">
    <div className="doctor-container-right-info-row">
     <div className="doctor-container-right-info-row-icon">.</div>
     <p className="doctor-container-right-info-row-title">User name</p>
-    <p className="doctor-container-right-info-row-data">Sarah Montenon</p>
+    <p className="doctor-container-right-info-row-data">
+     {user.firstname} {user.lastname}
+    </p>
     <FontAwesomeIcon className="doctor-container-right-info-row-icon2" icon={faChevronRight} />
    </div>
    <div className="doctor-container-right-info-row">
