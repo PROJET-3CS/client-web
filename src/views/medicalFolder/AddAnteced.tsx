@@ -137,41 +137,6 @@ const IndAppointmentModal: FC<ModalProps & Props> = ({ modal, toggle, type }) =>
     className="newappointment__resultmodal"
    >
     <ModalBody className="newappointment__resultmodal-body">
-<<<<<<< HEAD
-     <div className="newappointment__resultmodal-header">
-      <p>Add Affection</p>
-      <FontAwesomeIcon onClick={toggle} icon={faTimes} color="primary-color" />
-     </div>
-     <div>
-      <FormGroup className="newappointment__resultmodal-formgroup">
-       <Label className="newappointment__resultmodal-formgroup--label">Title</Label>
-       <SecondaryInput
-        id="title"
-        name="title"
-        placeholder="Lorem Ipsum"
-        type="text"
-        label="What's this affection"
-        className="anteced__add-input--title"
-       />
-      </FormGroup>
-      <FormGroup className="newappointment__resultmodal-formgroup">
-       <Label className="newappointment__resultmodal-formgroup--label">Started From</Label>
-       <SecondaryInput id="date" name="date" type="date" className="anteced__add-input--date" />
-      </FormGroup>
-      <FormGroup className="newappointment__resultmodal-formgroup">
-       <Label className="newappointment__resultmodal-formgroup--label">Details</Label>
-       <SecondaryInput
-        id="details"
-        name="details"
-        type="textarea"
-        placeholder="Enter details..."
-        rows="10"
-        className="anteced__add-input--details"
-       />
-      </FormGroup>
-      <AwesomeButton>Add Antécédent</AwesomeButton>
-     </div>
-=======
      <Alert isOpen={open} className="clinity-alert" color={!error ? 'success' : 'danger'}>
       {!error ? '🎉 Patient data was successfuly been updated !' : '🤕 Sorry something went wrong !'}
      </Alert>
@@ -222,7 +187,6 @@ const IndAppointmentModal: FC<ModalProps & Props> = ({ modal, toggle, type }) =>
        <AwesomeButton>Add Antécédent</AwesomeButton>
       </div>
      </Form>
->>>>>>> 2f1af73e452ac9260ebfecb3072f8c8717f37cd3
     </ModalBody>
    </Modal>
   </>

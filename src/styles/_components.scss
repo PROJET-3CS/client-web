@@ -2229,13 +2229,18 @@
 // chatt
 
 .chatt {
+  &-container{
+    height: calc(100% - 10rem);
+    display: flex;
+  }
  &-header {
-  padding: 4.6rem 6rem;
+  padding: 3rem 6rem;
   margin-left: -4rem;
   display: flex;
   border-top-left-radius: 2rem;
-  height: 12rem;
+  height: 10rem;
   background-color: $color-white;
+  
   &-icon {
    font-size: 4rem;
    color: $color-primary;
@@ -2264,13 +2269,53 @@
   }
  }
 }
+.chattmsg{
+  border: 1px solid $color-grey-light-5;
+ background-color: $color-white;
+ width: 57rem;
+ padding: 3.8rem 3rem;
+ height: 100%;
+ &-sender{
+   font-size: 3rem;
+   font-weight: 500;
+   color: $color-dark;
+ }
+ &-row{
+   display: flex;
+   margin-bottom: 2rem;
+   &-msg{
+     max-width: 31rem;
+     background-color:$color-grey-light-5 ;
+     padding: 1.2rem;
+     border-radius: 14px;
+   }
+   &-msg2{
+    max-width: 31rem;
+    background-color:$color-primary ;
+    color: $color-white;
+    margin-left: 23rem;
+    padding: 1.2rem;
+    border-radius: 14px;
+    margin-right: 1.5rem;
+    
+
+  }
+   &-img{
+    width: 3.4rem;
+    height: 3.4rem;
+    margin-right: 1.5rem;
+  }
+ }
+ 
+}
+
 .chattlist {
- height: calc(100% - 12rem);
  border: 1px solid $color-grey-light-5;
  background-color: $color-white;
  margin-left: -4rem;
  width: 45.7rem;
  padding: 3.8rem 3.4rem;
+ height: 100%;
  &-title {
   font-size: 2.2rem;
   color: $color-dark;
@@ -2312,6 +2357,8 @@
   margin-top: 6.8rem;
   padding: 0 2.7rem;
  }
+
+//////////////////////////////////
 //CREATE EXAMINATION
 
 .createExamination {

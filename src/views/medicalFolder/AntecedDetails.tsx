@@ -20,8 +20,6 @@ const AntecedDetails: FC<ModalProps & Props & InputProps> = ({
  onKeyDown,
  antecedType
 }) => {
-<<<<<<< HEAD
-=======
  const initState = {
   title: '',
   cta: '',
@@ -75,7 +73,6 @@ const AntecedDetails: FC<ModalProps & Props & InputProps> = ({
   getContent()
  }, [antecedType])
 
->>>>>>> 2f1af73e452ac9260ebfecb3072f8c8717f37cd3
  return (
   <AwesomeModal
    style={{ maxWidth: '40%' }}

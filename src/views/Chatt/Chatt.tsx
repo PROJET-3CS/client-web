@@ -5,6 +5,7 @@ import Search from '../../components/Search'
 import '../../styles/main.scss'
 import Layout from '../layouts/Layout'
 import ChattList from './ChattList'
+import ChattMsg from './Messages'
 
 const Chatt: FC = () => {
  return (
@@ -19,7 +20,10 @@ const Chatt: FC = () => {
     <FontAwesomeIcon className="chatt-header-icon2" icon={faBell} />
     <img src="/img/userRect.png" alt="userpic" className="chatt-header-pic" />
    </div>
-   <ChattList />
+   <div className="chatt-container">
+    <ChattList />
+    <ChattMsg />
+   </div>
   </Layout>
  )
 }

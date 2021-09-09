@@ -14,12 +14,6 @@ import AwesomeButtonIcon from '../../components/AwesomeButton/AwesomeButtonIcon'
 import AwesomeModal from '../../components/AwesomeModal/AwesomeModal'
 
 interface Props {
-<<<<<<< HEAD
- goForward: () => void
-}
-
-const AntecedModal: FC<ModalProps & Props> = ({ modal, toggle, handler, goForward }) => {
-=======
  // eslint-disable-next-line no-unused-vars
  goForward: (type?: string) => void
  type: string | undefined
@@ -96,7 +90,6 @@ const AntecedModal: FC<ModalProps & Props> = ({ modal, toggle, handler, goForwar
   getContent()
  }, [type])
 
->>>>>>> 2f1af73e452ac9260ebfecb3072f8c8717f37cd3
  return (
   <AwesomeModal style={{ maxWidth: '45%' }} modal={modal} toggle={toggle}>
    <div className="clinity__modal-header">
