@@ -205,7 +205,7 @@ function* _addAntecedent() {
   const payload = {
    name: antecedentItem.title,
    description: antecedentItem.details,
-   type
+   type,
   }
 
   const url = getUrlAnteced(antecedentItem.type, folder.userId)

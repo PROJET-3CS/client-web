@@ -18,57 +18,57 @@ const AntecedDetails: FC<ModalProps & Props & InputProps> = ({
  toggle,
  goBack,
  onKeyDown,
- antecedType
+ antecedType,
 }) => {
  const initState = {
   title: '',
   cta: '',
  }
  const [state, setState] = useState(initState)
-      
+
  const getContent = () => {
   switch (antecedType) {
-  case 'affection':
-   setState({
-    ...state,
-    title: 'Affections Congénitaire',
-    cta: 'New Affection',
-   })
-   break
-  
-  case 'generale':
-   setState({
-    ...state,
-    title: 'Maladies Générales',
-    cta: 'New Maladie',
-   })
-   break
-  case 'allergies':
-   setState({
-    ...state,
-    title: 'Allergies aux médciament',
-    cta: 'New Allergie',
-   })
-   break
-  
-  case 'intervention':
-   setState({
-    ...state,
-    title: 'Interventions chirurgicales',
-    cta: 'New Intervention',
-   })
-   break
-  
-  default:
-   setState({
-    ...state,
-    title: 'Affections Congénitaire',
-    cta: 'New Affection',
-   })
-   break
+   case 'affection':
+    setState({
+     ...state,
+     title: 'Affections Congénitaire',
+     cta: 'New Affection',
+    })
+    break
+
+   case 'generale':
+    setState({
+     ...state,
+     title: 'Maladies Générales',
+     cta: 'New Maladie',
+    })
+    break
+   case 'allergies':
+    setState({
+     ...state,
+     title: 'Allergies aux médciament',
+     cta: 'New Allergie',
+    })
+    break
+
+   case 'intervention':
+    setState({
+     ...state,
+     title: 'Interventions chirurgicales',
+     cta: 'New Intervention',
+    })
+    break
+
+   default:
+    setState({
+     ...state,
+     title: 'Affections Congénitaire',
+     cta: 'New Affection',
+    })
+    break
   }
  }
-      
+
  useEffect(() => {
   getContent()
  }, [antecedType])
@@ -118,7 +118,9 @@ const AntecedDetails: FC<ModalProps & Props & InputProps> = ({
 
    <div className="clinity__modal-footer anteced__detail-footer">
     <i
-     onClick={() => {return goBack(antecedType)}}
+     onClick={() => {
+      return goBack(antecedType)
+     }}
      onKeyDown={onKeyDown}
      tabIndex={0}
      role="button"

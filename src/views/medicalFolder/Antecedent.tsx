@@ -10,7 +10,7 @@ const Antecedent: FC = () => {
  //  ==============================================================================
  //  State
  //  ==============================================================================
- const initState : {type: string | undefined, path: string | undefined} = {
+ const initState: { type: string | undefined; path: string | undefined } = {
   type: '',
   path: '',
  }
@@ -115,7 +115,13 @@ const Antecedent: FC = () => {
     </button>
    </div>
 
-   <AntecedModal modal={open} toggle={toggle} handler={toggleDetail} goForward={toggleAdd} type={state.type} />
+   <AntecedModal
+    modal={open}
+    toggle={toggle}
+    handler={toggleDetail}
+    goForward={toggleAdd}
+    type={state.type}
+   />
    <AntecedDetails modal={detail} toggle={toggleDetail} goBack={toggle} antecedType={state.type} />
    <AddAnteced modal={addModal} toggle={toggleAdd} type={state.type} />
   </div>

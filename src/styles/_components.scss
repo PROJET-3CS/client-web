@@ -2229,10 +2229,11 @@
 // chatt
 
 .chatt {
-  &-container{
-    height: calc(100% - 10rem);
-    display: flex;
-  }
+ &-container {
+  height: calc(100% - 10rem);
+  display: flex;
+  position: fixed;
+ }
  &-header {
   padding: 3rem 6rem;
   margin-left: -4rem;
@@ -2240,7 +2241,7 @@
   border-top-left-radius: 2rem;
   height: 10rem;
   background-color: $color-white;
-  
+
   &-icon {
    font-size: 4rem;
    color: $color-primary;
@@ -2269,51 +2270,63 @@
   }
  }
 }
-.chattmsg{
-  border: 1px solid $color-grey-light-5;
+.chattmsg {
+ border: 1px solid $color-grey-light-5;
  background-color: $color-white;
  width: 57rem;
  padding: 3.8rem 3rem;
  height: 100%;
- &-sender{
-   font-size: 3rem;
-   font-weight: 500;
-   color: $color-dark;
+ &-rows {
+  overflow-y: scroll;
+  height: 86%;
+  margin-right: -2.3rem;
  }
- &-row{
-   display: flex;
-   margin-bottom: 2rem;
-   &-msg{
-     max-width: 31rem;
-     background-color:$color-grey-light-5 ;
-     padding: 1.2rem;
-     border-radius: 14px;
-   }
-   &-msg2{
-    max-width: 31rem;
-    background-color:$color-primary ;
-    color: $color-white;
-    margin-left: 23rem;
-    padding: 1.2rem;
-    border-radius: 14px;
-    margin-right: 1.5rem;
-    
-
+ &-send {
+  padding-top: 2rem;
+  &-input {
+   width: 80%;
   }
-   &-img{
-    width: 3.4rem;
-    height: 3.4rem;
-    margin-right: 1.5rem;
+  &-btn1 {
+   margin-left: 0;
+   margin-right: 1.2rem;
   }
  }
- 
+ &-sender {
+  font-size: 3rem;
+  font-weight: 500;
+  color: $color-dark;
+ }
+ &-row {
+  display: flex;
+  margin-bottom: 2rem;
+  &-msg {
+   max-width: 31rem;
+   background-color: $color-grey-light-5;
+   padding: 1.2rem;
+   border-radius: 14px;
+  }
+  &-msg2 {
+   max-width: 31rem;
+   background-color: $color-primary;
+   color: $color-white;
+   margin-left: 23rem;
+   padding: 1.2rem;
+   border-radius: 14px;
+   margin-right: 1.5rem;
+  }
+  &-img {
+   width: 3.4rem;
+   height: 3.4rem;
+   margin-right: 1.5rem;
+  }
+ }
 }
 
 .chattlist {
  border: 1px solid $color-grey-light-5;
  background-color: $color-white;
  margin-left: -4rem;
- width: 45.7rem;
+ width: 52rem;
  padding: 3.8rem 3.4rem;
  height: 100%;
  &-title {
@@ -2358,143 +2371,143 @@
   padding: 0 2.7rem;
  }
 
-//////////////////////////////////
-//CREATE EXAMINATION
+ //////////////////////////////////
+ //CREATE EXAMINATION
 
-.createExamination {
- text-align: right;
- &__PatInterro {
-  &-card {
-   &:defined {
-    border: none;
-    border-radius: 0.68rem;
-    cursor: pointer;
-    margin-bottom: 2rem;
-   }
+ .createExamination {
+  text-align: right;
+  &__PatInterro {
+   &-card {
+    &:defined {
+     border: none;
+     border-radius: 0.68rem;
+     cursor: pointer;
+     margin-bottom: 2rem;
+    }
 
-   & h1 {
-    text-align: left;
-    padding: 2rem 0rem 0rem 2.35rem;
-    font-size: 2.5rem;
-    font-weight: 600;
-   }
+    & h1 {
+     text-align: left;
+     padding: 2rem 0rem 0rem 2.35rem;
+     font-size: 2.5rem;
+     font-weight: 600;
+    }
 
-   &--description {
-    font-size: 1.1rem;
-    font-weight: 500;
-    text-align: left;
-    padding: 0rem 0rem 0rem 2.35rem;
-   }
+    &--description {
+     font-size: 1.1rem;
+     font-weight: 500;
+     text-align: left;
+     padding: 0rem 0rem 0rem 2.35rem;
+    }
 
-   &--col {
-    text-align: right;
-    padding: 1rem 2rem 0rem 2rem;
-   }
+    &--col {
+     text-align: right;
+     padding: 1rem 2rem 0rem 2rem;
+    }
 
-   &--row {
-    margin-bottom: 1rem;
-   }
+    &--row {
+     margin-bottom: 1rem;
+    }
 
-   &--addbutton {
-    text-align: right !important;
-    padding-bottom: 2rem;
-   }
+    &--addbutton {
+     text-align: right !important;
+     padding-bottom: 2rem;
+    }
 
-   &--textarea {
-    font-family: inherit;
-    font-size: 1.5rem !important;
-    font-weight: 500 !important;
-    color: inherit;
-    padding: 0.7rem 2rem !important;
-    border-radius: 0.5rem !important;
-    width: 100% !important;
-    height: 22rem;
-    margin-bottom: 2rem;
-
-    &--select {
+    &--textarea {
      font-family: inherit;
      font-size: 1.5rem !important;
      font-weight: 500 !important;
      color: inherit;
-     padding: 0 !important;
+     padding: 0.7rem 2rem !important;
      border-radius: 0.5rem !important;
-     width: 100%;
-    }
-   }
-  }
- }
+     width: 100% !important;
+     height: 22rem;
+     margin-bottom: 2rem;
 
- &__IllnessDiagno {
-  &-Interrogatory {
-   &--box {
-    font-size: 1.438rem !important;
-    width: fit-content !important;
-    padding: 1rem !important;
-    margin-right: 4rem;
-
-    background-color: $color-grey-dark-5 !important;
-    border-color: $color-grey-dark-5 !important;
-
-    &--active,
-    &:active {
-     background-color: $color-blue !important;
-     border-color: $color-blue !important;
-    }
-   }
-  }
-  &-Illnesses {
-   &--col {
-    padding: 2rem !important;
-    text-align: left;
-   }
-
-   &--col p {
-    font-size: 1.31rem;
-    font-weight: 500;
-    margin-bottom: 1.188rem;
-   }
-
-   &--box {
-    width: fit-content !important;
-    font-size: 1.5rem !important;
-    font-weight: 500 !important;
-    border-radius: 5.62rem !important;
-    padding: 0.813rem 2.5rem 0.813rem 2.5rem !important;
-    margin-right: 1.4rem;
-    margin-bottom: 1.4rem;
-
-    &:hover,
-    &:active {
-     background-color: $color-tertiary !important;
-     border-color: $color-tertiary !important;
-    }
-
-    &:visited {
-     background-color: #0d6efd !important;
-    }
-
-    &--close {
-     visibility: hidden;
-     transition: all 0.2s ease-in-out;
-
-     .editfolder__medicalsection-box:hover & {
-      visibility: visible;
-      margin-left: 2rem;
+     &--select {
+      font-family: inherit;
+      font-size: 1.5rem !important;
+      font-weight: 500 !important;
+      color: inherit;
+      padding: 0 !important;
+      border-radius: 0.5rem !important;
+      width: 100%;
      }
     }
    }
+  }
 
-   &--button {
-    width: fit-content !important;
-    font-size: 1.5rem;
-    font-weight: 500;
-    border-color: black;
-    background-color: white;
-    border-radius: 5.62rem;
-    padding: 0.813rem 2.5rem 0.813rem 2.5rem !important;
-    margin-bottom: 1.4rem;
+  &__IllnessDiagno {
+   &-Interrogatory {
+    &--box {
+     font-size: 1.438rem !important;
+     width: fit-content !important;
+     padding: 1rem !important;
+     margin-right: 4rem;
+
+     background-color: $color-grey-dark-5 !important;
+     border-color: $color-grey-dark-5 !important;
+
+     &--active,
+     &:active {
+      background-color: $color-blue !important;
+      border-color: $color-blue !important;
+     }
+    }
+   }
+   &-Illnesses {
+    &--col {
+     padding: 2rem !important;
+     text-align: left;
+    }
+
+    &--col p {
+     font-size: 1.31rem;
+     font-weight: 500;
+     margin-bottom: 1.188rem;
+    }
+
+    &--box {
+     width: fit-content !important;
+     font-size: 1.5rem !important;
+     font-weight: 500 !important;
+     border-radius: 5.62rem !important;
+     padding: 0.813rem 2.5rem 0.813rem 2.5rem !important;
+     margin-right: 1.4rem;
+     margin-bottom: 1.4rem;
+
+     &:hover,
+     &:active {
+      background-color: $color-tertiary !important;
+      border-color: $color-tertiary !important;
+     }
+
+     &:visited {
+      background-color: #0d6efd !important;
+     }
+
+     &--close {
+      visibility: hidden;
+      transition: all 0.2s ease-in-out;
+
+      .editfolder__medicalsection-box:hover & {
+       visibility: visible;
+       margin-left: 2rem;
+      }
+     }
+    }
+
+    &--button {
+     width: fit-content !important;
+     font-size: 1.5rem;
+     font-weight: 500;
+     border-color: black;
+     background-color: white;
+     border-radius: 5.62rem;
+     padding: 0.813rem 2.5rem 0.813rem 2.5rem !important;
+     margin-bottom: 1.4rem;
+    }
    }
   }
  }
-}
 }

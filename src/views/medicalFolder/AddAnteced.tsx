@@ -40,12 +40,12 @@ const IndAppointmentModal: FC<ModalProps & Props> = ({ modal, toggle, type }) =>
   cta: '',
  }
 
- const initAnteced : AntecedentItem = {
+ const initAnteced: AntecedentItem = {
   title: antecedentItem?.title ? antecedentItem.title : '',
   date: '',
   details: antecedentItem?.details ? antecedentItem.details : '',
-  type
- }  
+  type,
+ }
 
  const [anteced, setAnteced] = useState(initAnteced)
  const [state, setState] = useState(initState)
@@ -58,7 +58,7 @@ const IndAppointmentModal: FC<ModalProps & Props> = ({ modal, toggle, type }) =>
  const handleSubmitAnteced = (e: ReactSubmitEvent) => {
   e.preventDefault()
   _addAntecedent(anteced)
- } 
+ }
 
  const handleChange = (e: ReactChangeEvent | ChangeEvent<HTMLTextAreaElement>) => {
   setAnteced({
@@ -70,44 +70,44 @@ const IndAppointmentModal: FC<ModalProps & Props> = ({ modal, toggle, type }) =>
 
  const getContent = () => {
   switch (type) {
-  case 'affection':
-   setState({
-    ...state,
-    title: 'Add Affection',
-    cta: 'New Affection',
-   })
-   break
+   case 'affection':
+    setState({
+     ...state,
+     title: 'Add Affection',
+     cta: 'New Affection',
+    })
+    break
 
-  case 'generale':
-   setState({
-    ...state,
-    title: 'Add Maladie Générale',
-    cta: 'New Maladie',
-   })
-   break
-  case 'allergies':
-   setState({
-    ...state,
-    title: 'Add Allergies',
-    cta: 'New Allergie',
-   })
-   break
+   case 'generale':
+    setState({
+     ...state,
+     title: 'Add Maladie Générale',
+     cta: 'New Maladie',
+    })
+    break
+   case 'allergies':
+    setState({
+     ...state,
+     title: 'Add Allergies',
+     cta: 'New Allergie',
+    })
+    break
 
-  case 'intervention':
-   setState({
-    ...state,
-    title: 'Add Intervention',
-    cta: 'New Intervention',
-   })
-   break
+   case 'intervention':
+    setState({
+     ...state,
+     title: 'Add Intervention',
+     cta: 'New Intervention',
+    })
+    break
 
-  default:
-   setState({
-    ...state,
-    title: 'Add Affection',
-    cta: 'New Affection',
-   })
-   break
+   default:
+    setState({
+     ...state,
+     title: 'Add Affection',
+     cta: 'New Affection',
+    })
+    break
   }
  }
 
@@ -138,7 +138,9 @@ const IndAppointmentModal: FC<ModalProps & Props> = ({ modal, toggle, type }) =>
    >
     <ModalBody className="newappointment__resultmodal-body">
      <Alert isOpen={open} className="clinity-alert" color={!error ? 'success' : 'danger'}>
-      {!error ? '🎉 Patient data was successfuly been updated !' : '🤕 Sorry something went wrong !'}
+      {!error
+       ? '🎉 Patient data was successfuly been updated !'
+       : '🤕 Sorry something went wrong !'}
      </Alert>
      <Form onSubmit={handleSubmitAnteced}>
       <div className="newappointment__resultmodal-header">
@@ -168,7 +170,15 @@ const IndAppointmentModal: FC<ModalProps & Props> = ({ modal, toggle, type }) =>
        </FormGroup>
        <FormGroup className="newappointment__resultmodal-formgroup">
         <Label className="newappointment__resultmodal-formgroup--label">Started From</Label>
-        <SecondaryInput id="date" name="date" type="date" className="anteced__add-input--date" onChange={handleChange} value={new Date(anteced.date).getTime()} required />
+        <SecondaryInput
+         id="date"
+         name="date"
+         type="date"
+         className="anteced__add-input--date"
+         onChange={handleChange}
+         value={new Date(anteced.date).getTime()}
+         required
+        />
        </FormGroup>
        <FormGroup className="newappointment__resultmodal-formgroup">
         <Label className="newappointment__resultmodal-formgroup--label">Details</Label>
@@ -179,7 +189,9 @@ const IndAppointmentModal: FC<ModalProps & Props> = ({ modal, toggle, type }) =>
          placeholder="Enter details..."
          rows="10"
          className="anteced__add-input--details"
-         changeTextArea={(event) => {return handleChange(event)}}
+         changeTextArea={(event) => {
+          return handleChange(event)
+         }}
          value={anteced.details}
          required
         />

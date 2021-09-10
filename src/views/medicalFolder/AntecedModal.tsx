@@ -20,10 +20,10 @@ interface Props {
 }
 
 interface Antecedent {
-    name: string
-    description: string
-    date: Date | string
-    createdAt: Date | string
+ name: string
+ description: string
+ date: Date | string
+ createdAt: Date | string
 }
 
 const AntecedModal: FC<ModalProps & Props> = ({ modal, toggle, handler, goForward, type }) => {
@@ -31,58 +31,58 @@ const AntecedModal: FC<ModalProps & Props> = ({ modal, toggle, handler, goForwar
  // Selectors
  // ===========================================================================
  const { folder } = useSelector(getFolder)
- 
+
  const initState = {
   title: '',
   cta: '',
-  antecedents: []
+  antecedents: [],
  }
  const [state, setState] = useState(initState)
 
  const getContent = () => {
   switch (type) {
-  case 'affection':
-   setState({
-    ...state,
-    antecedents: folder.generalIllnesses,
-    title: 'Affections Congénitaire',
-    cta: 'New Affection',
-   })
-   break
+   case 'affection':
+    setState({
+     ...state,
+     antecedents: folder.generalIllnesses,
+     title: 'Affections Congénitaire',
+     cta: 'New Affection',
+    })
+    break
 
-  case 'generale':
-   setState({
-    ...state,
-    antecedents: folder.generalIllnesses,
-    title: 'Maladies Générales',
-    cta: 'New Maladie',
-   })
-   break
-  case 'allergies':
-   setState({
-    ...state,
-    antecedents: folder.allergicReactions,
-    title: 'Allergies aux médciament',
-    cta: 'New Allergie',
-   })
-   break
+   case 'generale':
+    setState({
+     ...state,
+     antecedents: folder.generalIllnesses,
+     title: 'Maladies Générales',
+     cta: 'New Maladie',
+    })
+    break
+   case 'allergies':
+    setState({
+     ...state,
+     antecedents: folder.allergicReactions,
+     title: 'Allergies aux médciament',
+     cta: 'New Allergie',
+    })
+    break
 
-  case 'intervention':
-   setState({
-    ...state,
-    antecedents: folder.surgicalInterventions,
-    title: 'Interventions chirurgicales',
-    cta: 'New Intervention',
-   })
-   break
+   case 'intervention':
+    setState({
+     ...state,
+     antecedents: folder.surgicalInterventions,
+     title: 'Interventions chirurgicales',
+     cta: 'New Intervention',
+    })
+    break
 
-  default:
-   setState({
-    ...state,
-    title: 'Affections Congénitaire',
-    cta: 'New Affection',
-   })
-   break
+   default:
+    setState({
+     ...state,
+     title: 'Affections Congénitaire',
+     cta: 'New Affection',
+    })
+    break
   }
  }
 
@@ -98,11 +98,15 @@ const AntecedModal: FC<ModalProps & Props> = ({ modal, toggle, handler, goForwar
    </div>
    <div className="clinity__modal-body">
     {state.antecedents.map((anteced: Antecedent) => {
-     return <AntecedItem
-      title={anteced.name}
-      content={anteced.description}
-      date={moment(anteced.createdAt).format('l')}
-      onClick={handler} />})}
+     return (
+      <AntecedItem
+       title={anteced.name}
+       content={anteced.description}
+       date={moment(anteced.createdAt).format('l')}
+       onClick={handler}
+      />
+     )
+    })}
    </div>
 
    <div className="clinity__modal-footer">

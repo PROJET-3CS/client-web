@@ -121,7 +121,7 @@ export interface FolderState {
  infoGeneral: InfoGeneralType | Record<string, unknown>
  infoMedical: InfoMedicalType | Record<string, unknown>
  antecedent: AntecedentType | Record<string, unknown>
- antecedentItem: AntecedentItem 
+ antecedentItem: AntecedentItem
 }
 
 export interface AuthState {
