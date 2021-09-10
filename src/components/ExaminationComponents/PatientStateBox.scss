@@ -2,31 +2,33 @@
  &__card {
   &:defined {
    background-color: #f1eeee;
-   padding: 4rem;
-   width: 48%;
-   margin-right: 2.4rem;
-   margin-bottom: 2.4rem;
+   padding: 2rem 3rem;
    border: none !important;
    border-radius: 0.8rem !important;
+
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
+   align-items: center;
   }
 
   &-circle {
-   width: 4rem !important;
-   height: 4rem !important;
    border-width: 0.25rem !important;
    border-color: #5b63f6 !important;
    border-radius: 50% !important;
-   margin-top: 1rem !important;
+
+   width: 3.5rem !important;
+   height: 3.5rem !important;
   }
 
   &-content {
    text-align: left !important;
-   width: 42rem !important;
    margin-left: 2rem !important;
+   flex: 1;
 
    & p {
     width: fit-content;
-    font-size: 2rem;
+    font-size: 1.5rem;
     text-transform: uppercase;
     font-weight: 700;
    }

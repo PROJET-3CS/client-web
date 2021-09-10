@@ -7,7 +7,6 @@ import PrimaryInput from '../../../components/PrimaryInput/PrimaryInput'
 import PatientStateBox from '../../../components/ExaminationComponents/PatientStateBox'
 
 const PatientCondition: FC = () => {
-
  return (
   <>
    <Header />
@@ -56,28 +55,35 @@ const PatientCondition: FC = () => {
       nibh amet. Placerat pellentesque maecenas sollicitudin lacinia commodo, luctus. A eu magna
       augue aenean.
      </p>
-     <Col className="createExamination__PatInterro-card--col">
-      <Row md="2" className="createExamination__PatInterro-card--row">
+     <Row md="2" className="createExamination__PatInterro-card--row">
+      <Col className="createExamination__PatInterro-card--col">
        <PatientStateBox
         title="Patient en etat de choque"
         description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam cursus ornare posuere. Mauris fermentum non lig."
        />
+      </Col>
+      <Col className="createExamination__PatInterro-card--col">
        <PatientStateBox
         title="Patient en etat de comma"
         description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam cursus ornare posuere. Mauris fermentum non lig."
        />
-      </Row>
-      <Row md="2" className="createExamination__PatInterro-card--row">
+      </Col>
+     </Row>
+
+     <Row md="2" className="createExamination__PatInterro-card--row">
+      <Col className="createExamination__PatInterro-card--col">
        <PatientStateBox
         title="Patient en etat de fatigue"
         description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam cursus ornare posuere. Mauris fermentum non lig."
        />
+      </Col>
+      <Col className="createExamination__PatInterro-card--col">
        <PatientStateBox
         title="Patient en etat normal"
         description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam cursus ornare posuere. Mauris fermentum non lig."
        />
-      </Row>
-     </Col>
+      </Col>
+     </Row>
     </Card>
     <AwesomeButtonIcon icon="check" text="Save Changes" />
    </FormGroup>

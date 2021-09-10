@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { Card, Col, FormGroup, Label } from 'reactstrap'
+import { Card, Col, FormGroup, Label, Row } from 'reactstrap'
 
 import Header from '../../../components/Header'
 import AwesomeButtonIcon from '../../../components/AwesomeButton/AwesomeButtonIcon'
@@ -18,8 +18,8 @@ const ExaminationConclusion: FC = () => {
       nibh amet. Placerat pellentesque maecenas sollicitudin lacinia commodo, luctus. A eu magna
       augue aenean.
      </p>
-     <Col className="createExamination__PatInterro-card--col">
-      <div className="createExamination__PatInterro-card--row">
+     <Row className="createExamination__PatInterro-card--row">
+      <Col className="createExamination__PatInterro-card--col">
        <FormGroup className="Primary__form-group2">
         <Label className="Primary__form-label2">Conclusion</Label>
         <Card className="Primary__form-card2">
@@ -30,9 +30,11 @@ const ExaminationConclusion: FC = () => {
          />
         </Card>
        </FormGroup>
+      </Col>
+      <Col className="createExamination__PatInterro-card--col">
        <FileUpload label="Join Files" />
-      </div>
-     </Col>
+      </Col>
+     </Row>
     </Card>
 
     <Card className="createExamination__PatInterro-card">

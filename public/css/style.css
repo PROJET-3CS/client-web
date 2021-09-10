@@ -1359,20 +1359,20 @@ body {
     border: none;
     border-radius: 0.68rem;
     cursor: pointer;
-    margin-bottom: 2rem; }
+    margin-bottom: 2rem;
+    padding: 2rem 3rem; }
   .createExamination__PatInterro-card h1 {
     text-align: left;
-    padding: 2rem 0rem 0rem 2.35rem;
     font-size: 2.5rem;
-    font-weight: 600; }
+    font-weight: 600;
+    margin-bottom: 1rem; }
   .createExamination__PatInterro-card--description {
     font-size: 1.1rem;
     font-weight: 500;
     text-align: left;
-    padding: 0rem 0rem 0rem 2.35rem; }
+    margin-bottom: 2.5rem; }
   .createExamination__PatInterro-card--col {
-    text-align: right;
-    padding: 1rem 2rem 0rem 2rem; }
+    text-align: right; }
   .createExamination__PatInterro-card--row {
     margin-bottom: 1rem; }
   .createExamination__PatInterro-card--addbutton {

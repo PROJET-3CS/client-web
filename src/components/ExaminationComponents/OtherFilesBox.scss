@@ -1,21 +1,26 @@
 .OtherFilesBox {
  &__card {
   &:defined {
-   width: 113.5rem;
    background-color: #f1eeee;
    border: none;
    border-radius: 0.5rem;
-   height: 12rem !important;
-   padding: 3.5rem;
+   padding: 3rem;
    margin-bottom: 2rem;
+
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
+   align-items: center;
   }
 
-  &-row {
-   vertical-align: middle !important;
+  &-body {
+   display: flex;
+   flex-direction: row;
+   gap: 1rem;
+   align-items: center;
   }
 
   &-icon {
-   width: 10rem !important;
    & img {
     font-size: 2rem;
     color: white !important;
@@ -25,8 +30,6 @@
   &-title {
    margin-left: 1rem;
    text-align: left;
-   width: 38rem !important;
-   margin-right: 10rem;
   }
 
   & p {
@@ -41,13 +44,19 @@
    color: #c5c5c5;
   }
 
+  &-action {
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
+   flex: .6;
+  }
+
   &-button {
    background-color: #f1eeee !important;
    border: none !important;
    color: #999999 !important;
    font-weight: 700 !important;
    font-size: 1.8rem !important;
-   width: 22rem !important;
    text-transform: uppercase;
   }
  }
