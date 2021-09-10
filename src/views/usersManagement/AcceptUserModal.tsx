@@ -39,8 +39,6 @@ const AcceptUserModal: FC<InputProps & Props> = ({ isOpen, toggle, user }) => {
  // ===========================================================================
 
  const handleSubmit = () => {
-  console.log(user)
-
   _acceptUser(user)
   if (!error && !loading) setTimeout(toggle, 2000)
  }

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { FC, useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser, faUsers, faPlus, faEllipsisH } from '@fortawesome/free-solid-svg-icons'
@@ -36,7 +37,6 @@ const UsersManagement: FC = () => {
  const [createUserModal, setCreateUserModal] = useState(false)
  const [archiveModal, setArchiveModal] = useState(false)
  const [buffer, setBuffer] = useState(null)
- const [page, setPage] = useState(0)
 
  const routeQueriesInitialState = {
   page: 0,
@@ -55,7 +55,7 @@ const UsersManagement: FC = () => {
   setArchiveModal(!archiveModal)
  }
 
- const handlePageChange = async (selectedPage: { selected: number }) => {
+ const handlePageChange = (selectedPage: { selected: number }) => {
   const { selected } = selectedPage
   setRouteQueries({ ...routeQueries, page: selected })
  }
@@ -89,7 +89,7 @@ const UsersManagement: FC = () => {
   const toggleDropdown = () => {
    setDropdownOpen(!dropdownOpen)
   }
-  let history = useHistory()
+  const history = useHistory()
 
   return (
    <>

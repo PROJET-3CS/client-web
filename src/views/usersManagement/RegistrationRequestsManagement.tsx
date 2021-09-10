@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { FC, useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEllipsisH } from '@fortawesome/free-solid-svg-icons'
@@ -36,8 +37,6 @@ const RegistrationRequestsManagement: FC = () => {
  const [acceptModal, setAcceptModal] = useState(false)
  const [rejectModal, setRejectModal] = useState(false)
 
- const [page, setPage] = useState(0)
-
  const routeQueriesInitialState = {
   page: 0,
   items: 8,
@@ -47,7 +46,7 @@ const RegistrationRequestsManagement: FC = () => {
  // Handlers
  // ===========================================================================
 
- const handlePageChange = async (selectedPage: { selected: number }) => {
+ const handlePageChange = (selectedPage: { selected: number }) => {
   const { selected } = selectedPage
   setRouteQueries({ ...routeQueries, page: selected })
  }
