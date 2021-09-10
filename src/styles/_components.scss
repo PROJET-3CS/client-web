@@ -2002,6 +2002,7 @@
     padding: 0%;
     margin-right: 3rem;
     display: flex;
+    
     &-card {
      &-up {
       background-color: $color-white;
@@ -2053,6 +2054,20 @@
      background-color: $color-white;
      border-radius: 13px;
      margin-right: 1.5rem;
+     &-icon{
+       color: $color-primary-light;
+       margin-left: 2rem;
+       font-size: 1.8rem;
+       margin-top: 1rem;
+       margin-right: 1rem;
+     }
+     &-icon2{
+      color: $color-primary;
+      margin-left: 2rem;
+      font-size: 1.8rem;
+      margin-top: 1rem;
+      margin-right: 1rem;
+    }
     }
     &-2 {
      width: 19.5rem;
@@ -2062,6 +2077,9 @@
      background-color: $color-white;
      border-radius: 13px;
      width: 55%;
+     & > canvas{
+      height: 100% !important;
+    }
     }
    }
    &-secondrow {

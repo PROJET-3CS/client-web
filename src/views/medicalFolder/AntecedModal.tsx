@@ -41,48 +41,48 @@ const AntecedModal: FC<ModalProps & Props> = ({ modal, toggle, handler, goForwar
 
  const getContent = () => {
   switch (type) {
-   case 'affection':
-    setState({
-     ...state,
-     antecedents: folder.generalIllnesses,
-     title: 'Affections Congénitaire',
-     cta: 'New Affection',
-    })
-    break
+  case 'affection':
+   setState({
+    ...state,
+    antecedents: folder.generalIllnesses,
+    title: 'Affections Congénitaire',
+    cta: 'New Affection',
+   })
+   break
 
-   case 'generale':
-    setState({
-     ...state,
-     antecedents: folder.generalIllnesses,
-     title: 'Maladies Générales',
-     cta: 'New Maladie',
-    })
-    break
-   case 'allergies':
-    setState({
-     ...state,
-     antecedents: folder.allergicReactions,
-     title: 'Allergies aux médciament',
-     cta: 'New Allergie',
-    })
-    break
+  case 'generale':
+   setState({
+    ...state,
+    antecedents: folder.generalIllnesses,
+    title: 'Maladies Générales',
+    cta: 'New Maladie',
+   })
+   break
+  case 'allergies':
+   setState({
+    ...state,
+    antecedents: folder.allergicReactions,
+    title: 'Allergies aux médciament',
+    cta: 'New Allergie',
+   })
+   break
 
-   case 'intervention':
-    setState({
-     ...state,
-     antecedents: folder.surgicalInterventions,
-     title: 'Interventions chirurgicales',
-     cta: 'New Intervention',
-    })
-    break
+  case 'intervention':
+   setState({
+    ...state,
+    antecedents: folder.surgicalInterventions,
+    title: 'Interventions chirurgicales',
+    cta: 'New Intervention',
+   })
+   break
 
-   default:
-    setState({
-     ...state,
-     title: 'Affections Congénitaire',
-     cta: 'New Affection',
-    })
-    break
+  default:
+   setState({
+    ...state,
+    title: 'Affections Congénitaire',
+    cta: 'New Affection',
+   })
+   break
   }
  }
 

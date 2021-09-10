@@ -28,44 +28,44 @@ const AntecedDetails: FC<ModalProps & Props & InputProps> = ({
 
  const getContent = () => {
   switch (antecedType) {
-   case 'affection':
-    setState({
-     ...state,
-     title: 'Affections Congénitaire',
-     cta: 'New Affection',
-    })
-    break
+  case 'affection':
+   setState({
+    ...state,
+    title: 'Affections Congénitaire',
+    cta: 'New Affection',
+   })
+   break
 
-   case 'generale':
-    setState({
-     ...state,
-     title: 'Maladies Générales',
-     cta: 'New Maladie',
-    })
-    break
-   case 'allergies':
-    setState({
-     ...state,
-     title: 'Allergies aux médciament',
-     cta: 'New Allergie',
-    })
-    break
+  case 'generale':
+   setState({
+    ...state,
+    title: 'Maladies Générales',
+    cta: 'New Maladie',
+   })
+   break
+  case 'allergies':
+   setState({
+    ...state,
+    title: 'Allergies aux médciament',
+    cta: 'New Allergie',
+   })
+   break
 
-   case 'intervention':
-    setState({
-     ...state,
-     title: 'Interventions chirurgicales',
-     cta: 'New Intervention',
-    })
-    break
+  case 'intervention':
+   setState({
+    ...state,
+    title: 'Interventions chirurgicales',
+    cta: 'New Intervention',
+   })
+   break
 
-   default:
-    setState({
-     ...state,
-     title: 'Affections Congénitaire',
-     cta: 'New Affection',
-    })
-    break
+  default:
+   setState({
+    ...state,
+    title: 'Affections Congénitaire',
+    cta: 'New Affection',
+   })
+   break
   }
  }
 

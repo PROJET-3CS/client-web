@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 import { ChangeEvent, FC, useEffect, useState } from 'react'
 import { Modal, ModalBody, FormGroup, Label, Form, Alert } from 'reactstrap'
 import { useDispatch, useSelector } from 'react-redux'
@@ -70,44 +71,44 @@ const IndAppointmentModal: FC<ModalProps & Props> = ({ modal, toggle, type }) =>
 
  const getContent = () => {
   switch (type) {
-   case 'affection':
-    setState({
-     ...state,
-     title: 'Add Affection',
-     cta: 'New Affection',
-    })
-    break
+  case 'affection':
+   setState({
+    ...state,
+    title: 'Add Affection',
+    cta: 'New Affection',
+   })
+   break
 
-   case 'generale':
-    setState({
-     ...state,
-     title: 'Add Maladie Générale',
-     cta: 'New Maladie',
-    })
-    break
-   case 'allergies':
-    setState({
-     ...state,
-     title: 'Add Allergies',
-     cta: 'New Allergie',
-    })
-    break
+  case 'generale':
+   setState({
+    ...state,
+    title: 'Add Maladie Générale',
+    cta: 'New Maladie',
+   })
+   break
+  case 'allergies':
+   setState({
+    ...state,
+    title: 'Add Allergies',
+    cta: 'New Allergie',
+   })
+   break
 
-   case 'intervention':
-    setState({
-     ...state,
-     title: 'Add Intervention',
-     cta: 'New Intervention',
-    })
-    break
+  case 'intervention':
+   setState({
+    ...state,
+    title: 'Add Intervention',
+    cta: 'New Intervention',
+   })
+   break
 
-   default:
-    setState({
-     ...state,
-     title: 'Add Affection',
-     cta: 'New Affection',
-    })
-    break
+  default:
+   setState({
+    ...state,
+    title: 'Add Affection',
+    cta: 'New Affection',
+   })
+   break
   }
  }
 
