@@ -5,7 +5,7 @@ import dayGridPlugin from '@fullcalendar/daygrid' // a plugin!
 import interactionPlugin from '@fullcalendar/interaction'
 import timeGridPlugin from '@fullcalendar/timegrid'
 import { useDispatch, useSelector } from 'react-redux'
-import { getAppointment, getManagement } from '../../store/selectors'
+import { getAppointment, getUsersManagement } from '../../store/selectors'
 import { syncAppointment } from '../../store/slices/appointment'
 import { Appointment, eventType } from '../../helpers/types'
 
@@ -17,7 +17,7 @@ const AppointmentCalendar: FC<Props> = ({ toggleSelect }) => {
  // ===========================================================================
  // Selectors
  // ===========================================================================
- const { users } = useSelector(getManagement)
+ const { users } = useSelector(getUsersManagement)
  const { appointments } = useSelector(getAppointment)
 
  // ===========================================================================

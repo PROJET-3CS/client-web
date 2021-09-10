@@ -4,7 +4,7 @@ import { RootState } from '../../helpers/types'
 
 import syncReducer from './sync'
 import authReducer from './auth'
-import managmentReducer from './management'
+import managmentReducer from './usersManagement'
 import folderReducer from './folder'
 import appointmentReducer from './appointment'
 
