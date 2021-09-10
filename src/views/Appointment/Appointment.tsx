@@ -5,9 +5,9 @@ import Header from '../../components/Header'
 import Layout from '../layouts/Layout'
 import IndAppointmentModal from './IndAppointmentModal'
 import ChooseModal from './ChooseModal'
-import { getAppointment, getManagement } from '../../store/selectors'
+import { getAppointment, getUsersManagement } from '../../store/selectors'
 import { AppointmentInfo, User } from '../../helpers/types'
-import { fetchUsers } from '../../store/slices/management'
+import { fetchUsers } from '../../store/slices/usersManagement'
 import Toaster from '../../components/Toast/Toaster'
 import ColAppointmentModal from './ColAppointmentModal'
 import AppointmentCalendar from './AppointmentCalendar'
@@ -16,7 +16,7 @@ const Appointment: FC = () => {
  // ===========================================================================
  // Selectors
  // ===========================================================================
- const { users } = useSelector(getManagement)
+ const { users } = useSelector(getUsersManagement)
  const { error, msg, appointment } = useSelector(getAppointment)
 
  // ===========================================================================
@@ -26,7 +26,7 @@ const Appointment: FC = () => {
  const dispatch = useDispatch()
 
  const _fetchUsers = () => {
-  dispatch(fetchUsers())
+  dispatch(fetchUsers({ page: 0, items: 8 }))
  }
 
  //  ==============================================================================

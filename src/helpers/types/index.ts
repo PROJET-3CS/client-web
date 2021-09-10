@@ -108,6 +108,12 @@ export interface AntecedentDetail {
  createdAt: Date | string
 }
 
+export interface userInterface {
+ firstname: string
+ lastname: string
+ email: string
+}
+
 //  ==============================================================================
 //  State
 //  ==============================================================================
@@ -144,10 +150,13 @@ export interface AuthState {
 }
 
 export interface managmentState {
+ routeQueries: Record<string, unknown>
+ usersCount: number
+ totalPages: number
  users: User[]
  selectedUser: User | Record<string, unknown>
  loading: boolean
- error: string
+ error: boolean
 }
 
 export interface AppointmentState {

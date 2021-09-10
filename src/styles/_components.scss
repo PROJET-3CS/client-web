@@ -379,26 +379,6 @@
    }
   }
 
-  /*&-group {
-    margin-bottom: 2rem; }
-    @media only screen and (max-width: 75em) {
-      .signup__form-group {
-        margin-bottom: 1.5rem; } }
-    .signup__form-group--label {
-      font-size: 1.5rem;
-      font-weight: 600;
-      color: #4f4f4f;
-      margin-bottom: 1rem; }
-    .signup__form-group--input {
-      font-family: inherit;
-      font-size: 1.5rem !important;
-      font-weight: 500 !important;
-      color: inherit;
-      padding: 0.7rem 2rem !important;
-      border-radius: 0.5rem !important;
-      width: 100%;
-      height: 5rem; }*/
-
   &-footer--label {
    font-size: 1.5rem;
    font-weight: 500;
@@ -1876,9 +1856,9 @@
 ////////////////////////////////////////
 // EXAM SIDE NAVIGATION
 .exambar .main-header {
-    margin-top: 10rem;
-    font-weight: 500;
-    color: $color-primary;
+ margin-top: 10rem;
+ font-weight: 500;
+ color: $color-primary;
 }
 .exam-nav {
  font-size: 1.4rem;
@@ -1910,7 +1890,7 @@
   & span {
    color: black;
    transition: color 0.2s;
-   transition-delay: .3s;
+   transition-delay: 0.3s;
   }
 
   &--active span,
@@ -1978,5 +1958,18 @@
    width: 1.5rem;
    height: 1.5rem;
   }
+ }
+}
+
+// Pagination
+.pagination {
+ font-size: 1.5rem;
+
+ li {
+  margin-left: 1.8rem;
+ }
+
+ &__active {
+  background-color: aqua !important;
  }
 }
