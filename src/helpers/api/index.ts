@@ -47,3 +47,15 @@ export const getUrlAnteced = (type: string, userId: string | number) => {
 
  return url
 }
+
+// eslint-disable-next-line
+export const getVPS = (number: number) => {
+ let verbal = ''
+ if (number === 0) verbal = 'No pain'
+ if (number >= 1 && number <= 3) verbal = 'Mild'
+ if (number >= 4 && number <= 6) verbal = 'Moderate'
+ if (number >= 7 && number <= 9) verbal = 'Severe'
+ if (number === 10) verbal = 'Very severe'
+
+ return verbal
+}

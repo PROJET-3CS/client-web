@@ -34,7 +34,7 @@ const Layout: FC<Props> = ({ children, page }) => {
      </li>
 
      <li className="side-nav__item">
-      <Link to="/management" className="side-nav__link">
+      <Link to="/users_management" className="side-nav__link">
        <img className="side-nav__icon" src="/img/folders.svg" alt="folder icon" />
       </Link>
      </li>

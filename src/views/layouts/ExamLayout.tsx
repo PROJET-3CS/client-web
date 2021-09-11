@@ -13,23 +13,21 @@ const ExamLayout: FC = ({ children }) => {
     <nav className="exambar">
      <h2 className="main-header">Examination</h2>
      <ul className="exam-nav">
-      <li
-       className={`exam-nav__item ${
-        hash === 'overview' ? 'exam-nav__item--active' : ''
-       }`}
-      >
+      <li className={`exam-nav__item ${hash === 'overview' ? 'exam-nav__item--active' : ''}`}>
        <Link to="/examination" className="exam-nav__link">
         <span>Patient Overview</span>
        </Link>
       </li>
-      <li className={`exam-nav__item ${hash === 'condition' || !hash ? 'exam-nav__item--active' : ''}`}>
-       <Link to="/examination/condition" className="exam-nav__link">
-        <span>Patient Condition</span>
-       </Link>
-      </li>
-      <li className={`exam-nav__item ${hash === 'interrogation' ? 'exam-nav__item--active' : ''}`}>
+      <li className={`exam-nav__item ${hash === 'interrogation' || !hash ? 'exam-nav__item--active' : ''}`}>
        <Link to="/examination/interrogation" className="exam-nav__link">
         <span>Patient Interrogation</span>
+       </Link>
+      </li>
+      <li
+       className={`exam-nav__item ${hash === 'condition' ? 'exam-nav__item--active' : ''}`}
+      >
+       <Link to="/examination/condition" className="exam-nav__link">
+        <span>Patient Condition</span>
        </Link>
       </li>
       <li className={`exam-nav__item ${hash === 'diagnostic' ? 'exam-nav__item--active' : ''}`}>

@@ -14,7 +14,7 @@ const Examination: FC = () => {
     <Route path="/examination/interrogation" component={PatientInterro} exact />
     <Route path="/examination/diagnostic" component={IllnessDiagnostic} exact />
     <Route path="/examination/conclusion" component={ExaminationConclusion} exact />
-    <Route path="/examination" component={PatientCondition} exact />
+    <Route path="/examination" component={PatientInterro} exact />
    </Switch>
   </ExamLayout>
  )

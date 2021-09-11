@@ -1338,7 +1338,8 @@ body {
   padding: 1rem; }
 
 .createExamination {
-  text-align: right; }
+  text-align: right;
+  margin-bottom: 2rem; }
   .createExamination__PatInterro-card:defined {
     border: none;
     border-radius: 0.68rem;

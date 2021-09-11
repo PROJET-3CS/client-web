@@ -12,24 +12,6 @@ const PatientCondition: FC = () => {
    <Header />
    <FormGroup className="createExamination">
     <Card className="createExamination__PatInterro-card">
-     <h1>Consultation Reason</h1>
-     <p className="createExamination__PatInterro-card--description">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Volutpat sed quam egestas ultrices
-      nibh amet. Placerat pellentesque maecenas sollicitudin lacinia commodo, luctus. A eu magna
-      augue aenean.
-     </p>
-     <Col className="createExamination__PatInterro-card--col">
-      <Row md="2" className="createExamination__PatInterro-card--row">
-       <PrimaryInput
-        name="consultation-reason"
-        label="Reason"
-        placeholder="ex. legs pain"
-        type="text"
-       />
-      </Row>
-     </Col>
-    </Card>
-    <Card className="createExamination__PatInterro-card">
      <h1>Patient General Condition</h1>
      <p className="createExamination__PatInterro-card--description">
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Volutpat sed quam egestas ultrices

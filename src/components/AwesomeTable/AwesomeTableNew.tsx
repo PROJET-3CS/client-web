@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react'
+import { v4 as uuid } from 'uuid'
+import ReactPaginate from 'react-paginate'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faSort, faSlidersH, faEllipsisH } from '@fortawesome/free-solid-svg-icons'
 import { Table } from 'reactstrap'
-import { v4 as uuid } from 'uuid'
-import ReactPaginate from 'react-paginate'
 
 interface ITable {
  tableHead: { name: string; path?: string; action?: any }[]

@@ -25,6 +25,11 @@ export interface Appointment {
  [anyProp: string]: any
 }
 
+export interface Exam {
+ // eslint-disable-next-line @typescript-eslint/no-explicit-any
+ [anyProp: string]: any
+}
+
 export interface eventType {
  title: string
  start: string
@@ -114,6 +119,23 @@ export interface userInterface {
  email: string
 }
 
+export interface infoCondition {
+ reason: string
+ fever: number
+ pulsation: number
+ pressure: number
+ weight: number
+ state: string
+}
+
+export interface infoInterrogationType {
+ reason: string
+ startedAt: Date | string
+ where: string
+ intensity: number
+ note: string
+}
+
 //  ==============================================================================
 //  State
 //  ==============================================================================
@@ -179,12 +201,24 @@ export interface ResetPassState {
  password: string
 }
 
+export interface ExamState {
+ loading: boolean
+ error: boolean
+ msg: string
+ exam: Exam | Record<string, unknown>
+ infoCondition: infoCondition | Record<string, unknown>
+ infoInterrogation: infoInterrogationType
+ //  infoDiagnostic: InfoGeneralType | Record<string, unknown>
+ //  infoConclusion: InfoGeneralType | Record<string, unknown>
+}
+
 export interface RootState {
  authState: AuthState
  syncState: SyncState
  managmentState: managmentState
  folderState: FolderState
  appointmentState: AppointmentState
+ examState: ExamState
 }
 
 // ==============================================================================
@@ -202,13 +236,13 @@ export interface AppointmentPayload {
  appointments: Appointment[]
 }
 
-//= =============================================================================
-// Events
-//= =============================================================================
-
 export interface FolderPayload {
  medicalFolder: Folder
  user: User
+}
+
+export interface ExamPayload {
+ exam: Exam
 }
 
 // ==============================================================================
