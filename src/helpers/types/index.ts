@@ -119,12 +119,11 @@ export interface userInterface {
  email: string
 }
 
-export interface infoCondition {
- reason: string
- fever: number
- pulsation: number
- pressure: number
- weight: number
+export interface infoConditionType {
+ fever: number | undefined
+ pulsation: number | undefined
+ pressure: number | undefined
+ weight: number | undefined
  state: string
 }
 
@@ -133,6 +132,14 @@ export interface infoInterrogationType {
  startedAt: Date | string
  where: string
  intensity: number
+ note: string
+}
+
+export interface infoDiagnosticType {
+ inspection: string
+ auscultation: string
+ percussion: string
+ palpation: string
  note: string
 }
 
@@ -206,9 +213,9 @@ export interface ExamState {
  error: boolean
  msg: string
  exam: Exam | Record<string, unknown>
- infoCondition: infoCondition | Record<string, unknown>
+ infoCondition: infoConditionType
  infoInterrogation: infoInterrogationType
- //  infoDiagnostic: InfoGeneralType | Record<string, unknown>
+ infoDiagnostic: infoDiagnosticType
  //  infoConclusion: InfoGeneralType | Record<string, unknown>
 }
 

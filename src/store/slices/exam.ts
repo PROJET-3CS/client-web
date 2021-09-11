@@ -1,13 +1,19 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-import { ExamState, ExamPayload, infoInterrogationType } from '../../helpers/types'
+import {
+ ExamState,
+ ExamPayload,
+ infoInterrogationType,
+ infoConditionType,
+ infoDiagnosticType,
+} from '../../helpers/types'
 
 export const initialState: ExamState = {
  loading: true,
  error: false,
  msg: '',
  exam: {},
- infoCondition: {},
+ infoCondition: { fever: 0, pulsation: 0, pressure: 0, weight: 0, state: '' },
  infoInterrogation: {
   reason: '',
   startedAt: '',
@@ -15,7 +21,13 @@ export const initialState: ExamState = {
   intensity: 0,
   note: '',
  },
- //  infoDiagnostic: {},
+ infoDiagnostic: {
+  inspection: '',
+  auscultation: '',
+  percussion: '',
+  palpation: '',
+  note: '',
+ },
  //  infoConclusion: {},
 }
 
@@ -43,9 +55,26 @@ const examSlice = createSlice({
    state.loading = true
    state.infoInterrogation = payload
   },
+
+  updateInfoCondition: (state, { payload }: PayloadAction<infoConditionType>) => {
+   state.loading = true
+   state.infoCondition = payload
+  },
+
+  updateInfoDiagnostic: (state, { payload }: PayloadAction<infoDiagnosticType>) => {
+   state.loading = true
+   state.infoDiagnostic = payload
+  },
  },
 })
 
-export const { syncExam, syncExamSuccess, syncExamError, updateInfoInterrogation } = examSlice.actions
+export const {
+ syncExam,
+ syncExamSuccess,
+ syncExamError,
+ updateInfoInterrogation,
+ updateInfoCondition,
+ updateInfoDiagnostic
+} = examSlice.actions
 
 export default examSlice.reducer

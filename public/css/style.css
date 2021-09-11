@@ -1388,7 +1388,7 @@ body {
     margin-right: 4rem;
     background-color: #bdbdbd !important;
     border-color: #bdbdbd !important; }
-    .createExamination__IllnessDiagno-Interrogatory--box--active, .createExamination__IllnessDiagno-Interrogatory--box:active {
+    .createExamination__IllnessDiagno-Interrogatory--box-active, .createExamination__IllnessDiagno-Interrogatory--box:active {
       background-color: #0d6efd !important;
       border-color: #0d6efd !important; }
   .createExamination__IllnessDiagno-Illnesses--col {
@@ -1406,7 +1406,7 @@ body {
     padding: 0.813rem 2.5rem 0.813rem 2.5rem !important;
     margin-right: 1.4rem;
     margin-bottom: 1.4rem; }
-    .createExamination__IllnessDiagno-Illnesses--box:hover, .createExamination__IllnessDiagno-Illnesses--box:active {
+    .createExamination__IllnessDiagno-Illnesses--box-active, .createExamination__IllnessDiagno-Illnesses--box:active {
       background-color: #dd4b39 !important;
       border-color: #dd4b39 !important; }
     .createExamination__IllnessDiagno-Illnesses--box:visited {

@@ -89,7 +89,6 @@ const PatientInterro: FC = () => {
   e.preventDefault()
   _updateInfoInterrogation(state)
   history.push('/examination/condition')
-
  }
 
  // ===========================================================================
@@ -99,7 +98,7 @@ const PatientInterro: FC = () => {
  return (
   <>
    <Header />
-   <Form className="createExamination" onSubmit={submitInfoInterrogation} >
+   <Form className="createExamination" onSubmit={submitInfoInterrogation}>
     <Card className="createExamination__PatInterro-card">
      <h1>Consultation Reason</h1>
      <p className="createExamination__PatInterro-card--description">
@@ -107,8 +106,8 @@ const PatientInterro: FC = () => {
       nibh amet. Placerat pellentesque maecenas sollicitudin lacinia commodo, luctus. A eu magna
       augue aenean.
      </p>
-     <Col className="createExamination__PatInterro-card--col">
-      <Row md="2" className="createExamination__PatInterro-card--row">
+     <Row md="2" className="createExamination__PatInterro-card--row">
+      <Col className="createExamination__PatInterro-card--col">
        <PrimaryInput
         id="reason"
         name="consultation-reason"
@@ -119,8 +118,8 @@ const PatientInterro: FC = () => {
         type="text"
         required
        />
-      </Row>
-     </Col>
+      </Col>
+     </Row>
     </Card>
     <Card className="createExamination__PatInterro-card">
      <h1>Symptomatology</h1>
@@ -179,8 +178,8 @@ const PatientInterro: FC = () => {
       nibh amet. Placerat pellentesque maecenas sollicitudin lacinia commodo, luctus. A eu magna
       augue aenean.
      </p>
-     <Col className="createExamination__PatInterro-card--col">
-      <Row md="1" className="createExamination__PatInterro-card--row">
+     <Row md="1" className="createExamination__PatInterro-card--row">
+      <Col className="createExamination__PatInterro-card--col">
        <textarea
         id="note"
         name="conclusion"
@@ -190,8 +189,8 @@ const PatientInterro: FC = () => {
         value={state.note}
         required
        />
-      </Row>
-     </Col>
+      </Col>
+     </Row>
     </Card>
     <AwesomeButtonIcon type="submit" icon="check" text="Save Changes" />
    </Form>
