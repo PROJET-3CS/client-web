@@ -5,6 +5,11 @@ import { Input } from 'reactstrap'
 //  ==============================================================================
 //  Items
 //  ==============================================================================
+export interface File {
+ // eslint-disable-next-line @typescript-eslint/no-explicit-any
+ [anyProp: string]: any
+}
+
 export interface User {
  // eslint-disable-next-line @typescript-eslint/no-explicit-any
  [anyProp: string]: any
@@ -143,6 +148,11 @@ export interface infoDiagnosticType {
  note: string
 }
 
+export interface infoConclusionType {
+ conclusion: string
+ file: File | undefined
+}
+
 //  ==============================================================================
 //  State
 //  ==============================================================================
@@ -216,7 +226,7 @@ export interface ExamState {
  infoCondition: infoConditionType
  infoInterrogation: infoInterrogationType
  infoDiagnostic: infoDiagnosticType
- //  infoConclusion: InfoGeneralType | Record<string, unknown>
+ infoConclusion: infoConclusionType
 }
 
 export interface RootState {

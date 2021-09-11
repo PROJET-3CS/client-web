@@ -6,6 +6,7 @@ import {
  infoInterrogationType,
  infoConditionType,
  infoDiagnosticType,
+ infoConclusionType,
 } from '../../helpers/types'
 
 export const initialState: ExamState = {
@@ -28,7 +29,10 @@ export const initialState: ExamState = {
   palpation: '',
   note: '',
  },
- //  infoConclusion: {},
+ infoConclusion: {
+  conclusion: '',
+  file: undefined,
+ },
 }
 
 const examSlice = createSlice({
@@ -65,6 +69,11 @@ const examSlice = createSlice({
    state.loading = true
    state.infoDiagnostic = payload
   },
+
+  updateInfoConclusion: (state, { payload }: PayloadAction<infoConclusionType>) => {
+   state.loading = true
+   state.infoConclusion = payload
+  },
  },
 })
 
@@ -74,7 +83,8 @@ export const {
  syncExamError,
  updateInfoInterrogation,
  updateInfoCondition,
- updateInfoDiagnostic
+ updateInfoDiagnostic,
+ updateInfoConclusion,
 } = examSlice.actions
 
 export default examSlice.reducer

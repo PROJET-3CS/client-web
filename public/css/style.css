@@ -1343,7 +1343,6 @@ body {
   .createExamination__PatInterro-card:defined {
     border: none;
     border-radius: 0.68rem;
-    cursor: pointer;
     margin-bottom: 2rem;
     padding: 2rem 3rem; }
   .createExamination__PatInterro-card h1 {
@@ -1381,6 +1380,32 @@ body {
       padding: 0 !important;
       border-radius: 0.5rem !important;
       width: 100%; }
+  .createExamination__PatInterro-file {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: rgba(91, 99, 246, 0.1);
+    align-items: center;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem; }
+    .createExamination__PatInterro-file--icon {
+      font-size: 3rem;
+      color: #5b63f6; }
+    .createExamination__PatInterro-file--content {
+      flex: 0.9;
+      display: flex;
+      flex-direction: column;
+      text-align: left; }
+    .createExamination__PatInterro-file--title {
+      font-size: 1.5rem;
+      font-weight: 500; }
+    .createExamination__PatInterro-file--size {
+      font-size: 1.3rem;
+      color: #828282;
+      font-weight: 500; }
+    .createExamination__PatInterro-file--check {
+      font-size: 1.5rem;
+      cursor: pointer; }
   .createExamination__IllnessDiagno-Interrogatory--box {
     font-size: 1.438rem !important;
     width: fit-content !important;
