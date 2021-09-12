@@ -15,6 +15,7 @@ import PasswordConfirmation from '../views/PasswordConfirmation'
 import EmailConfirmation from '../views/EmailConfirmation'
 import RegistrationRequestsManagement from '../views/usersManagement/RegistrationRequestsManagement'
 import Examination from '../views/Examination/Examination'
+import CreatePrescModal from '../views/Examination/Prescription/CreatePrescModal'
 
 const Dashboard = React.lazy(() => import('../views/Dashboard'))
 const usersManagement = React.lazy(() => import('../views/usersManagement/UsersManagement'))
@@ -35,6 +36,9 @@ const RootRoute: FC = () => {
      <Route path="/resetpassword" component={Resetpassword} exact />
      <Route path="/confirmation" component={PasswordConfirmation} exact />
      <Route path="/confirmation2" component={EmailConfirmation} exact />
+     <Route path="/addpresc" component={CreatePrescModal} exact />
+
+     
 
      <PrivateRoute path="/examination" component={Examination} />     
      <PrivateRoute path="/dashboard" component={Dashboard} exact />
