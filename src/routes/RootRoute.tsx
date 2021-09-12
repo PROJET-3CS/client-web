@@ -4,7 +4,6 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Signin from '../views/auth/Signin'
 import Signup from '../views/auth/Signup'
 import Resetpassword from '../views/auth/Password_reset'
-// import Dashboard from '../views/Dashboard'
 import Home from '../views/Home'
 import PrivateRoute from './PrivateRoutes'
 import PublicRoute from './PublicRoutes'
@@ -17,7 +16,7 @@ import PatientCondition from '../views/Examination/CreateExamination/PatientCond
 import IllnessDiagnostic from '../views/Examination/CreateExamination/IllnessDiagnostic'
 import PatientInterro from '../views/Examination/CreateExamination/PatientInterro'
 
-const Dashboard = React.lazy(() => import('../views/Dashboard'))
+
 const usersManagement = React.lazy(() => import('../views/usersManagement/Management'))
 const medicalFolder = React.lazy(() => import('../views/medicalFolder/medicalFolder'))
 const Appointment = React.lazy(() => import('../views/Appointment/Appointment'))
@@ -25,6 +24,9 @@ const MyAppointments = React.lazy(() => import('../views/Appointment/MyAppointme
 const Prescription = React.lazy(() => import('../views/prescription/Prescription'))
 const Profile = React.lazy(() => import('../views/doctore/DocProfile'))
 const Chatt = React.lazy(() => import('../views/Chatt/Chatt'))
+const Dashboard = React.lazy(() => import('../views/Dashboard/Dashboard'))
+const Filter = React.lazy(() => import('../views/usersManagement/Filter'))
+
 
 const RootRoute: FC = () => {
  return (
@@ -53,6 +55,8 @@ const RootRoute: FC = () => {
      <PrivateRoute path="/prescription" component={Prescription} exact />
      <PrivateRoute path="/profile" component={Profile} exact />
      <PrivateRoute path="/chatt" component={Chatt} exact />
+     <PrivateRoute path="/filter" component={Filter} exact />
+
 
      <Route component={_404} />
     </Switch>

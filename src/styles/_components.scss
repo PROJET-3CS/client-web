@@ -1485,6 +1485,57 @@
   width: 25rem;
  }
 }
+///////////////////////////////////
+// MANAGEMENT MODAL
+
+.management-modal{
+  margin-top: 5%;
+  &-input{
+    height: 3.6rem;
+    border: 1px solid #ccc;
+    padding-left: 5px;
+    border-radius: 3px;
+  }
+  &-btn{
+    width: 20%;
+    margin-left: auto;
+    border: none;
+    background-color: $color-primary;
+    border-radius: 10px;
+    color: $color-white;
+    margin-top: 1rem;
+    height: 3rem;
+    &-icon{
+      margin-left: 0.5rem;
+      padding-top: 1px;
+    }
+
+  }
+  & .modal-content{
+    width: 70rem;
+    margin-left: -10rem;
+    padding: 2rem;
+    border-radius: 13px;
+  }
+  &-row{
+    margin-bottom: 2rem;
+    & input{
+      width: 100%;
+    }
+  }
+  &-header{
+    display: flex;
+    font-size: 2rem;
+    color: $color-dark;
+    font-weight: 500;
+    &-icon{
+      margin-left: auto;
+      padding-top: 0.5rem;
+      font-weight: 300;
+    }
+    
+  }
+}
 
 ///////////////////////////////////
 // OVERVIEW CARD
@@ -2291,7 +2342,7 @@
 .chattmsg {
  border: 1px solid $color-grey-light-5;
  background-color: $color-white;
- width: 57rem;
+ width: 44rem;
  padding: 3.8rem 3rem;
  height: 100%;
  &-rows {
@@ -2300,9 +2351,9 @@
   margin-right: -2.3rem;
  }
  &-send {
-  padding-top: 2rem;
+  padding-top: 1rem;
   &-input {
-   width: 80%;
+   width: 77%;
   }
   &-btn1 {
    margin-left: 0;
@@ -2344,7 +2395,7 @@
  border: 1px solid $color-grey-light-5;
  background-color: $color-white;
  margin-left: -4rem;
- width: 52rem;
+ width: 47rem;
  padding: 3.8rem 3.4rem;
  height: 100%;
  &-title {
@@ -2528,4 +2579,186 @@
    }
   }
  }
+}
+
+
+
+///////////////////////////////////
+//Dashboard
+
+.dashboard{
+  &-row{
+    height: 100%;
+    color: $color-dark;
+  }
+  &-left{
+    padding-right: 5rem;
+  }
+  &-right{
+    background-color: $color-grey-light-1; 
+    padding: 3rem;
+    overflow: auto;
+    & .user-nav{
+      margin-left: -2rem;
+    }
+    & .user-nav__user{
+      margin-left: auto;
+    }
+    & .doctor-container-left-secondrow-CRDV{
+      margin-top: 0;
+      width: 36rem;
+      height: 11rem;
+      margin-bottom: 1rem;
+    }
+    & .dashboard-stats-boxe{
+      width: fit-content;
+      padding: 1rem;
+      & img{
+        width: 3.6rem;
+      }
+    }
+    
+    &-nav{
+      display: flex;
+      &-icon{
+        color: $color-primary;
+        font-size: 2.3rem;
+        margin-right: 2.7rem;
+      }
+      &-user{
+        margin-left: auto;
+        display: flex;
+        &-name{
+          font-size: 2rem;
+        }
+        &-sub{
+          float: right;
+          margin-top: -0.8rem;
+          color: $color-grey-dark-5;
+        }
+        &-text{
+          margin-right: 1rem;
+        }
+      }
+      &-img{
+        border-radius: 50%;
+        width: 5rem;
+        height: 5rem;
+      }
+    }
+    &-row1{
+      display: flex;
+      margin-top: 2.8rem;
+      font-size: 1.8rem;
+      font-weight: 500;
+      &-2{
+        display: flex;
+      }
+      &-btn{
+        border: none;
+        border-radius: 13px;
+        margin-left: auto;
+        font-size: 1.3rem;
+        padding: 1rem;
+        background-color: $color-grey-light-2;
+        color: $color-grey-dark-2;
+      }
+    }
+  }
+  &-cover{
+    background-color: $color-white;
+    margin-top: 7rem;
+    height: 15rem;
+    display: flex;
+    padding: 3rem 3rem;
+    border-radius: 30px;
+    &-txt{
+      font-size: 3rem;
+      padding-left: 2rem;
+      &-name{
+        color: $color-secondary;
+      }
+      &-sub{
+        font-size: 1.9rem;
+        color: $color-grey-dark-3;
+      }
+    }
+    &-img{
+      margin-left: auto;
+      height: 20rem;
+      margin-top: -8rem;
+    }
+  }
+  &-nav{
+    display: flex;
+    margin-top: 3%;
+    &-search{
+      width: 32%;
+      padding-left: 3.4rem;
+      & input{
+        height: 3rem;
+      }
+    }
+    &-txt{
+      margin-left: auto;
+      padding-top: 1%;
+      color: $color-primary;
+      font-size: 1.1rem;
+    }
+    &-btn{
+      width: 15%;
+      height: 2.7rem;
+      background-color: $color-primary;
+      color: $color-white;
+      border: none;
+      border-radius: 10px;
+      margin-left: 4%;
+    }
+  }
+  &-row2{
+    display: flex;
+    margin-top: 3rem;
+    &-1{
+      font-size: 1.8rem;
+      font-weight: 500;
+    }
+    &-2{
+      margin-left: auto;
+      font-size: 1rem;
+      padding-top: 1.6rem;
+    }
+  }
+  &-stats-boxes{
+    display: flex;
+  }
+  &-stats-boxe{
+    width: 14%;
+    background-color: white;
+    padding-top: 1.4rem;
+    border-radius: 13px;
+    margin-right: auto;
+    text-align: center;
+    color:$color-grey-dark-3;
+    &-title{
+      margin-top: 1.7rem;
+      font-size: 1.4rem;
+      color: $color-grey-dark-3;
+    }
+    &-number{
+      font-size: 1.8rem;
+      font-weight: 500;
+      color: $color-dark;
+    }
+    &-1{
+      width: 14%;
+      background-color: $color-grey-light-5;
+      border: $color-grey-light-4 dashed 1px;
+      padding-top: 49px;
+      font-size: 18px;
+      border-radius: 13px;
+      text-align: center;
+      color:$color-grey-dark-3;
+      margin-right: 0;
+    }
+  }
 }

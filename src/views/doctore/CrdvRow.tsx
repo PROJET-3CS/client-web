@@ -1,7 +1,6 @@
 import { faChevronRight, faPen } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { FC, useState } from 'react'
-import '../../styles/main.scss'
 import Switch from 'react-switch'
 
 const CrdvRow: FC = () => {
