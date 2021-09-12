@@ -1,23 +1,131 @@
+/* eslint-disable max-lines */
+import { faWindowClose } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { ComponentProps, FC, useState } from 'react'
-import { Button, Modal, ModalBody, FormGroup, Label, Row, Input } from 'reactstrap'
+import { FC, useEffect, useState } from 'react'
+import { Modal, ModalBody, FormGroup, Label, Row, Col, Form } from 'reactstrap'
 import AwesomeButton from '../../../components/AwesomeButton/AwesomeButton'
+import SecondarySelect from '../../../components/PrimaryDropdown/SecondarySelect'
 import SecondaryInput from '../../../components/PrimaryInput/SecondaryInput'
+import { medicaments, posolgies } from '../../../helpers/db/medicaments'
+import {
+ Medicament,
+ ModalProps,
+ OptionType,
+ ReactChangeEvent,
+ ReactSubmitEvent,
+} from '../../../helpers/types'
 
-const CreatePrescModal: FC = (props: ComponentProps<typeof Input>['props']) => {
- const { buttonLabel } = props
+interface Props {
+ // eslint-disable-next-line no-unused-vars
+ submitHandler: (med: Medicament) => void
+}
 
- const [modal, setModal] = useState(false)
+interface stateProps {
+ nomCommercial: string
+ type: string
+ foisParJours: number | string
+ qnt: number | string
+ qntType: number | string
+ medicaments: OptionType[]
+ medTypes: OptionType[]
+}
 
- const toggle = () => {
-  setModal(!modal)
+const CreatePrescModal: FC<Props & ModalProps> = ({ modal, toggle, submitHandler }) => {
+ //  ==============================================================================
+ //  State
+ //  ==============================================================================
+ const initState: stateProps = {
+  nomCommercial: '',
+  type: '',
+  foisParJours: '',
+  qnt: 0,
+  qntType: '',
+  medicaments: [],
+  medTypes: [],
  }
+
+ const [state, setState] = useState(initState)
+
+ const qspOptions: OptionType[] = [
+  { value: 'qsp', label: 'QSP' },
+  { value: 'boite', label: 'Boite' },
+ ]
+
+ // ===========================================================================
+ // Handlers
+ // ===========================================================================
+
+ const formatMedOptions = () => {
+  const meds: OptionType[] = medicaments.map((el) => {
+   return {
+    value: el,
+    label: el,
+   }
+  })
+
+  const medTypes: OptionType[] = posolgies.map((el) => {
+   return {
+    value: el,
+    label: el,
+   }
+  })
+
+  setState({
+   ...state,
+   medicaments: meds,
+   medTypes,
+  })
+ }
+
+ const handleSelectMedicament = (value: string) => {
+  setState({
+   ...state,
+   nomCommercial: value,
+  })
+ }
+
+ const handleSelectPosologie = (value: string) => {
+  setState({
+   ...state,
+   type: value,
+  })
+ }
+
+ const handleSelectQntType = (value: string) => {
+  setState({
+   ...state,
+   qntType: value,
+  })
+ }
+
+ const handleChange = (e: ReactChangeEvent) => {
+  setState({
+   ...state,
+   [e.target.id]: e.target.value,
+  })
+ }
+
+ const submitMedicament = (e: ReactSubmitEvent) => {
+  e.preventDefault()
+  submitHandler({
+   nomCommercial: state.nomCommercial,
+   type: state.type,
+   foisParJours: state.foisParJours,
+   qnt: state.qnt,
+   qntType: state.qntType,
+  })
+ }
+
+ // ===========================================================================
+ // Hooks
+ // ===========================================================================
+
+ useEffect(() => {
+  formatMedOptions()
+ }, [])
 
  return (
   <div>
-   <Button color="danger" onClick={toggle}>
-    {buttonLabel}
-   </Button>
    <Modal
     isOpen={modal}
     modalTransition={{ timeout: 100 }}
@@ -26,45 +134,80 @@ const CreatePrescModal: FC = (props: ComponentProps<typeof Input>['props']) => {
     className="newappointment__resultmodal"
    >
     <ModalBody className="newappointment__resultmodal-body">
-     <div className="newappointment__resultmodal-header">
-      <p>Create Individual Appointment</p>
-      <FontAwesomeIcon onClick={toggle} icon="window-close" color="primary-color" />
-     </div>
-     <div>
-      <FormGroup className="newappointment__resultmodal-formgroup">
-       <Label className="newappointment__resultmodal-formgroup--label">
-        Selectionner médicament
-       </Label>
-       <SecondaryInput name="name" placeholder="Ator 40mg" type="text" label="Médicament" />
-      </FormGroup>
-      <FormGroup className="newappointment__resultmodal-formgroup">
-       <Label className="newappointment__resultmodal-formgroup--label">Posologie</Label>
-       <SecondaryInput name="name" placeholder="Sirop" type="text" label="Posologie" />
-      </FormGroup>
-      <FormGroup className="newappointment__resultmodal-formgroup">
-       <Label className="newappointment__resultmodal-formgroup--label">Dosage</Label>
-       <Row md="2">
-        <div>
-         <SecondaryInput name="start" placeholder="1 comprimé" type="text" label="Comprimé" />
-        </div>
-        <div>
-         <SecondaryInput name="finish" placeholder="/jour" type="text" label="Chaque" />
-        </div>
-       </Row>
-      </FormGroup>
-      <FormGroup className="newappointment__resultmodal-formgroup">
-       <Label className="newappointment__resultmodal-formgroup--label">Quantité</Label>
-       <Row md="2">
-        <div>
-         <SecondaryInput name="start" placeholder="ex. 3" type="number" label="Nombre" />
-        </div>
-        <div>
-         <SecondaryInput name="finish" placeholder="QSP" type="text" label="Type" />
-        </div>
-       </Row>
-      </FormGroup>
-      <AwesomeButton>Ajouter Médicament</AwesomeButton>
-     </div>
+     <Form onSubmit={submitMedicament}>
+      <div className="newappointment__resultmodal-header">
+       <p>Ajouter un médicament</p>
+       <FontAwesomeIcon onClick={toggle} icon={faWindowClose} color="primary-color" />
+      </div>
+      <div>
+       <FormGroup className="newappointment__resultmodal-formgroup">
+        <Label className="newappointment__resultmodal-formgroup--label">
+         Selectionner médicament
+        </Label>
+        <SecondarySelect
+         id="nomCommercial"
+         name="nomCommercial"
+         label="Nom Commercial"
+         options={state.medicaments}
+         getValue={handleSelectMedicament}
+         defaultValue={state.nomCommercial}
+        />
+       </FormGroup>
+       <FormGroup className="newappointment__resultmodal-formgroup">
+        <Label className="newappointment__resultmodal-formgroup--label">Posologie</Label>
+        <Row>
+         <Col>
+          <SecondarySelect
+           id="type"
+           name="type"
+           label="Type"
+           options={state.medTypes}
+           getValue={handleSelectPosologie}
+           defaultValue={state.type}
+          />
+         </Col>
+         <Col>
+          <SecondaryInput
+           id="foisParJours"
+           value={state.foisParJours}
+           onChange={handleChange}
+           name="finish"
+           placeholder="/jour"
+           type="number"
+           label="Fois par jours"
+          />
+         </Col>
+        </Row>
+       </FormGroup>
+       <FormGroup className="newappointment__resultmodal-formgroup">
+        <Label className="newappointment__resultmodal-formgroup--label">Quantité</Label>
+        <Row md="2">
+         <Col>
+          <SecondaryInput
+           id="qnt"
+           value={state.qnt}
+           onChange={handleChange}
+           name="start"
+           placeholder="ex. 3"
+           type="number"
+           label="Nombre"
+          />
+         </Col>
+         <Col>
+          <SecondarySelect
+           id="qntType"
+           name="qsp"
+           label="Qsp"
+           options={qspOptions}
+           getValue={handleSelectQntType}
+           defaultValue={state.qntType}
+          />
+         </Col>
+        </Row>
+       </FormGroup>
+       <AwesomeButton>Ajouter Médicament</AwesomeButton>
+      </div>
+     </Form>
     </ModalBody>
    </Modal>
   </div>

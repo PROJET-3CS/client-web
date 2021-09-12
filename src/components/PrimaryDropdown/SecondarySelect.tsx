@@ -34,7 +34,7 @@ const SecondarySelect: FC<InputProps & SelectProps> = ({
   control: (base: any) => {
    return {
     ...base,
-    height: '3rem',
+    height: '4.5rem',
     fontSize: '1.3rem',
     fontWeight: '500',
    }

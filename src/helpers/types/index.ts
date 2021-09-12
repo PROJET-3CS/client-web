@@ -35,6 +35,14 @@ export interface Exam {
  [anyProp: string]: any
 }
 
+export interface Medicament {
+ nomCommercial: string
+ type: string
+ foisParJours: number | string
+ qnt: number | string
+ qntType: number | string
+}
+
 export interface eventType {
  title: string
  start: string
