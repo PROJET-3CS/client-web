@@ -11,7 +11,6 @@ import { updateInfoDiagnostic } from '../../../store/slices/exam'
 
 import Header from '../../../components/Header'
 import AwesomeButtonIcon from '../../../components/AwesomeButton/AwesomeButtonIcon'
-import PrimaryDropdown from '../../../components/PrimaryDropdown/PrimaryDropdown'
 import Illnesses from '../../../components/ExaminationComponents/Illnesses'
 import Interrogatory from '../../../components/ExaminationComponents/Interrogatory'
 import PrimaryInput from '../../../components/PrimaryInput/PrimaryInput'
@@ -181,7 +180,7 @@ const IllnessDiagnostic: FC = () => {
 
     <Card
      className="createExamination__PatInterro-card"
-     style={{ display: page.type === 'specific' ? 'flex' : 'none' }}
+     style={{ display: page.type === 'specific' && page.appareil !== '' ? 'flex' : 'none' }}
     >
      <h1>Specific Physical Examination</h1>
      <p className="createExamination__PatInterro-card--description">
@@ -189,19 +188,91 @@ const IllnessDiagnostic: FC = () => {
       nibh amet. Placerat pellentesque maecenas sollicitudin lacinia commodo, luctus. A eu magna
       augue aenean.
      </p>
-     <Col className="createExamination__PatInterro-card--col">
-      <Row md="2" className="createExamination__PatInterro-card--row">
-       <PrimaryDropdown name="dos" label="Le dos" placeholder="Good" />
-       <PrimaryDropdown name="head" label="The head" placeholder="Bad" />
-      </Row>
-      <Row md="2" className="createExamination__PatInterro-card--row">
-       <PrimaryDropdown name="jambes" label="Les jambes" placeholder="Good" />
-       <PrimaryDropdown name="eyes" label="The eyes" placeholder="Really good" />
-      </Row>
-      <div className="createExamination__PatInterro-card--addbutton">
-       <AwesomeButtonIcon icon="plus" text="Add a question" />
-      </div>
-     </Col>
+     <Row md="2" className="createExamination__PatInterro-card--row">
+      <Col className="createExamination__PatInterro-card--col">
+       <PrimaryInput
+        name="qst1"
+        label="Antécédent cardiovasculaire du malade?"
+        placeholder="ex: Oui"
+       />
+      </Col>
+      <Col className="createExamination__PatInterro-card--col">
+       <PrimaryInput
+        name="qst2"
+        label="Antécédents familiaux du malade?"
+        placeholder="ex: IDM"
+       />
+      </Col>
+     </Row>
+     <Row md="2" className="createExamination__PatInterro-card--row">
+      <Col className="createExamination__PatInterro-card--col">
+       <PrimaryInput
+        name="qst3"
+        label="Y a-t-il une syndrome coronarien ?"
+        placeholder="ex: Oui"
+       />
+      </Col>
+      <Col className="createExamination__PatInterro-card--col">
+       <PrimaryInput
+        name="qst4"
+        label="Mode de vie du patient ?"
+        placeholder="ex: Sportif..."
+       />
+      </Col>
+     </Row>
+
+     <Row md="2" className="createExamination__PatInterro-card--row">
+      <Col className="createExamination__PatInterro-card--col">
+       <PrimaryInput
+        name="qst5"
+        label="Ont-ils alcooliques ou bien Tabagique ?"
+        placeholder="ex: Oui"
+       />
+      </Col>
+      <Col className="createExamination__PatInterro-card--col">
+       <PrimaryInput
+        name="qst6"
+        label="Avez-vous des douleurs thoracique ?"
+        placeholder="ex: Oui"
+       />
+      </Col>
+     </Row>
+
+     <Row md="2" className="createExamination__PatInterro-card--row">
+      <Col className="createExamination__PatInterro-card--col">
+       <PrimaryInput name="qst7" label="Ont-ils une dyspnée ?" placeholder="ex: Oui" />
+      </Col>
+      <Col className="createExamination__PatInterro-card--col">
+       <PrimaryInput name="qst8" label="Ont-ils une syncope lipothymie ?" placeholder="ex: Oui" />
+      </Col>
+     </Row>
+
+     <Row md="2" className="createExamination__PatInterro-card--row">
+      <Col className="createExamination__PatInterro-card--col">
+       <PrimaryInput name="inspection" label="Inspection" placeholder="inspection" />
+      </Col>
+      <Col className="createExamination__PatInterro-card--col">
+       <PrimaryInput
+        id="palpation"
+        name="abdos-palpation"
+        label="Abdominal palpation"
+        placeholder="ex. Yacine Kharroubi"
+       />
+      </Col>
+     </Row>
+     <Row md="2" className="createExamination__PatInterro-card--row">
+      <Col className="createExamination__PatInterro-card--col">
+       <PrimaryInput
+        id="auscultation"
+        name="auscultation"
+        label="Cardiac/pulmonary auscultation"
+        placeholder="ex. Yacine Kharroubi"
+       />
+      </Col>
+     </Row>
+     <div className="createExamination__PatInterro-card--addbutton">
+      <AwesomeButtonIcon icon="plus" text="Add a question" />
+     </div>
     </Card>
     <Card className="createExamination__PatInterro-card">
      <h1>Doctors Observation</h1>
