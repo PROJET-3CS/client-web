@@ -7,11 +7,11 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons'
 library.add(faPlus)
 
 interface Props {
-    // eslint-disable-next-line no-unused-vars
-    handleSelect: (value: string) => void
+ // eslint-disable-next-line no-unused-vars
+ handleSelect: (value: string) => void
 }
 
-const Illnesses: FC<Props> = ({handleSelect}) => {
+const Illnesses: FC<Props> = ({ handleSelect }) => {
  const [cSelected, setCSelected] = useState<number | undefined>()
 
  const onCheckboxBtnClick = (selected: number) => {
@@ -23,7 +23,9 @@ const Illnesses: FC<Props> = ({handleSelect}) => {
    <Row className="createExamination__IllnessDiagno-Illnesses--row">
     <Button
      color="primary"
-     className={`createExamination__IllnessDiagno-Illnesses--box ${cSelected === 1 ? 'createExamination__IllnessDiagno-Illnesses--box-active' : ''}`}
+     className={`createExamination__IllnessDiagno-Illnesses--box ${
+      cSelected === 1 ? 'createExamination__IllnessDiagno-Illnesses--box-active' : ''
+     }`}
      onClick={() => {
       onCheckboxBtnClick(1)
       handleSelect('cardiovasculaire')
@@ -32,7 +34,9 @@ const Illnesses: FC<Props> = ({handleSelect}) => {
      Cardiovasculaire
     </Button>
     <Button
-     className={`createExamination__IllnessDiagno-Illnesses--box ${cSelected === 2 ? 'createExamination__IllnessDiagno-Illnesses--box-active' : ''}`}
+     className={`createExamination__IllnessDiagno-Illnesses--box ${
+      cSelected === 2 ? 'createExamination__IllnessDiagno-Illnesses--box-active' : ''
+     }`}
      color="primary"
      onClick={() => {
       onCheckboxBtnClick(2)
@@ -42,7 +46,9 @@ const Illnesses: FC<Props> = ({handleSelect}) => {
      Pulmonaire
     </Button>
     <Button
-     className={`createExamination__IllnessDiagno-Illnesses--box ${cSelected === 3 ? 'createExamination__IllnessDiagno-Illnesses--box-active' : ''}`}
+     className={`createExamination__IllnessDiagno-Illnesses--box ${
+      cSelected === 3 ? 'createExamination__IllnessDiagno-Illnesses--box-active' : ''
+     }`}
      color="primary"
      onClick={() => {
       onCheckboxBtnClick(3)
@@ -52,7 +58,9 @@ const Illnesses: FC<Props> = ({handleSelect}) => {
      Abdomen
     </Button>
     <Button
-     className={`createExamination__IllnessDiagno-Illnesses--box ${cSelected === 4 ? 'createExamination__IllnessDiagno-Illnesses--box-active' : ''}`}
+     className={`createExamination__IllnessDiagno-Illnesses--box ${
+      cSelected === 4 ? 'createExamination__IllnessDiagno-Illnesses--box-active' : ''
+     }`}
      color="primary"
      onClick={() => {
       onCheckboxBtnClick(4)
@@ -62,7 +70,9 @@ const Illnesses: FC<Props> = ({handleSelect}) => {
      Neurologique
     </Button>
     <Button
-     className={`createExamination__IllnessDiagno-Illnesses--box ${cSelected === 5 ? 'createExamination__IllnessDiagno-Illnesses--box-active' : ''}`}
+     className={`createExamination__IllnessDiagno-Illnesses--box ${
+      cSelected === 5 ? 'createExamination__IllnessDiagno-Illnesses--box-active' : ''
+     }`}
      color="primary"
      onClick={() => {
       onCheckboxBtnClick(5)
@@ -72,7 +82,9 @@ const Illnesses: FC<Props> = ({handleSelect}) => {
      Ostéoarticulaire
     </Button>
     <Button
-     className={`createExamination__IllnessDiagno-Illnesses--box ${cSelected === 6 ? 'createExamination__IllnessDiagno-Illnesses--box-active' : ''}`}
+     className={`createExamination__IllnessDiagno-Illnesses--box ${
+      cSelected === 6 ? 'createExamination__IllnessDiagno-Illnesses--box-active' : ''
+     }`}
      color="primary"
      onClick={() => {
       onCheckboxBtnClick(6)

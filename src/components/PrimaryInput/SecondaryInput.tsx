@@ -3,7 +3,7 @@ import { InputProps, Label } from 'reactstrap'
 import './SecondaryInput.scss'
 
 interface Props {
-    changeTextArea?: ChangeEventHandler<HTMLTextAreaElement> | undefined 
+ changeTextArea?: ChangeEventHandler<HTMLTextAreaElement> | undefined
 }
 
 const SecondaryInput: FC<InputProps & Props> = ({

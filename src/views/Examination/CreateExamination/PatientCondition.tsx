@@ -187,7 +187,7 @@ const PatientCondition: FC = () => {
       </Col>
      </Row>
     </Card>
-    <AwesomeButtonIcon type='submit' icon="check" text="Save Changes" />
+    <AwesomeButtonIcon type="submit" icon="check" text="Save Changes" />
    </Form>
   </>
  )

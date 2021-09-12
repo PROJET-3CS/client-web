@@ -12,7 +12,12 @@ import Header from '../../../components/Header'
 import AwesomeButtonIcon from '../../../components/AwesomeButton/AwesomeButtonIcon'
 import FileUpload from '../../../components/ExaminationComponents/FileUpload'
 import OtherFilesBox from '../../../components/ExaminationComponents/OtherFilesBox'
-import { infoConclusionType, ReactChangeEvent, ReactSubmitEvent, File } from '../../../helpers/types'
+import {
+ infoConclusionType,
+ ReactChangeEvent,
+ ReactSubmitEvent,
+ File,
+} from '../../../helpers/types'
 
 const ExaminationConclusion: FC = () => {
  // ===========================================================================

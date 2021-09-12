@@ -197,27 +197,15 @@ const IllnessDiagnostic: FC = () => {
        />
       </Col>
       <Col className="createExamination__PatInterro-card--col">
-       <PrimaryInput
-        name="qst2"
-        label="Antécédents familiaux du malade?"
-        placeholder="ex: IDM"
-       />
+       <PrimaryInput name="qst2" label="Antécédents familiaux du malade?" placeholder="ex: IDM" />
       </Col>
      </Row>
      <Row md="2" className="createExamination__PatInterro-card--row">
       <Col className="createExamination__PatInterro-card--col">
-       <PrimaryInput
-        name="qst3"
-        label="Y a-t-il une syndrome coronarien ?"
-        placeholder="ex: Oui"
-       />
+       <PrimaryInput name="qst3" label="Y a-t-il une syndrome coronarien ?" placeholder="ex: Oui" />
       </Col>
       <Col className="createExamination__PatInterro-card--col">
-       <PrimaryInput
-        name="qst4"
-        label="Mode de vie du patient ?"
-        placeholder="ex: Sportif..."
-       />
+       <PrimaryInput name="qst4" label="Mode de vie du patient ?" placeholder="ex: Sportif..." />
       </Col>
      </Row>
 

@@ -8,8 +8,8 @@ import AddAnteced from './AddAnteced'
 import { AntecedentDetail } from '../../../helpers/types'
 
 interface detailProps {
-    open: boolean
-    anteced: AntecedentDetail | undefined
+ open: boolean
+ anteced: AntecedentDetail | undefined
 }
 
 const Antecedent: FC = () => {

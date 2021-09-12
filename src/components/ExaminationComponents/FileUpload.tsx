@@ -15,7 +15,7 @@ const FileUpload: FC<InputProps & Props> = ({ label, handleDrop }) => {
   e.preventDefault()
   const { files } = e.dataTransfer
   if (files) {
-   const item : File = {
+   const item: File = {
     name: files[0].name,
     size: files[0].size,
     type: files[0].type,

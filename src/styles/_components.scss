@@ -2011,3 +2011,136 @@
   background-color: aqua !important;
  }
 }
+
+// Prescriptions
+
+.prescription {
+ &__container {
+  display: flex;
+  gap: 3rem;
+  flex-direction: row;
+  justify-content: space-between;
+ }
+
+ &__medications {
+  flex-grow: 20;
+
+  &-container {
+   background-color: white;
+   border-radius: 0.7rem;
+   padding: 2rem;
+   margin-bottom: 2rem;
+  }
+
+  &-list {
+   padding: 0;
+   list-style: none;
+   margin-bottom: 2rem;
+
+   &--item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 0rem;
+    border-bottom: 1px solid #e0e0e0;
+
+    &:first-child {
+     padding: 0rem 0rem 1.5rem 0rem !important;
+    }
+   }
+  }
+
+  &-content {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   gap: 1rem;
+
+   &--container {
+    display: flex;
+    flex-direction: column;
+   }
+
+   &--title {
+    font-size: 1.5rem;
+    font-weight: 500;
+   }
+
+   &--dosage {
+    font-size: 1.3rem;
+    color: $color-grey-dark-3;
+   }
+
+   &--date {
+    font-size: 1.2rem;
+    font-style: italic;
+    font-weight: 500;
+    color: #828282;
+   }
+
+   &--qsp {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #828282;
+   }
+  }
+
+  &-icon {
+   font-size: 2rem;
+   color: white;
+
+   &--container {
+    height: 4rem;
+    width: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.5rem;
+
+    &--pills {
+        background-color: $color-secondary;
+    }
+
+    &--serop {
+        background-color: $color-primary;
+    }
+   }
+  }
+
+  &-qsp {
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+  }
+
+  &-action {
+   text-align: right;
+
+   & > button:first-child {
+    background-color: $color-secondary;
+
+    &:hover,
+    &:active {
+     background-color: #d27f1e;
+    }
+   }
+  }
+ }
+
+ &__patientInfo {
+  flex-grow: 1;
+
+  &-container {
+   & > .folder__item {
+    margin-bottom: 2rem;
+   }
+   & .folder__item:nth-child(2) {
+    display: flex !important;
+   }
+  }
+ }
+
+ &__actions {
+  text-align: right;
+ }
+}

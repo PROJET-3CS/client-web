@@ -1536,3 +1536,86 @@ body {
     margin-left: 1.8rem; }
   .pagination__active {
     background-color: aqua !important; }
+
+.prescription__container {
+  display: flex;
+  gap: 3rem;
+  flex-direction: row;
+  justify-content: space-between; }
+
+.prescription__medications {
+  flex-grow: 20; }
+  .prescription__medications-container {
+    background-color: white;
+    border-radius: 0.7rem;
+    padding: 2rem;
+    margin-bottom: 2rem; }
+  .prescription__medications-list {
+    padding: 0;
+    list-style: none;
+    margin-bottom: 2rem; }
+    .prescription__medications-list--item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 0rem;
+      border-bottom: 1px solid #e0e0e0; }
+      .prescription__medications-list--item:first-child {
+        padding: 0rem 0rem 1.5rem 0rem !important; }
+  .prescription__medications-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem; }
+    .prescription__medications-content--container {
+      display: flex;
+      flex-direction: column; }
+    .prescription__medications-content--title {
+      font-size: 1.5rem;
+      font-weight: 500; }
+    .prescription__medications-content--dosage {
+      font-size: 1.3rem;
+      color: #828282; }
+    .prescription__medications-content--date {
+      font-size: 1.2rem;
+      font-style: italic;
+      font-weight: 500;
+      color: #828282; }
+    .prescription__medications-content--qsp {
+      font-size: 1rem;
+      font-weight: 500;
+      color: #828282; }
+  .prescription__medications-icon {
+    font-size: 2rem;
+    color: white; }
+    .prescription__medications-icon--container {
+      height: 4rem;
+      width: 4rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 0.5rem; }
+      .prescription__medications-icon--container--pills {
+        background-color: #f1923e; }
+      .prescription__medications-icon--container--serop {
+        background-color: #5b63f6; }
+  .prescription__medications-qsp {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; }
+  .prescription__medications-action {
+    text-align: right; }
+    .prescription__medications-action > button:first-child {
+      background-color: #f1923e; }
+      .prescription__medications-action > button:first-child:hover, .prescription__medications-action > button:first-child:active {
+        background-color: #d27f1e; }
+
+.prescription__patientInfo {
+  flex-grow: 1; }
+  .prescription__patientInfo-container > .folder__item {
+    margin-bottom: 2rem; }
+  .prescription__patientInfo-container .folder__item:nth-child(2) {
+    display: flex !important; }
+
+.prescription__actions {
+  text-align: right; }

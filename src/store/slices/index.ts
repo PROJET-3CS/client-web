@@ -15,7 +15,7 @@ const rootReducer: Reducer<RootState> = combineReducers<RootState>({
  managmentState: managmentReducer,
  folderState: folderReducer,
  appointmentState: appointmentReducer,
- examState: examReducer
+ examState: examReducer,
 })
 
 export default rootReducer

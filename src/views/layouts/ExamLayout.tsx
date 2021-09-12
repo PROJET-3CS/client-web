@@ -18,14 +18,16 @@ const ExamLayout: FC = ({ children }) => {
         <span>Patient Overview</span>
        </Link>
       </li>
-      <li className={`exam-nav__item ${hash === 'interrogation' || !hash ? 'exam-nav__item--active' : ''}`}>
+      <li
+       className={`exam-nav__item ${
+        hash === 'interrogation' || !hash ? 'exam-nav__item--active' : ''
+       }`}
+      >
        <Link to="/examination/interrogation" className="exam-nav__link">
         <span>Patient Interrogation</span>
        </Link>
       </li>
-      <li
-       className={`exam-nav__item ${hash === 'condition' ? 'exam-nav__item--active' : ''}`}
-      >
+      <li className={`exam-nav__item ${hash === 'condition' ? 'exam-nav__item--active' : ''}`}>
        <Link to="/examination/condition" className="exam-nav__link">
         <span>Patient Condition</span>
        </Link>

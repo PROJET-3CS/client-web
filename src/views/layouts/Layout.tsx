@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom'
 import { logout } from '../../store/slices/auth'
 
 interface Props {
-    page?: string
-} 
+ page?: string
+}
 
 const Layout: FC<Props> = ({ children, page }) => {
  // ===========================================================================
