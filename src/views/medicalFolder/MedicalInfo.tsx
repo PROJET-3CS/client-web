@@ -7,9 +7,9 @@ interface Props {
 }
 
 const MedicalInfo: FC<Props> = ({ folder, patient }) => {
- const renderTxt = (array: Array<string>) => {
+ const renderTxt = (array: Array<{name: string}>) => {
   if (array && array.length > 0) {
-   return array.toString()
+   return array.map(item => {return item.name}).join(', ')
   }
 
   return ''

@@ -2098,11 +2098,11 @@
     border-radius: 0.5rem;
 
     &--pills {
-        background-color: $color-secondary;
+     background-color: $color-secondary;
     }
 
     &--serop {
-        background-color: $color-primary;
+     background-color: $color-primary;
     }
    }
   }
@@ -2123,6 +2123,15 @@
     &:active {
      background-color: #d27f1e;
     }
+   }
+  }
+
+  &-modal {
+   max-width: 70% !important;
+
+   & iframe {
+    width: 100%;
+    height: 80vh;
    }
   }
  }

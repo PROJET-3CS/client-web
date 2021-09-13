@@ -10,6 +10,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import AwesomeButtonIcon from '../../../components/AwesomeButton/AwesomeButtonIcon'
 import CreatePrescModal from './CreatePrescModal'
 import { Medicament } from '../../../helpers/types'
+import PreviewModal from './PreviewModal'
 
 interface medState {
  medicaments: Medicament[]
@@ -23,9 +24,14 @@ const Medications: FC = () => {
  const [state, setState] = useState(initState)
 
  const [open, setOpen] = useState(false)
+ const [preview, setPreview] = useState(false)
 
  const toggle = () => {
   setOpen(!open)
+ }
+
+ const togglePreview = () => {
+  setPreview(!preview)
  }
 
  const handleAddMed = (med: Medicament) => {
@@ -87,7 +93,7 @@ const Medications: FC = () => {
      })}
     </ul>
     <div className="prescription__medications-action">
-     <AwesomeButtonIcon icon={faEye} text="Preview Prescription" />
+     <AwesomeButtonIcon icon={faEye} text="Preview Prescription" onClick={togglePreview} />
      <AwesomeButtonIcon icon={faPlus} text="Add medication" onClick={toggle} />
     </div>
    </div>
@@ -96,6 +102,7 @@ const Medications: FC = () => {
    </div>
 
    <CreatePrescModal modal={open} toggle={toggle} submitHandler={handleAddMed} />
+   <PreviewModal modal={preview} toggle={togglePreview} />
   </div>
  )
 }
