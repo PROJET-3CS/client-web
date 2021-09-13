@@ -20,4 +20,9 @@
  &-icon {
   margin-right: 1rem;
  }
+
+ &-disabled {
+  background-color: #bdbdbd !important;
+  cursor: not-allowed;
+ }
 }

@@ -106,7 +106,7 @@ const Medications: FC = () => {
      })}
     </ul>
     <div className="prescription__medications-action">
-     <AwesomeButtonIcon icon={faEye} text="Preview Prescription" onClick={togglePreview} />
+     <AwesomeButtonIcon icon={faEye} text="Preview Prescription" onClick={togglePreview} disabled={state.medicaments.length === 0} />
      <AwesomeButtonIcon icon={faPlus} text="Add medication" onClick={toggle} />
     </div>
    </div>
