@@ -1,4 +1,4 @@
-/* eslint-disable no-plusplus */
+/* eslint-disable react/jsx-key */
 import React, { FC, useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import moment from 'moment'
@@ -6,34 +6,24 @@ import moment from 'moment'
 import { faPlus, faTimes } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-import { getFolder } from '../../../store/selectors'
-import { AntecedentDetail, ModalProps } from '../../../helpers/types'
+import { getFolder } from '../../store/selectors'
+import { ModalProps } from '../../helpers/types'
 
-import AntecedItem from '../../../components/Antecedent/AntecedItem'
-import AwesomeButtonIcon from '../../../components/AwesomeButton/AwesomeButtonIcon'
-import AwesomeModal from '../../../components/AwesomeModal/AwesomeModal'
+import AntecedItem from '../../components/Antecedent/AntecedItem'
+import AwesomeButtonIcon from '../../components/AwesomeButton/AwesomeButtonIcon'
+import AwesomeModal from '../../components/AwesomeModal/AwesomeModal'
 
 interface Props {
  // eslint-disable-next-line no-unused-vars
  goForward: (type?: string) => void
  type: string | undefined
- // eslint-disable-next-line no-unused-vars
- handler: (anteced?: AntecedentDetail) => void
 }
 
 interface Antecedent {
- id: number
  name: string
  description: string
  date: Date | string
  createdAt: Date | string
-}
-
-interface stateProps {
- title: string
- cta: string
- antecedents: Antecedent[]
- filtredAnteced: Antecedent[]
 }
 
 const AntecedModal: FC<ModalProps & Props> = ({ modal, toggle, handler, goForward, type }) => {
@@ -46,9 +36,8 @@ const AntecedModal: FC<ModalProps & Props> = ({ modal, toggle, handler, goForwar
   title: '',
   cta: '',
   antecedents: [],
-  filtredAnteced: [],
  }
- const [state, setState] = useState<stateProps>(initState)
+ const [state, setState] = useState(initState)
 
  const getContent = () => {
   switch (type) {
@@ -111,13 +100,10 @@ const AntecedModal: FC<ModalProps & Props> = ({ modal, toggle, handler, goForwar
     {state.antecedents.map((anteced: Antecedent) => {
      return (
       <AntecedItem
-       key={anteced.id}
        title={anteced.name}
        content={anteced.description}
        date={moment(anteced.createdAt).format('l')}
-       onClick={() => {
-        return handler(anteced)
-       }}
+       onClick={handler}
       />
      )
     })}

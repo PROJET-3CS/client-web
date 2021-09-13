@@ -4,7 +4,6 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Signin from '../views/auth/Signin'
 import Signup from '../views/auth/Signup'
 import Resetpassword from '../views/auth/Password_reset'
-// import Dashboard from '../views/Dashboard'
 import Home from '../views/Home'
 import PrivateRoute from './PrivateRoutes'
 import PublicRoute from './PublicRoutes'
@@ -15,14 +14,19 @@ import PasswordConfirmation from '../views/PasswordConfirmation'
 import EmailConfirmation from '../views/EmailConfirmation'
 import RegistrationRequestsManagement from '../views/usersManagement/RegistrationRequestsManagement'
 import Examination from '../views/Examination/Examination'
-import Prescription from '../views/Examination/Prescription/Prescription'
 import CreatePrescModal from '../views/Examination/Prescription/CreatePrescModal'
 
-const Dashboard = React.lazy(() => import('../views/Dashboard'))
+
 const usersManagement = React.lazy(() => import('../views/usersManagement/UsersManagement'))
 const medicalFolder = React.lazy(() => import('../views/medicalFolder/medicalFolder'))
 const Appointment = React.lazy(() => import('../views/Appointment/Appointment'))
 const MyAppointments = React.lazy(() => import('../views/Appointment/MyAppointments'))
+const Prescription = React.lazy(() => import('../views/prescription/Prescription'))
+const Profile = React.lazy(() => import('../views/doctore/DocProfile'))
+const Chatt = React.lazy(() => import('../views/Chatt/Chatt'))
+const Dashboard = React.lazy(() => import('../views/Dashboard/Dashboard'))
+const Filter = React.lazy(() => import('../views/usersManagement/Filter'))
+
 
 const RootRoute: FC = () => {
  return (
@@ -42,12 +46,19 @@ const RootRoute: FC = () => {
      <PrivateRoute path="/examination" component={Examination} />
      <PrivateRoute path="/prescription" component={Prescription} />
      <PrivateRoute path="/dashboard" component={Dashboard} exact />
+     <PrivateRoute path="/management" component={usersManagement} exact />
+     <PrivateRoute path="/folder" component={medicalFolder} exact />
      <PrivateRoute path="/users_management" component={usersManagement} exact />
      <PrivateRoute path="/registration_requests" component={RegistrationRequestsManagement} exact />
      <PrivateRoute path="/folder/:id" component={medicalFolder} exact />
      <PrivateRoute path="/folder/:id/edit" component={EditMedicalFolder} exact />
      <PrivateRoute path="/appointments" component={Appointment} exact />
      <PrivateRoute path="/appointments/:id" component={MyAppointments} exact />
+     <PrivateRoute path="/prescription" component={Prescription} exact />
+     <PrivateRoute path="/profile" component={Profile} exact />
+     <PrivateRoute path="/chatt" component={Chatt} exact />
+     <PrivateRoute path="/filter" component={Filter} exact />
+
 
      <Route component={_404} />
     </Switch>
