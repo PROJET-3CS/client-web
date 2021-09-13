@@ -1,20 +1,36 @@
 import React, { FC } from 'react'
-import { Card, Col, Row } from 'reactstrap'
+import { Card, Input } from 'reactstrap'
 import { InputProps } from '../../helpers/types'
 import './PatientStateBox.scss'
 
-const PatientStateBox: FC<InputProps> = ({ title, description }) => {
+interface Props {
+ // eslint-disable-next-line no-unused-vars
+ onSelect: (value: string) => void
+ payload: string
+}
+
+const PatientStateBox: FC<Props & InputProps> = ({
+ title,
+ description,
+ value,
+ payload,
+ onSelect,
+}) => {
  return (
   <Card className="PatStateBox__card">
-   <Col>
-    <Row md="2">
-     <Card className="PatStateBox__card-circle" />
-     <div className="PatStateBox__card-content">
-      <p>{title}</p>
-      <span>{description}</span>
-     </div>
-    </Row>
-   </Col>
+   <Input
+    type="radio"
+    name="radio1"
+    className="PatStateBox__card-circle"
+    onChange={() => {
+     return onSelect(payload)
+    }}
+    checked={value === payload}
+   />
+   <div className="PatStateBox__card-content">
+    <p>{title}</p>
+    <span>{description}</span>
+   </div>
   </Card>
  )
 }

@@ -1,11 +1,9 @@
-import { faCog, faBell, faCalendar } from '@fortawesome/free-solid-svg-icons'
+import { faCalendar } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { FC } from 'react'
 import { Line } from 'react-chartjs-2'
-import { useSelector } from 'react-redux'
 import { Col } from 'reactstrap'
 import UserNav from '../../components/UserNav'
-import { getAuth } from '../../store/selectors'
 import CrdvRow from '../doctore/CrdvRow'
 import Statsbox from './StatsBox'
 
@@ -22,7 +20,6 @@ const RightCont: FC = () => {
    tension: 0.1
   }]
  }
- const { user } = useSelector(getAuth)
 
  return (
   <Col className='dashboard-right'>

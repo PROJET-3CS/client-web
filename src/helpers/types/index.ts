@@ -5,6 +5,11 @@ import { Input } from 'reactstrap'
 //  ==============================================================================
 //  Items
 //  ==============================================================================
+export interface File {
+ // eslint-disable-next-line @typescript-eslint/no-explicit-any
+ [anyProp: string]: any
+}
+
 export interface User {
  // eslint-disable-next-line @typescript-eslint/no-explicit-any
  [anyProp: string]: any
@@ -21,6 +26,11 @@ export interface Folder {
 }
 
 export interface Appointment {
+ // eslint-disable-next-line @typescript-eslint/no-explicit-any
+ [anyProp: string]: any
+}
+
+export interface Exam {
  // eslint-disable-next-line @typescript-eslint/no-explicit-any
  [anyProp: string]: any
 }
@@ -100,6 +110,49 @@ export interface AntecedentItem {
  type?: string | undefined
 }
 
+export interface AntecedentDetail {
+ id: number
+ name: string
+ description: string
+ date: Date | string
+ createdAt: Date | string
+}
+
+export interface userInterface {
+ firstname: string
+ lastname: string
+ email: string
+}
+
+export interface infoConditionType {
+ fever: number | undefined
+ pulsation: number | undefined
+ pressure: number | undefined
+ weight: number | undefined
+ state: string
+}
+
+export interface infoInterrogationType {
+ reason: string
+ startedAt: Date | string
+ where: string
+ intensity: number
+ note: string
+}
+
+export interface infoDiagnosticType {
+ inspection: string
+ auscultation: string
+ percussion: string
+ palpation: string
+ note: string
+}
+
+export interface infoConclusionType {
+ conclusion: string
+ file: File | undefined
+}
+
 //  ==============================================================================
 //  State
 //  ==============================================================================
@@ -136,10 +189,13 @@ export interface AuthState {
 }
 
 export interface managmentState {
+ routeQueries: Record<string, unknown>
+ usersCount: number
+ totalPages: number
  users: User[]
  selectedUser: User | Record<string, unknown>
  loading: boolean
- error: string
+ error: boolean
 }
 
 export interface AppointmentState {
@@ -162,12 +218,24 @@ export interface ResetPassState {
  password: string
 }
 
+export interface ExamState {
+ loading: boolean
+ error: boolean
+ msg: string
+ exam: Exam | Record<string, unknown>
+ infoCondition: infoConditionType
+ infoInterrogation: infoInterrogationType
+ infoDiagnostic: infoDiagnosticType
+ infoConclusion: infoConclusionType
+}
+
 export interface RootState {
  authState: AuthState
  syncState: SyncState
  managmentState: managmentState
  folderState: FolderState
  appointmentState: AppointmentState
+ examState: ExamState
 }
 
 // ==============================================================================
@@ -185,13 +253,13 @@ export interface AppointmentPayload {
  appointments: Appointment[]
 }
 
-//= =============================================================================
-// Events
-//= =============================================================================
-
 export interface FolderPayload {
  medicalFolder: Folder
  user: User
+}
+
+export interface ExamPayload {
+ exam: Exam
 }
 
 // ==============================================================================

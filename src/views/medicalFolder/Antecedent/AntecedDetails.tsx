@@ -3,14 +3,15 @@ import { InputProps } from 'reactstrap'
 import { faDotCircle, faFileAlt } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-import { ModalProps } from '../../helpers/types'
+import { AntecedentDetail, ModalProps } from '../../../helpers/types'
 
-import AwesomeModal from '../../components/AwesomeModal/AwesomeModal'
+import AwesomeModal from '../../../components/AwesomeModal/AwesomeModal'
 
 interface Props {
  // eslint-disable-next-line no-unused-vars
  goBack: (type?: string | undefined) => void
  antecedType: string | undefined
+ details: AntecedentDetail | undefined
 }
 
 const AntecedDetails: FC<ModalProps & Props & InputProps> = ({
@@ -19,6 +20,7 @@ const AntecedDetails: FC<ModalProps & Props & InputProps> = ({
  goBack,
  onKeyDown,
  antecedType,
+ details,
 }) => {
  const initState = {
   title: '',
@@ -96,9 +98,7 @@ const AntecedDetails: FC<ModalProps & Props & InputProps> = ({
     <section className="clinity__modal-body">
      <div className="anteced__detail-section">
       <div className="anteced__detail-section-title">What’s this affection</div>
-      <p className="anteced__detail-section-content">
-       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla proin commodo.
-      </p>
+      <p className="anteced__detail-section-content">{details?.name}</p>
      </div>
     </section>
 
@@ -106,12 +106,7 @@ const AntecedDetails: FC<ModalProps & Props & InputProps> = ({
     <section className="clinity__modal-body">
      <div className="anteced__detail-section">
       <div className="anteced__detail-section-title">Details overview</div>
-      <p className="anteced__detail-section-content">
-       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sociis fames senectus diam imperdiet
-       euismod nunc ornare feugiat integer. Molestie tincidunt cras facilisi nisi mauris faucibus
-       mauris. Tincidunt duis semper tellus duis auctor. Sit velit id suspendisse et tempor. Amet,
-       vel, odio est platea egestas nunc, risus sed.
-      </p>
+      <p className="anteced__detail-section-content">{details?.description}</p>
      </div>
     </section>
    </div>

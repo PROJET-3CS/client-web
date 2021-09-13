@@ -28,7 +28,7 @@ import {
  addAntecedentSuccess,
  addAntecedent,
 } from '../slices/folder'
-import { getAuth, getFolder, getManagement, getReset, getAppointment } from '../selectors'
+import { getAuth, getFolder, getUsersManagement, getReset, getAppointment } from '../selectors'
 import { getToken, removeToken, setToken, mixAppointments, getUrlAnteced } from '../../helpers/api'
 import {
  fetchUsers,
@@ -37,7 +37,18 @@ import {
  archiveUser,
  archiveUserError,
  archiveUserSuccess,
-} from '../slices/management'
+ createUser,
+ createUserError,
+ createUserSuccess,
+ fetchRegistrationRequestsSuccess,
+ fetchRegistrationRequests,
+ acceptUser,
+ acceptUserError,
+ acceptUserSucces,
+ rejectUser,
+ rejectUserError,
+ rejectUserSucces,
+} from '../slices/usersManagement'
 import {
  reset,
  resetError,
@@ -106,10 +117,11 @@ function* logoutUser() {
 
 function* getUsers() {
  try {
-  const { data } = yield axios.get('/users/get_users/0')
+  const { routeQueries } = yield select(getUsersManagement)
+
+  const { data } = yield axios.get(`/users?page=${routeQueries.page}&items=${routeQueries.items}`)
   if (data.status === 'success') {
-   // const users = (data.body.length === 1) ? [data.body] : data.body
-   yield put(fetchUsersSuccess(data.body.users))
+   yield put(fetchUsersSuccess(data.body))
   } else {
    yield put(fetchUsersError())
   }
@@ -120,11 +132,12 @@ function* getUsers() {
 
 function* archiverUser() {
  try {
-  const { selectedUser } = yield select(getManagement)
-  const uri = `medical_folder/activate${selectedUser.id}`
-  const { data } = yield axios.delete(uri)
+  const { selectedUser } = yield select(getUsersManagement)
+
+  const { data } = yield axios.get(`/users/archive/${selectedUser.id}`)
+
   if (data.status === 'success') {
-   yield put(archiveUserSuccess(data))
+   yield put(archiveUserSuccess())
   } else {
    yield put(archiveUserError())
   }
@@ -168,6 +181,28 @@ function* activateAcc() {
 }
 // If any of these functions are dispatched, invoke the appropriate saga
 // eslint-disable-next-line
+
+function* _createUser() {
+ try {
+  const USER_TOKEN = getToken()
+  const authToken = `Bearer ${USER_TOKEN}`
+  const { selectedUser } = yield select(getUsersManagement)
+  const { data } = yield axios.post(
+   '/users',
+   { ...selectedUser, role: 3 },
+   {
+    headers: { Authorization: authToken },
+   }
+  )
+  if (data.status === 'success') {
+   yield put(createUserSuccess())
+  } else {
+   yield put(createUserError())
+  }
+ } catch (Err) {
+  yield put(createUserError())
+ }
+}
 
 function* loadFolder() {
  try {
@@ -332,6 +367,67 @@ function* _addAppointment() {
  }
 }
 
+// registration requests
+function* loadRegistrationRequests() {
+ try {
+  const USER_TOKEN = getToken()
+  const authToken = `Bearer ${USER_TOKEN}`
+  const { routeQueries } = yield select(getUsersManagement)
+
+  const { data } = yield axios.get(`/users/requests/${routeQueries.page}`, {
+   headers: { Authorization: authToken },
+  })
+
+  if (data.status === 'success') {
+   yield put(fetchRegistrationRequestsSuccess(data.body.requests))
+  } else {
+   yield put(syncAppointmentError())
+  }
+ } catch (Err) {
+  yield put(addAppointmentError('Sorry something went wrong !'))
+ }
+}
+
+function* acceptRegistrationRequest() {
+ try {
+  const USER_TOKEN = getToken()
+  const authToken = `Bearer ${USER_TOKEN}`
+  const { selectedUser } = yield select(getUsersManagement)
+
+  const { data } = yield axios.get(`/users/request/${selectedUser.id}`, {
+   headers: { Authorization: authToken },
+  })
+
+  if (data.status === 'success') {
+   yield put(acceptUserSucces())
+  } else {
+   yield put(acceptUserError())
+  }
+ } catch (Err) {
+  yield put(acceptUserError())
+ }
+}
+
+function* rejectRegistrationRequest() {
+ try {
+  const USER_TOKEN = getToken()
+  const authToken = `Bearer ${USER_TOKEN}`
+  const { selectedUser } = yield select(getUsersManagement)
+
+  const { data } = yield axios.delete(`/users/request/${selectedUser.id}`, {
+   headers: { Authorization: authToken },
+  })
+
+  if (data.status === 'success') {
+   yield put(rejectUserSucces())
+  } else {
+   yield put(rejectUserError())
+  }
+ } catch (Err) {
+  yield put(rejectUserError())
+ }
+}
+
 // If any of these functions are dispatched, invoke the appropriate saga
 // eslint-disable-next-line
 function* rootSaga() {
@@ -351,6 +447,10 @@ function* rootSaga() {
   takeLatest(reset.type, resetPassword),
   takeLatest(change.type, changePassword),
   takeLatest(active.type, activateAcc),
+  takeLatest(createUser.type, _createUser),
+  takeLatest(fetchRegistrationRequests, loadRegistrationRequests),
+  takeLatest(acceptUser, acceptRegistrationRequest),
+  takeLatest(rejectUser, rejectRegistrationRequest),
  ])
 }
 

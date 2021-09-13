@@ -106,6 +106,18 @@ body {
  top: 0;
 }
 
+.exambar {
+  flex: 0 0 20%;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  align-items: center;
+  height: 100vh;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  margin-left: -2rem; }
+
 .main-view {
  background-color: #f1f1fe;
  flex: 1;
@@ -116,6 +128,21 @@ body {
  padding: 0 4rem;
  position: relative;
 }
+
+.main-view {
+  background-color: #f1f1fe;
+  flex: 1;
+  margin-left: -2rem;
+  z-index: 3;
+  text-align: left;
+  position: relative; }
+
+.exam-view {
+  background-color: #f1f1fe;
+  flex: 1;
+  text-align: left;
+  padding: 0 4rem;
+  position: relative; }
 
 .signignup__side_1 {
  padding: 3rem 6rem !important;
@@ -434,119 +461,81 @@ body {
 }
 
 .signup__header {
- font-weight: 600;
- font-style: italic;
- font-size: 3.6rem;
- text-transform: uppercase;
- margin-bottom: 6rem;
-}
-@media only screen and (max-width: 75em) {
- .signup__header {
-  font-size: 3rem;
-  margin-bottom: 4rem;
- }
-}
+  font-weight: 600;
+  font-style: italic;
+  font-size: 3.6rem;
+  text-transform: uppercase;
+  margin-bottom: 6rem; }
+  @media only screen and (max-width: 75em) {
+    .signup__header {
+      font-size: 3rem;
+      margin-bottom: 4rem; } }
 
-/* .signup__form {
- /*&-group {
-    margin-bottom: 2rem; }
-    @media only screen and (max-width: 75em) {
-      .signup__form-group {
-        margin-bottom: 1.5rem; } }
-    .signup__form-group--label {
-      font-size: 1.5rem;
-      font-weight: 600;
-      color: #4f4f4f;
-      margin-bottom: 1rem; }
-    .signup__form-group--input {
-      font-family: inherit;
-      font-size: 1.5rem !important;
-      font-weight: 500 !important;
-      color: inherit;
-      padding: 0.7rem 2rem !important;
-      border-radius: 0.5rem !important;
-      width: 100%;
-      height: 5rem; }*/
 .signup__form-heading {
- margin-bottom: 3rem;
-}
-@media only screen and (max-width: 75em) {
- .signup__form-heading {
-  margin-bottom: 2.5rem;
- }
-}
-.signup__form-heading--title {
- font-size: 3rem;
- font-weight: 700;
- margin-bottom: 1rem;
-}
-@media only screen and (max-width: 75em) {
- .signup__form-heading--title {
-  font-size: 2.5rem;
- }
-}
-.signup__form-heading--text {
- font-size: 1.5rem;
- font-weight: 400;
- color: #b0a5a5;
-}
+  margin-bottom: 3rem; }
+  @media only screen and (max-width: 75em) {
+    .signup__form-heading {
+      margin-bottom: 2.5rem; } }
+  .signup__form-heading--title {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1rem; }
+    @media only screen and (max-width: 75em) {
+      .signup__form-heading--title {
+        font-size: 2.5rem; } }
+  .signup__form-heading--text {
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: #b0a5a5; }
+
 .signup__form-group--repass {
- text-align: right;
- font-size: 1.5rem;
- margin-bottom: 3rem;
-}
-@media only screen and (max-width: 75em) {
- .signup__form-group--repass {
-  margin-bottom: 2.5rem;
- }
-}
+  text-align: right;
+  font-size: 1.5rem;
+  margin-bottom: 3rem; }
+  @media only screen and (max-width: 75em) {
+    .signup__form-group--repass {
+      margin-bottom: 2.5rem; } }
+
 .signup__form-group--action {
- display: flex;
- justify-content: center;
- font-size: 1.5rem;
- margin-top: 4rem;
- margin-bottom: 3rem;
-}
-@media only screen and (max-width: 75em) {
- .signup__form-group--action {
-  margin-bottom: 2.5rem;
- }
-}
-.signup__form-group--action-btn {
- width: 100%;
- padding: 1rem 7rem;
- background-color: #5b63f6 !important;
- font-size: 1.5rem;
- color: white;
- border: none !important;
- border-radius: 0.5rem;
- cursor: pointer;
-}
-.signup__form-group--action-btn:hover {
- transform: translateY(-6px);
- transition: transform 250ms cubic-bezier(0.3, 0.7, 0.4, 1.5);
-}
-.signup__form-group--action-btn:active {
- transform: translateY(-2px);
- transition: transform 34ms;
-}
-.signup__form-group--action-btn::before {
- position: absolute;
- top: 0;
- left: 0;
- width: 100%;
- height: 100%;
- border-radius: 12px;
- background: linear-gradient(to left, #080f91 0%, #252ff4 8%, #252ff4 92%, #080f91 100%);
-}
+  display: flex;
+  justify-content: center;
+  font-size: 1.5rem;
+  margin-top: 4rem;
+  margin-bottom: 3rem; }
+  @media only screen and (max-width: 75em) {
+    .signup__form-group--action {
+      margin-bottom: 2.5rem; } }
+  .signup__form-group--action-btn {
+    width: 100%;
+    padding: 1rem 7rem;
+    background-color: #5b63f6 !important;
+    font-size: 1.5rem;
+    color: white;
+    border: none !important;
+    border-radius: 0.5rem;
+    cursor: pointer; }
+    .signup__form-group--action-btn:hover {
+      transform: translateY(-6px);
+      transition: transform 250ms cubic-bezier(0.3, 0.7, 0.4, 1.5); }
+    .signup__form-group--action-btn:active {
+      transform: translateY(-2px);
+      transition: transform 34ms; }
+    .signup__form-group--action-btn::before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 12px;
+      background: linear-gradient(to left, #080f91 0%, #252ff4 8%, #252ff4 92%, #080f91 100%); }
+
 .signup__form-footer--label {
- font-size: 1.5rem;
- font-weight: 500;
- margin-bottom: 1rem;
-}
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-bottom: 1rem; }
+
 .signup__form-footer {
- text-align: center;
-}
+  text-align: center; }
 
 .maintable-icon-sort {
  color: #5b63f6;
@@ -1675,111 +1664,284 @@ body {
  padding: 1rem;
 }
 .createExamination {
- text-align: right;
-}
-.createExamination__PatInterro-card:defined {
- border: none;
- border-radius: 0.68rem;
- cursor: pointer;
- margin-bottom: 2rem;
-}
-.createExamination__PatInterro-card h1 {
- text-align: left;
- padding: 2rem 0rem 0rem 2.35rem;
- font-size: 2.5rem;
- font-weight: 600;
-}
-.createExamination__PatInterro-card--description {
- font-size: 1.1rem;
- font-weight: 500;
- text-align: left;
- padding: 0rem 0rem 0rem 2.35rem;
-}
-.createExamination__PatInterro-card--col {
- text-align: right;
- padding: 1rem 2rem 0rem 2rem;
-}
-.createExamination__PatInterro-card--row {
- margin-bottom: 1rem;
-}
-.createExamination__PatInterro-card--addbutton {
- text-align: right !important;
- padding-bottom: 2rem;
-}
-.createExamination__PatInterro-card--textarea {
- font-family: inherit;
- font-size: 1.5rem !important;
- font-weight: 500 !important;
- color: inherit;
- padding: 0.7rem 2rem !important;
- border-radius: 0.5rem !important;
- width: 100% !important;
- height: 22rem;
- margin-bottom: 2rem;
-}
-.createExamination__PatInterro-card--textarea--select {
- font-family: inherit;
- font-size: 1.5rem !important;
- font-weight: 500 !important;
- color: inherit;
- padding: 0 !important;
- border-radius: 0.5rem !important;
- width: 100%;
-}
-.createExamination__IllnessDiagno-Interrogatory--box {
- font-size: 1.438rem !important;
- width: fit-content !important;
- padding: 1rem !important;
- margin-right: 4rem;
- background-color: #bdbdbd !important;
- border-color: #bdbdbd !important;
-}
-.createExamination__IllnessDiagno-Interrogatory--box--active,
-.createExamination__IllnessDiagno-Interrogatory--box:active {
- background-color: #0d6efd !important;
- border-color: #0d6efd !important;
-}
-.createExamination__IllnessDiagno-Illnesses--col {
- padding: 2rem !important;
- text-align: left;
-}
-.createExamination__IllnessDiagno-Illnesses--col p {
- font-size: 1.31rem;
- font-weight: 500;
- margin-bottom: 1.188rem;
-}
-.createExamination__IllnessDiagno-Illnesses--box {
- width: fit-content !important;
- font-size: 1.5rem !important;
- font-weight: 500 !important;
- border-radius: 5.62rem !important;
- padding: 0.813rem 2.5rem 0.813rem 2.5rem !important;
- margin-right: 1.4rem;
- margin-bottom: 1.4rem;
-}
-.createExamination__IllnessDiagno-Illnesses--box:hover,
-.createExamination__IllnessDiagno-Illnesses--box:active {
- background-color: #dd4b39 !important;
- border-color: #dd4b39 !important;
-}
-.createExamination__IllnessDiagno-Illnesses--box:visited {
- background-color: #0d6efd !important;
-}
-.createExamination__IllnessDiagno-Illnesses--box--close {
- visibility: hidden;
- transition: all 0.2s ease-in-out;
-}
-.editfolder__medicalsection-box:hover .createExamination__IllnessDiagno-Illnesses--box--close {
- visibility: visible;
- margin-left: 2rem;
-}
-.createExamination__IllnessDiagno-Illnesses--button {
- width: fit-content !important;
- font-size: 1.5rem;
- font-weight: 500;
- border-color: black;
- background-color: white;
- border-radius: 5.62rem;
- padding: 0.813rem 2.5rem 0.813rem 2.5rem !important;
- margin-bottom: 1.4rem;
-}
+  text-align: right;
+  margin-bottom: 2rem; }
+  .createExamination__PatInterro-card:defined {
+    border: none;
+    border-radius: 0.68rem;
+    margin-bottom: 2rem;
+    padding: 2rem 3rem; }
+  .createExamination__PatInterro-card h1 {
+    text-align: left;
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem; }
+  .createExamination__PatInterro-card--description {
+    font-size: 1.1rem;
+    font-weight: 500;
+    text-align: left;
+    margin-bottom: 2.5rem; }
+  .createExamination__PatInterro-card--col {
+    text-align: right; }
+  .createExamination__PatInterro-card--row {
+    margin-bottom: 1rem; }
+  .createExamination__PatInterro-card--addbutton {
+    text-align: right !important;
+    padding-bottom: 2rem; }
+  .createExamination__PatInterro-card--textarea {
+    font-family: inherit;
+    font-size: 1.5rem !important;
+    font-weight: 500 !important;
+    color: inherit;
+    padding: 0.7rem 2rem !important;
+    border-radius: 0.5rem !important;
+    width: 100% !important;
+    height: 22rem;
+    margin-bottom: 2rem; }
+    .createExamination__PatInterro-card--textarea--select {
+      font-family: inherit;
+      font-size: 1.5rem !important;
+      font-weight: 500 !important;
+      color: inherit;
+      padding: 0 !important;
+      border-radius: 0.5rem !important;
+      width: 100%; }
+  .createExamination__PatInterro-file {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: rgba(91, 99, 246, 0.1);
+    align-items: center;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem; }
+    .createExamination__PatInterro-file--icon {
+      font-size: 3rem;
+      color: #5b63f6; }
+    .createExamination__PatInterro-file--content {
+      flex: 0.9;
+      display: flex;
+      flex-direction: column;
+      text-align: left; }
+    .createExamination__PatInterro-file--title {
+      font-size: 1.5rem;
+      font-weight: 500; }
+    .createExamination__PatInterro-file--size {
+      font-size: 1.3rem;
+      color: #828282;
+      font-weight: 500; }
+    .createExamination__PatInterro-file--check {
+      font-size: 1.5rem;
+      cursor: pointer; }
+  .createExamination__IllnessDiagno-Interrogatory--box {
+    font-size: 1.438rem !important;
+    width: fit-content !important;
+    padding: 1rem !important;
+    margin-right: 4rem;
+    background-color: #bdbdbd !important;
+    border-color: #bdbdbd !important; }
+    .createExamination__IllnessDiagno-Interrogatory--box-active, .createExamination__IllnessDiagno-Interrogatory--box:active {
+      background-color: #0d6efd !important;
+      border-color: #0d6efd !important; }
+  .createExamination__IllnessDiagno-Illnesses--col {
+    padding: 2rem !important;
+    text-align: left; }
+  .createExamination__IllnessDiagno-Illnesses--col p {
+    font-size: 1.31rem;
+    font-weight: 500;
+    margin-bottom: 1.188rem; }
+  .createExamination__IllnessDiagno-Illnesses--box {
+    width: fit-content !important;
+    font-size: 1.5rem !important;
+    font-weight: 500 !important;
+    border-radius: 5.62rem !important;
+    padding: 0.813rem 2.5rem 0.813rem 2.5rem !important;
+    margin-right: 1.4rem;
+    margin-bottom: 1.4rem; }
+    .createExamination__IllnessDiagno-Illnesses--box-active, .createExamination__IllnessDiagno-Illnesses--box:active {
+      background-color: #dd4b39 !important;
+      border-color: #dd4b39 !important; }
+    .createExamination__IllnessDiagno-Illnesses--box:visited {
+      background-color: #0d6efd !important; }
+    .createExamination__IllnessDiagno-Illnesses--box--close {
+      visibility: hidden;
+      transition: all 0.2s ease-in-out; }
+      .editfolder__medicalsection-box:hover .createExamination__IllnessDiagno-Illnesses--box--close {
+        visibility: visible;
+        margin-left: 2rem; }
+  .createExamination__IllnessDiagno-Illnesses--button {
+    width: fit-content !important;
+    font-size: 1.5rem;
+    font-weight: 500;
+    border-color: black;
+    background-color: white;
+    border-radius: 5.62rem;
+    padding: 0.813rem 2.5rem 0.813rem 2.5rem !important;
+    margin-bottom: 1.4rem; }
+
+.exambar .main-header {
+  margin-top: 10rem;
+  font-weight: 500;
+  color: #5b63f6; }
+
+.exam-nav {
+  font-size: 1.4rem;
+  list-style: none;
+  margin-top: 3.5rem;
+  padding: 0;
+  width: 100%; }
+  @media only screen and (max-width: 56.25em) {
+    .exam-nav {
+      display: flex;
+      margin: 0; } }
+  .exam-nav__item {
+    position: relative; }
+    .exam-nav__item:not(:last-child) {
+      margin-bottom: 0.5rem; }
+      @media only screen and (max-width: 56.25em) {
+        .exam-nav__item:not(:last-child) {
+          margin: 0; } }
+    @media only screen and (max-width: 56.25em) {
+      .exam-nav__item {
+        flex: 1; } }
+    .exam-nav__item span {
+      color: black;
+      transition: color 0.2s;
+      transition-delay: 0.3s; }
+    .exam-nav__item--active span,
+    .exam-nav__item:hover span,
+    .exam-nav__item:active span {
+      color: #f7f7fe; }
+  .exam-nav__item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 3px;
+    background-color: #5b63f6;
+    transform: scaleY(0);
+    transition: transform 0.2s, width 0.4s cubic-bezier(1, 0, 0, 1) 0.2s, background-color 0.1s; }
+  .exam-nav__item:hover::before, .exam-nav__item--active::before {
+    transform: scaleY(1);
+    width: 100%; }
+  .exam-nav__item:active::before {
+    background-color: #424ef5; }
+  .exam-nav__link:link, .exam-nav__link:visited {
+    text-decoration: none;
+    text-transform: uppercase;
+    display: block;
+    padding: 1.5rem 2rem;
+    position: relative;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; }
+    @media only screen and (max-width: 56.25em) {
+      .exam-nav__link:link, .exam-nav__link:visited {
+        justify-content: center;
+        padding: 2rem; } }
+    @media only screen and (max-width: 37.5em) {
+      .exam-nav__link:link, .exam-nav__link:visited {
+        flex-direction: column;
+        padding: 1.5rem 0.5rem; } }
+  .exam-nav__icon {
+    width: 1.75rem;
+    height: 1.75rem;
+    margin-right: 2rem;
+    fill: currentColor; }
+    @media only screen and (max-width: 37.5em) {
+      .exam-nav__icon {
+        margin-right: 0;
+        margin-bottom: 0.7rem;
+        width: 1.5rem;
+        height: 1.5rem; } }
+
+.pagination {
+  font-size: 1.5rem; }
+  .pagination li {
+    margin-left: 1.8rem; }
+  .pagination__active {
+    background-color: aqua !important; }
+
+.prescription__container {
+  display: flex;
+  gap: 3rem;
+  flex-direction: row;
+  justify-content: space-between; }
+
+.prescription__medications {
+  flex-grow: 20; }
+  .prescription__medications-container {
+    background-color: white;
+    border-radius: 0.7rem;
+    padding: 2rem;
+    margin-bottom: 2rem; }
+  .prescription__medications-list {
+    padding: 0;
+    list-style: none;
+    margin-bottom: 2rem; }
+    .prescription__medications-list--item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 0rem;
+      border-bottom: 1px solid #e0e0e0; }
+      .prescription__medications-list--item:first-child {
+        padding: 0rem 0rem 1.5rem 0rem !important; }
+  .prescription__medications-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem; }
+    .prescription__medications-content--container {
+      display: flex;
+      flex-direction: column; }
+    .prescription__medications-content--title {
+      font-size: 1.5rem;
+      font-weight: 500; }
+    .prescription__medications-content--dosage {
+      font-size: 1.3rem;
+      color: #828282; }
+    .prescription__medications-content--date {
+      font-size: 1.2rem;
+      font-style: italic;
+      font-weight: 500;
+      color: #828282; }
+    .prescription__medications-content--qsp {
+      font-size: 1rem;
+      font-weight: 500;
+      color: #828282; }
+  .prescription__medications-icon {
+    font-size: 2rem;
+    color: white; }
+    .prescription__medications-icon--container {
+      height: 4rem;
+      width: 4rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 0.5rem; }
+      .prescription__medications-icon--container--pills {
+        background-color: #f1923e; }
+      .prescription__medications-icon--container--serop {
+        background-color: #5b63f6; }
+  .prescription__medications-qsp {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; }
+  .prescription__medications-action {
+    text-align: right; }
+    .prescription__medications-action > button:first-child {
+      background-color: #f1923e; }
+      .prescription__medications-action > button:first-child:hover, .prescription__medications-action > button:first-child:active {
+        background-color: #d27f1e; }
+
+.prescription__patientInfo {
+  flex-grow: 1; }
+  .prescription__patientInfo-container > .folder__item {
+    margin-bottom: 2rem; }
+  .prescription__patientInfo-container .folder__item:nth-child(2) {
+    display: flex !important; }
+
+.prescription__actions {
+  text-align: right; }

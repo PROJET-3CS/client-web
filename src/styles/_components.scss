@@ -391,14 +391,7 @@
       margin-bottom: 1rem; }
     .signup__form-group--input {
       font-family: inherit;
-      font-size: 1.5rem !important;
-      font-weight: 500 !important;
-      color: inherit;
-      padding: 0.7rem 2rem !important;
-      border-radius: 0.5rem !important;
-      width: 100%;
-      height: 5rem; }*/
-
+      font-size: 1.5rem !important
   &-footer--label {
    font-size: 1.5rem;
    font-weight: 500;
@@ -1756,38 +1749,7 @@
 
    &-icon {
     color: $color-primary;
-    text-decoration: underline;
-    font-style: italic;
-    cursor: pointer;
-   }
-  }
- }
-
- // ADD MODAL
- &__add {
-  &-input {
-   &--title {
-    padding: 0.5rem 1em;
-    & label {
-     margin-bottom: 0.2rem;
-    }
-   }
-
-   &--date {
-    padding: 1rem 2rem !important;
-   }
-
-   &--details {
-    padding: 1rem;
-   }
-  }
- }
-}
-
-///////////////////////////////////////
-// Prescription
-
-.prescription {
+    text-decoratio.prescription {
  color: #000;
  margin: 0;
  &__item-title {
@@ -1803,10 +1765,17 @@
     font-size: 1.6rem;
     margin-bottom: 1rem;
     color: $color-dark;
-   }
-  }
-
-  & .modal-content {
+.createExamination {
+ text-align: right;
+ margin-bottom: 2rem;
+ &__PatInterro {
+  &-card {
+   &:defined {
+    border: none;
+    border-radius: 0.68rem;
+    margin-bottom: 2rem;
+    padding: 2rem 3rem;
+    & .modal-content {
    margin-top: 14rem;
    background-color: $color-grey-light-2;
    padding: 2.5rem 3.4rem;
@@ -1829,6 +1798,36 @@
    & svg {
     font-size: 2.2rem;
     cursor: pointer;
+   & h1 {
+    text-align: left;
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+   }
+
+   &--description {
+    font-size: 1.1rem;
+    font-weight: 500;
+    text-align: left;
+    margin-bottom: 2.5rem;
+    margin-bottom: 0;
+   }
+
+   & svg {
+    font-size: 2.2rem;
+    cursor: pointer;
+   & h1 {
+    text-align: left;
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+   }
+
+   &--description {
+    font-size: 1.1rem;
+    font-weight: 500;
+    text-align: left;
+    margin-bottom: 2.5rem;
    }
   }
  }
@@ -1849,28 +1848,7 @@
  }
  &__medications-element {
   padding-right: 3rem;
-  border-bottom: 0.1px $color-grey-light-4 solid;
-  height: 10rem;
-  display: flex;
- }
- &__medications-pic {
-  background-color: $color-primary;
-  border-radius: 10px;
-  width: 6rem;
-  height: 6rem;
-  text-align: center;
-  padding-top: 1.6rem;
- }
- &__medications-detailsname {
-  font-size: 1.8rem;
- }
- &__medications-detailsdose {
-  font-size: 1.3rem;
-  color: $color-grey-dark-3;
-  margin-top: 1.1rem;
- }
-
- &__medications-detailstextl {
+   &__medications-detailstextl {
   margin-left: auto;
   font-size: 1.4rem;
   color: $color-grey-dark-3;
@@ -1902,6 +1880,28 @@
   margin-bottom: 2rem;
  }
 }
+   &--col {
+    text-align: right;
+   }
+  font-size: 1.4rem;
+ }
+ &__savebtn {
+  margin-top: 4rem;
+ }
+ &__folder__item {
+  width: 38.6rem;
+  margin-top: 4rem;
+  background-color: $color-white;
+  padding-top: 3rem;
+  padding-left: 3rem;
+  padding-bottom: 3rem;
+  border-radius: 13px;
+  margin-bottom: 2rem;
+ }
+}
+   &--col {
+    text-align: right;
+   }
 
 .prescription-userprofile {
  width: 38.5rem;
@@ -2487,69 +2487,100 @@
      font-size: 1.5rem !important;
      font-weight: 500 !important;
      color: inherit;
-     padding: 0.7rem 2rem !important;
-     border-radius: 0.5rem !important;
-     width: 100% !important;
-     height: 22rem;
-     margin-bottom: 2rem;
+     padding: 0.7rem 2rem;
+  &-file{
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
+   background-color: rgba(91, 99, 246, 0.1);
+   align-items: center;
+   padding: 1rem 2rem;
+   border-radius: 0.5rem;
+   &--icon {
+    font-size: 3rem;
+    color: $color-primary;
+   }
 
-     &--select {
-      font-family: inherit;
-      font-size: 1.5rem !important;
-      font-weight: 500 !important;
-      color: inherit;
-      padding: 0 !important;
-      border-radius: 0.5rem !important;
-      width: 100%;
-     }
-    }
+   &--content {
+    flex: 0.9;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+   }
+
+   &--title {
+    font-size: 1.5rem;
+    font-weight: 500;
+   }
+
+   &--size {
+    font-size: 1.3rem;
+    color: $color-grey-dark-3;
+    font-weight: 500;
+   }
+
+   &--check {
+    font-size: 1.5rem;
+    cursor: pointer;
    }
   }
+ }
+    flex: 0.9;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+   }
 
-  &__IllnessDiagno {
-   &-Interrogatory {
-    &--box {
-     font-size: 1.438rem !important;
-     width: fit-content !important;
-     padding: 1rem !important;
-     margin-right: 4rem;
+   &--title {
+    font-size: 1.5rem;
+    font-weight: 500;
+   }
 
-     background-color: $color-grey-dark-5 !important;
-     border-color: $color-grey-dark-5 !important;
+   &--size {
+    font-size: 1.3rem;
+    color: $color-grey-dark-3;
+    font-weight: 500;
+   }
 
-     &--active,
+   &--check {
+    font-si     &--active,
      &:active {
       background-color: $color-blue !important;
       border-color: $color-blue !important;
      }
+    &-active,
+    &:active {
+     background-color: #0d6efd !important;
+     border-color: #0d6efd !important;
+     border-color: $color-grey-dark-5 !important;
+
+    &-active,
+    &:active {
+     background-color: #0d6efd !important;
+     border-color: #0d6efd !important;
     }
    }
    &-Illnesses {
     &--col {
      padding: 2rem !important;
      text-align: left;
-    }
-
-    &--col p {
-     font-size: 1.31rem;
-     font-weight: 500;
-     margin-bottom: 1.188rem;
-    }
-
-    &--box {
-     width: fit-content !important;
-     font-size: 1.5rem !important;
-     font-weight: 500 !important;
-     border-radius: 5.62rem !important;
-     padding: 0.813rem 2.5rem 0.813rem 2.5rem !important;
-     margin-right: 1.4rem;
-     margin-bottom: 1.4rem;
-
-     &:hover,
+        &:hover,
      &:active {
       background-color: $color-tertiary !important;
       border-color: $color-tertiary !important;
      }
+    &-active,
+    &:active {
+     background-color: $color-tertiary !important;
+     border-color: $color-tertiary !important;
+    }
+     margin-bottom: 1.4rem;
+
+    &-active,
+    &:active {
+     background-color: $color-tertiary !important;
+     border-color: $color-tertiary !important;
+    }
 
      &:visited {
       background-color: #0d6efd !important;
@@ -2559,29 +2590,7 @@
       visibility: hidden;
       transition: all 0.2s ease-in-out;
 
-      .editfolder__medicalsection-box:hover & {
-       visibility: visible;
-       margin-left: 2rem;
-      }
-     }
-    }
-
-    &--button {
-     width: fit-content !important;
-     font-size: 1.5rem;
-     font-weight: 500;
-     border-color: black;
-     background-color: white;
-     border-radius: 5.62rem;
-     padding: 0.813rem 2.5rem 0.813rem 2.5rem !important;
-     margin-bottom: 1.4rem;
-    }
-   }
-  }
- }
-}
-
-
+      .editfolder__medicalsection-box:hover 
 
 ///////////////////////////////////
 //Dashboard
@@ -2762,3 +2771,282 @@
     }
   }
 }
+////////////////////////////////////////
+// EXAM SIDE NAVIGATION
+.exambar .main-header {
+ margin-top: 10rem;
+ font-weight: 500;
+ color: $color-primary;
+}
+.exam-nav {
+ font-size: 1.4rem;
+ list-style: none;
+ margin-top: 3.5rem;
+ padding: 0;
+ width: 100%;
+
+ @media only screen and (max-width: $bp-medium) {
+  display: flex;
+  margin: 0;
+ }
+
+ &__item {
+  position: relative;
+
+  &:not(:last-child) {
+   margin-bottom: 0.5rem;
+
+   @media only screen and (max-width: $bp-medium) {
+    margin: 0;
+   }
+  }
+
+  @media only screen and (max-width: $bp-medium) {
+   flex: 1;
+  }
+
+  & span {
+   color: black;
+   transition: color 0.2s;
+   transition-delay: 0.3s;
+  }
+
+  &--active span,
+  &:hover span,
+  &:active span {
+   color: $color-grey-light-1;
+  }
+ }
+
+ &__item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 3px;
+  background-color: $color-primary;
+  transform: scaleY(0);
+  transition: transform 0.2s, width 0.4s cubic-bezier(1, 0, 0, 1) 0.2s, background-color 0.1s;
+ }
+
+ &__item:hover::before,
+ &__item--active::before {
+  transform: scaleY(1);
+  width: 100%;
+ }
+
+ &__item:active::before {
+  background-color: $color-primary-dark;
+ }
+
+ &__link:link,
+ &__link:visited {
+  text-decoration: none;
+  text-transform: uppercase;
+  display: block;
+  padding: 1.5rem 2rem;
+  position: relative;
+  z-index: 10;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  @media only screen and (max-width: $bp-medium) {
+   justify-content: center;
+   padding: 2rem;
+  }
+
+  @media only screen and (max-width: $bp-small) {
+   flex-direction: column;
+   padding: 1.5rem 0.5rem;
+  }
+ }
+
+ &__icon {
+  width: 1.75rem;
+  height: 1.75rem;
+  margin-right: 2rem;
+  fill: currentColor;
+
+  @media only screen and (max-width: $bp-small) {
+   margin-right: 0;
+   margin-bottom: 0.7rem;
+   width: 1.5rem;
+   height: 1.5rem;
+  }
+ }
+}
+
+// Pagination
+.pagination {
+ font-size: 1.5rem;
+
+ li {
+  margin-left: 1.8rem;
+ }
+
+ &__active {
+  background-color: aqua !important;
+ }
+}
+
+// Prescriptions
+
+.prescription {
+ &__container {
+  display: flex;
+  gap: 3rem;
+  flex-direction: row;
+  justify-content: space-between;
+ }
+
+ &__medications {
+  flex-grow: 20;
+
+  &-container {
+   background-color: white;
+   border-radius: 0.7rem;
+   padding: 2rem;
+   margin-bottom: 2rem;
+  }
+
+  &-list {
+   padding: 0;
+   list-style: none;
+   margin-bottom: 2rem;
+
+   &--item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 0rem;
+    border-bottom: 1px solid #e0e0e0;
+
+    &:first-child {
+     padding: 0rem 0rem 1.5rem 0rem !important;
+    }
+   }
+  }
+
+  &-content {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   gap: 1rem;
+
+   &--container {
+    display: flex;
+    flex-direction: column;
+   }
+
+   &--title {
+    font-size: 1.5rem;
+    font-weight: 500;
+   }
+
+   &--dosage {
+    font-size: 1.3rem;
+    color: $color-grey-dark-3;
+   }
+
+   &--date {
+    font-size: 1.2rem;
+    font-style: italic;
+    font-weight: 500;
+    color: #828282;
+   }
+
+   &--qsp {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #828282;
+   }
+  }
+
+  &-icon {
+   font-size: 2rem;
+   color: white;
+
+   &--container {
+    height: 4rem;
+    width: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.5rem;
+
+    &--pills {
+        background-color: $color-secondary;
+    }
+
+    &--serop {
+        background-color: $color-primary;
+    }
+   }
+  }
+
+  &-qsp {
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+  }
+
+  &-action {
+   text-align: right;
+
+   & > button:first-child {
+    background-color: $color-secondary;
+
+    &:hover,
+    &:active {
+     background-color: #d27f1e;
+    }
+   }
+  }
+ }
+
+ &__patientInfo {
+  flex-grow: 1;
+
+  &-container {
+   & > .folder__item {
+    margin-bottom: 2rem;
+   }
+   & .folder__item:nth-child(2) {
+    display: flex !important;
+   }
+  }
+ }
+
+ 
+}
+
+
+    &:hover,
+    &:active {
+     background-color: #d27f1e;
+    }
+   }
+  }
+ }
+
+ &__patientInfo {
+  flex-grow: 1;
+
+  &-container {
+   & > .folder__item {
+    margin-bottom: 2rem;
+   }
+   & .folder__item:nth-child(2) {
+    display: flex !important;
+   }
+  }
+ }
+
+ &__actions {
+  text-align: right;
+ }
+}
+  }}}}}}}}}}}}}}}

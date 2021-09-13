@@ -24,8 +24,11 @@ const Home: FC = () => {
     <Link to="/resetpassword" className="App-link">
      <code>/Reset Password</code>
     </Link>
-    <Link to="/management" className="App-link">
-     <code>/Management</code>
+    <Link to="/users_management" className="App-link">
+     <code>/Users Management</code>
+    </Link>
+    <Link to="/registration_requests" className="App-link">
+     <code>/Registration Requests Management</code>
     </Link>
     {'  '}
     <Link to="/folder/edit" className="App-link">

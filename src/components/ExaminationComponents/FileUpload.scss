@@ -3,6 +3,8 @@
   &-group {
    margin-bottom: 2rem;
    text-align: left;
+   display: flex;
+   flex-direction: column;
   }
 
   &-label {
@@ -12,13 +14,19 @@
    margin-bottom: 1rem;
   }
 
+  &-card {
+   cursor: pointer;
+   &-drag {
+    background-color: rgba(91, 99, 246, 0.1) !important;
+   }
+  }
+
   &-card:defined {
    font-family: inherit;
    border-width: 0.2rem;
    border-color: #5b63f6;
    border-radius: 0.5rem !important;
    padding: 0.7rem 2rem !important;
-   width: 30%;
    height: 22rem;
    align-items: center;
 
