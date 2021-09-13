@@ -7,6 +7,7 @@ import {
  faCheck,
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import moment from 'moment'
 import AwesomeButtonIcon from '../../../components/AwesomeButton/AwesomeButtonIcon'
 import CreatePrescModal from './CreatePrescModal'
 import { Medicament } from '../../../helpers/types'
@@ -43,9 +44,17 @@ const Medications: FC = () => {
 
  return (
   <div className="prescription__medications">
-   <h3>Medication</h3>
+   <h3 className="prescription__title">Medication</h3>
    <div className="prescription__medications-container">
     <ul className="prescription__medications-list">
+     {state.medicaments?.length === 0 ? (
+      <div className='prescription__empty'>
+       <img className='prescription__empty-img' src="/img/empty.svg" alt="empty" />
+       <span className='prescription__empty-txt'>Hmm... Your prescription is empty!</span>
+      </div>
+     ) : (
+      ''
+     )}
      {state.medicaments?.map((med) => {
       return med.type === 'Sirop' ? (
        <li key={med.nomCommercial} className="prescription__medications-list--item">
@@ -57,15 +66,17 @@ const Medications: FC = () => {
           />
          </div>
          <div className="prescription__medications-content--container">
-          <span className="prescription__medications-content--title">Ator 40 mg comp.peli.sec</span>
+          <span className="prescription__medications-content--title">{med.nomCommercial}</span>
           <span className="prescription__medications-content--dosage">
-           Dosage: 1 comprimé / jours
+           Dosage: {med.type} {med.foisParJours}x / Jour(s)
           </span>
          </div>
         </div>
         <div className="prescription__medications-qsp">
-         <span className="prescription__medications-content--date">08/04/2021</span>
-         <span className="prescription__medications-content--qsp">QSP: 3 mois</span>
+         <span className="prescription__medications-content--date">{moment().format('l')}</span>
+         <span className="prescription__medications-content--qsp">
+          {med.qntType === 'qsp' ? `QSP: ${med.qnt} Mois` : `${med.qnt} Boites`}
+         </span>
         </div>
        </li>
       ) : (
@@ -78,15 +89,17 @@ const Medications: FC = () => {
           />
          </div>
          <div className="prescription__medications-content--container">
-          <span className="prescription__medications-content--title">Ator 40 mg comp.peli.sec</span>
+          <span className="prescription__medications-content--title">{med.nomCommercial}</span>
           <span className="prescription__medications-content--dosage">
-           Dosage: 1 comprimé / jours
+           Dosage: {med.type} {med.foisParJours}x / Jour(s)
           </span>
          </div>
         </div>
         <div className="prescription__medications-qsp">
-         <span className="prescription__medications-content--date">08/04/2021</span>
-         <span className="prescription__medications-content--qsp">QSP: 3 mois</span>
+         <span className="prescription__medications-content--date">{moment().format('l')}</span>
+         <span className="prescription__medications-content--qsp">
+          {med.qntType === 'qsp' ? `QSP: ${med.qnt} Mois` : `${med.qnt} Boite(s)`}
+         </span>
         </div>
        </li>
       )
@@ -102,7 +115,7 @@ const Medications: FC = () => {
    </div>
 
    <CreatePrescModal modal={open} toggle={toggle} submitHandler={handleAddMed} />
-   <PreviewModal modal={preview} toggle={togglePreview} />
+   <PreviewModal modal={preview} toggle={togglePreview} medications={state.medicaments} />
   </div>
  )
 }

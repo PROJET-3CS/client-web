@@ -17,6 +17,7 @@ const SecondaryInput: FC<InputProps & Props> = ({
  onChange,
  changeTextArea,
  className,
+ required
 }) => {
  return (
   <div className={`Secondary__form-subgroup ${className}`}>
@@ -30,6 +31,7 @@ const SecondaryInput: FC<InputProps & Props> = ({
      rows={4}
      cols={50}
      onChange={changeTextArea}
+     required={required}
     />
    ) : (
     <input
@@ -41,6 +43,7 @@ const SecondaryInput: FC<InputProps & Props> = ({
      name={name}
      placeholder={placeholder}
      onChange={onChange}
+     required={required}
     />
    )}
   </div>

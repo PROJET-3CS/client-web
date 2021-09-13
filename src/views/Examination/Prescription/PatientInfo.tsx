@@ -10,7 +10,7 @@ interface Props {
 const PatientInfo: FC<Props> = ({ patient, folder }) => {
  return (
   <div className="prescription__patientInfo">
-   <h3>Patient Info</h3>
+   <h3 className="prescription__title">Patient Info</h3>
    <div className="prescription__patientInfo-container">
     <div className="folder__item">
      <img alt="user pic" className="folder__item-img" src="/img/userRect.png" />

@@ -2015,6 +2015,10 @@
 // Prescriptions
 
 .prescription {
+ &__title {
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+ }
  &__container {
   display: flex;
   gap: 3rem;
@@ -2151,5 +2155,22 @@
 
  &__actions {
   text-align: right;
+ }
+
+ &__empty {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+
+  &-img {
+   width: 30rem;
+  }
+
+  &-txt {
+   font-size: 2rem;
+   color: $color-grey-dark-3;
+  }
  }
 }

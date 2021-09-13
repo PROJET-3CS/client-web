@@ -114,6 +114,15 @@ const CreatePrescModal: FC<Props & ModalProps> = ({ modal, toggle, submitHandler
    qnt: state.qnt,
    qntType: state.qntType,
   })
+
+  setState({
+   ...state,
+   nomCommercial: '',
+   type: '',
+   foisParJours: '',
+   qnt: '',
+   qntType: '',
+  })
  }
 
  // ===========================================================================
@@ -151,6 +160,7 @@ const CreatePrescModal: FC<Props & ModalProps> = ({ modal, toggle, submitHandler
          options={state.medicaments}
          getValue={handleSelectMedicament}
          defaultValue={state.nomCommercial}
+         required
         />
        </FormGroup>
        <FormGroup className="newappointment__resultmodal-formgroup">
@@ -164,6 +174,7 @@ const CreatePrescModal: FC<Props & ModalProps> = ({ modal, toggle, submitHandler
            options={state.medTypes}
            getValue={handleSelectPosologie}
            defaultValue={state.type}
+           required
           />
          </Col>
          <Col>
@@ -175,6 +186,7 @@ const CreatePrescModal: FC<Props & ModalProps> = ({ modal, toggle, submitHandler
            placeholder="/jour"
            type="number"
            label="Fois par jours"
+           required
           />
          </Col>
         </Row>
@@ -191,6 +203,7 @@ const CreatePrescModal: FC<Props & ModalProps> = ({ modal, toggle, submitHandler
            placeholder="ex. 3"
            type="number"
            label="Nombre"
+           required
           />
          </Col>
          <Col>
@@ -201,6 +214,7 @@ const CreatePrescModal: FC<Props & ModalProps> = ({ modal, toggle, submitHandler
            options={qspOptions}
            getValue={handleSelectQntType}
            defaultValue={state.qntType}
+           required
           />
          </Col>
         </Row>

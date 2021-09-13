@@ -1,8 +1,31 @@
 /* eslint-disable max-lines */
 import React, { FC } from 'react'
+import moment from 'moment'
 import { Document, Page, Text, View, StyleSheet, PDFViewer } from '@react-pdf/renderer'
+import { Medicament, User } from '../../../helpers/types'
 
-const PrescriptionOverview: FC = () => {
+interface Props {
+ medications: Medicament[]
+ patient: User
+ medecin: User
+}
+
+const PrescriptionOverview: FC<Props> = ({ medications, patient, medecin }) => {
+ const calculateAge = (date: string | Date) => {
+  const birthDate = new Date(date)
+  const otherDate = new Date()
+
+  let years = otherDate.getFullYear() - birthDate.getFullYear()
+
+  if (
+   otherDate.getMonth() < birthDate.getMonth() ||
+   (otherDate.getMonth() === birthDate.getMonth() && otherDate.getDate() < birthDate.getDate())
+  ) {
+   years -= years
+  }
+
+  return years
+ }
  // Create styles
  const styles = StyleSheet.create({
   page: {
@@ -26,6 +49,14 @@ const PrescriptionOverview: FC = () => {
    justifyContent: 'space-between',
    marginBottom: '40',
    width: '100%',
+  },
+
+  infoTitle: {
+   fontWeight: 'ultrabold',
+  },
+  infoValue: {
+   fontSize: '13',
+   fontWeight: 'light',
   },
 
   subHeader: {
@@ -86,14 +117,25 @@ const PrescriptionOverview: FC = () => {
      </View>
      <View style={styles.header}>
       <View>
-       <Text>Dr. Mahdaoui</Text>
+       <Text>Dr. {medecin.lastname}</Text>
        <Text>Médecin Généraliste</Text>
       </View>
       <View>
-       <Text>Le: 24/08/2021</Text>
-       <Text>Nom: Yacine</Text>
-       <Text>Prénom: Kharoubi</Text>
-       <Text>Age: 30 ans</Text>
+       <Text>
+        <Text style={styles.infoTitle}>Le:</Text>{' '}
+        <Text style={styles.infoValue}>{moment().format('l')}</Text>
+       </Text>
+       <Text>
+        <Text style={styles.infoTitle}>Nom:</Text>{' '}
+        <Text style={styles.infoValue}>{patient.firstname}</Text>
+       </Text>
+       <Text>
+        <Text style={styles.infoTitle}>Prénom:</Text>{' '}
+        <Text style={styles.infoValue}>{patient.lastname}</Text>
+       </Text>
+       <Text>
+        <Text style={styles.infoTitle}>Age:</Text> <Text style={styles.infoValue}>{calculateAge(patient.birthDay)} ans</Text>
+       </Text>
       </View>
      </View>
      <View>
@@ -102,111 +144,29 @@ const PrescriptionOverview: FC = () => {
      {/* Global container */}
      <View style={styles.container}>
       {/* Item Container  */}
-      <View style={styles.item}>
-       {/* First side */}
-       <View style={styles.firstSide}>
-        <Text>N°1</Text>
-        <View style={styles.content}>
-         <Text>CORVASAL 2MG</Text>
-         <Text>1 Comprimé 2x /Jours</Text>
+      {medications.map((med, index) => {
+       return (
+        <View key={med.nomCommercial} style={styles.item}>
+         {/* First side */}
+         <View style={styles.firstSide}>
+          <Text>N°{index + 1}</Text>
+          <View style={styles.content}>
+           <Text>{med.nomCommercial}</Text>
+           <Text>
+            1 {med.type} {med.foisParJours}x /Jours
+           </Text>
+          </View>
+         </View>
+         {/* Second side */}
+         <View>
+          <Text>
+           {med.qnt} {med.qntType === 'qsp' ? 'QSP' : 'Boite(s)'}
+          </Text>
+         </View>
         </View>
-       </View>
-       {/* Second side */}
-       <View>
-        <Text>QSP</Text>
-        <Text>3 Mois</Text>
-       </View>
-      </View>
-      {/* END Item Container  */}
+       )
+      })}
 
-      {/* Item Container  */}
-      <View style={styles.item}>
-       {/* First side */}
-       <View style={styles.firstSide}>
-        <Text>N°2</Text>
-        <View style={styles.content}>
-         <Text>CORVASAL 2MG</Text>
-         <Text>1 Comprimé 2x /Jours</Text>
-        </View>
-       </View>
-       {/* Second side */}
-       <View>
-        <Text>QSP</Text>
-        <Text>3 Mois</Text>
-       </View>
-      </View>
-      {/* END Item Container  */}
-
-      {/* Item Container  */}
-      <View style={styles.item}>
-       {/* First side */}
-       <View style={styles.firstSide}>
-        <Text>N°3</Text>
-        <View style={styles.content}>
-         <Text>CORVASAL 2MG</Text>
-         <Text>1 Comprimé 2x /Jours</Text>
-        </View>
-       </View>
-       {/* Second side */}
-       <View>
-        <Text>QSP</Text>
-        <Text>3 Mois</Text>
-       </View>
-      </View>
-      {/* END Item Container  */}
-
-      {/* Item Container  */}
-      <View style={styles.item}>
-       {/* First side */}
-       <View style={styles.firstSide}>
-        <Text>N°4</Text>
-        <View style={styles.content}>
-         <Text>CORVASAL 2MG</Text>
-         <Text>1 Comprimé 2x /Jours</Text>
-        </View>
-       </View>
-       {/* Second side */}
-       <View>
-        <Text>QSP</Text>
-        <Text>3 Mois</Text>
-       </View>
-      </View>
-      {/* END Item Container  */}
-
-      {/* Item Container  */}
-      <View style={styles.item}>
-       {/* First side */}
-       <View style={styles.firstSide}>
-        <Text>N°5</Text>
-        <View style={styles.content}>
-         <Text>CORVASAL 2MG</Text>
-         <Text>1 Comprimé 2x /Jours</Text>
-        </View>
-       </View>
-       {/* Second side */}
-       <View>
-        <Text>QSP</Text>
-        <Text>3 Mois</Text>
-       </View>
-      </View>
-      {/* END Item Container  */}
-
-      {/* Item Container  */}
-      <View style={styles.item}>
-       {/* First side */}
-       <View style={styles.firstSide}>
-        <Text>N°6</Text>
-        <View style={styles.content}>
-         <Text>CORVASAL 2MG</Text>
-         <Text>1 Comprimé 2x /Jours</Text>
-        </View>
-       </View>
-       {/* Second side */}
-       <View>
-        <Text>QSP</Text>
-        <Text>3 Mois</Text>
-       </View>
-      </View>
       {/* END Item Container  */}
 
       {/* Signature */}

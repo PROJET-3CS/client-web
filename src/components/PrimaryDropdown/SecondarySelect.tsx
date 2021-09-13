@@ -16,6 +16,7 @@ const SecondarySelect: FC<InputProps & SelectProps> = ({
  defaultValue,
  getValue,
  placeholder = 'Select...',
+ required
 }) => {
  const formatOption = () => {
   if (defaultValue) {
@@ -58,6 +59,7 @@ const SecondarySelect: FC<InputProps & SelectProps> = ({
 
     getValue(value)
    }}
+   required={required}
   />
  )
 }

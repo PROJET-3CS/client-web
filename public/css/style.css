@@ -1537,6 +1537,10 @@ body {
   .pagination__active {
     background-color: aqua !important; }
 
+.prescription__title {
+  margin-top: 1rem;
+  margin-bottom: 1.5rem; }
+
 .prescription__container {
   display: flex;
   gap: 3rem;
@@ -1624,3 +1628,15 @@ body {
 
 .prescription__actions {
   text-align: right; }
+
+.prescription__empty {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem; }
+  .prescription__empty-img {
+    width: 30rem; }
+  .prescription__empty-txt {
+    font-size: 2rem;
+    color: #828282; }
