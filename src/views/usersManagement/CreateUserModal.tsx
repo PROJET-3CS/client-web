@@ -4,9 +4,10 @@ import { FC, useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { InputProps, Modal, ModalBody, FormGroup, Label, Alert, Spinner } from 'reactstrap'
 import AwesomeButton from '../../components/AwesomeButton/AwesomeButton'
-import PrimaryDropdown from '../../components/PrimaryDropdown/PrimaryDropdown'
+import PrimarySelect from '../../components/PrimaryDropdown/PrimarySelect'
 import SecondaryInput from '../../components/PrimaryInput/SecondaryInput'
-import { ReactChangeEvent, User } from '../../helpers/types'
+import { userTypes } from '../../helpers/db'
+import { OptionType, ReactChangeEvent, User } from '../../helpers/types'
 import { getUsersManagement } from '../../store/selectors'
 import { createUser } from '../../store/slices/usersManagement'
 
@@ -37,22 +38,40 @@ const CreateUserModal: FC<InputProps & Props> = ({ isOpen, toggle }) => {
   firstname: selectedUser.firstname ? selectedUser.firstname : '',
   lastname: selectedUser.lastname ? selectedUser.lastname : '',
   email: selectedUser.email ? selectedUser.email : '',
+  role: selectedUser.role ? selectedUser.role : '',
  }
 
  const [state, setState] = useState(initialState)
  const [open, setOpen] = useState(false)
-
- const handleChange = (event: ReactChangeEvent) => {
-  setState({ ...state, [event.target.name]: event.target.value })
- }
+ const [option, setOption] = useState<OptionType[]>([])
 
  // ===========================================================================
  // Handlers
  // ===========================================================================
 
+ const handleChange = (event: ReactChangeEvent) => {
+  setState({ ...state, [event.target.name]: event.target.value })
+ }
+
  const handleSubmit = () => {
   _createUser(state)
   //   toggle()
+ }
+
+ const handleSelectRole = (value: string) => {
+  setState({
+   ...state,
+   role: value,
+  })
+ }
+
+ const formatOptions = () => {
+  const roleArr: OptionType[] = []
+  userTypes.forEach((el) => {
+   roleArr.push({ value: String(el.id), label: el.role })
+  })
+
+  setOption(roleArr)
  }
 
  // ===========================================================================
@@ -62,6 +81,7 @@ const CreateUserModal: FC<InputProps & Props> = ({ isOpen, toggle }) => {
  const initialRender = useRef(true) // SOL from stackoverflow for excuting useEffect after the first renders
 
  useEffect(() => {
+  formatOptions()
   if (initialRender.current) {
    initialRender.current = false
   } else {
@@ -84,19 +104,15 @@ const CreateUserModal: FC<InputProps & Props> = ({ isOpen, toggle }) => {
    >
     <ModalBody className="newappointment__resultmodal-body">
      <div className="newappointment__resultmodal-header">
-      <p>Create Individual Appointment</p>
+      <p>Create new user</p>
       <FontAwesomeIcon onClick={toggle} icon={faWindowClose} color="primary" />
      </div>
      <Alert isOpen={open} className="clinity-alert" color={!error ? 'success' : 'danger'}>
-      {!error
-       ? '🎉 Medical folder data was successfuly updated !'
-       : '🤕 Sorry something went wrong !'}
+      {!error ? '🎉 User was successfuly created !' : '🤕 Sorry something went wrong !'}
      </Alert>
      <div>
       <FormGroup className="newappointment__resultmodal-formgroup">
-       <Label className="newappointment__resultmodal-formgroup--label">
-        enter patients Firstname
-       </Label>
+       <Label className="newappointment__resultmodal-formgroup--label">Firstname</Label>
        <SecondaryInput
         name="firstname"
         placeholder="Mohamed Yacine"
@@ -107,9 +123,7 @@ const CreateUserModal: FC<InputProps & Props> = ({ isOpen, toggle }) => {
        />
       </FormGroup>
       <FormGroup className="newappointment__resultmodal-formgroup">
-       <Label className="newappointment__resultmodal-formgroup--label">
-        enter patients lastname
-       </Label>
+       <Label className="newappointment__resultmodal-formgroup--label">Lastname</Label>
        <SecondaryInput
         name="lastname"
         placeholder="Abdelkader Kharroubi"
@@ -120,7 +134,7 @@ const CreateUserModal: FC<InputProps & Props> = ({ isOpen, toggle }) => {
        />
       </FormGroup>
       <FormGroup className="newappointment__resultmodal-formgroup">
-       <Label className="newappointment__resultmodal-formgroup--label">enter patients mail</Label>
+       <Label className="newappointment__resultmodal-formgroup--label">Email</Label>
        <SecondaryInput
         name="email"
         placeholder="m.kharoubi@esi-sba.dz"
@@ -131,10 +145,10 @@ const CreateUserModal: FC<InputProps & Props> = ({ isOpen, toggle }) => {
        />
       </FormGroup>
       <FormGroup className="newappointment__resultmodal-formgroup">
-       <PrimaryDropdown label="SELECT ROLE" placeholder="Select Role" name="role" />
+       <PrimarySelect options={option} getValue={handleSelectRole} label='Select role' defaultValue={String(selectedUser.role)} />
       </FormGroup>
       <AwesomeButton onClick={handleSubmit}>
-       {loading ? <Spinner animation="border" /> : 'Create Appointment'}
+       {loading ? <Spinner animation="border" /> : 'Create user'}
       </AwesomeButton>
      </div>
     </ModalBody>

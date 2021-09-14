@@ -1,4 +1,4 @@
-import { FC, useEffect } from 'react'
+import { FC, useEffect, useState } from 'react'
 import { FormGroup } from 'reactstrap'
 import { useParams } from 'react-router'
 import { useDispatch, useSelector } from 'react-redux'
@@ -32,6 +32,9 @@ const EditMedicalFolder: FC = () => {
  // ===========================================================================
  // State
  // ===========================================================================
+ const [open, setOpen] = useState(1)
+
+ const toggle = (number: number) => {return setOpen(number)}
 
  // ===========================================================================
  // Handlers
@@ -52,11 +55,11 @@ const EditMedicalFolder: FC = () => {
      <p className="editfolder-heading--title">Edit Medical Folder</p>
     </div>
 
-    <InfoGeneral patient={patient} />
+    <InfoGeneral patient={patient} isOpen={open} toggle={toggle} />
 
-    <InfoMedical folder={folder} />
+    <InfoMedical folder={folder} isOpen={open} toggle={toggle} />
 
-    <Antecedent folder={folder} />
+    <Antecedent folder={folder} isOpen={open} toggle={toggle} />
    </FormGroup>
   </Layout>
  )

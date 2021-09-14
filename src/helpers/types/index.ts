@@ -74,11 +74,13 @@ export interface InfoGeneralType {
  firstname: string
  lastname: string
  gender: string
- adress: string
+ address: string
  birthDay: string
  birthPlace: string
  situation: string
  speciality: string
+ promo: number
+ groupe: number
 }
 
 export interface InfoMedicalType {

@@ -4,10 +4,11 @@ import './Collapses.scss'
 
 interface InputProps {
  title: ComponentProps<typeof Input>['name']
+ isOpen: boolean
+ toggleCollapse: () => void
 }
 
-const Collapses: FC<InputProps> = ({ title, children }) => {
- const [collapse, setCollapse] = useState(false)
+const Collapses: FC<InputProps> = ({ title, children, isOpen, toggleCollapse }) => {
  const [, setStatus] = useState('Closed')
 
  const onEntering = () => {
@@ -23,7 +24,7 @@ const Collapses: FC<InputProps> = ({ title, children }) => {
   setStatus('Closed')
  }
  const toggle = () => {
-  setCollapse(!collapse)
+  toggleCollapse()
  }
 
  return (
@@ -32,7 +33,7 @@ const Collapses: FC<InputProps> = ({ title, children }) => {
     <p>{title}</p>
    </Card>
    <Collapse
-    isOpen={collapse}
+    isOpen={isOpen}
     onEntering={onEntering}
     onEntered={onEntered}
     onExiting={onExiting}

@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { FC, useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -9,13 +10,14 @@ import { useHistory } from 'react-router'
 import Layout from '../layouts/Layout'
 import OverviewCard from '../../components/OverviewCard'
 import Header from '../../components/Header'
-import AwesomeButton from '../../components/AwesomeButton/AwesomeButton'
 import AwesomeTableNew from '../../components/AwesomeTable/AwesomeTableNew'
 import CreateUserModal from './CreateUserModal'
 import { fetchUsers } from '../../store/slices/usersManagement'
 import { getUsersManagement } from '../../store/selectors'
 import { User } from '../../helpers/types'
 import ArchiveUserModal from './ArchiveUserModal'
+import { getRole } from '../../helpers/api'
+import AwesomeButtonIcon from '../../components/AwesomeButton/AwesomeButtonIcon'
 
 const UsersManagement: FC = () => {
  // ===========================================================================
@@ -74,6 +76,10 @@ const UsersManagement: FC = () => {
  // Table properties
  // ===========================================================================
 
+ const displayRole = (item: User) => {
+  return getRole(item.role)
+ }
+
  const displayNameWithAvatar = (item: User) => {
   const { firstname, lastname } = item
 
@@ -93,24 +99,39 @@ const UsersManagement: FC = () => {
 
   return (
    <>
-    <Dropdown isOpen={dropdownOpen} toggle={toggleDropdown}>
+    <Dropdown isOpen={dropdownOpen} toggle={toggleDropdown} direction="left">
      <DropdownToggle tag="span" data-toggle="dropdown">
       <FontAwesomeIcon icon={faEllipsisH} />
      </DropdownToggle>
      <DropdownMenu>
       <DropdownItem
        onClick={() => {
-        toggleArchive(item)
-       }}
-      >
-       Archive
-      </DropdownItem>
-      <DropdownItem
-       onClick={() => {
         history.push(`/folder/${item.id}`)
        }}
       >
-       View profile
+       Consulter
+      </DropdownItem>
+      <DropdownItem
+       onClick={() => {
+        history.push(`/folder/${item.id}/edit`)
+       }}
+      >
+       Modifier dossier
+      </DropdownItem>
+      <DropdownItem
+       onClick={() => {
+        toggleArchive(item)
+        toggleDropdown()
+       }}
+      >
+       Archive dossier
+      </DropdownItem>
+      <DropdownItem
+       onClick={() => {
+        history.push(`/examination/${item.id}/interrogation`)
+       }}
+      >
+       Céer Examination
       </DropdownItem>
      </DropdownMenu>
     </Dropdown>
@@ -123,7 +144,7 @@ const UsersManagement: FC = () => {
    name: 'Name',
    action: displayNameWithAvatar,
   },
-  { name: 'Role', path: 'role' },
+  { name: 'Role', action: displayRole },
   { name: 'Year', path: 'year' },
   { name: 'N°Group', path: 'group' },
   { name: 'Status', path: 'status' },
@@ -171,9 +192,12 @@ const UsersManagement: FC = () => {
     <div className="users-list">
      <div className="users-list__header">
       <h2 className="main-heading">Users list</h2>
-      <AwesomeButton className="users-list__button" onClick={toggle}>
-       <FontAwesomeIcon icon={faPlus} /> Create New User
-      </AwesomeButton>
+      <AwesomeButtonIcon
+       text="Create new user"
+       icon={faPlus}
+       className="users-list__button"
+       onClick={toggle}
+      />
      </div>
      <div className="users-list__table">
       <AwesomeTableNew

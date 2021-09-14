@@ -203,6 +203,7 @@ function* _createUser() {
    }
   )
   if (data.status === 'success') {
+   yield call(getUsers)
    yield put(createUserSuccess())
   } else {
    yield put(createUserError())
@@ -270,23 +271,17 @@ function* _addAntecedent() {
 
 function* _updatePatient() {
  try {
-  //   const USER_TOKEN = getToken()
-  //   const authToken = `Bearer ${USER_TOKEN}`
+  const USER_TOKEN = getToken()
+  const authToken = `Bearer ${USER_TOKEN}`
 
   const { infoGeneral, patient } = yield select(getFolder)
-  const updatedUser = { ...patient, ...infoGeneral }
-  //   const { data } = yield axios.post(`/users/${patient.id}`, updatedUser, {
-  //    headers: { Authorization: authToken },
-  //   })
-
-  // this should be removed later
-  const data = {
-   status: 'success',
-   body: updatedUser,
-  }
+  const userUpdated = { ...patient, ...infoGeneral }
+  const { data } = yield axios.post(`/users/update/${patient.id}`, userUpdated, {
+   headers: { Authorization: authToken },
+  })
 
   if (data.status === 'success') {
-   yield put(updatePatientSuccess(data.body))
+   yield put(updatePatientSuccess(data.body.user))
   } else {
    yield put(updatePatientError())
   }
@@ -461,7 +456,22 @@ function* _addExam() {
    headers: { Authorization: authToken },
   })
 
-  if (data.success === 'success') {
+  if (data.status === 'success') {
+   const presUrl = `/medical_exam/rescritpions/${patient.id}`
+
+   // eslint-disable-next-line no-restricted-syntax
+   for (const pres of prescription) {
+    const presPayload = {
+     doctorId: user.id,
+     medicalExamId: data.body.id,
+     medicaments: pres.medications,
+    }
+
+    yield axios.post(presUrl, presPayload, {
+     headers: { Authorization: authToken },
+    })
+   }
+
    yield put(addExamSuccess())
   } else {
    yield put(addExamError(data.body))

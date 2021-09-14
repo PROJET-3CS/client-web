@@ -1119,6 +1119,10 @@ body {
     font-size: 1.5rem;
     font-weight: 500;
     vertical-align: middle; }
+    .clinity__table table.table th:first-child {
+      width: 25%; }
+    .clinity__table table.table th:last-child {
+      width: 7%; }
   .clinity__table-header--icon {
     color: #5b63f6; }
   .clinity__table-header--setting {
@@ -1144,6 +1148,8 @@ body {
   .clinity__table .table-hover > tbody > tr:hover {
     background-color: #5b63f6;
     color: #ffffff; }
+    .clinity__table .table-hover > tbody > tr:hover .clinity__table-cell:last-child {
+      color: #ffffff; }
     .clinity__table .table-hover > tbody > tr:hover .clinity__table-cell--more {
       color: #ffffff;
       cursor: pointer; }
@@ -1158,6 +1164,16 @@ body {
     font-weight: 500;
     height: 5.5rem;
     border-radius: 0.5rem; }
+    .clinity__table table tr .clinity__table-cell:last-child {
+      cursor: pointer;
+      text-align: center;
+      color: rgba(91, 99, 246, 0.4); }
+    .clinity__table table tr .dropdown-item {
+      padding: 1rem 1.5rem;
+      font-weight: 500;
+      font-size: 1.3rem; }
+      .clinity__table table tr .dropdown-item:hover, .clinity__table table tr .dropdown-item:active {
+        background-color: rgba(91, 99, 246, 0.4); }
   .clinity__table table tr td {
     vertical-align: middle; }
 
@@ -1724,3 +1740,16 @@ body {
   .prescription__empty-txt {
     font-size: 1.5rem;
     color: #828282; }
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem; }
+  .pagination__active {
+    background-color: #5b63f6 !important;
+    color: #ffffff; }
+  .pagination li {
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid #828282; }

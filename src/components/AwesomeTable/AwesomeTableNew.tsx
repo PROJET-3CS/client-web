@@ -94,7 +94,7 @@ const AwesomeTableNew: React.FC<ITableWithPagination> = ({
  return (
   <>
    <div className="clinity__table">
-    <Table borderless responsive>
+    <Table borderless hover>
      <AwesomeTableHead tableHead={tableHead} />
      {tableBody && tableBody?.length > 0 && (
       <tbody className="clinity__table-body">

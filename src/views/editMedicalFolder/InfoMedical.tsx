@@ -11,9 +11,12 @@ import { updateInfoMedical } from '../../store/slices/folder'
 
 interface Props {
  folder: Folder | undefined
+ isOpen: number
+ // eslint-disable-next-line no-unused-vars
+ toggle: (number: number) => void
 }
 
-const InfoMedical: FC<Props> = ({ folder }) => {
+const InfoMedical: FC<Props> = ({ folder, isOpen, toggle }) => {
  // ===========================================================================
  // Selectors
  // ===========================================================================
@@ -86,7 +89,7 @@ const InfoMedical: FC<Props> = ({ folder }) => {
  }, [infoMedical])
 
  return (
-  <Collapses title="Informations Médicales">
+  <Collapses title="Informations Médicales" isOpen={isOpen === 2} toggleCollapse={() => {return toggle(2)}}>
    <Col className="editfolder__collapse-card--col">
     <Alert isOpen={open} className="clinity-alert" color={!error ? 'success' : 'danger'}>
      {!error

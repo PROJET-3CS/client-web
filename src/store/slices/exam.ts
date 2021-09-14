@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import moment from 'moment'
 
 import {
  ExamState,
@@ -18,7 +19,7 @@ export const initialState: ExamState = {
  infoCondition: { fever: 0, pulsation: 0, pressure: 0, weight: 0, state: '' },
  infoInterrogation: {
   reason: '',
-  startedAt: '',
+  startedAt: moment().format(),
   painPlace: '',
   intensity: 0,
   interrogationNote: '',

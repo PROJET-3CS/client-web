@@ -5,6 +5,7 @@ This File is for reusable API calls such as:
 PS: Keep it clean, only API calls
 */
 
+import { userTypes } from '../db'
 import { Appointment, AppointmentPayload } from '../types'
 
 export const getToken = (): string | null => {
@@ -74,4 +75,17 @@ export const TextAbstract = (text: string, length: number) => {
  res = res.substring(0, last)
 
  return `${res}...`
+}
+
+// eslint-disable-next-line
+export const getRole = (role: number) => {
+ if (role == null) {
+  return ''
+ }
+
+ const res = userTypes.find((el) => {
+  return el.id === role
+ })
+
+ return `${res?.role}`
 }

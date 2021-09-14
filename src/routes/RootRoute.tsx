@@ -17,6 +17,7 @@ import RegistrationRequestsManagement from '../views/usersManagement/Registratio
 import Examination from '../views/Examination/Examination'
 import Prescription from '../views/Examination/Prescription/Prescription'
 import CreatePrescModal from '../views/Examination/Prescription/CreatePrescModal'
+import Examinations from '../views/Examination/Examinations'
 
 const Dashboard = React.lazy(() => import('../views/Dashboard'))
 const usersManagement = React.lazy(() => import('../views/usersManagement/UsersManagement'))
@@ -40,6 +41,7 @@ const RootRoute: FC = () => {
      <Route path="/addpresc" component={CreatePrescModal} exact />
 
      <PrivateRoute path="/examination/:id" component={Examination} />
+     <PrivateRoute path="/examinations" component={Examinations} />
      <PrivateRoute path="/prescription/:id" component={Prescription} />
      <PrivateRoute path="/dashboard" component={Dashboard} exact />
      <PrivateRoute path="/users_management" component={usersManagement} exact />

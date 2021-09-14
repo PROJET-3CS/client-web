@@ -48,7 +48,7 @@ const MedicalInfo: FC<Props> = ({ folder, patient }) => {
    </div>
    <div className="folder__item-info">
     <span className="folder__item-info--title">Height:</span>
-    <span className="folder__item-info--value">{folder?.tall}</span>
+    <span className="folder__item-info--value">{folder?.tall ? `${folder.tall} cm` : ''} </span>
    </div>
    <div className="folder__item-info">
     <span className="folder__item-info--title">Weight:</span>

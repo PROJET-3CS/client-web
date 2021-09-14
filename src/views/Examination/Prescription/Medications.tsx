@@ -33,7 +33,7 @@ const Medications: FC = () => {
  const _addPrescription = (payload: MedicationType[]) => {
   dispatch(
    addPrescription({
-    date: new Date (),
+    date: moment().format(),
     medications: payload,
    })
   )
@@ -119,7 +119,7 @@ const Medications: FC = () => {
         </div>
        </li>
       ) : (
-       <li className="prescription__medications-list--item">
+       <li key={med.nomCommercial} className="prescription__medications-list--item">
         <div className="prescription__medications-content">
          <div className="prescription__medications-icon--container prescription__medications-icon--container--pills">
           <FontAwesomeIcon

@@ -1387,6 +1387,14 @@
    font-size: 1.5rem;
    font-weight: 500;
    vertical-align: middle;
+
+   &:first-child {
+    width: 25%;
+   }
+
+   &:last-child {
+    width: 7%;
+   }
   }
 
   &-header--icon {
@@ -1425,6 +1433,9 @@
   & .table-hover > tbody > tr:hover {
    background-color: $color-primary;
    color: $color-white;
+   & .clinity__table-cell:last-child {
+    color: $color-white;
+   }
 
    .clinity__table-cell--more {
     color: $color-white;
@@ -1446,6 +1457,23 @@
    font-weight: 500;
    height: 5.5rem;
    border-radius: 0.5rem;
+
+   & .clinity__table-cell:last-child {
+    cursor: pointer;
+    text-align: center;
+    color: rgba(91, 99, 246, 0.4);
+   }
+
+   & .dropdown-item {
+    padding: 1rem 1.5rem;
+    font-weight: 500;
+    font-size: 1.3rem;
+
+    &:hover,
+    &:active {
+     background-color: rgba(91, 99, 246, 0.4);
+    }
+   }
   }
 
   & table tr td {
@@ -2302,5 +2330,24 @@
    font-size: 1.5rem;
    color: $color-grey-dark-3;
   }
+ }
+}
+
+// PAGINATION
+.pagination {
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ font-size: 1.5rem;
+
+ &__active {
+  background-color: $color-primary !important;
+  color: $color-white;
+ }
+
+ & li {
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid $color-grey-dark-3;
  }
 }

@@ -11,9 +11,12 @@ import { updateInfoAntecedent } from '../../store/slices/folder'
 
 interface Props {
  folder: Folder | undefined
+ isOpen: number
+ // eslint-disable-next-line no-unused-vars
+ toggle: (number: number) => void
 }
 
-const Antecedent: FC<Props> = ({ folder }) => {
+const Antecedent: FC<Props> = ({ folder, isOpen, toggle }) => {
  // ===========================================================================
  // Selectors
  // ===========================================================================
@@ -84,7 +87,7 @@ const Antecedent: FC<Props> = ({ folder }) => {
  }, [antecedent])
 
  return (
-  <Collapses title="Antécédents Personnels">
+  <Collapses title="Antécédents Personnels" isOpen={isOpen === 3} toggleCollapse={() => {return toggle(3)}}>
    <Col className="editfolder__collapse-card--col">
     <Alert isOpen={open} className="clinity-alert" color={!error ? 'success' : 'danger'}>
      {!error
