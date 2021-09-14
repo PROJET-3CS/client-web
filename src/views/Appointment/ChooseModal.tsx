@@ -1,5 +1,5 @@
 import React, { FC, ReactEventHandler } from 'react'
-import { faUser, faUsers, faWindowClose } from '@fortawesome/free-solid-svg-icons'
+import { faWindowClose } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Modal, ModalBody } from 'reactstrap'
 import { InputProps } from '../../helpers/types'
@@ -11,7 +11,7 @@ interface Props extends InputProps {
  toggleTwo: ReactEventHandler
 }
 
-const ChooseModal: FC<Props> = ({ modal, toggle, toggleOne, toggleTwo }) => {
+const ChooseModal: FC<Props> = ({ modal, toggle, toggleOne }) => {
  return (
   <Modal
    isOpen={modal}
@@ -27,14 +27,26 @@ const ChooseModal: FC<Props> = ({ modal, toggle, toggleOne, toggleTwo }) => {
     </div>
     <div className="newappointment__select-main">
      <button onClick={toggleOne} type="button" className="newappointment__select-box">
-      <img className="newappointment__select-img1" src="/img/IndRDV.svg" alt="Idividual appointment illustration" />
+      <img
+       className="newappointment__select-img1"
+       src="/img/IndRDV.svg"
+       alt="Idividual appointment illustration"
+      />
       <span className="newappointment__select-title">RDV Individuel</span>
-      <span className="newappointment__select-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
+      <span className="newappointment__select-description">
+       Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      </span>
      </button>
      <button onClick={toggleOne} type="button" className="newappointment__select-box">
-      <img className="newappointment__select-img2" src="/img/CollRDV.svg" alt="Collectif appointment illustration" />
+      <img
+       className="newappointment__select-img2"
+       src="/img/CollRDV.svg"
+       alt="Collectif appointment illustration"
+      />
       <span className="newappointment__select-title">RDV Collectif</span>
-      <span className="newappointment__select-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
+      <span className="newappointment__select-description">
+       Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      </span>
      </button>
     </div>
    </ModalBody>

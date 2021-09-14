@@ -1213,6 +1213,16 @@
     letter-spacing: 0.12rem;
    }
   }
+
+  &-buttonscontainer{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+  }
+
+  &-buttons{
+      width: 22rem;
+  }
  }
 }
 

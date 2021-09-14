@@ -1013,6 +1013,14 @@ body {
     margin-bottom: 1rem;
     letter-spacing: 0.12rem; }
 
+.newappointment__resultmodal-buttonscontainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between; }
+
+.newappointment__resultmodal-buttons {
+  width: 22rem; }
+
 .user_confirmation {
   height: 100vh;
   display: flex;
