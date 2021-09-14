@@ -4,6 +4,9 @@ import { faFileAlt } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { InputProps } from 'reactstrap'
 import moment from 'moment'
+import 'moment/locale/fr'
+
+moment.locale('fr')
 
 interface Props extends InputProps {
  title: string

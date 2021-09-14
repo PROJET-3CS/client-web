@@ -1,17 +1,12 @@
 import { ChangeEvent, FC, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useHistory } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { Card, Col, Form, FormGroup, Label, Row } from 'reactstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheck, faFileAlt, faTrash } from '@fortawesome/free-solid-svg-icons'
 
 import { updateInfoConclusion } from '../../../store/slices/exam'
 import { getExam } from '../../../store/selectors'
-
-import Header from '../../../components/Header'
-import AwesomeButtonIcon from '../../../components/AwesomeButton/AwesomeButtonIcon'
-import FileUpload from '../../../components/ExaminationComponents/FileUpload'
-import OtherFilesBox from '../../../components/ExaminationComponents/OtherFilesBox'
 import {
  infoConclusionType,
  ReactChangeEvent,
@@ -19,16 +14,23 @@ import {
  File,
 } from '../../../helpers/types'
 
+import Header from '../../../components/Header'
+import AwesomeButtonIcon from '../../../components/AwesomeButton/AwesomeButtonIcon'
+import FileUpload from '../../../components/ExaminationComponents/FileUpload'
+import OtherFilesBox from '../../../components/ExaminationComponents/OtherFilesBox'
+import UploadedFiles from './UploadedFiles'
+import AwesomeSuccess from '../../../components/AwesomeModal/AwesomeSuccess'
+
 const ExaminationConclusion: FC = () => {
  // ===========================================================================
  // Selectors
  // ===========================================================================
- const { infoConclusion } = useSelector(getExam)
+ const { infoConclusion, prescription } = useSelector(getExam)
 
  // ===========================================================================
  // Dispatch
  // ==========================================================================
- const history = useHistory()
+ const { id } = useParams<{ id: string }>()
  const dispatch = useDispatch()
 
  const _updateInfoConclusion = (payload: infoConclusionType) => {
@@ -45,10 +47,15 @@ const ExaminationConclusion: FC = () => {
  const [state, setState] = useState(initState)
 
  const [icon, setIcon] = useState(true)
+ const [success, setSuccess] = useState(false)
 
  // ===========================================================================
  // Handlers
  // ===========================================================================
+ const toggleSuccess = () => {
+  setSuccess(!success)
+ }
+
  const handleChange = (e: ReactChangeEvent | ChangeEvent<HTMLTextAreaElement>) => {
   setState({
    ...state,
@@ -73,7 +80,7 @@ const ExaminationConclusion: FC = () => {
  const submitInfoConclusion = (e: ReactSubmitEvent) => {
   e.preventDefault()
   _updateInfoConclusion(state)
-  history.push('/examination/conclusion')
+  toggleSuccess()
  }
 
  // ===========================================================================
@@ -152,21 +159,31 @@ const ExaminationConclusion: FC = () => {
       nibh amet. Placerat pellentesque maecenas sollicitudin lacinia commodo, luctus. A eu magna
       augue aenean.
      </p>
-     <Col className="createExamination__PatInterro-card--col">
+     <div className="createExamination__PatInterro-card--col createExamination__conclusion-fileContainer">
       <OtherFilesBox
        title="Create prescription"
        description="You can add import an existing one or create new one"
        image="/img/prescription.svg"
       />
       <OtherFilesBox
-       title="Create prescription"
+       title="Create Certificate"
        description="You can add import an existing one or create new one"
        image="/img/medical_certificate.svg"
       />
-     </Col>
+     </div>
+     {prescription.length >= 1 ? <UploadedFiles /> : ''}
     </Card>
-    <AwesomeButtonIcon icon="check" text="Save Changes" />
+    <AwesomeButtonIcon icon="check" text="Finish Examination" />
    </Form>
+   <AwesomeSuccess
+    modal={success}
+    toggle={toggleSuccess}
+    title="Examination created"
+    text="The examination have been succefully created, you can still check it."
+    imgPath="/img/completed.svg"
+    actionPath={`/folder/${id}`}
+    actionTxt="Check examinations"
+   />
   </>
  )
 }

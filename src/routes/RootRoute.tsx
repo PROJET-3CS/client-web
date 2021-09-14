@@ -39,8 +39,8 @@ const RootRoute: FC = () => {
      <Route path="/confirmation2" component={EmailConfirmation} exact />
      <Route path="/addpresc" component={CreatePrescModal} exact />
 
-     <PrivateRoute path="/examination" component={Examination} />
-     <PrivateRoute path="/prescription" component={Prescription} />
+     <PrivateRoute path="/examination/:id" component={Examination} />
+     <PrivateRoute path="/prescription/:id" component={Prescription} />
      <PrivateRoute path="/dashboard" component={Dashboard} exact />
      <PrivateRoute path="/users_management" component={usersManagement} exact />
      <PrivateRoute path="/registration_requests" component={RegistrationRequestsManagement} exact />

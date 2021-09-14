@@ -12,6 +12,9 @@ import { AntecedentDetail, ModalProps } from '../../../helpers/types'
 import AntecedItem from '../../../components/Antecedent/AntecedItem'
 import AwesomeButtonIcon from '../../../components/AwesomeButton/AwesomeButtonIcon'
 import AwesomeModal from '../../../components/AwesomeModal/AwesomeModal'
+import 'moment/locale/fr'
+
+moment.locale('fr')
 
 interface Props {
  // eslint-disable-next-line no-unused-vars

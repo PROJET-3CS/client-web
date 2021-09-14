@@ -12,6 +12,7 @@ import Examination from './Examination'
 
 import { getFolder } from '../../store/selectors'
 import { syncFolder } from '../../store/slices/folder'
+import AwesomeButtonIcon from '../../components/AwesomeButton/AwesomeButtonIcon'
 
 const medicalFolder: FC = () => {
  // ===========================================================================
@@ -54,7 +55,10 @@ const medicalFolder: FC = () => {
  return (
   <Layout>
    <Header />
-   <h2 className="main-heading">Medical Folder</h2>
+   <div className="folder-main-heading">
+    <h2 className="main-heading">Medical Folder</h2>
+    <AwesomeButtonIcon icon="plus" text="Add Document"/>
+   </div>
    <div className="folder-container">
     <div className="folder__item">
      <img alt="user pic" className="folder__item-img" src="/img/userRect.png" />

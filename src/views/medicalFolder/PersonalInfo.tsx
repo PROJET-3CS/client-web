@@ -1,13 +1,22 @@
-import React, { FC } from 'react'
+import React, { FC, useState } from 'react'
+import { Tooltip } from 'reactstrap'
 import moment from 'moment'
 
 import { User } from '../../helpers/types'
+import 'moment/locale/fr'
+import { TextAbstract } from '../../helpers/api'
+
+moment.locale('fr')
 
 interface Props {
  patient: User | undefined
 }
 
 const PersonalInfo: FC<Props> = ({ patient }) => {
+ const [tooltipOpen, setTooltipOpen] = useState(false)
+
+ const toggle = () => {return setTooltipOpen(!tooltipOpen)}
+
  return (
   <div className="folder__item">
    <div className="folder__item-content">
@@ -23,9 +32,12 @@ const PersonalInfo: FC<Props> = ({ patient }) => {
     <span className="folder__item-content--value">{patient?.firstname}</span>
    </div>
 
-   <div className="folder__item-content">
+   <div className="folder__item-content" id="address">
     <span className="folder__item-content--title">Address</span>
-    <span className="folder__item-content--value">{patient?.adress}</span>
+    <span className="folder__item-content--value">{TextAbstract(patient?.address, 24)}</span>
+    <Tooltip placement="bottom" isOpen={tooltipOpen} target="address" toggle={toggle}>
+     {patient?.address}
+    </Tooltip>
    </div>
    <div className="folder__item-content">
     <span className="folder__item-content--title">Né le</span>

@@ -1,12 +1,26 @@
 import React, { FC } from 'react'
+import { useSelector } from 'react-redux'
+import { useHistory } from 'react-router-dom'
 
 import { Table } from 'reactstrap'
+import { getFolder } from '../../store/selectors'
 
 const Examination: FC = () => {
+ const history = useHistory()
+ // ===========================================================================
+ // Selectors
+ // ===========================================================================
+
+ const { patient } = useSelector(getFolder)
+
+ const handleRedirect = () => {
+  history.push(`/examination/${patient.id}/interrogation`)
+ }
+
  return (
   <div className="folder__item">
    <h3 className="folder__item-title">Examinations Medicales:</h3>
-   <button type="button" className="folder__item-exam--btn">
+   <button onClick={handleRedirect} type="button" className="folder__item-exam--btn">
     + New Examination
    </button>
    <div className="folder__item-exam--table">

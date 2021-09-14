@@ -143,9 +143,9 @@ export interface infoConditionType {
 export interface infoInterrogationType {
  reason: string
  startedAt: Date | string
- where: string
+ painPlace: string
  intensity: number
- note: string
+ interrogationNote: string
 }
 
 export interface infoDiagnosticType {
@@ -153,12 +153,25 @@ export interface infoDiagnosticType {
  auscultation: string
  percussion: string
  palpation: string
- note: string
+ diagnosticNote: string
 }
 
 export interface infoConclusionType {
  conclusion: string
  file: File | undefined
+}
+
+export interface MedicationType {
+ nomCommercial: string
+ type: string
+ foisParJours: number | string
+ qnt: number | string
+ qntType: number | string
+}
+
+export interface PrescriptionType {
+ date: Date | string
+ medications: MedicationType[]
 }
 
 //  ==============================================================================
@@ -235,6 +248,7 @@ export interface ExamState {
  infoInterrogation: infoInterrogationType
  infoDiagnostic: infoDiagnosticType
  infoConclusion: infoConclusionType
+ prescription: PrescriptionType[]
 }
 
 export interface RootState {

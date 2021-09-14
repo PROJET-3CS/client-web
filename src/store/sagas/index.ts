@@ -28,7 +28,14 @@ import {
  addAntecedentSuccess,
  addAntecedent,
 } from '../slices/folder'
-import { getAuth, getFolder, getUsersManagement, getReset, getAppointment } from '../selectors'
+import {
+ getAuth,
+ getFolder,
+ getUsersManagement,
+ getReset,
+ getAppointment,
+ getExam,
+} from '../selectors'
 import { getToken, removeToken, setToken, mixAppointments, getUrlAnteced } from '../../helpers/api'
 import {
  fetchUsers,
@@ -67,6 +74,7 @@ import {
  syncAppointmentError,
  syncAppointment,
 } from '../slices/appointment'
+import { addExamError, addExamSuccess, updateInfoConclusion } from '../slices/exam'
 
 // Hit the Express endpoint to get the current user from the cookie
 
@@ -428,6 +436,41 @@ function* rejectRegistrationRequest() {
  }
 }
 
+function* _addExam() {
+ try {
+  const USER_TOKEN = getToken()
+  const authToken = `Bearer ${USER_TOKEN}`
+
+  const { infoCondition, infoDiagnostic, infoConclusion, infoInterrogation, prescription } =
+   yield select(getExam)
+  const { folder, patient } = yield select(getFolder)
+  const { user } = yield select(getAuth)
+  const payload = {
+   medicalFolderId: folder.id,
+   doctorId: user.id,
+   ...infoInterrogation,
+   startedAt: moment(infoInterrogation.startedAt).format(),
+   ...infoCondition,
+   ...infoDiagnostic,
+   ...infoConclusion,
+  }
+
+  const url = `/medical_exam/${patient.id}`
+
+  const { data } = yield axios.post(url, payload, {
+   headers: { Authorization: authToken },
+  })
+
+  if (data.success === 'success') {
+   yield put(addExamSuccess())
+  } else {
+   yield put(addExamError(data.body))
+  }
+ } catch (Err) {
+  yield put(addExamError('Sorry something went wrong !'))
+ }
+}
+
 // If any of these functions are dispatched, invoke the appropriate saga
 // eslint-disable-next-line
 function* rootSaga() {
@@ -448,9 +491,10 @@ function* rootSaga() {
   takeLatest(change.type, changePassword),
   takeLatest(active.type, activateAcc),
   takeLatest(createUser.type, _createUser),
-  takeLatest(fetchRegistrationRequests, loadRegistrationRequests),
-  takeLatest(acceptUser, acceptRegistrationRequest),
-  takeLatest(rejectUser, rejectRegistrationRequest),
+  takeLatest(fetchRegistrationRequests.type, loadRegistrationRequests),
+  takeLatest(acceptUser.type, acceptRegistrationRequest),
+  takeLatest(rejectUser.type, rejectRegistrationRequest),
+  takeLatest(updateInfoConclusion.type, _addExam),
  ])
 }
 

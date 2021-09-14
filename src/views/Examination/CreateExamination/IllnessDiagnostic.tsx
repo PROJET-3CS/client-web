@@ -1,7 +1,7 @@
 /* eslint-disable max-lines */
 import { ChangeEvent, FC, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useHistory } from 'react-router-dom'
+import { useHistory, useParams } from 'react-router-dom'
 import { Card, Col, Form, Row } from 'reactstrap'
 
 import { getExam } from '../../../store/selectors'
@@ -24,6 +24,7 @@ const IllnessDiagnostic: FC = () => {
  // ===========================================================================
  // Dispatch
  // ==========================================================================
+ const { id } = useParams<{ id: string }>()
  const history = useHistory()
  const dispatch = useDispatch()
 
@@ -38,7 +39,7 @@ const IllnessDiagnostic: FC = () => {
   auscultation: infoDiagnostic?.auscultation ? infoDiagnostic.auscultation : '',
   percussion: infoDiagnostic?.percussion ? infoDiagnostic.percussion : '',
   palpation: infoDiagnostic?.palpation ? infoDiagnostic.palpation : '',
-  note: infoDiagnostic?.note ? infoDiagnostic.note : '',
+  diagnosticNote: infoDiagnostic?.diagnosticNote ? infoDiagnostic.diagnosticNote : '',
  }
 
  const initPage = {
@@ -76,7 +77,7 @@ const IllnessDiagnostic: FC = () => {
  const submitInfoDiagnostic = (e: ReactSubmitEvent) => {
   e.preventDefault()
   _updateInfoDiagnostic(state)
-  history.push('/examination/conclusion')
+  history.push(`/examination/${id}/conclusion`)
  }
 
  // ===========================================================================
@@ -272,11 +273,11 @@ const IllnessDiagnostic: FC = () => {
      <Col className="createExamination__PatInterro-card--col">
       <Row md="1" className="createExamination__PatInterro-card--row">
        <textarea
-        id="note"
-        name="note"
+        id="diagnosticNote"
+        name="diagnosticNote"
         className="createExamination__PatInterro-card--textarea"
         placeholder="Enter all details..."
-        value={state.note}
+        value={state.diagnosticNote}
         onChange={handleChange}
         required
        />

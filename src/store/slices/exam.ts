@@ -7,6 +7,7 @@ import {
  infoConditionType,
  infoDiagnosticType,
  infoConclusionType,
+ PrescriptionType,
 } from '../../helpers/types'
 
 export const initialState: ExamState = {
@@ -18,21 +19,22 @@ export const initialState: ExamState = {
  infoInterrogation: {
   reason: '',
   startedAt: '',
-  where: '',
+  painPlace: '',
   intensity: 0,
-  note: '',
+  interrogationNote: '',
  },
  infoDiagnostic: {
   inspection: '',
   auscultation: '',
   percussion: '',
   palpation: '',
-  note: '',
+  diagnosticNote: '',
  },
  infoConclusion: {
   conclusion: '',
   file: undefined,
  },
+ prescription: [],
 }
 
 const examSlice = createSlice({
@@ -56,23 +58,65 @@ const examSlice = createSlice({
   },
 
   updateInfoInterrogation: (state, { payload }: PayloadAction<infoInterrogationType>) => {
-   state.loading = true
    state.infoInterrogation = payload
   },
 
   updateInfoCondition: (state, { payload }: PayloadAction<infoConditionType>) => {
-   state.loading = true
    state.infoCondition = payload
   },
 
   updateInfoDiagnostic: (state, { payload }: PayloadAction<infoDiagnosticType>) => {
-   state.loading = true
    state.infoDiagnostic = payload
   },
 
   updateInfoConclusion: (state, { payload }: PayloadAction<infoConclusionType>) => {
-   state.loading = true
    state.infoConclusion = payload
+  },
+
+  addPrescription: (state, { payload }: PayloadAction<PrescriptionType>) => {
+   state.prescription = [...state.prescription, payload]
+  },
+
+  removePrescription: (state, { payload }: PayloadAction<PrescriptionType>) => {
+   state.prescription = state.prescription.splice(state.prescription.indexOf(payload))
+  },
+
+  addExam: (state) => {
+   state.loading = true
+   state.error = false
+  },
+
+  addExamError: (state, { payload }: PayloadAction<string>) => {
+   state.loading = false
+   state.error = true
+   state.msg = payload
+  },
+
+  addExamSuccess: (state) => {
+   state.loading = false
+   state.exam = {}
+   state.infoCondition = { fever: 0, pulsation: 0, pressure: 0, weight: 0, state: '' }
+   state.infoInterrogation = {
+    reason: '',
+    startedAt: '',
+    painPlace: '',
+    intensity: 0,
+    interrogationNote: '',
+   }
+   state.infoDiagnostic = {
+    inspection: '',
+    auscultation: '',
+    percussion: '',
+    palpation: '',
+    diagnosticNote: '',
+   }
+   state.infoConclusion = {
+    conclusion: '',
+    file: undefined,
+   }
+   state.prescription = []
+   state.error = false
+   state.msg = 'Your appointment has been successfuly added '
   },
  },
 })
@@ -85,6 +129,11 @@ export const {
  updateInfoCondition,
  updateInfoDiagnostic,
  updateInfoConclusion,
+ addPrescription,
+ removePrescription,
+ addExam,
+ addExamError,
+ addExamSuccess
 } = examSlice.actions
 
 export default examSlice.reducer

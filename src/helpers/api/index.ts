@@ -59,3 +59,19 @@ export const getVPS = (number: number) => {
 
  return verbal
 }
+
+// eslint-disable-next-line
+export const TextAbstract = (text: string, length: number) => {
+ let res = text
+ if (res == null) {
+  return ''
+ }
+ if (res.length <= length) {
+  return res
+ }
+ res = res.substring(0, length)
+ const last = res.lastIndexOf(' ')
+ res = res.substring(0, last)
+
+ return `${res}...`
+}

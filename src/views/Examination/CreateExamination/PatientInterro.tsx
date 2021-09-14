@@ -1,6 +1,6 @@
 /* eslint-disable max-lines */
 import { ChangeEvent, FC, useState } from 'react'
-import { useHistory } from 'react-router-dom'
+import { useHistory, useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { Card, Col, Form, Row } from 'reactstrap'
 
@@ -23,6 +23,7 @@ const PatientInterro: FC = () => {
  // ===========================================================================
  // Dispatch
  // ==========================================================================
+ const { id } = useParams<{ id: string }>()
  const history = useHistory()
  const dispatch = useDispatch()
 
@@ -35,9 +36,9 @@ const PatientInterro: FC = () => {
  const initState: infoInterrogationType = {
   reason: infoInterrogation?.reason ? infoInterrogation.reason : '',
   startedAt: infoInterrogation?.startedAt ? infoInterrogation.startedAt : '',
-  where: infoInterrogation?.where ? infoInterrogation.where : '',
+  painPlace: infoInterrogation?.painPlace ? infoInterrogation.painPlace : '',
   intensity: infoInterrogation?.intensity ? infoInterrogation.intensity : 0,
-  note: infoInterrogation?.note ? infoInterrogation.note : '',
+  interrogationNote: infoInterrogation?.interrogationNote ? infoInterrogation.interrogationNote : '',
  }
 
  const [state, setState] = useState(initState)
@@ -81,14 +82,14 @@ const PatientInterro: FC = () => {
  const handleSelectWhere = (value: string) => {
   setState({
    ...state,
-   where: value,
+   painPlace: value,
   })
  }
 
  const submitInfoInterrogation = (e: ReactSubmitEvent) => {
   e.preventDefault()
   _updateInfoInterrogation(state)
-  history.push('/examination/condition')
+  history.push(`/examination/${id}/condition`)
  }
 
  // ===========================================================================
@@ -144,7 +145,7 @@ const PatientInterro: FC = () => {
        <PrimarySelect
         options={partOptions}
         getValue={handleSelectWhere}
-        defaultValue={state.where}
+        defaultValue={state.painPlace}
         name="pain-place"
         label="Where exactly"
         placeholder="Head"
@@ -181,12 +182,12 @@ const PatientInterro: FC = () => {
      <Row md="1" className="createExamination__PatInterro-card--row">
       <Col className="createExamination__PatInterro-card--col">
        <textarea
-        id="note"
+        id="interrogationNote"
         name="conclusion"
         className="createExamination__PatInterro-card--textarea"
         placeholder="Enter all details..."
         onChange={handleChange}
-        value={state.note}
+        value={state.interrogationNote}
         required
        />
       </Col>

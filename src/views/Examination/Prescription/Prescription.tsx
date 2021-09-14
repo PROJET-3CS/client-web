@@ -1,5 +1,6 @@
 import React, { FC, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import { useParams } from 'react-router-dom'
 import Header from '../../../components/Header'
 import { getFolder } from '../../../store/selectors'
 import { syncFolder } from '../../../store/slices/folder'
@@ -14,16 +15,15 @@ const Prescription: FC = () => {
 
  const { folder, patient } = useSelector(getFolder)
 
- //  const { id } = useParams<{ id: string }>()
-
  // ===========================================================================
  // Dispatch
  // ==========================================================================
 
+ const { id } = useParams<{ id: string }>()
  const dispatch = useDispatch()
 
  const _syncFolder = () => {
-  dispatch(syncFolder('1'))
+  dispatch(syncFolder(id))
  }
 
  // ===========================================================================

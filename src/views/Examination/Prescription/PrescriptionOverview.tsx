@@ -3,6 +3,9 @@ import React, { FC } from 'react'
 import moment from 'moment'
 import { Document, Page, Text, View, StyleSheet, PDFViewer } from '@react-pdf/renderer'
 import { Medicament, User } from '../../../helpers/types'
+import 'moment/locale/fr'
+
+moment.locale('fr')
 
 interface Props {
  medications: Medicament[]

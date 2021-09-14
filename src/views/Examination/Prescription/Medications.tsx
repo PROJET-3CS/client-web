@@ -1,4 +1,5 @@
 import React, { FC, useState } from 'react'
+import { useDispatch } from 'react-redux'
 import {
  faPrescriptionBottleAlt,
  faPills,
@@ -10,14 +11,37 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import moment from 'moment'
 import AwesomeButtonIcon from '../../../components/AwesomeButton/AwesomeButtonIcon'
 import CreatePrescModal from './CreatePrescModal'
-import { Medicament } from '../../../helpers/types'
+import { Medicament, MedicationType } from '../../../helpers/types'
 import PreviewModal from './PreviewModal'
+import { addPrescription } from '../../../store/slices/exam'
+import SuccessModal from '../../../components/AwesomeModal/SuccessModal'
+import 'moment/locale/fr'
+
+moment.locale('fr')
 
 interface medState {
  medicaments: Medicament[]
 }
 
 const Medications: FC = () => {
+ // ===========================================================================
+ // Dispatch
+ // ==========================================================================
+
+ const dispatch = useDispatch()
+
+ const _addPrescription = (payload: MedicationType[]) => {
+  dispatch(
+   addPrescription({
+    date: new Date (),
+    medications: payload,
+   })
+  )
+ }
+
+ // ===========================================================================
+ // State
+ // ===========================================================================
  const initState: medState = {
   medicaments: [],
  }
@@ -26,13 +50,21 @@ const Medications: FC = () => {
 
  const [open, setOpen] = useState(false)
  const [preview, setPreview] = useState(false)
+ const [success, setSuccess] = useState(false)
 
+ // ===========================================================================
+ // Handlers
+ // ===========================================================================
  const toggle = () => {
   setOpen(!open)
  }
 
  const togglePreview = () => {
   setPreview(!preview)
+ }
+
+ const toggleSuccess = () => {
+  setSuccess(!success)
  }
 
  const handleAddMed = (med: Medicament) => {
@@ -42,15 +74,22 @@ const Medications: FC = () => {
   })
  }
 
+ const submitPrescription = () => {
+  _addPrescription(state.medicaments)
+  toggleSuccess()
+ }
+
  return (
   <div className="prescription__medications">
    <h3 className="prescription__title">Medication</h3>
    <div className="prescription__medications-container">
     <ul className="prescription__medications-list">
      {state.medicaments?.length === 0 ? (
-      <div className='prescription__empty'>
-       <img className='prescription__empty-img' src="/img/empty.svg" alt="empty" />
-       <span className='prescription__empty-txt'>Hmm... Your prescription is empty!</span>
+      <div className="prescription__empty">
+       <img className="prescription__empty-img" src="/img/empty.svg" alt="empty" />
+       <span className="prescription__empty-txt">
+        Hmm... Add some medications to your prescription
+       </span>
       </div>
      ) : (
       ''
@@ -106,16 +145,28 @@ const Medications: FC = () => {
      })}
     </ul>
     <div className="prescription__medications-action">
-     <AwesomeButtonIcon icon={faEye} text="Preview Prescription" onClick={togglePreview} disabled={state.medicaments.length === 0} />
-     <AwesomeButtonIcon icon={faPlus} text="Add medication" onClick={toggle} />
+     <AwesomeButtonIcon
+      icon={faEye}
+      text="Preview Prescription"
+      onClick={togglePreview}
+      type="button"
+      disabled={state.medicaments.length === 0}
+     />
+     <AwesomeButtonIcon icon={faPlus} text="Add medication" type="button" onClick={toggle} />
     </div>
    </div>
    <div className="prescription__actions">
-    <AwesomeButtonIcon icon={faCheck} text="Save Prescription" />
+    <AwesomeButtonIcon
+     icon={faCheck}
+     text="Save Prescription"
+     disabled={state.medicaments.length === 0}
+     onClick={submitPrescription}
+    />
    </div>
 
    <CreatePrescModal modal={open} toggle={toggle} submitHandler={handleAddMed} />
    <PreviewModal modal={preview} toggle={togglePreview} medications={state.medicaments} />
+   <SuccessModal modal={success} toggle={toggleSuccess} />
   </div>
  )
 }

@@ -1,6 +1,6 @@
 import { FC, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useHistory } from 'react-router-dom'
+import { useHistory, useParams } from 'react-router-dom'
 import { Card, Col, Form, Row } from 'reactstrap'
 
 import { updateInfoCondition } from '../../../store/slices/exam'
@@ -22,6 +22,7 @@ const PatientCondition: FC = () => {
  // ===========================================================================
  // Dispatch
  // ==========================================================================
+ const { id } = useParams<{ id: string }>()
  const history = useHistory()
  const dispatch = useDispatch()
 
@@ -61,7 +62,7 @@ const PatientCondition: FC = () => {
  const submitInfoCondition = (e: ReactSubmitEvent) => {
   e.preventDefault()
   _updateInfoCondition(state)
-  history.push('/examination/diagnostic')
+  history.push(`/examination/${id}/diagnostic`)
  }
 
  // ===========================================================================
