@@ -1,5 +1,5 @@
 import React, { FC, ReactEventHandler } from 'react'
-import { faUser, faUsers } from '@fortawesome/free-solid-svg-icons'
+import { faWindowClose } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Modal, ModalBody } from 'reactstrap'
 import { InputProps } from '../../helpers/types'
@@ -11,7 +11,7 @@ interface Props extends InputProps {
  toggleTwo: ReactEventHandler
 }
 
-const ChooseModal: FC<Props> = ({ modal, toggle, toggleOne, toggleTwo }) => {
+const ChooseModal: FC<Props> = ({ modal, toggle, toggleOne }) => {
  return (
   <Modal
    isOpen={modal}
@@ -21,19 +21,32 @@ const ChooseModal: FC<Props> = ({ modal, toggle, toggleOne, toggleTwo }) => {
    className="newappointment__select"
   >
    <ModalBody className="newappointment__select-body">
-    <h3 className="newappointment__select-header">Select By</h3>
+    <div className="newappointment__resultmodal-header">
+     <p>Choose a category</p>
+     <FontAwesomeIcon onClick={toggle} icon={faWindowClose} color="primary" />
+    </div>
     <div className="newappointment__select-main">
      <button onClick={toggleOne} type="button" className="newappointment__select-box">
-      <i className="newappointment__select-icon">
-       <FontAwesomeIcon icon={faUser} />
-      </i>
-      <span className="newappointment__select-text">Individual</span>
+      <img
+       className="newappointment__select-img1"
+       src="/img/IndRDV.svg"
+       alt="Idividual appointment illustration"
+      />
+      <span className="newappointment__select-title">RDV Individuel</span>
+      <span className="newappointment__select-description">
+       Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      </span>
      </button>
-     <button onClick={toggleTwo} type="button" className="newappointment__select-box">
-      <i className="newappointment__select-icon">
-       <FontAwesomeIcon icon={faUsers} />
-      </i>
-      <span className="newappointment__select-text">Collectif</span>
+     <button onClick={toggleOne} type="button" className="newappointment__select-box">
+      <img
+       className="newappointment__select-img2"
+       src="/img/CollRDV.svg"
+       alt="Collectif appointment illustration"
+      />
+      <span className="newappointment__select-title">RDV Collectif</span>
+      <span className="newappointment__select-description">
+       Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      </span>
      </button>
     </div>
    </ModalBody>
