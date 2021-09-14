@@ -928,26 +928,34 @@ body {
 
 .newappointment__select-body {
   background-color: #f1f1fe;
-  padding: 2rem !important;
+  padding: 4rem 3rem !important;
   border-color: red; }
 
 .newappointment__select-main {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   gap: 2rem; }
+
+.newappointment__select-img1 {
+  width: 12rem;
+  margin-bottom: 1rem; }
+
+.newappointment__select-img2 {
+  width: 16rem;
+  margin-bottom: 1rem; }
 
 .newappointment__select-box {
   display: flex;
   gap: 1rem;
-  height: 15rem;
-  width: 16rem;
+  height: 26rem;
+  width: 20rem;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   font-size: 2.5rem;
-  background-color: rgba(91, 99, 246, 0.1);
+  background-color: #FFFFFF;
   padding: 2rem;
   cursor: pointer;
   border: none;
@@ -963,6 +971,14 @@ body {
   display: flex;
   justify-content: center;
   align-items: center; }
+
+.newappointment__select-title {
+  font-size: 1.7rem !important;
+  font-weight: 600; }
+
+.newappointment__select-description {
+  font-size: 1rem !important;
+  font-weight: 500; }
 
 .newappointment__resultmodal > .modal-content {
   border-radius: 1.5rem; }
@@ -983,7 +999,7 @@ body {
     border: none !important;
     margin-bottom: 0; }
   .newappointment__resultmodal-header svg {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     cursor: pointer; }
 
 .newappointment__resultmodal-formgroup {
