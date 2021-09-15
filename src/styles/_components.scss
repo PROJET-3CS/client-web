@@ -1129,16 +1129,15 @@
    gap: 2rem;
   }
 
-  &-img1{
-      width: 12rem;
-      margin-bottom: 1rem;
+  &-img1 {
+   width: 12rem;
+   margin-bottom: 1rem;
   }
 
-  &-img2{
-    width: 16rem;
-    margin-bottom: 1rem;
-
-}
+  &-img2 {
+   width: 16rem;
+   margin-bottom: 1rem;
+  }
 
   &-box {
    display: flex;
@@ -1149,7 +1148,7 @@
    justify-content: center;
    align-items: center;
    font-size: 2.5rem;
-   background-color: #FFFFFF;
+   background-color: #ffffff;
    padding: 2rem;
    cursor: pointer;
    border: none;
@@ -1173,15 +1172,15 @@
    align-items: center;
   }
 
-  &-title{
-      font-size: 1.7rem !important;
-      font-weight: 600;
+  &-title {
+   font-size: 1.7rem !important;
+   font-weight: 600;
   }
 
-  &-description{
-    font-size: 1rem !important;
-    font-weight: 500;
-}
+  &-description {
+   font-size: 1rem !important;
+   font-weight: 500;
+  }
  }
 
  &__resultmodal {
@@ -1227,14 +1226,14 @@
    }
   }
 
-  &-buttonscontainer{
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
+  &-buttonscontainer {
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
   }
 
-  &-buttons{
-      width: 22rem;
+  &-buttons {
+   width: 22rem;
   }
  }
 }
@@ -1408,6 +1407,7 @@
 .clinity {
  &__table {
   margin-top: 2rem;
+
   & table {
    border-collapse: separate;
    border-spacing: 0 1.3rem;
@@ -1461,6 +1461,29 @@
    }
   }
 
+  & .table-hover > tbody tr:not(:hover) {
+   & .clinity__table-badge {
+    border-radius: 0.7rem;
+    padding: 0.5rem 1.5rem;
+    text-transform: capitalize;
+
+    &--actif {
+     background-color: rgba(5, 205, 153, 0.1);
+     color: #05cd99;
+    }
+
+    &--pending {
+     background-color: rgba(241, 146, 62, 0.1);
+     color: $color-secondary;
+    }
+
+    &--archived {
+     background-color: rgba(221, 75, 57, 0.1);
+     color: $color-tertiary;
+    }
+   }
+  }
+
   & .table-hover > tbody > tr:hover {
    background-color: $color-primary;
    color: $color-white;
@@ -1471,6 +1494,10 @@
    .clinity__table-cell--more {
     color: $color-white;
     cursor: pointer;
+   }
+
+   & .clinity__table-badge {
+       text-transform: capitalize;
    }
   }
 
@@ -1578,6 +1605,14 @@
    line-height: 65%;
    letter-spacing: 0.02em;
    color: #000000;
+
+   & span {
+    font-weight: 600;
+    font-size: 3rem;
+    line-height: 65%;
+    letter-spacing: 0.02em;
+    color: #000000;
+   }
   }
   & span {
    font-size: 1.3rem;
@@ -2380,5 +2415,11 @@
   padding: 0.5rem 1rem;
   border-radius: 0.5rem;
   border: 1px solid $color-grey-dark-3;
+
+  &:hover:not(.pagination__active),
+  &:active:not(.pagination__active) {
+   background-color: rgba(91, 99, 246, 0.4);
+   color: white;
+  }
  }
 }

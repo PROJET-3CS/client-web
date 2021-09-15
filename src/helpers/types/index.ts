@@ -207,8 +207,11 @@ export interface AuthState {
  isAuthenticated: boolean | undefined
  error: boolean
  msg: string
- activeState: activeState
- resetPassState: ResetPassState
+ token: string
+ newPassword: string
+ confirmNewPassword: string
+ redirect: boolean
+ activated: boolean
 }
 
 export interface managmentState {
@@ -284,6 +287,11 @@ export interface FolderPayload {
 
 export interface ExamPayload {
  exam: Exam
+}
+
+export interface updatePasswordPayload {
+ password: string
+ confirmPassword: string
 }
 
 // ==============================================================================

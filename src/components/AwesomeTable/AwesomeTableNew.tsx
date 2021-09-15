@@ -56,7 +56,7 @@ const AwesomeTableBody: React.FC<ITable> = ({ tableHead, tableBody }) => {
  const renderCell = (item: any, column: any) => {
   if (column.action) return column.action(item)
 
-  return item[column.path]
+  return item[column.path] ? item[column.path] : '---'
  }
 
  const renderRows = () => {

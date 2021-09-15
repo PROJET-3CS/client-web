@@ -3,7 +3,6 @@ import { Col, Form, FormFeedback, FormGroup, Input, Label, Row } from 'reactstra
 import { useDispatch, useSelector } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import AwesomeButton from '../../components/AwesomeButton/AwesomeButton'
-import AwesomeButtonSecondary from '../../components/AwesomeButton/AwesomeButtonSecondary'
 
 import { getAuth } from '../../store/selectors'
 import { authData, ReactChangeEvent, ReactSubmitEvent } from '../../helpers/types'
@@ -116,9 +115,11 @@ const Signin: FC = () => {
        <AwesomeButton>Log In</AwesomeButton>
       </FormGroup>
      </Form>
-     <div className="auth__form-footer">
-      <p className="auth__form-footer--text">Or login using</p>
-      <AwesomeButtonSecondary>Google</AwesomeButtonSecondary>
+     <div className="signup__form-footer">
+      <Label className="signup__form-footer--label">
+       You don&#39;t have an account? &nbsp;
+       <a href="/signup">Sign Up Now!</a>
+      </Label>
      </div>
     </Col>
     <Col md="7" className="auth__side_2">

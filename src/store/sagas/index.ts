@@ -12,6 +12,15 @@ import {
  logoutSuccess,
  verifySuccess,
  verify,
+ activateSuccess,
+ activateError,
+ activate,
+ updatePasswordSuccess,
+ updatePasswordError,
+ updatePassword,
+ register,
+ registerSuccess,
+ registerError,
 } from '../slices/auth'
 import {
  syncFolder,
@@ -28,14 +37,7 @@ import {
  addAntecedentSuccess,
  addAntecedent,
 } from '../slices/folder'
-import {
- getAuth,
- getFolder,
- getUsersManagement,
- getReset,
- getAppointment,
- getExam,
-} from '../selectors'
+import { getAuth, getFolder, getUsersManagement, getAppointment, getExam } from '../selectors'
 import { getToken, removeToken, setToken, mixAppointments, getUrlAnteced } from '../../helpers/api'
 import {
  fetchUsers,
@@ -56,14 +58,7 @@ import {
  rejectUserError,
  rejectUserSucces,
 } from '../slices/usersManagement'
-import {
- reset,
- resetError,
- resetSuccess,
- change,
- changeError,
- changeSuccess,
-} from '../slices/resetPass'
+import { reset, resetError, resetSuccess } from '../slices/resetPass'
 import { active, activeError, activeSuccess } from '../slices/active'
 
 import {
@@ -87,6 +82,34 @@ function* verifyUser() {
   yield put(verifySuccess(data))
  } catch (Err) {
   yield put(verifySuccess({ user: {}, isValid: false }))
+ }
+}
+
+function* activateUser() {
+ try {
+  const { token } = yield select(getAuth)
+  const { data } = yield axios.get(`/users/confirm/${token}`)
+  if (data.status === 'success' && data) {
+   yield put(activateSuccess(data.body))
+  } else {
+   yield put(activateError('Something went wrong !'))
+  }
+ } catch (Err) {
+  yield put(activateError('Something went wrong !'))
+ }
+}
+
+function* registerUser() {
+ try {
+  const { currentUser } = yield select(getAuth)
+  const { data } = yield axios.post('/users/request', currentUser)
+  if (data.status === 'success') {
+   yield put(registerSuccess())
+  } else {
+   yield put(registerError('Something went wrong !'))
+  }
+ } catch (Err) {
+  yield put(registerError('Something went wrong !'))
  }
 }
 
@@ -165,15 +188,31 @@ function* resetPassword() {
  }
 }
 
-function* changePassword() {
+function* _updatePassword() {
  try {
-  const { user } = yield select(getAuth)
-  const { password } = yield select(getReset)
-  const uri = `users/forgot_password/${user.id}/${password}`
-  const { data } = yield axios.get(uri)
-  yield put(changeSuccess(data))
+  const USER_TOKEN = getToken()
+  const authToken = `Bearer ${USER_TOKEN}`
+
+  const { user, newPassword, confirmNewPassword, token } = yield select(getAuth)
+  const uri = `/users/forgot_password/${user.id}/${token}`
+  const { data } = yield axios.post(
+   uri,
+   {
+    password: newPassword,
+    passwordConfirmation: confirmNewPassword,
+   },
+   {
+    headers: { Authorization: authToken },
+   }
+  )
+
+  if (data.status === 'success') {
+   yield put(updatePasswordSuccess())
+  } else {
+   yield put(updatePasswordError(data.body))
+  }
  } catch {
-  yield put(changeError('invalid password'))
+  yield put(updatePasswordError('invalid password'))
  }
 }
 
@@ -195,13 +234,9 @@ function* _createUser() {
   const USER_TOKEN = getToken()
   const authToken = `Bearer ${USER_TOKEN}`
   const { selectedUser } = yield select(getUsersManagement)
-  const { data } = yield axios.post(
-   '/users',
-   { ...selectedUser, role: 3 },
-   {
-    headers: { Authorization: authToken },
-   }
-  )
+  const { data } = yield axios.post('/users', selectedUser, {
+   headers: { Authorization: authToken },
+  })
   if (data.status === 'success') {
    yield call(getUsers)
    yield put(createUserSuccess())
@@ -488,6 +523,7 @@ function* rootSaga() {
   takeLatest(login.type, loginUser),
   takeLatest(logout.type, logoutUser),
   takeLatest(verify.type, verifyUser),
+  takeLatest(activate.type, activateUser),
   takeLatest(fetchUsers.type, getUsers),
   takeLatest(archiveUser.type, archiverUser),
   takeLatest(syncFolder.type, loadFolder),
@@ -498,13 +534,14 @@ function* rootSaga() {
   takeLatest(addAppointment.type, _addAppointment),
   takeLatest(syncAppointment.type, loadAppointment),
   takeLatest(reset.type, resetPassword),
-  takeLatest(change.type, changePassword),
+  takeLatest(updatePassword.type, _updatePassword),
   takeLatest(active.type, activateAcc),
   takeLatest(createUser.type, _createUser),
   takeLatest(fetchRegistrationRequests.type, loadRegistrationRequests),
   takeLatest(acceptUser.type, acceptRegistrationRequest),
   takeLatest(rejectUser.type, rejectRegistrationRequest),
   takeLatest(updateInfoConclusion.type, _addExam),
+  takeLatest(register.type, registerUser),
  ])
 }
 

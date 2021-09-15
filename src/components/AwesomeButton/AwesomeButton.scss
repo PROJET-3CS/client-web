@@ -7,6 +7,13 @@
  outline-offset: 4px;
  transition: filter 250ms;
  width: 100%;
+
+ &-disabled {
+  & .front-primary {
+   background-color: #bdbdbd !important;
+   cursor: not-allowed;
+  }
+ }
 }
 /* .shadow-primary {
     position: absolute;

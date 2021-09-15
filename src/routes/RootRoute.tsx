@@ -16,8 +16,9 @@ import EmailConfirmation from '../views/EmailConfirmation'
 import RegistrationRequestsManagement from '../views/usersManagement/RegistrationRequestsManagement'
 import Examination from '../views/Examination/Examination'
 import Prescription from '../views/Examination/Prescription/Prescription'
-import CreatePrescModal from '../views/Examination/Prescription/CreatePrescModal'
 import Examinations from '../views/Examination/Examinations'
+import UserConfirmed from '../views/UserConfirmed'
+import _401 from '../views/_401'
 
 const Dashboard = React.lazy(() => import('../views/Dashboard'))
 const usersManagement = React.lazy(() => import('../views/usersManagement/UsersManagement'))
@@ -35,10 +36,10 @@ const RootRoute: FC = () => {
      <PublicRoute path="/login" component={Signin} exact />
      <PublicRoute path="/signup" component={Signup} exact />
 
-     <Route path="/resetpassword" component={Resetpassword} exact />
+     <Route path="/passwordReset" component={Resetpassword} exact />
      <Route path="/confirmation" component={PasswordConfirmation} exact />
      <Route path="/confirmation2" component={EmailConfirmation} exact />
-     <Route path="/addpresc" component={CreatePrescModal} exact />
+     <Route path="/users/confirm/:token" component={UserConfirmed} />
 
      <PrivateRoute path="/examination/:id" component={Examination} />
      <PrivateRoute path="/examinations" component={Examinations} />
@@ -50,6 +51,7 @@ const RootRoute: FC = () => {
      <PrivateRoute path="/folder/:id/edit" component={EditMedicalFolder} exact />
      <PrivateRoute path="/appointments" component={Appointment} exact />
      <PrivateRoute path="/appointments/:id" component={MyAppointments} exact />
+     <Route path="/401" component={_401} exact />
 
      <Route component={_404} />
     </Switch>

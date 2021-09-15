@@ -2,7 +2,14 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { FC, useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUser, faUsers, faPlus, faEllipsisH } from '@fortawesome/free-solid-svg-icons'
+import {
+ faUsers,
+ faPlus,
+ faEllipsisH,
+ faUserPlus,
+ faUserTie,
+ faUserGraduate,
+} from '@fortawesome/free-solid-svg-icons'
 import { useDispatch, useSelector } from 'react-redux'
 import { Dropdown, DropdownItem, DropdownMenu, DropdownToggle } from 'reactstrap'
 import { useHistory } from 'react-router'
@@ -80,6 +87,12 @@ const UsersManagement: FC = () => {
   return getRole(item.role)
  }
 
+ const displayStatusBadge = (item: User) => {
+  const { status } = item
+
+  return <span className={`clinity__table-badge ${status === 'actif' ? 'clinity__table-badge--actif' : '' }${status === 'pending' ? 'clinity__table-badge--pending' : '' }${status === 'archived' ? 'clinity__table-badge--archived' : '' }`}>{status}</span>
+ }
+
  const displayNameWithAvatar = (item: User) => {
   const { firstname, lastname } = item
 
@@ -145,9 +158,9 @@ const UsersManagement: FC = () => {
    action: displayNameWithAvatar,
   },
   { name: 'Role', action: displayRole },
-  { name: 'Year', path: 'year' },
-  { name: 'N°Group', path: 'group' },
-  { name: 'Status', path: 'status' },
+  { name: 'Year', path: 'promo' },
+  { name: 'N°Group', path: 'groupe' },
+  { name: 'Status', action: displayStatusBadge },
   //   { name: 'Last Connexion', path: 'lastConnexion' },
   { name: '', action: tableRowDropdown },
  ]
@@ -162,30 +175,30 @@ const UsersManagement: FC = () => {
       <OverviewCard
        cardTitle="Total Patients"
        cardInfo={usersCount}
-       cardGrowth={!false}
-       cardGrowthValue={22}
-       cardIcon={faUser}
-      />
-      <OverviewCard
-       cardTitle="Total Patients"
-       cardInfo={1600}
        cardGrowth={false}
-       cardGrowthValue={22}
-       cardIcon={faUser}
-      />
-      <OverviewCard
-       cardTitle="Total Patients"
-       cardInfo={1600}
-       cardGrowth={!false}
-       cardGrowthValue={22}
+       cardGrowthValue={23}
        cardIcon={faUsers}
       />
       <OverviewCard
-       cardTitle="Total Patients"
+       cardTitle="Total Employees"
+       cardInfo={1100}
+       cardGrowth={!false}
+       cardGrowthValue={10.9}
+       cardIcon={faUserTie}
+      />
+      <OverviewCard
+       cardTitle="Total Students"
        cardInfo={1600}
-       cardGrowth={false}
+       cardGrowth={!false}
        cardGrowthValue={22}
-       cardIcon={faUser}
+       cardIcon={faUserGraduate}
+      />
+      <OverviewCard
+       cardTitle="Requests"
+       cardInfo={232}
+       cardGrowth={false}
+       cardGrowthValue={34.5}
+       cardIcon={faUserPlus}
       />
      </div>
     </div>

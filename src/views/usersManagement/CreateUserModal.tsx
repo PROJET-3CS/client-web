@@ -145,7 +145,12 @@ const CreateUserModal: FC<InputProps & Props> = ({ isOpen, toggle }) => {
        />
       </FormGroup>
       <FormGroup className="newappointment__resultmodal-formgroup">
-       <PrimarySelect options={option} getValue={handleSelectRole} label='Select role' defaultValue={String(selectedUser.role)} />
+       <PrimarySelect
+        options={option}
+        getValue={handleSelectRole}
+        label="Select role"
+        defaultValue={String(selectedUser.role)}
+       />
       </FormGroup>
       <AwesomeButton onClick={handleSubmit}>
        {loading ? <Spinner animation="border" /> : 'Create user'}

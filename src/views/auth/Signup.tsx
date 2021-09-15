@@ -1,9 +1,54 @@
-import React, { FC } from 'react'
+import React, { FC, useState } from 'react'
+import { useDispatch } from 'react-redux'
 import { Col, Form, FormFeedback, FormGroup, Row, Label } from 'reactstrap'
 import AwesomeButton from '../../components/AwesomeButton/AwesomeButton'
 import PrimaryInput from '../../components/PrimaryInput/PrimaryInput'
+import { ReactChangeEvent, ReactSubmitEvent, User } from '../../helpers/types'
+// import { getAuth } from '../../store/selectors'
+import { register } from '../../store/slices/auth'
 
 const Signup: FC = () => {
+ // ===========================================================================
+ // Selectors
+ // ===========================================================================
+
+ //  const { redirect } = useSelector(getAuth)
+ // ===========================================================================
+ // state
+ // ===========================================================================
+ const initState = {
+  firstname: '',
+  lastname: '',
+  email: '',
+ }
+ const [state, setState] = useState(initState)
+
+ // ===========================================================================
+ // Dispatch
+ // ==========================================================================
+
+ const dispatch = useDispatch()
+
+ const _register = (payload: User) => {
+  dispatch(register(payload))
+ }
+
+ // ===========================================================================
+ // Handlers
+ // ===========================================================================
+
+ const handleChange = (e: ReactChangeEvent) => {
+  setState({
+   ...state,
+   [e.target.id]: e.target.value,
+  })
+ }
+
+ const handleSubmit = (e: ReactSubmitEvent) => {
+  e.preventDefault()
+  _register(state)
+ }
+
  // ===========================================================================
  // Hooks
  // ===========================================================================
@@ -27,7 +72,7 @@ const Signup: FC = () => {
     </Col>
     <Col md="5" className="signup__side_1">
      <h2 className="signup__header">Clinity</h2>
-     <Form className="signup__form">
+     <Form className="signup__form" onSubmit={handleSubmit}>
       <div className="signup__form-heading">
        <h2 className="signup__form-heading--title">Request.</h2>
        <p className="signup__form-heading--text">
@@ -36,16 +81,34 @@ const Signup: FC = () => {
        </p>
       </div>
       <PrimaryInput
-       label="Enter your name"
+       id="firstname"
+       label="Enter your Firstame"
        type="text"
        name="name"
-       placeholder="ex. Kharroubi Yacine"
+       placeholder="ex.Yacine"
+       onChange={handleChange}
+       value={state.firstname}
+       required
       />
       <PrimaryInput
-       label="Enter your name"
+       id="lastname"
+       label="Enter your Lastname"
+       type="text"
+       name="lastname"
+       placeholder="ex. Kharoubi"
+       onChange={handleChange}
+       value={state.lastname}
+       required
+      />
+      <PrimaryInput
+       id="email"
+       label="Enter your email"
        type="email"
        name="email"
        placeholder="ex. y.kharroubi@gmail.com"
+       onChange={handleChange}
+       value={state.email}
+       required
       />
       <FormFeedback>Please enter a valid email</FormFeedback>
       <FormGroup className="signup__form-group--action" inline>

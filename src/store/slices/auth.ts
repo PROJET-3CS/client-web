@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-import { AuthState } from '../../helpers/types'
+import { AuthState, updatePasswordPayload, User } from '../../helpers/types'
 
 export const initialState: AuthState = {
  currentUser: {},
@@ -9,17 +9,11 @@ export const initialState: AuthState = {
  error: false,
  msg: '',
  loading: true,
- resetPassState: {
-  email: '',
-  error: false,
-  msg: '',
-  password: '',
- },
- activeState: {
-  error: false,
-  id: '',
-  msg: '',
- },
+ token: '',
+ newPassword: '',
+ confirmNewPassword: '',
+ redirect: false,
+ activated: false
 }
 
 const authSlice = createSlice({
@@ -67,10 +61,92 @@ const authSlice = createSlice({
    state.msg = ''
    state.loading = false
   },
+
+  activate: (state, { payload }: PayloadAction<string>) => {
+   state.loading = true
+   state.activated = true
+   state.user = {}
+   state.token = payload
+  },
+
+  activateSuccess: (state, { payload }: PayloadAction<User>) => {
+   state.loading = false
+   state.activated = true
+   state.user = payload
+   state.error = false
+  },
+
+  activateError: (state, { payload }: PayloadAction<string>) => {
+   state.msg = payload
+   state.user = {}
+   state.activated = false
+   state.error = true
+   state.loading = false
+  },
+
+  updatePassword: (state, { payload }: PayloadAction<updatePasswordPayload>) => {
+   state.loading = true
+   state.isAuthenticated = false
+   state.newPassword = payload.password
+   state.confirmNewPassword = payload.confirmPassword
+  },
+
+  updatePasswordSuccess: (state) => {
+   state.loading = false
+   state.user = {}
+   state.token = ''
+   state.newPassword = ''
+   state.confirmNewPassword = ''
+   state.error = false
+   state.redirect = true
+  },
+
+  updatePasswordError: (state, { payload }: PayloadAction<string>) => {
+   state.msg = payload
+   state.newPassword = ''
+   state.confirmNewPassword = ''
+   state.error = true
+   state.loading = false
+   state.redirect = false
+  },
+
+  register: (state, { payload }: PayloadAction<User>) => {
+   state.loading = true
+   state.currentUser = payload
+  },
+
+  registerSuccess: (state) => {
+   state.loading = false
+   state.currentUser = {}
+   state.error = false
+  },
+
+  registerError: (state, { payload }: PayloadAction<string>) => {
+   state.msg = payload
+   state.currentUser = {}
+   state.error = true
+   state.loading = false
+  },
  },
 })
 
-export const { verify, verifySuccess, login, loginSuccess, loginError, logout, logoutSuccess } =
- authSlice.actions
+export const {
+ verify,
+ verifySuccess,
+ login,
+ loginSuccess,
+ loginError,
+ logout,
+ logoutSuccess,
+ activate,
+ activateError,
+ activateSuccess,
+ updatePassword,
+ updatePasswordSuccess,
+ updatePasswordError,
+ register,
+ registerSuccess,
+ registerError,
+} = authSlice.actions
 
 export default authSlice.reducer
