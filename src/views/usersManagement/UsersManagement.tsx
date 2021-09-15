@@ -1,6 +1,6 @@
 /* eslint-disable max-lines */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { FC, useEffect, useState } from 'react'
+import React, { FC, useEffect, useRef, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
  faUsers,
@@ -19,18 +19,19 @@ import OverviewCard from '../../components/OverviewCard'
 import Header from '../../components/Header'
 import AwesomeTableNew from '../../components/AwesomeTable/AwesomeTableNew'
 import CreateUserModal from './CreateUserModal'
-import { fetchUsers } from '../../store/slices/usersManagement'
+import { archiveUser, fetchUsers } from '../../store/slices/usersManagement'
 import { getUsersManagement } from '../../store/selectors'
 import { User } from '../../helpers/types'
-import ArchiveUserModal from './ArchiveUserModal'
 import { getRole } from '../../helpers/api'
 import AwesomeButtonIcon from '../../components/AwesomeButton/AwesomeButtonIcon'
+import ArchiveModal from '../../components/AwesomeModal/ArchiveModal'
+import Toaster from '../../components/Toast/Toaster'
 
 const UsersManagement: FC = () => {
  // ===========================================================================
  // Selectors
  // ===========================================================================
- const { users, usersCount, totalPages } = useSelector(getUsersManagement)
+ const { users, usersCount, totalPages, notify, error } = useSelector(getUsersManagement)
 
  // ===========================================================================
  // Dispatch
@@ -40,12 +41,18 @@ const UsersManagement: FC = () => {
  const _fetchUsers = (payload: any) => {
   dispatch(fetchUsers(payload))
  }
+
+ const _archiveUser = (payload: User) => {
+  dispatch(archiveUser(payload))
+ }
+
  //  ==============================================================================
  //  State
  //  ==============================================================================
  const [createUserModal, setCreateUserModal] = useState(false)
  const [archiveModal, setArchiveModal] = useState(false)
- const [buffer, setBuffer] = useState(null)
+ const [buffer, setBuffer] = useState({})
+ const [open, setOpen] = useState(notify)
 
  const routeQueriesInitialState = {
   page: 0,
@@ -64,6 +71,16 @@ const UsersManagement: FC = () => {
   setArchiveModal(!archiveModal)
  }
 
+ const toggleAnnuler = () => {
+  setCreateUserModal(false)
+  setArchiveModal(false)
+ }
+
+ const handleArchive = () => {
+  setArchiveModal(false)
+  _archiveUser(buffer)
+ }
+
  const handlePageChange = (selectedPage: { selected: number }) => {
   const { selected } = selectedPage
   setRouteQueries({ ...routeQueries, page: selected })
@@ -79,6 +96,19 @@ const UsersManagement: FC = () => {
   _fetchUsers(routeQueries)
  }, [])
 
+ const initialRender = useRef(true) // SOL from stackoverflow for excuting useEffect after the first renders
+ useEffect(() => {
+  if (initialRender.current) {
+   initialRender.current = false
+  } else {
+   // initially called every time after the component renders
+   setOpen(true)
+   setTimeout(() => {
+    setOpen(false)
+   }, 3000)
+  }
+ }, [notify])
+
  // ===========================================================================
  // Table properties
  // ===========================================================================
@@ -90,7 +120,15 @@ const UsersManagement: FC = () => {
  const displayStatusBadge = (item: User) => {
   const { status } = item
 
-  return <span className={`clinity__table-badge ${status === 'actif' ? 'clinity__table-badge--actif' : '' }${status === 'pending' ? 'clinity__table-badge--pending' : '' }${status === 'archived' ? 'clinity__table-badge--archived' : '' }`}>{status}</span>
+  return (
+   <span
+    className={`clinity__table-badge ${status === 'actif' ? 'clinity__table-badge--actif' : ''}${
+     status === 'pending' ? 'clinity__table-badge--pending' : ''
+    }${status === 'archived' ? 'clinity__table-badge--archived' : ''}`}
+   >
+    {status}
+   </span>
+  )
  }
 
  const displayNameWithAvatar = (item: User) => {
@@ -124,7 +162,7 @@ const UsersManagement: FC = () => {
       >
        Consulter
       </DropdownItem>
-      <DropdownItem
+      { item.status !== 'archived' ? <><DropdownItem
        onClick={() => {
         history.push(`/folder/${item.id}/edit`)
        }}
@@ -145,7 +183,8 @@ const UsersManagement: FC = () => {
        }}
       >
        Céer Examination
-      </DropdownItem>
+      </DropdownItem></> : '' 
+      }
      </DropdownMenu>
     </Dropdown>
    </>
@@ -219,15 +258,20 @@ const UsersManagement: FC = () => {
        pageCount={totalPages}
        handlePageChange={handlePageChange}
       />
+      {/* Toast for diplaying error msgs */}
+      <Toaster modal={open} type={error ? 'danger' : 'success'}>
+       {!error ? 'Operation done succesfully 🎉' : 'Sorry Something went wrong 🤕'}
+      </Toaster>
      </div>
     </div>
    </Layout>
 
    <CreateUserModal buttonLabel="add" isOpen={createUserModal} toggle={toggle} />
-   <ArchiveUserModal
-    buttonLabel="archive user"
-    isOpen={archiveModal}
+   <ArchiveModal
+    modal={archiveModal}
     toggle={toggleArchive}
+    handleArchive={handleArchive}
+    handleAnnuler={toggleAnnuler}
     user={buffer}
    />
   </>

@@ -40,14 +40,17 @@ const ManagementSlice = createSlice({
 
   archiveUser: (state, { payload }: PayloadAction<User>) => {
    state.loading = true
+   state.notify = false
    state.selectedUser = payload
   },
   archiveUserSuccess: (state) => {
    state.loading = false
+   state.notify = true
    state.error = false
   },
   archiveUserError: (state) => {
    state.loading = false
+   state.notify = true
    state.error = true
   },
 

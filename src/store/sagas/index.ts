@@ -175,6 +175,7 @@ function* archiverUser() {
 
   if (data.status === 'success') {
    yield put(archiveUserSuccess())
+   yield call(getUsers)
   } else {
    yield put(archiveUserError())
   }

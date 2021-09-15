@@ -112,7 +112,9 @@ body {
   margin-left: -2rem;
   z-index: 3;
   text-align: left;
-  position: relative; }
+  position: relative;
+  overflow: scroll;
+  padding-bottom: 2rem; }
 
 .exam-view {
   background-color: #f1f1fe;
@@ -937,6 +939,8 @@ body {
   .clinity__modal-accept--img {
     margin-bottom: 2rem;
     width: 30rem; }
+  .clinity__modal-accept--imgDanger {
+    margin-bottom: 2rem; }
   .clinity__modal-accept--content {
     display: flex;
     justify-content: center;
