@@ -1,5 +1,7 @@
+/* eslint-disable max-lines */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { FC, useEffect, useState } from 'react'
+import React, { FC, useEffect, useRef, useState } from 'react'
+import moment from 'moment'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEllipsisH } from '@fortawesome/free-solid-svg-icons'
 import { useDispatch, useSelector } from 'react-redux'
@@ -10,17 +12,26 @@ import Header from '../../components/Header'
 
 import AwesomeTableNew from '../../components/AwesomeTable/AwesomeTableNew'
 
-import { fetchRegistrationRequests } from '../../store/slices/usersManagement'
+import {
+ acceptUser,
+ fetchRegistrationRequests,
+ rejectUser,
+} from '../../store/slices/usersManagement'
 import { getUsersManagement } from '../../store/selectors'
 import { User } from '../../helpers/types'
-import AcceptUserModal from './AcceptUserModal'
-import RejectUserModal from './RejectUserModal'
+import RejectModal from '../../components/AwesomeModal/RejectModal'
+import AcceptModal from '../../components/AwesomeModal/AcceptModal'
+
+import 'moment/locale/fr'
+import Toaster from '../../components/Toast/Toaster'
+
+moment.locale('fr')
 
 const RegistrationRequestsManagement: FC = () => {
  // ===========================================================================
  // Selectors
  // ===========================================================================
- const { users, totalPages } = useSelector(getUsersManagement)
+ const { users, totalPages, notify, error } = useSelector(getUsersManagement)
 
  // ===========================================================================
  // Dispatch
@@ -30,12 +41,21 @@ const RegistrationRequestsManagement: FC = () => {
  const _fetchRequests = (payload: any) => {
   dispatch(fetchRegistrationRequests(payload))
  }
+
+ const _acceptUser = (payload: User) => {
+  dispatch(acceptUser(payload))
+ }
+
+ const _rejectUser = (payload: User) => {
+  dispatch(rejectUser(payload))
+ }
  //  ==============================================================================
  //  State
  //  ==============================================================================
- const [buffer, setBuffer] = useState(null)
+ const [buffer, setBuffer] = useState({})
  const [acceptModal, setAcceptModal] = useState(false)
  const [rejectModal, setRejectModal] = useState(false)
+ const [open, setOpen] = useState(notify)
 
  const routeQueriesInitialState = {
   page: 0,
@@ -55,13 +75,30 @@ const RegistrationRequestsManagement: FC = () => {
   _fetchRequests(routeQueries)
  }, [routeQueries])
 
- const toggleAccept = (user: any) => {
+ const toggle = () => {
+  setRejectModal(false)
+  setAcceptModal(false)
+ }
+
+ const handleAccept = () => {
+  toggle()
+  _acceptUser(buffer)
+ }
+
+ const handleReject = () => {
+  toggle()
+  _rejectUser(buffer)
+ }
+
+ const toggleAccept = (user: User) => {
   setBuffer(user)
+  setRejectModal(false)
   setAcceptModal(!acceptModal)
  }
 
  const toggleReject = (user: any) => {
   setBuffer(user)
+  setAcceptModal(false)
   setRejectModal(!rejectModal)
  }
  // ===========================================================================
@@ -70,9 +107,39 @@ const RegistrationRequestsManagement: FC = () => {
  useEffect(() => {
   _fetchRequests(routeQueries)
  }, [])
+
+ const initialRender = useRef(true) // SOL from stackoverflow for excuting useEffect after the first renders
+ useEffect(() => {
+  if (initialRender.current) {
+   initialRender.current = false
+  } else {
+   // initially called every time after the component renders
+   setOpen(true)
+   setTimeout(() => {
+    setOpen(false)
+   }, 3000)
+  }
+ }, [notify])
  // ===========================================================================
  // Table properties
  // ===========================================================================
+
+ const displayNameWithAvatar = (item: User) => {
+  const { firstname } = item
+
+  return (
+   <>
+    <img className="clinity__table-avatar" alt="profle pic" src="/img/person.svg" />{' '}
+    {`${firstname}`}
+   </>
+  )
+ }
+
+ const displayDate = (item: User) => {
+  const { createdAt } = item
+
+  return moment(createdAt).format('l')
+ }
 
  const tableRowDropdown = (item: User) => {
   const [dropdownOpen, setDropdownOpen] = useState(false)
@@ -108,9 +175,10 @@ const RegistrationRequestsManagement: FC = () => {
   )
  }
  const tableHead = [
-  { name: 'Firstname', path: 'firstname' },
-  { name: 'Lasttname', path: 'lastname' },
+  { name: 'Firstname', action: displayNameWithAvatar },
+  { name: 'Lastname', path: 'lastname' },
   { name: 'E-mail', path: 'email' },
+  { name: 'Date', action: displayDate },
   { name: '', action: tableRowDropdown },
  ]
 
@@ -121,7 +189,7 @@ const RegistrationRequestsManagement: FC = () => {
 
     <div className="users-list">
      <div className="users-list__header">
-      <h2 className="main-heading">Users list</h2>
+      <h2 className="main-heading">Registrations list</h2>
      </div>
      <div className="users-list__table">
       <AwesomeTableNew
@@ -130,19 +198,25 @@ const RegistrationRequestsManagement: FC = () => {
        pageCount={totalPages}
        handlePageChange={handlePageChange}
       />
+      {/* Toast for diplaying error msgs */}
+      <Toaster modal={open} type={error ? 'danger' : 'success'}>
+       {!error ? 'Operation done succesfully 🎉' : 'Sorry Something went wrong 🤕'}
+      </Toaster>
      </div>
     </div>
    </Layout>
-   <AcceptUserModal
-    buttonLabel="accept user"
-    isOpen={acceptModal}
-    toggle={toggleAccept}
+   <AcceptModal
+    modal={acceptModal}
+    toggle={toggle}
+    handleAccept={handleAccept}
+    handleAnnuler={toggle}
     user={buffer}
    />
-   <RejectUserModal
-    buttonLabel="reject user"
-    isOpen={rejectModal}
-    toggle={toggleReject}
+   <RejectModal
+    modal={rejectModal}
+    toggle={toggle}
+    handleReject={handleReject}
+    handleAnnuler={toggle}
     user={buffer}
    />
   </>

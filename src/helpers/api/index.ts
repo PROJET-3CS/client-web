@@ -6,7 +6,7 @@ PS: Keep it clean, only API calls
 */
 
 import { userTypes } from '../db'
-import { Appointment, AppointmentPayload } from '../types'
+import { Appointment, AppointmentPayload, User } from '../types'
 
 export const getToken = (): string | null => {
  const token = localStorage.getItem('token')
@@ -88,4 +88,11 @@ export const getRole = (role: number) => {
  })
 
  return `${res?.role}`
+}
+
+// eslint-disable-next-line
+export const removeItem = (array: User[], item: User) => {
+ const newArray = array.filter((el) => {return el.id !== item.id})
+
+ return newArray
 }

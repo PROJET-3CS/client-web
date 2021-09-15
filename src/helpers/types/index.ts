@@ -222,6 +222,7 @@ export interface managmentState {
  selectedUser: User | Record<string, unknown>
  loading: boolean
  error: boolean
+ notify: boolean
 }
 
 export interface AppointmentState {

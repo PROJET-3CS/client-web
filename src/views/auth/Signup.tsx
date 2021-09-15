@@ -1,10 +1,11 @@
 import React, { FC, useState } from 'react'
-import { useDispatch } from 'react-redux'
-import { Col, Form, FormFeedback, FormGroup, Row, Label } from 'reactstrap'
+import { useDispatch, useSelector } from 'react-redux'
+import { Col, Form, FormGroup, Row, Label } from 'reactstrap'
 import AwesomeButton from '../../components/AwesomeButton/AwesomeButton'
+import AwesomeSuccess from '../../components/AwesomeModal/AwesomeSuccess'
 import PrimaryInput from '../../components/PrimaryInput/PrimaryInput'
 import { ReactChangeEvent, ReactSubmitEvent, User } from '../../helpers/types'
-// import { getAuth } from '../../store/selectors'
+import { getAuth } from '../../store/selectors'
 import { register } from '../../store/slices/auth'
 
 const Signup: FC = () => {
@@ -12,7 +13,7 @@ const Signup: FC = () => {
  // Selectors
  // ===========================================================================
 
- //  const { redirect } = useSelector(getAuth)
+ const { redirect, error } = useSelector(getAuth)
  // ===========================================================================
  // state
  // ===========================================================================
@@ -100,17 +101,20 @@ const Signup: FC = () => {
        value={state.lastname}
        required
       />
-      <PrimaryInput
-       id="email"
-       label="Enter your email"
-       type="email"
-       name="email"
-       placeholder="ex. y.kharroubi@gmail.com"
-       onChange={handleChange}
-       value={state.email}
-       required
-      />
-      <FormFeedback>Please enter a valid email</FormFeedback>
+      <FormGroup className="auth__form-group">
+       <PrimaryInput
+        id="email"
+        label="Enter your email"
+        type="email"
+        name="email"
+        placeholder="ex. y.kharroubi@gmail.com"
+        onChange={handleChange}
+        value={state.email}
+        invalid={error}
+        errText='This email is used before !'
+        required
+       />
+      </FormGroup>
       <FormGroup className="signup__form-group--action" inline>
        <AwesomeButton>Request</AwesomeButton>
       </FormGroup>
@@ -123,6 +127,14 @@ const Signup: FC = () => {
      </Form>
     </Col>
    </Row>
+   <AwesomeSuccess
+    modal={redirect}
+    title="Request sent"
+    text="Your request have been succefully sent, You will recieve a response within 24h."
+    imgPath="/img/completedRequest.svg"
+    actionTxt="Go back Login"
+    actionPath="/login"
+   />
   </div>
  )
 }

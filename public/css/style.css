@@ -926,6 +926,58 @@ body {
   .clinity__modal-btn {
     font-size: 1.5rem !important;
     padding: 0.75rem 1.5rem !important; }
+  .clinity__modal-accept .modal-content {
+    border-radius: 1rem; }
+  .clinity__modal-accept--body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 4rem !important;
+    align-items: center; }
+  .clinity__modal-accept--img {
+    margin-bottom: 2rem;
+    width: 30rem; }
+  .clinity__modal-accept--content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; }
+  .clinity__modal-accept--mainTitle {
+    font-size: 1.7rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem; }
+  .clinity__modal-accept--paragraph {
+    font-size: 1.3rem;
+    text-align: center; }
+  .clinity__modal-accept--action {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 60%; }
+  .clinity__modal-accept--btn {
+    position: relative;
+    padding: 13px 23px;
+    width: fit-content;
+    font-size: 1.25rem;
+    border: none;
+    border-radius: 6px;
+    background: transparent;
+    cursor: pointer;
+    outline-offset: 4px;
+    color: white;
+    background: #5b63f6;
+    margin-right: 0.625rem; }
+    .clinity__modal-accept--btn-icon {
+      margin-right: 1rem; }
+    .clinity__modal-accept--btn-annuler {
+      background-color: #bdbdbd; }
+    .clinity__modal-accept--btn-accept {
+      background-color: #5b63f6; }
+    .clinity__modal-accept--btn-reject {
+      background-color: #dd4b39; }
+    .clinity__modal-accept--btn-disabled {
+      background-color: #bdbdbd !important;
+      cursor: not-allowed; }
 
 .modal .newappointment__select {
   top: 20%; }

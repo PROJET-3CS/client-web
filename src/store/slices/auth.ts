@@ -13,7 +13,7 @@ export const initialState: AuthState = {
  newPassword: '',
  confirmNewPassword: '',
  redirect: false,
- activated: false
+ activated: false,
 }
 
 const authSlice = createSlice({
@@ -65,7 +65,6 @@ const authSlice = createSlice({
   activate: (state, { payload }: PayloadAction<string>) => {
    state.loading = true
    state.activated = true
-   state.user = {}
    state.token = payload
   },
 
@@ -112,12 +111,14 @@ const authSlice = createSlice({
 
   register: (state, { payload }: PayloadAction<User>) => {
    state.loading = true
+   state.redirect = false
    state.currentUser = payload
   },
 
   registerSuccess: (state) => {
    state.loading = false
    state.currentUser = {}
+   state.redirect = true
    state.error = false
   },
 
@@ -125,6 +126,7 @@ const authSlice = createSlice({
    state.msg = payload
    state.currentUser = {}
    state.error = true
+   state.redirect = false
    state.loading = false
   },
  },

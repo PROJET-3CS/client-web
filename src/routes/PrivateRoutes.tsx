@@ -1,8 +1,9 @@
 /* eslint-disable arrow-body-style */
-import React, { FC } from 'react'
-import { useSelector } from 'react-redux'
+import React, { FC, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { Route, Redirect, RouteProps, useLocation } from 'react-router-dom'
 import { getAuth } from '../store/selectors'
+import { verify } from '../store/slices/auth'
 
 interface Props extends RouteProps {
  component: FC
@@ -11,6 +12,20 @@ interface Props extends RouteProps {
 const PublicRoute: FC<Props & RouteProps> = ({ component: Component, ...rest }) => {
  const { isAuthenticated } = useSelector(getAuth)
  const location = useLocation()
+
+ // ===========================================================================
+ // Dispatch
+ // ==========================================================================
+
+ const dispatch = useDispatch()
+
+ const _verify = () => {
+  dispatch(verify())
+ }
+
+ useEffect(() => {
+  _verify()
+ }, [])
 
  return (
   <Route

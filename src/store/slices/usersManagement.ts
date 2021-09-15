@@ -6,6 +6,7 @@ export const initialState: managmentState = {
  routeQueries: {},
  loading: false,
  error: false,
+ notify: false,
  usersCount: 0,
  totalPages: 0,
  users: [],
@@ -81,31 +82,39 @@ const ManagementSlice = createSlice({
 
   acceptUser: (state, { payload }: PayloadAction<User>) => {
    state.loading = true
+   state.notify = false
    state.selectedUser = payload
   },
 
   acceptUserSucces: (state) => {
    state.loading = false
+   state.notify = true
    state.selectedUser = {}
+   state.error = false
   },
 
   acceptUserError: (state) => {
    state.loading = false
+   state.notify = true
    state.error = true
   },
   rejectUser: (state, { payload }: PayloadAction<User>) => {
    state.loading = true
+   state.notify = false
    state.selectedUser = payload
   },
 
   rejectUserSucces: (state) => {
    state.loading = false
    state.selectedUser = {}
+   state.error = false
+   state.notify = true
   },
 
   rejectUserError: (state) => {
    state.loading = false
    state.error = true
+   state.notify = false
   },
  },
 })

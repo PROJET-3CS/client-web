@@ -1,8 +1,12 @@
 import React, { FC } from 'react'
-import { FormGroup, Input, InputProps, Label } from 'reactstrap'
+import { FormFeedback, FormGroup, Input, InputProps, Label } from 'reactstrap'
 import './PrimaryInput.scss'
 
-const PrimaryInput: FC<InputProps> = ({
+interface Props {
+    errText?: string
+}
+
+const PrimaryInput: FC<InputProps & Props> = ({
  id,
  name,
  placeholder,
@@ -15,6 +19,8 @@ const PrimaryInput: FC<InputProps> = ({
  step,
  onChange,
  required = false,
+ invalid,
+ errText
 }) => {
  return (
   <FormGroup className="Primary__form-group">
@@ -32,7 +38,9 @@ const PrimaryInput: FC<InputProps> = ({
     defaultValue={defaultValue}
     className="Primary__form-input"
     required={required}
+    invalid={invalid}
    />
+   <FormFeedback>{errText}</FormFeedback>
   </FormGroup>
  )
 }

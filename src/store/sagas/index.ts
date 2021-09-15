@@ -38,7 +38,13 @@ import {
  addAntecedent,
 } from '../slices/folder'
 import { getAuth, getFolder, getUsersManagement, getAppointment, getExam } from '../selectors'
-import { getToken, removeToken, setToken, mixAppointments, getUrlAnteced } from '../../helpers/api'
+import {
+ getToken,
+ removeToken,
+ setToken,
+ mixAppointments,
+ getUrlAnteced,
+} from '../../helpers/api'
 import {
  fetchUsers,
  fetchUsersSuccess,
@@ -89,7 +95,7 @@ function* activateUser() {
  try {
   const { token } = yield select(getAuth)
   const { data } = yield axios.get(`/users/confirm/${token}`)
-  if (data.status === 'success' && data) {
+  if (data.status === 'success') {
    yield put(activateSuccess(data.body))
   } else {
    yield put(activateError('Something went wrong !'))
@@ -436,8 +442,9 @@ function* acceptRegistrationRequest() {
    headers: { Authorization: authToken },
   })
 
-  if (data.status === 'success') {
+  if (data.success === 'success') {
    yield put(acceptUserSucces())
+   yield call(loadRegistrationRequests)
   } else {
    yield put(acceptUserError())
   }
@@ -456,8 +463,9 @@ function* rejectRegistrationRequest() {
    headers: { Authorization: authToken },
   })
 
-  if (data.status === 'success') {
+  if (data.success === 'success') {
    yield put(rejectUserSucces())
+   yield call(loadRegistrationRequests)
   } else {
    yield put(rejectUserError())
   }

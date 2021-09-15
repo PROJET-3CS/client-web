@@ -41,12 +41,13 @@ const RootRoute: FC = () => {
      <Route path="/confirmation2" component={EmailConfirmation} exact />
      <Route path="/users/confirm/:token" component={UserConfirmed} />
 
+     <PrivateRoute path="/registrations" component={RegistrationRequestsManagement} exact />
+
      <PrivateRoute path="/examination/:id" component={Examination} />
      <PrivateRoute path="/examinations" component={Examinations} />
      <PrivateRoute path="/prescription/:id" component={Prescription} />
      <PrivateRoute path="/dashboard" component={Dashboard} exact />
      <PrivateRoute path="/users_management" component={usersManagement} exact />
-     <PrivateRoute path="/registration_requests" component={RegistrationRequestsManagement} exact />
      <PrivateRoute path="/folder/:id" component={medicalFolder} exact />
      <PrivateRoute path="/folder/:id/edit" component={EditMedicalFolder} exact />
      <PrivateRoute path="/appointments" component={Appointment} exact />
