@@ -155,6 +155,52 @@ body {
       align-content: space-around;
       height: 11rem; } }
 
+.secondaryHeader {
+  font-size: 1.4rem;
+  height: 7rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 7rem; }
+
+.miniHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 2rem;
+  margin-top: 1rem; }
+  .miniHeader__nav {
+    flex: 0 0 25%;
+    font-size: 2rem;
+    display: flex;
+    justify-content: space-between;
+    color: #5b63f6; }
+  .miniHeader .user-nav__user {
+    flex: 0 0 60%;
+    flex-direction: row;
+    display: flex;
+    text-align: right;
+    align-items: center;
+    justify-content: end;
+    gap: 1rem; }
+
+.dashboard__view {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row; }
+
+.dashboard__main {
+  padding-right: 2rem;
+  width: 100%; }
+
+.dashboard__side {
+  flex: 1;
+  background-color: white;
+  margin-right: -4rem;
+  padding-right: 2rem; }
+
 .auth__header {
   font-weight: 600;
   font-style: italic;
@@ -1931,3 +1977,140 @@ body {
     .pagination li:hover:not(.pagination__active), .pagination li:active:not(.pagination__active) {
       background-color: rgba(91, 99, 246, 0.4);
       color: white; }
+
+.secondaryNavigation {
+  display: flex;
+  gap: 2rem;
+  align-items: center; }
+  .secondaryNavigation-link {
+    color: #5b63f6;
+    font-weight: 500; }
+
+.dashboard__welcome {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: white;
+  height: 20rem;
+  padding: 3rem;
+  border-radius: 1.5rem;
+  margin-bottom: 3rem; }
+  .dashboard__welcome-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem; }
+  .dashboard__welcome-title {
+    font-size: 2.5rem;
+    font-weight: 500; }
+    .dashboard__welcome-title--doctor {
+      color: #f1923e; }
+  .dashboard__welcome-text {
+    font-size: 1.7rem;
+    color: #828282; }
+  .dashboard__welcome-img {
+    margin-top: -7rem;
+    width: 30rem; }
+
+.dashboard__reports-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem; }
+  .dashboard__reports-header--title {
+    font-size: 2.2rem;
+    font-weight: 500; }
+  .dashboard__reports-header--last {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #828282; }
+
+.dashboard__reports-list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3rem; }
+
+.dashboard__reports-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 2rem;
+  background-color: white;
+  border-radius: 1.5rem;
+  width: 13rem; }
+  .dashboard__reports-item--add {
+    width: 13rem;
+    height: 13rem;
+    background-color: #f2f2f2;
+    height: 100%;
+    text-align: center;
+    padding: 7rem 6rem;
+    border-radius: 1.5rem;
+    border: 1.5px dashed #bdbdbd; }
+  .dashboard__reports-item--title {
+    font-size: 1.5rem;
+    font-weight: 500; }
+  .dashboard__reports-item--value {
+    font-size: 2rem;
+    font-weight: 500; }
+
+.dashboard__appointements-header {
+  font-weight: 500;
+  font-size: 2.2rem; }
+
+.dashboard-right {
+  background-color: #f7f7fe;
+  padding: 3rem;
+  overflow: auto; }
+  .dashboard-right .user-nav {
+    margin-left: -2rem; }
+  .dashboard-right .user-nav__user {
+    margin-left: auto; }
+  .dashboard-right .doctor-container-left-secondrow-CRDV {
+    margin-top: 0;
+    width: 36rem;
+    height: 11rem;
+    margin-bottom: 1rem; }
+  .dashboard-right .dashboard-stats-boxe {
+    width: fit-content;
+    padding: 1rem; }
+    .dashboard-right .dashboard-stats-boxe img {
+      width: 3.6rem; }
+  .dashboard-right-nav {
+    display: flex; }
+    .dashboard-right-nav-icon {
+      color: #5b63f6;
+      font-size: 2.3rem;
+      margin-right: 2.7rem; }
+    .dashboard-right-nav-user {
+      margin-left: auto;
+      display: flex; }
+      .dashboard-right-nav-user-name {
+        font-size: 2rem; }
+      .dashboard-right-nav-user-sub {
+        float: right;
+        margin-top: -0.8rem;
+        color: #bdbdbd; }
+      .dashboard-right-nav-user-text {
+        margin-right: 1rem; }
+    .dashboard-right-nav-img {
+      border-radius: 50%;
+      width: 5rem;
+      height: 5rem; }
+  .dashboard-right-row1 {
+    display: flex;
+    margin-top: 2.8rem;
+    font-size: 1.4rem;
+    font-weight: 500; }
+    .dashboard-right-row1-2 {
+      display: flex; }
+    .dashboard-right-row1-btn {
+      border: none;
+      border-radius: 13px;
+      margin-left: auto;
+      font-size: 1rem;
+      padding: 1rem;
+      background-color: #f1f1fe;
+      color: #4f4f4f; }

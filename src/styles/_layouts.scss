@@ -160,3 +160,58 @@
   height: 11rem;
  }
 }
+
+.secondaryHeader {
+ font-size: 1.4rem;
+ height: 7rem;
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ margin-bottom: 7rem;
+}
+
+.miniHeader {
+ display: flex;
+ flex-direction: row;
+ justify-content: space-between;
+ align-items: center;
+ margin-left: 2rem;
+ margin-top: 1rem;
+
+ &__nav {
+  flex: 0 0 25%;
+  font-size: 2rem;
+  display: flex;
+  justify-content: space-between;
+  color: $color-primary;
+ }
+
+ & .user-nav__user {
+  flex: 0 0 60%;
+  flex-direction: row;
+  display: flex;
+  text-align: right;
+  align-items: center;
+  justify-content: end;
+  gap: 1rem;
+ }
+}
+
+.dashboard__view {
+ width: 100%;
+ height: 100%;
+ display: flex;
+ flex-direction: row;
+}
+
+.dashboard__main {
+ padding-right: 2rem;
+ width: 100%;
+}
+
+.dashboard__side {
+ flex: 1;
+ background-color: white;
+ margin-right: -4rem;
+ padding-right: 2rem;
+}

@@ -220,21 +220,21 @@ const UsersManagement: FC = () => {
       />
       <OverviewCard
        cardTitle="Total Employees"
-       cardInfo={1100}
+       cardInfo={4}
        cardGrowth={!false}
        cardGrowthValue={10.9}
        cardIcon={faUserTie}
       />
       <OverviewCard
        cardTitle="Total Students"
-       cardInfo={1600}
+       cardInfo={5}
        cardGrowth={!false}
        cardGrowthValue={22}
        cardIcon={faUserGraduate}
       />
       <OverviewCard
        cardTitle="Requests"
-       cardInfo={232}
+       cardInfo={11}
        cardGrowth={false}
        cardGrowthValue={34.5}
        cardIcon={faUserPlus}

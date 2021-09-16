@@ -26,7 +26,7 @@ const AwesomeTable: FC = () => {
        Status <FontAwesomeIcon className="clinity__table-header--icon" icon={faSort} />
       </th>
       <th className="clinity__table-header">
-       Last connexion <FontAwesomeIcon className="clinity__table-header--icon" icon={faSort} />
+       Date <FontAwesomeIcon className="clinity__table-header--icon" icon={faSort} />
       </th>
       <th className="clinity__table-header">
        <span className="clinity__table-header--setting">

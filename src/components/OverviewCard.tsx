@@ -17,7 +17,7 @@ const OverviewCard: FC<{
     <h3 className="cilinity-card__header">{cardTitle} :</h3>
     <div className="cilinity-card__body">
      <div className="cilinity-card__infos">
-      <h2><CountUp end={cardInfo} duration={3} /></h2>
+      <h2><CountUp end={cardInfo} duration={2} /></h2>
       <span className={cardGrowth ? 'cilinity-card__infos--up' : 'cilinity-card__infos--down'}>
        <FontAwesomeIcon
         style={{ marginRight: '.4rem' }}
