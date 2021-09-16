@@ -19,12 +19,12 @@ import Prescription from '../views/Examination/Prescription/Prescription'
 import Examinations from '../views/Examination/Examinations'
 import UserConfirmed from '../views/UserConfirmed'
 import _401 from '../views/_401'
+import Requests from '../views/Appointment/Requests'
 
 const Dashboard = React.lazy(() => import('../views/Dashboard'))
 const usersManagement = React.lazy(() => import('../views/usersManagement/UsersManagement'))
 const medicalFolder = React.lazy(() => import('../views/medicalFolder/medicalFolder'))
 const Appointment = React.lazy(() => import('../views/Appointment/Appointment'))
-const MyAppointments = React.lazy(() => import('../views/Appointment/MyAppointments'))
 
 const RootRoute: FC = () => {
  return (
@@ -51,7 +51,7 @@ const RootRoute: FC = () => {
      <PrivateRoute path="/folder/:id" component={medicalFolder} exact />
      <PrivateRoute path="/folder/:id/edit" component={EditMedicalFolder} exact />
      <PrivateRoute path="/appointments" component={Appointment} exact />
-     <PrivateRoute path="/appointments/:id" component={MyAppointments} exact />
+     <PrivateRoute path="/requests" component={Requests} exact />
      <Route path="/401" component={_401} exact />
 
      <Route component={_404} />

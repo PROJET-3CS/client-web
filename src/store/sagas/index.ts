@@ -71,6 +71,9 @@ import {
  fetchAllUsers,
  fetchAllUsersSuccess,
  fetchAllUsersError,
+ cancelAppointmentSuccess,
+ cancelAppointmentError,
+ cancelAppointment,
 } from '../slices/appointment'
 import { addExamError, addExamSuccess, updateInfoConclusion } from '../slices/exam'
 
@@ -396,7 +399,7 @@ function* _addAppointment() {
    doctorId: Number(appointment.doctorId),
    patientId: Number(appointment.patientId),
    promo: Number(appointment.promo),
-   group: Number(appointment.group),
+   groupe: Number(appointment.group),
    description: 'Please dont forget to put your mask on !',
    date: moment(appointment.date).format(),
    start_time: appointment.startTime,
@@ -419,6 +422,31 @@ function* _addAppointment() {
   }
  } catch (Err) {
   yield put(addAppointmentError('Sorry something went wrong !'))
+ }
+}
+
+function* _cancelAppointment() {
+ try {
+  const USER_TOKEN = getToken()
+  const authToken = `Bearer ${USER_TOKEN}`
+
+  const { selectedAppointment } = yield select(getAppointment)
+  const url = `/appointment/cancel_appointment/${
+   selectedAppointment?.type === 'collectif' ? '1' : '0'
+  }/${selectedAppointment.id}`
+
+  const { data } = yield axios.delete(url, {
+   headers: { Authorization: authToken },
+  })
+
+  if (data.success === 'success') {
+   yield put(cancelAppointmentSuccess())
+   yield call(loadAppointment)
+  } else {
+   yield put(cancelAppointmentError(data.body))
+  }
+ } catch (Err) {
+  yield put(cancelAppointmentError('Sorry something went wrong !'))
  }
 }
 
@@ -552,6 +580,7 @@ function* rootSaga() {
   takeLatest(addAntecedent.type, _addAntecedent),
   takeLatest(addAppointment.type, _addAppointment),
   takeLatest(syncAppointment.type, loadAppointment),
+  takeLatest(cancelAppointment.type, _cancelAppointment),
   takeLatest(fetchAllUsers.type, getAllUsers),
   takeLatest(reset.type, resetPassword),
   takeLatest(updatePassword.type, _updatePassword),

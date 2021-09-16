@@ -1,11 +1,18 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-import { AppointmentState, AppointmentPayload, AppointmentType, User } from '../../helpers/types'
+import {
+ AppointmentState,
+ AppointmentPayload,
+ AppointmentType,
+ User,
+ AppointmentItem,
+} from '../../helpers/types'
 
 export const initialState: AppointmentState = {
  loading: true,
  appointments: [],
  appointment: {},
+ selectedAppointment: {},
  users: [],
  error: false,
  msg: '',
@@ -57,10 +64,7 @@ const appointmentSlice = createSlice({
    state.users = []
   },
 
-  fetchAllUsersSuccess: (
-   state,
-   { payload }: PayloadAction<User[]>
-  ) => {
+  fetchAllUsersSuccess: (state, { payload }: PayloadAction<User[]>) => {
    state.loading = false
    state.error = false
    state.users = payload
@@ -69,6 +73,27 @@ const appointmentSlice = createSlice({
    state.loading = false
    state.error = false
    state.users = []
+  },
+
+  cancelAppointment: (state, { payload }: PayloadAction<AppointmentItem>) => {
+
+   state.loading = true
+   state.error = false
+   state.msg = ''
+   state.selectedAppointment = payload
+  },
+
+  cancelAppointmentError: (state, { payload }: PayloadAction<string>) => {
+   state.loading = false
+   state.selectedAppointment = {}
+   state.msg = payload
+   state.error = true
+  },
+
+  cancelAppointmentSuccess: (state) => {
+   state.loading = false
+   state.error = false
+   state.msg = 'Your appointment has been successfuly added '
   },
  },
 })
@@ -82,7 +107,10 @@ export const {
  addAppointmentSuccess,
  fetchAllUsers,
  fetchAllUsersSuccess,
- fetchAllUsersError
+ fetchAllUsersError,
+ cancelAppointment,
+ cancelAppointmentSuccess,
+ cancelAppointmentError,
 } = appointmentSlice.actions
 
 export default appointmentSlice.reducer

@@ -1,16 +1,17 @@
 import React, { FC, useEffect, useMemo, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { Spinner } from 'reactstrap'
 
 import Header from '../../components/Header'
 import Layout from '../layouts/Layout'
 import IndAppointmentModal from './IndAppointmentModal'
 import ChooseModal from './ChooseModal'
 import { getAppointment } from '../../store/selectors'
-import { AppointmentInfo, User } from '../../helpers/types'
+import { AppointmentInfo, AppointmentItem, User } from '../../helpers/types'
 import Toaster from '../../components/Toast/Toaster'
 import ColAppointmentModal from './ColAppointmentModal'
 import AppointmentCalendar from './AppointmentCalendar'
-import { fetchAllUsers } from '../../store/slices/appointment'
+import { cancelAppointment, fetchAllUsers } from '../../store/slices/appointment'
 
 const Appointment: FC = () => {
  // ===========================================================================
@@ -26,6 +27,10 @@ const Appointment: FC = () => {
 
  const _fetchUsers = () => {
   dispatch(fetchAllUsers())
+ }
+
+ const _cancelAppointement = (payload: AppointmentItem) => {
+  dispatch(cancelAppointment(payload))
  }
 
  //  ==============================================================================
@@ -104,6 +109,10 @@ const Appointment: FC = () => {
   setSelect(!selectModal)
  }
 
+ const handleCancel = (payload: AppointmentItem) => {
+  _cancelAppointement(payload)
+ }
+
  // ===========================================================================
  // Hooks
  // ===========================================================================
@@ -155,7 +164,11 @@ const Appointment: FC = () => {
      toggleTwo={toggleAddCol}
     />
 
-    <AppointmentCalendar toggleSelect={toggleSelect} />
+    {users.length >= 1 ? (
+     <AppointmentCalendar toggleSelect={toggleSelect} users={users} handleCancel={handleCancel} />
+    ) : (
+     <Spinner />
+    )}
    </div>
    {/* Toast for diplaying error msgs */}
    <Toaster modal={open} type={error ? 'danger' : 'success'}>

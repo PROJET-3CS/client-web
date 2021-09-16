@@ -1320,6 +1320,111 @@
    width: 22rem;
   }
  }
+
+ &_event {
+  &-body {
+   background-color: #f1f1fe;
+   padding: 2.5rem !important;
+  }
+  &-header {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   margin-bottom: 1rem;
+
+   &-title {
+    font-size: 2rem;
+    font-weight: 500;
+   }
+
+   &-icon {
+    font-size: 1.5rem;
+   }
+  }
+
+  &-main {
+   display: flex;
+   flex-direction: column;
+   padding: 2rem;
+   background-color: white;
+   border-radius: 0.5rem;
+   margin-bottom: 2rem;
+
+   &--date {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.5rem;
+
+    &-title {
+     font-size: 1.5rem;
+     color: #bdbdbd;
+     font-weight: 500;
+    }
+
+    &-text {
+     font-size: 1.5rem;
+     font-weight: 500;
+    }
+   }
+
+   &--medecin {
+    display: flex;
+    flex-direction: column;
+
+    &-title {
+     font-size: 1.5rem;
+     color: #bdbdbd;
+     font-weight: 500;
+    }
+
+    &-text {
+     font-size: 1.5rem;
+     font-weight: 500;
+    }
+   }
+  }
+
+  &--action {
+   display: flex;
+   justify-content: space-around;
+
+   &--btn {
+    position: relative;
+    padding: 13px 23px;
+    width: fit-content;
+    font-size: 1.25rem;
+    border: none;
+    border-radius: 6px;
+    background: transparent;
+    cursor: pointer;
+    outline-offset: 4px;
+    color: white;
+    background: #5b63f6;
+    margin-right: 0.625rem;
+
+    &-icon {
+     margin-right: 1rem;
+    }
+
+    &-annuler {
+     background-color: $color-grey-dark-5;
+    }
+
+    &-accept {
+     background-color: $color-primary;
+    }
+
+    &-reject {
+     background-color: $color-tertiary;
+    }
+
+    &-disabled {
+     background-color: #bdbdbd !important;
+     cursor: not-allowed;
+    }
+   }
+  }
+ }
 }
 
 // USER CONFIRMATION
@@ -1441,6 +1546,10 @@
   & .fc-toolbar-chunk:nth-child(3) {
    & .fc-button-primary {
     border: hidden;
+   }
+
+   & .fc-button-primary:last-child {
+    transform: rotate(90deg) !important;
    }
   }
 

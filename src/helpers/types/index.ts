@@ -30,6 +30,11 @@ export interface Appointment {
  [anyProp: string]: any
 }
 
+export interface AppointmentItem {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    [anyProp: string]: any
+   }
+
 export interface Exam {
  // eslint-disable-next-line @typescript-eslint/no-explicit-any
  [anyProp: string]: any
@@ -233,6 +238,7 @@ export interface AppointmentState {
  msg: string
  appointments: Appointment | Record<string, unknown>
  appointment: Appointment | Record<string, unknown>
+ selectedAppointment: Appointment | Record<string, unknown>
  users: User[]
 }
 export interface activeState {
