@@ -20,11 +20,11 @@ interface Props {
  toggle: (number: number) => void
 }
 
-const InfoGeneral: FC<Props> = ({ patient, isOpen, toggle }) => {
+const InfoGeneral: FC<Props> = ({ isOpen, toggle, patient }) => {
  // ===========================================================================
  // Selectors
  // ===========================================================================
- const { error, infoGeneral } = useSelector(getFolder)
+ const { error, updated } = useSelector(getFolder)
 
  // ===========================================================================
  // Dispatch
@@ -34,6 +34,14 @@ const InfoGeneral: FC<Props> = ({ patient, isOpen, toggle }) => {
 
  const _updatePatient = (payload: InfoGeneralType) => {
   dispatch(updatePatient(payload))
+ }
+
+ // Formate date
+ const formateDate = (date: string) => {
+  const newDate = new Date(date)
+  const iso = newDate.toISOString()
+
+  return iso.split('T')[0]
  }
 
  //  ==============================================================================
@@ -47,7 +55,7 @@ const InfoGeneral: FC<Props> = ({ patient, isOpen, toggle }) => {
   // to be fixed for later
   address: patient?.address ? patient.address : '',
 
-  birthDay: patient?.birthDay ? patient.birthDay : '',
+  birthDay: patient?.birthDay ? formateDate(patient?.birthDay) : '',
   birthPlace: patient?.birthPlace ? patient.birthPlace : '',
   situation: patient?.situation ? patient.situation : '',
   speciality: patient?.speciality ? patient.speciality : '',
@@ -148,10 +156,16 @@ const InfoGeneral: FC<Props> = ({ patient, isOpen, toggle }) => {
   setTimeout(() => {
    setOpen(false)
   }, 3000)
- }, [infoGeneral])
+ }, [updated])
 
  return (
-  <Collapses title="Informations Générales" isOpen={isOpen === 1} toggleCollapse={() => {return toggle(1)}}>
+  <Collapses
+   title="Informations Générales"
+   isOpen={isOpen === 1}
+   toggleCollapse={() => {
+    return toggle(1)
+   }}
+  >
    <Col className="editfolder__collapse-card--col">
     <Alert isOpen={open} className="clinity-alert" color={!error ? 'success' : 'danger'}>
      {!error ? '🎉 Patient data was successfuly been updated !' : '🤕 Sorry something went wrong !'}
@@ -187,9 +201,9 @@ const InfoGeneral: FC<Props> = ({ patient, isOpen, toggle }) => {
       onChange={handleChange}
      />
      <PrimaryInput
-      id="adress"
+      id="address"
       value={info?.address}
-      name="adress"
+      name="address"
       type="text"
       label="Address"
       placeholder="ex. Kharoubi"

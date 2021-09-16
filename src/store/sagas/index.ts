@@ -38,13 +38,7 @@ import {
  addAntecedent,
 } from '../slices/folder'
 import { getAuth, getFolder, getUsersManagement, getAppointment, getExam } from '../selectors'
-import {
- getToken,
- removeToken,
- setToken,
- mixAppointments,
- getUrlAnteced,
-} from '../../helpers/api'
+import { getToken, removeToken, setToken, mixAppointments, getUrlAnteced } from '../../helpers/api'
 import {
  fetchUsers,
  fetchUsersSuccess,
@@ -74,6 +68,9 @@ import {
  syncAppointmentSuccess,
  syncAppointmentError,
  syncAppointment,
+ fetchAllUsers,
+ fetchAllUsersSuccess,
+ fetchAllUsersError,
 } from '../slices/appointment'
 import { addExamError, addExamSuccess, updateInfoConclusion } from '../slices/exam'
 
@@ -167,6 +164,19 @@ function* getUsers() {
  }
 }
 
+function* getAllUsers() {
+ try {
+  const { data } = yield axios.get('/users/all')
+  if (data.status === 'success') {
+   yield put(fetchAllUsersSuccess(data.body))
+  } else {
+   yield put(fetchAllUsersError())
+  }
+ } catch (error) {
+  yield put(fetchAllUsersError())
+ }
+}
+
 function* archiverUser() {
  try {
   const { selectedUser } = yield select(getUsersManagement)
@@ -245,7 +255,6 @@ function* _createUser() {
    headers: { Authorization: authToken },
   })
   if (data.status === 'success') {
-   yield call(getUsers)
    yield put(createUserSuccess())
   } else {
    yield put(createUserError())
@@ -323,7 +332,7 @@ function* _updatePatient() {
   })
 
   if (data.status === 'success') {
-   yield put(updatePatientSuccess(data.body.user))
+   yield put(updatePatientSuccess(data.body))
   } else {
    yield put(updatePatientError())
   }
@@ -338,13 +347,14 @@ function* _updateFolder() {
   const authToken = `Bearer ${USER_TOKEN}`
 
   const { infoMedical, folder, patient, antecedent } = yield select(getFolder)
+
   const updatedFolder = { ...folder, ...infoMedical, ...antecedent }
   const { data } = yield axios.post(`/medical_folder/${patient.id}`, updatedFolder, {
    headers: { Authorization: authToken },
   })
 
   if (data.status === 'success') {
-   yield put(updateFolderSuccess(data.body))
+   yield put(updateFolderSuccess(data.message))
   } else {
    yield put(updateFolderError())
   }
@@ -542,6 +552,7 @@ function* rootSaga() {
   takeLatest(addAntecedent.type, _addAntecedent),
   takeLatest(addAppointment.type, _addAppointment),
   takeLatest(syncAppointment.type, loadAppointment),
+  takeLatest(fetchAllUsers.type, getAllUsers),
   takeLatest(reset.type, resetPassword),
   takeLatest(updatePassword.type, _updatePassword),
   takeLatest(active.type, activateAcc),

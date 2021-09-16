@@ -36,8 +36,8 @@ const InfoMedical: FC<Props> = ({ folder, isOpen, toggle }) => {
  //  State
  //  ==============================================================================
  const initState: InfoMedicalType = {
-  numFolder: folder?.numFolder ? folder.numFolder : '',
-  socSecNum: folder?.socSecNum ? folder.socSecNum : '',
+  numFolder: folder?.numFolder ? folder.numFolder : '01',
+  socSecNum: folder?.socSecNum ? folder.socSecNum : '534534677776',
 
   // to be updated later
   tall: folder?.tall ? folder.tall : '',

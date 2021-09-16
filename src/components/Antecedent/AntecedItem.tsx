@@ -25,7 +25,7 @@ const AntecedItem: FC<Props> = ({ title, content, date, onClick, onKeyDown, colo
      <span className="anteced__item-title">{title}</span>
      <span className="anteced__item-subtitle">{content}</span>
     </div>
-    <span className="anteced__item-date">{moment(date).format('l')}</span>
+    <span className="anteced__item-date">{date}</span>
    </div>
   </div>
  )

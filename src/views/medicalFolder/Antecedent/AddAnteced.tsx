@@ -27,7 +27,7 @@ const IndAppointmentModal: FC<ModalProps & Props> = ({ modal, toggle, type }) =>
  // ===========================================================================
  // Selectors
  // ===========================================================================
- const { error, antecedentItem } = useSelector(getFolder)
+ const { error, antecedentItem, added } = useSelector(getFolder)
 
  // ===========================================================================
  // Dispatch
@@ -125,7 +125,7 @@ const IndAppointmentModal: FC<ModalProps & Props> = ({ modal, toggle, type }) =>
   setTimeout(() => {
    setOpen(false)
   }, 5000)
- }, [antecedentItem])
+ }, [added])
 
  useEffect(() => {
   getContent()
@@ -143,11 +143,6 @@ const IndAppointmentModal: FC<ModalProps & Props> = ({ modal, toggle, type }) =>
     className="newappointment__resultmodal"
    >
     <ModalBody className="newappointment__resultmodal-body">
-     <Alert isOpen={open} className="clinity-alert" color={!error ? 'success' : 'danger'}>
-      {!error
-       ? '🎉 Patient data was successfuly been updated !'
-       : '🤕 Sorry something went wrong !'}
-     </Alert>
      <Form onSubmit={handleSubmitAnteced}>
       <div className="newappointment__resultmodal-header">
        <p>{state.title}</p>
@@ -159,6 +154,11 @@ const IndAppointmentModal: FC<ModalProps & Props> = ({ modal, toggle, type }) =>
         color="primary-color"
        />
       </div>
+      <Alert isOpen={open} className="clinity-alert" color={!error ? 'success' : 'danger'}>
+       {!error
+        ? '🎉 Patient data was successfuly been updated !'
+        : '🤕 Sorry something went wrong !'}
+      </Alert>
       <div>
        <FormGroup className="newappointment__resultmodal-formgroup">
         <Label className="newappointment__resultmodal-formgroup--label">Title</Label>

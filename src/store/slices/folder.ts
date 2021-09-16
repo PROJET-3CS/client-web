@@ -14,6 +14,8 @@ import {
 export const initialState: FolderState = {
  loading: true,
  error: false,
+ added: false,
+ updated: false,
  msg: '',
  folder: {},
  patient: {},
@@ -52,18 +54,21 @@ const folderSlice = createSlice({
 
   updatePatient: (state, { payload }: PayloadAction<InfoGeneralType>) => {
    state.loading = true
+   state.updated = false
    state.infoGeneral = payload
   },
 
   updatePatientSuccess: (state, { payload }: PayloadAction<User>) => {
    state.loading = false
    state.error = false
+   state.updated = true
    state.patient = payload
    state.infoGeneral = {}
   },
 
   updatePatientError: (state) => {
    state.loading = false
+   state.updated = true
    state.error = true
    state.infoGeneral = {}
   },
@@ -95,6 +100,7 @@ const folderSlice = createSlice({
 
   addAntecedent: (state, { payload }: PayloadAction<AntecedentItem>) => {
    state.loading = true
+   state.added = false
    state.antecedentItem = payload
   },
 
@@ -102,6 +108,7 @@ const folderSlice = createSlice({
    state.loading = false
    state.error = false
    state.msg = ''
+   state.added = true
    state.antecedentItem = {
     title: '',
     date: '',
@@ -112,6 +119,7 @@ const folderSlice = createSlice({
   addAntecedentError: (state, { payload }: PayloadAction<string>) => {
    state.loading = false
    state.error = true
+   state.added = false
    state.msg = payload
   },
  },

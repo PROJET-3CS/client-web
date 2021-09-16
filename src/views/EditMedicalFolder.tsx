@@ -1,5 +1,5 @@
 import { FC, useEffect, useState } from 'react'
-import { FormGroup } from 'reactstrap'
+import { FormGroup, Spinner } from 'reactstrap'
 import { useParams } from 'react-router'
 import { useDispatch, useSelector } from 'react-redux'
 
@@ -55,11 +55,11 @@ const EditMedicalFolder: FC = () => {
      <p className="editfolder-heading--title">Edit Medical Folder</p>
     </div>
 
-    <InfoGeneral patient={patient} isOpen={open} toggle={toggle} />
+    { patient?.createdAt ? <InfoGeneral patient={patient} isOpen={open} toggle={toggle} /> : <Spinner /> }
 
-    <InfoMedical folder={folder} isOpen={open} toggle={toggle} />
+    { folder.createdAt ? <InfoMedical folder={folder} isOpen={open} toggle={toggle} /> : <Spinner /> }
 
-    <Antecedent folder={folder} isOpen={open} toggle={toggle} />
+    { folder.createdAt ? <Antecedent folder={folder} isOpen={open} toggle={toggle} /> : <Spinner /> }
    </FormGroup>
   </Layout>
  )

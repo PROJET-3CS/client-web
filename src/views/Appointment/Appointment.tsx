@@ -5,19 +5,18 @@ import Header from '../../components/Header'
 import Layout from '../layouts/Layout'
 import IndAppointmentModal from './IndAppointmentModal'
 import ChooseModal from './ChooseModal'
-import { getAppointment, getUsersManagement } from '../../store/selectors'
+import { getAppointment } from '../../store/selectors'
 import { AppointmentInfo, User } from '../../helpers/types'
-import { fetchUsers } from '../../store/slices/usersManagement'
 import Toaster from '../../components/Toast/Toaster'
 import ColAppointmentModal from './ColAppointmentModal'
 import AppointmentCalendar from './AppointmentCalendar'
+import { fetchAllUsers } from '../../store/slices/appointment'
 
 const Appointment: FC = () => {
  // ===========================================================================
  // Selectors
  // ===========================================================================
- const { users } = useSelector(getUsersManagement)
- const { error, msg, appointment } = useSelector(getAppointment)
+ const { error, msg, appointment, users } = useSelector(getAppointment)
 
  // ===========================================================================
  // Dispatch
@@ -26,7 +25,7 @@ const Appointment: FC = () => {
  const dispatch = useDispatch()
 
  const _fetchUsers = () => {
-  dispatch(fetchUsers({ page: 0, items: 8 }))
+  dispatch(fetchAllUsers())
  }
 
  //  ==============================================================================
@@ -69,7 +68,7 @@ const Appointment: FC = () => {
     return user.role === 1
    })
    patients = users.filter((user) => {
-    return user.role === 2
+    return user.role !== 1
    })
   }
 
@@ -112,7 +111,7 @@ const Appointment: FC = () => {
   if (users.length < 1) {
    _fetchUsers()
   }
- }, [users])
+ }, [])
 
  useMemo(() => {
   sortUsers()

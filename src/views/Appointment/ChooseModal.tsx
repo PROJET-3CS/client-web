@@ -11,7 +11,7 @@ interface Props extends InputProps {
  toggleTwo: ReactEventHandler
 }
 
-const ChooseModal: FC<Props> = ({ modal, toggle, toggleOne }) => {
+const ChooseModal: FC<Props> = ({ modal, toggle, toggleOne, toggleTwo }) => {
  return (
   <Modal
    isOpen={modal}
@@ -37,7 +37,7 @@ const ChooseModal: FC<Props> = ({ modal, toggle, toggleOne }) => {
        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
       </span>
      </button>
-     <button onClick={toggleOne} type="button" className="newappointment__select-box">
+     <button onClick={toggleTwo} type="button" className="newappointment__select-box">
       <img
        className="newappointment__select-img2"
        src="/img/CollRDV.svg"

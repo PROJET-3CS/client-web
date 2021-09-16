@@ -191,6 +191,8 @@ export interface SyncState {
 export interface FolderState {
  loading: boolean
  error: boolean
+ added: boolean
+ updated: boolean
  msg: string
  folder: Folder | Record<string, unknown>
  patient: User
@@ -231,6 +233,7 @@ export interface AppointmentState {
  msg: string
  appointments: Appointment | Record<string, unknown>
  appointment: Appointment | Record<string, unknown>
+ users: User[]
 }
 export interface activeState {
  error: boolean

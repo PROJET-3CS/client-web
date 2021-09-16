@@ -129,6 +129,22 @@ const authSlice = createSlice({
    state.redirect = false
    state.loading = false
   },
+
+  updateProfile: (state) => {
+   state.loading = true
+  },
+
+  updateProfileSuccess: (state, { payload }: PayloadAction<User>) => {
+   state.loading = false
+   state.user = payload
+   state.error = false
+  },
+
+  updateProfileError: (state, { payload }: PayloadAction<string>) => {
+   state.msg = payload
+   state.error = true
+   state.loading = false
+  },
  },
 })
 
@@ -149,6 +165,9 @@ export const {
  register,
  registerSuccess,
  registerError,
+ updateProfile,
+ updateProfileSuccess,
+ updateProfileError
 } = authSlice.actions
 
 export default authSlice.reducer
