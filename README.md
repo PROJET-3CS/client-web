@@ -5,6 +5,7 @@ CLINITY
 // [Visit the Site from here !](https://clinic-online.herokuapp.com/)
  
 ![](./sc1.png)
+![](./sc2.png)
 
 ## Summary :
 #### ClINITY is a website app created to help people to book an appointment in aclinic online, so any clinic can use this app to organize the reservation time, besides that the client can pick the date and time . doctore can refuse , change or accept date and time
@@ -39,10 +40,9 @@ User flows
 ![](https://i.imgur.com/yFSHLTV.png)
 
 
-Class schema
----
-## Mongo DB
-![](https://imgur.com/a/s4mkuSQ)
+## Class schema
+![](./im.png)
+
 
 
 Used Technology
