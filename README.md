@@ -28,7 +28,8 @@ User story
 ```gherkin=
     As a doctor, I can view my calendar.
     As a doctor, I can accept or refuse an appointment 
-    As a doctor, write and extract medical prescriptions.
+    As a doctor, I can write and extract medical prescriptions.
+    As a doctor, I can view my daily , weekly and monthly statistics.
 ```
 
 
@@ -67,3 +68,4 @@ Clinity provides
 - accounts gesture
 - medical folder gesture
 - medical prescription gesture
+- statistics gesture
