@@ -2,7 +2,7 @@ CLINITY
 ===
 
 
-// [Visit the Site from here !](https://clinic-online.herokuapp.com/)
+// [View the project full specifications !](https://docs.google.com/document/d/1zSXcCNSuju0yjo6r1XsT2eeDOzfdce5G6oAezfQk198/edit#heading=h.xli960qpv39d)
  
 ![](./sc1.png)
 
