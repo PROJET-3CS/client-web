@@ -1,46 +1,69 @@
-# Getting Started with Create React App
+CLINITY 
+===
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+// [Visit the Site from here !](https://clinic-online.herokuapp.com/)
+ 
+![](https://i.imgur.com/qiAjVwz.png)
 
-In the project directory, you can run:
+## Summary :
+#### ClINITY is a website app created to help people to book an appointment in aclinic online, so any clinic can use this app to organize the reservation time, besides that the client can pick the date and time . doctore can refuse , change or accept date and time
+---
 
-### `npm start`
+## How use this app as a developer
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+1. git clone the repo
+2. run docker compose-up
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+if you have any question don't hesitate to ask :+1: 
 
-### `npm test`
+User story
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```gherkin=
+    As a client, I can serve the website.
+    As a client, I can reserve an appointment 
+    As a client, I can choose the date of appointment besides the time.
+```
+```gherkin=
+    As a doctor, I can view my calendar.
+    As a doctor, I can accept or refuse an appointment 
+    As a doctor, write and extract medical prescriptions.
+```
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+User flows
+---
+![](https://i.imgur.com/yFSHLTV.png)
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Class schema
+---
+## Mongo DB
+![](https://imgur.com/a/s4mkuSQ)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Used Technology
+---
+1. Nest Js
+2. Express
+3. React
+4. Redux
+5. Mysql
+6. Docker
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+availble roles
+---
+1. admin
+2. doctor
+3. clinet(PATIENT)
+4. doc assistant
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Clinity provides
+---
+- appointement gesture
+- accounts gesture
+- medical folder gesture
+- medical prescription gesture
