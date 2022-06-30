@@ -3,6 +3,8 @@ CLINITY
 
 
  [View project specifications !](https://docs.google.com/document/d/1zSXcCNSuju0yjo6r1XsT2eeDOzfdce5G6oAezfQk198/edit)
+ [View the project full design  !](https://www.figma.com/file/A8X8kPWjWhfR2Hm450HD6o/Projet-1CS---Clinity-(Copy)?node-id=0%3A1)
+
  
 ![](./sc1.png)
 
