@@ -74,7 +74,7 @@ If you liked the repo then kindly support it by giving it a star ⭐ and share i
 If you find any bug in the code or have any improvements in mind then feel free to generate a pull request.
 
 ## Issues
-[![GitHub Issues](https://img.shields.io/github/issues/harismuneer/Clinic-Management-System-ASP.NET.svg?style=flat&label=Issues&maxAge=2592000)]()
+[![GitHub Issues](https://img.shields.io/github/issues)]()
 
 If you face any issue, you can create a new issue in the Issues Tab and I will be glad to help you out.
 
