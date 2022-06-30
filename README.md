@@ -104,12 +104,9 @@ If you face any issue, you can create a new issue in the Issues Tab and I will b
 
 ## Contributors
 
-<a href = "https://github.com/Tanu-N-Prabhu/Python/graphs/contributors">
-  <img src = "https://contrib.rocks/image?repo = med-zino/clientWeb-1"/>
+<a href="https://github.com/med-zino/clientWeb-1/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=med-zino/clientWeb-1" />
 </a>
-
-
-Made with [contributors-img](https://contrib.rocks).
 
 
 
