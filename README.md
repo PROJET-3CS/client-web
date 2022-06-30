@@ -109,6 +109,7 @@ If you face any issue, you can create a new issue in the Issues Tab and I will b
 </a>
 
 
+Made with [contributors-img](https://contrib.rocks).
 
 
 
