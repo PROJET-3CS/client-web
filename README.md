@@ -2,7 +2,7 @@ CLINITY
 ===
 
 
-// [Visit the Site from here !](https://clinic-online.herokuapp.com/)
+ [View project specifications !](https://docs.google.com/document/d/1zSXcCNSuju0yjo6r1XsT2eeDOzfdce5G6oAezfQk198/edit)
  
 ![](./sc1.png)
 
@@ -29,9 +29,14 @@ User story
 ```gherkin=
     As a doctor, I can view my calendar.
     As a doctor, I can accept or refuse an appointment 
-    As a doctor, write and extract medical prescriptions.
-```
+    As a doctor, I can write and extract medical prescriptions.
+    As a doctor, I can view my daily , weekly and monthly statistics.
 
+```
+```gherkin=
+    As an admin, I can manage accounts.
+    As an admin, I can view my daily , weekly and monthly statistics.
+```
 
 
 
@@ -63,6 +68,7 @@ Clinity provides
 - accounts gesture
 - medical folder gesture
 - medical prescription gesture
+- medical exams gesture
 
 ---
 ---
